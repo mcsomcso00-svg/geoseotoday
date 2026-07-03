@@ -7,9 +7,6 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
 
 // 諮詢 CTA 的聯絡方式：之後換成正式信箱或表單連結（Tally/Google Form）只改這兩行
-const CONTACT_EMAIL = 'contact@semanticlab.example'; // TODO: 換成真實信箱
-const FORM_URL = ''; // 若填入表單網址（如 https://tally.so/r/xxxx），按鈕會優先用表單
-
 // Boss 頁 B1：群集精簡總整理 + 內嵌功能工具（護城河）
 const T = {
   'zh-hant': {
@@ -122,12 +119,8 @@ const T = {
   },
 }[lang];
 
-const MAIL_SUBJECT = {
-  'zh-hant': 'SEO/GEO 健檢診斷報告索取（附網址）',
-  'zh-hans': 'SEO/GEO 健检诊断报告索取（附网址）',
-  en: 'Request: SEO/GEO diagnosis report (URL attached)',
-}[lang];
-const ctaHref = FORM_URL || `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(MAIL_SUBJECT)}`;
+// CTA 直接導到站內原生表單頁（Formsubmit 送出）
+const ctaHref = `/${lang}/audit/`;
 
 const alternates = { 'zh-hant': '/zh-hant/geo/', 'zh-hans': '/zh-hans/geo/', en: '/en/geo/' };
 const schema = {

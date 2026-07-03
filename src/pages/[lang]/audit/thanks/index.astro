@@ -1,0 +1,19 @@
+---
+import Base from '../../../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh-hant' } }, { params: { lang: 'zh-hans' } }, { params: { lang: 'en' } }];
+}
+const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
+const T = {
+  'zh-hant': { title: '已收到你的申請 — SemanticLab', h1: '收到了，謝謝！', body: '我們會用你提供的網址跑一份詳細的 SEO/GEO 健檢診斷，並在 3 個工作天內把報告寄到你的信箱。', back: '← 回首頁', blog: '先逛逛部落格' },
+  'zh-hans': { title: '已收到你的申请 — SemanticLab', h1: '收到了，谢谢！', body: '我们会用你提供的网址跑一份详细的 SEO/GEO 健检诊断，并在 3 个工作天内把报告寄到你的邮箱。', back: '← 回首页', blog: '先逛逛博客' },
+  en: { title: 'Request received — SemanticLab', h1: 'Got it — thank you!', body: "We'll run a detailed SEO/GEO diagnosis on your URL and email the report within 3 business days.", back: '← Back home', blog: 'Browse the blog' },
+}[lang];
+const alternates = { 'zh-hant': '/zh-hant/audit/thanks/', 'zh-hans': '/zh-hans/audit/thanks/', en: '/en/audit/thanks/' };
+---
+<Base title={T.title} description={T.body} lang={lang} alternates={alternates}>
+  <h1>{T.h1}</h1>
+  <p>{T.body}</p>
+  <p><a href={`/${lang}/`}>{T.back}</a> · <a href={`/${lang}/blog/`}>{T.blog}</a></p>
+</Base>
