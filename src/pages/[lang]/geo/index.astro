@@ -35,6 +35,7 @@ const T = {
       '內容負債盤點：90 天 0 點擊頁面清單，＋在拖垮你的技術問題定位',
       '競爭落差：你 vs 前 3 名對手的語意覆蓋與被引用差距',
       '每個問題都指名道姓到「哪一頁、哪一段」，不是空泛評語',
+      '＋每個問題的修正方向與優先序建議（現在完全免費）',
     ],
     ctaPaidLabel: '付費升級（實際「怎麼修」的建議）',
     ctaPaidPoints: [
@@ -43,7 +44,7 @@ const T = {
       '語意集群與內鏈架構設計，或直接交給我們代操',
     ],
     ctaBtn: '免費領取健檢診斷報告',
-    ctaNote: '免費報告詳列「問題」；完整「修正建議」與執行為付費項目。名額有限，來信／填表請附上你的網站網址。',
+    ctaNote: '整份報告完全免費，也不會把你的資料用於行銷名單。名額有限，填表請附上你的網站網址。',
   },
   'zh-hans': {
     title: 'GEO 就绪度检测器 — 你的内容够格被 AI 引用吗？',
@@ -71,6 +72,7 @@ const T = {
       '内容负债盘点：90 天 0 点击页面清单，＋在拖垮你的技术问题定位',
       '竞争落差：你 vs 前 3 名对手的语义覆盖与被引用差距',
       '每个问题都指名道姓到「哪一页、哪一段」，不是空泛评语',
+      '＋每个问题的修改方向与优先级建议（现在完全免费）',
     ],
     ctaPaidLabel: '付费升级（实际「怎么修」的建议）',
     ctaPaidPoints: [
@@ -79,7 +81,7 @@ const T = {
       '语义集群与内链架构设计，或直接交给我们代操',
     ],
     ctaBtn: '免费领取健检诊断报告',
-    ctaNote: '免费报告详列「问题」；完整「修改建议」与执行为付费项目。名额有限，来信／填表请附上你的网站网址。',
+    ctaNote: '整份报告完全免费，也不会把你的资料用于营销名单。名额有限，填表请附上你的网站网址。',
   },
   en: {
     title: 'GEO Readiness Checker — Is your content citable by AI?',
@@ -107,6 +109,7 @@ const T = {
       'Content-debt inventory: your 90-day zero-click pages, plus the technical issues dragging you down',
       'Competitive gap: your semantic coverage & citation gap vs the top 3 competitors',
       'Every issue is pinned to a specific page and paragraph — not vague commentary',
+      'Plus the fix direction and priority for each issue — now completely free',
     ],
     ctaPaidLabel: 'Paid upgrade (the actual "how to fix" recommendations)',
     ctaPaidPoints: [
@@ -115,7 +118,7 @@ const T = {
       'Semantic cluster & internal-linking architecture — or done-for-you implementation',
     ],
     ctaBtn: 'Get my free diagnosis report',
-    ctaNote: 'The free report details the problems; the full fix recommendations and implementation are paid. Limited slots — please include your site URL.',
+    ctaNote: 'The whole report is free, and we never use your data for marketing lists. Limited slots — please include your site URL.',
   },
 }[lang];
 
@@ -146,10 +149,6 @@ const schema = {
       <div class="cta-col cta-free">
         <div class="cta-tag cta-tag-free">✓ {T.ctaFreeLabel}</div>
         <ul>{T.ctaFreePoints.map((p) => <li>{p}</li>)}</ul>
-      </div>
-      <div class="cta-col cta-paid">
-        <div class="cta-tag cta-tag-paid">★ {T.ctaPaidLabel}</div>
-        <ul>{T.ctaPaidPoints.map((p) => <li>{p}</li>)}</ul>
       </div>
     </div>
     <a class="cta-btn" href={ctaHref}>{T.ctaBtn}</a>

@@ -10,7 +10,7 @@ const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
 const T = {
   'zh-hant': {
     title: '免費 SEO／GEO 健檢診斷報告 — SemanticLab',
-    desc: '填一分鐘表單，我們用你的真實網址跑一份深入的 SEO/GEO 診斷，逐項列出問題與段落舉例。完整修正建議為付費項目。',
+    desc: '填一分鐘表單，我們用你的真實網址跑一份深入的 SEO/GEO 診斷，逐項列出問題與段落舉例，完全免費。',
     h1: '免費領取你的「詳細 SEO／GEO 健檢診斷報告」',
     lead: '這不是通用清單。留下你的網址，我們會用九項 GEO 訊號逐頁掃描、盤點內容負債、比對前 3 名對手，指名到「哪一頁、哪一段」出問題。',
     freeLabel: '✓ 免費診斷報告詳列',
@@ -18,6 +18,7 @@ const T = {
       'GEO 就緒度逐頁分數＋你沒被 AI 引用的具體原因與段落舉例',
       '內容負債：90 天 0 點擊頁面清單＋技術問題定位',
       '你 vs 前 3 名對手的語意覆蓋與被引用落差',
+      '每個問題的修正方向與優先序建議（完全免費）',
     ],
     paidLabel: '★ 付費升級（實際怎麼修）',
     paid: [
@@ -30,12 +31,12 @@ const T = {
     fMarket: '目標市場／語言（選填，例：台灣、繁中＋英文）',
     fMsg: '你最想解決的問題（選填）',
     submit: '免費領取健檢診斷報告',
-    note: '免費報告詳列「問題」；完整「修正建議」與執行為付費項目。我們不會把你的資料用於行銷名單。',
+    note: '整份報告完全免費，我們也不會把你的資料用於行銷名單。名額有限，先到先得。',
     subject: '【SemanticLab】免費 SEO/GEO 健檢診斷報告索取',
   },
   'zh-hans': {
     title: '免费 SEO／GEO 健检诊断报告 — SemanticLab',
-    desc: '填一分钟表单，我们用你的真实网址跑一份深入的 SEO/GEO 诊断，逐项列出问题与段落举例。完整修改建议为付费项目。',
+    desc: '填一分钟表单，我们用你的真实网址跑一份深入的 SEO/GEO 诊断，逐项列出问题与段落举例，完全免费。',
     h1: '免费领取你的「详细 SEO／GEO 健检诊断报告」',
     lead: '这不是通用清单。留下你的网址，我们会用九项 GEO 信号逐页扫描、盘点内容负债、比对前 3 名对手，指名到「哪一页、哪一段」出问题。',
     freeLabel: '✓ 免费诊断报告详列',
@@ -43,6 +44,7 @@ const T = {
       'GEO 就绪度逐页分数＋你没被 AI 引用的具体原因与段落举例',
       '内容负债：90 天 0 点击页面清单＋技术问题定位',
       '你 vs 前 3 名对手的语义覆盖与被引用落差',
+      '每个问题的修改方向与优先级建议（完全免费）',
     ],
     paidLabel: '★ 付费升级（实际怎么修）',
     paid: [
@@ -55,12 +57,12 @@ const T = {
     fMarket: '目标市场／语言（选填，例：台湾、繁中＋英文）',
     fMsg: '你最想解决的问题（选填）',
     submit: '免费领取健检诊断报告',
-    note: '免费报告详列「问题」；完整「修改建议」与执行为付费项目。我们不会把你的资料用于营销名单。',
+    note: '整份报告完全免费，我们也不会把你的资料用于营销名单。名额有限，先到先得。',
     subject: '【SemanticLab】免费 SEO/GEO 健检诊断报告索取',
   },
   en: {
     title: 'Free SEO / GEO Audit Diagnosis Report — SemanticLab',
-    desc: 'Fill a one-minute form and we run a deep SEO/GEO diagnosis on your real URL, listing issues with paragraph-level evidence. Full fix recommendations are paid.',
+    desc: 'Fill a one-minute form and we run a deep SEO/GEO diagnosis on your real URL, listing issues with paragraph-level evidence. Completely free.',
     h1: 'Get your detailed SEO / GEO audit report — free',
     lead: "Not a generic checklist. Leave your URL and we'll scan every page on nine GEO signals, inventory your content debt, and benchmark you against the top 3 competitors — pinned to the exact page and paragraph.",
     freeLabel: '✓ The free report details',
@@ -68,6 +70,7 @@ const T = {
       'Per-page GEO readiness scores + why AI is not citing you, with paragraph examples',
       'Content debt: your 90-day zero-click pages + the technical issues behind them',
       'Your semantic coverage & citation gap vs the top 3 competitors',
+      'The fix direction and priority for each issue — completely free',
     ],
     paidLabel: '★ Paid upgrade (the actual fixes)',
     paid: [
@@ -80,7 +83,7 @@ const T = {
     fMarket: 'Target market / languages (optional, e.g. US, EN + zh-Hant)',
     fMsg: 'What you most want to fix (optional)',
     submit: 'Get my free diagnosis report',
-    note: 'The free report details the problems; full fix recommendations and implementation are paid. We never use your data for marketing lists.',
+    note: 'The whole report is free, and we never use your data for marketing lists. Limited slots, first come first served.',
     subject: '[SemanticLab] Free SEO/GEO audit diagnosis request',
   },
 }[lang];
@@ -105,10 +108,6 @@ const breadcrumbs = [
     <div class="recap-col recap-free">
       <div class="recap-tag tag-free">{T.freeLabel}</div>
       <ul>{T.free.map((p) => <li>{p}</li>)}</ul>
-    </div>
-    <div class="recap-col recap-paid">
-      <div class="recap-tag tag-paid">{T.paidLabel}</div>
-      <ul>{T.paid.map((p) => <li>{p}</li>)}</ul>
     </div>
   </div>
 

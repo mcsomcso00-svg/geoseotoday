@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# 本機暫存預覽檔（底線開頭），不部署
+public/_*
