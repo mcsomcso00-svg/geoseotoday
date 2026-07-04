@@ -6,14 +6,106 @@ export function getStaticPaths() {
 }
 const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
 const T = {
-  'zh-hant': { title: '已收到你的申請 — SemanticLab', h1: '收到了，謝謝！', body: '我們會用你提供的網址跑一份詳細的 SEO/GEO 健檢診斷，並在 3 個工作天內把報告寄到你的信箱。', back: '← 回首頁', blog: '先逛逛部落格' },
-  'zh-hans': { title: '已收到你的申请 — SemanticLab', h1: '收到了，谢谢！', body: '我们会用你提供的网址跑一份详细的 SEO/GEO 健检诊断，并在 3 个工作天内把报告寄到你的邮箱。', back: '← 回首页', blog: '先逛逛博客' },
-  en: { title: 'Request received — SemanticLab', h1: 'Got it — thank you!', body: "We'll run a detailed SEO/GEO diagnosis on your URL and email the report within 3 business days.", back: '← Back home', blog: 'Browse the blog' },
+  'zh-hant': {
+    title: '已收到你的申請 — SemanticLab',
+    h1: '已收到你的申請',
+    lead: '謝謝！我們已收到你的網址，分析師會親自跑一份詳細的 SEO/GEO 健檢診斷。',
+    stepsTitle: '接下來會發生什麼',
+    steps: [
+      '我們用你的網址逐頁掃描九項 GEO 訊號、實測 AI 引用、比對前 3 名對手',
+      '在 24–48 小時內（最遲 3 個工作天）把完整報告寄到你填寫的信箱',
+      '報告會指名到「哪一頁、哪一段」出問題——整份完全免費',
+    ],
+    waitTitle: '等報告的同時',
+    waitDesc: '先用免費工具自測一篇你的文章，30 秒看它有多容易被 AI 引用：',
+    toolBtn: '打開 GEO 就緒度檢測器',
+    blogBtn: '逛逛部落格',
+    note: '沒在信箱看到？請檢查一下垃圾郵件匣。',
+  },
+  'zh-hans': {
+    title: '已收到你的申请 — SemanticLab',
+    h1: '已收到你的申请',
+    lead: '谢谢！我们已收到你的网址，分析师会亲自跑一份详细的 SEO/GEO 健检诊断。',
+    stepsTitle: '接下来会发生什么',
+    steps: [
+      '我们用你的网址逐页扫描九项 GEO 信号、实测 AI 引用、比对前 3 名对手',
+      '在 24–48 小时内（最迟 3 个工作天）把完整报告寄到你填写的邮箱',
+      '报告会指名到「哪一页、哪一段」出问题——整份完全免费',
+    ],
+    waitTitle: '等报告的同时',
+    waitDesc: '先用免费工具自测一篇你的文章，30 秒看它有多容易被 AI 引用：',
+    toolBtn: '打开 GEO 就绪度检测器',
+    blogBtn: '逛逛博客',
+    note: '没在邮箱看到？请检查一下垃圾邮件匣。',
+  },
+  en: {
+    title: 'Request received — SemanticLab',
+    h1: 'Your request is in',
+    lead: "Thanks! We've received your URL and an analyst will personally run a detailed SEO/GEO diagnosis.",
+    stepsTitle: 'What happens next',
+    steps: [
+      'We scan your URL page-by-page on nine GEO signals, test AI citation, and benchmark you against the top 3 competitors',
+      'You get the full report by email within 24–48 hours (3 business days at most)',
+      'It pins every issue to a specific page and paragraph — completely free',
+    ],
+    waitTitle: 'While you wait',
+    waitDesc: 'Check one of your own articles with the free tool — see how citable it is in 30 seconds:',
+    toolBtn: 'Open the GEO Readiness Checker',
+    blogBtn: 'Browse the blog',
+    note: "Don't see it in your inbox? Please check your spam folder.",
+  },
 }[lang];
 const alternates = { 'zh-hant': '/zh-hant/audit/thanks/', 'zh-hans': '/zh-hans/audit/thanks/', en: '/en/audit/thanks/' };
 ---
-<Base title={T.title} description={T.body} lang={lang} alternates={alternates}>
-  <h1>{T.h1}</h1>
-  <p>{T.body}</p>
-  <p><a href={`/${lang}/`}>{T.back}</a> · <a href={`/${lang}/blog/`}>{T.blog}</a></p>
+<Base title={T.title} description={T.lead} lang={lang} alternates={alternates}>
+  <div class="ok-card">
+    <div class="ok-check" aria-hidden="true">✓</div>
+    <h1>{T.h1}</h1>
+    <p class="ok-lead">{T.lead}</p>
+  </div>
+
+  <h2>{T.stepsTitle}</h2>
+  <ol class="steps">
+    {T.steps.map((s) => <li>{s}</li>)}
+  </ol>
+
+  <div class="wait">
+    <p class="wait-title">{T.waitTitle}</p>
+    <p class="wait-desc">{T.waitDesc}</p>
+    <a class="wait-btn" href={`/${lang}/geo/`}>{T.toolBtn}</a>
+    <a class="wait-link" href={`/${lang}/blog/`}>{T.blogBtn} →</a>
+  </div>
+
+  <p class="ok-note">{T.note}</p>
 </Base>
+
+<style>
+  .ok-card {
+    text-align: center; background: rgba(63,185,80,0.07);
+    border: 1px solid rgba(63,185,80,0.35); border-radius: 16px;
+    padding: 32px 24px; margin: 8px 0 28px;
+  }
+  .ok-check {
+    width: 56px; height: 56px; margin: 0 auto 14px; border-radius: 50%;
+    background: var(--good); color: #06210f; font-size: 30px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ok-card h1 { margin: 0 0 8px; font-size: 26px; }
+  .ok-lead { color: var(--dim); margin: 0; font-size: 15px; }
+  .steps { padding-left: 22px; margin: 12px 0 28px; }
+  .steps li { margin: 10px 0; line-height: 1.6; }
+  .wait {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 14px; padding: 22px 24px;
+  }
+  .wait-title { font-weight: 700; font-size: 17px; margin: 0 0 6px; }
+  .wait-desc { color: var(--dim); font-size: 14px; margin: 0 0 16px; }
+  .wait-btn {
+    display: inline-block; background: var(--cta); color: var(--cta-ink) !important;
+    text-decoration: none; font-weight: 700; font-size: 15px; padding: 12px 22px;
+    border-radius: 10px; box-shadow: var(--cta-glow);
+  }
+  .wait-btn:hover { filter: brightness(1.08); }
+  .wait-link { margin-left: 16px; font-size: 14px; }
+  .ok-note { color: var(--dim); font-size: 13px; margin-top: 18px; }
+</style>
