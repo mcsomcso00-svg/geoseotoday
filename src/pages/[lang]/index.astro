@@ -45,7 +45,8 @@ const T = {
 
 const now = new Date();
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft && p.data.date_published <= now))
-  .sort((a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf());
+  .sort((a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf())
+  .slice(0, 6); // 首頁只放最新 6 篇，完整列表在 /blog/
 
 const alternates = { 'zh-hant': '/zh-hant/', 'zh-hans': '/zh-hans/', en: '/en/' };
 ---

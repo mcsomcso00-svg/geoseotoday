@@ -7,9 +7,9 @@ export function getStaticPaths() {
 }
 const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
 const T = {
-  'zh-hant': { title: '部落格 — SemanticLab', desc: 'SEO/GEO 實戰文章：語意集群、AI 內容產線、被 AI 引用的方法。', h1: '部落格' },
-  'zh-hans': { title: '博客 — SemanticLab', desc: 'SEO/GEO 实战文章：语义集群、AI 内容产线、被 AI 引用的方法。', h1: '博客' },
-  en: { title: 'Blog — SemanticLab', desc: 'Practical SEO/GEO articles: semantic clusters, AI content pipelines, getting cited by AI.', h1: 'Blog' },
+  'zh-hant': { title: '部落格 — SemanticLab', desc: 'SEO/GEO 實戰文章：語意集群、AI 內容產線、被 AI 引用的方法。', h1: '部落格', all: '全部' },
+  'zh-hans': { title: '博客 — SemanticLab', desc: 'SEO/GEO 实战文章：语义集群、AI 内容产线、被 AI 引用的方法。', h1: '博客', all: '全部' },
+  en: { title: 'Blog — SemanticLab', desc: 'Practical SEO/GEO articles: semantic clusters, AI content pipelines, getting cited by AI.', h1: 'Blog', all: 'All' },
 }[lang];
 
 const now = new Date();
@@ -17,20 +17,112 @@ const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) &&
   .sort((a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf());
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
 const alternates = { 'zh-hant': '/zh-hant/blog/', 'zh-hans': '/zh-hans/blog/', en: '/en/blog/' };
+
+// 群集 → 封面色系（Binance 式模板封面，但零圖片：純 CSS 漸層）
+// 注意：刻意避開橘色（橘=轉換 CTA 專用色）
+const CLUSTER_STYLE: Record<string, { key: string; short: string; g1: string; g2: string }> = {
+  '1': { key: 'c1', short: 'GEO', g1: '#1d3a8a', g2: '#4f8cff' },
+  '2': { key: 'c2', short: 'AI 產線', g1: '#0e5b56', g2: '#2dd4bf' },
+  '3': { key: 'c3', short: 'On-page', g1: '#14532d', g2: '#4ade80' },
+  '4': { key: 'c4', short: 'Off-page', g1: '#701a4b', g2: '#f472b6' },
+  '5': { key: 'c5', short: '多語言', g1: '#4c1d95', g2: '#a78bfa' },
+};
+function clusterOf(c?: string) {
+  const m = c?.match(/群集\s*(\d)/);
+  return (m && CLUSTER_STYLE[m[1]]) || { key: 'c0', short: 'SEO', g1: '#2a313c', g2: '#5b6675' };
+}
+// chips：只列實際有文章的群集
+const chipKeys = [...new Set(posts.map((p) => clusterOf(p.data.cluster).key))];
+const chips = Object.values(CLUSTER_STYLE).filter((c) => chipKeys.includes(c.key));
 ---
 <Base title={T.title} description={T.desc} lang={lang} alternates={alternates}>
   <h1>{T.h1}</h1>
-  {posts.length === 0 ? (
-    <p style="color:var(--dim)">Coming soon.</p>
-  ) : (
-    <ul class="card-list">
-      {posts.map((p) => (
-        <li>
-          <a href={`/${lang}/blog/${p.id.split('/').slice(1).join('/')}/`}>{p.data.title}</a>
-          <p>{fmt(p.data.date_published)}{p.data.cluster ? ` · ${p.data.cluster}` : ''}</p>
-          <p>{p.data.description}</p>
-        </li>
-      ))}
-    </ul>
-  )}
+
+  <div class="chips" id="chips">
+    <button class="chip active" data-f="all">{T.all}</button>
+    {chips.map((c) => (
+      <button class="chip" data-f={c.key} style={`--cg:${c.g2}`}>{c.short}</button>
+    ))}
+  </div>
+
+  <div class="grid">
+    {posts.map((p) => {
+      const c = clusterOf(p.data.cluster);
+      const slug = p.id.split('/').slice(1).join('/');
+      return (
+        <a class="pcard" href={`/${lang}/blog/${slug}/`} data-c={c.key}>
+          <div class="cover" style={`background:linear-gradient(135deg,${c.g1},${c.g2} 130%)`}>
+            <span class="cover-brand">SemanticLab</span>
+            <span class="cover-title">{p.data.title}</span>
+            <span class="cover-tag">{c.short}</span>
+          </div>
+          <div class="pbody">
+            <p class="pdesc">{p.data.description}</p>
+            <p class="pmeta">{fmt(p.data.date_published)}</p>
+          </div>
+        </a>
+      );
+    })}
+  </div>
 </Base>
+
+<script>
+  // 群集篩選：純 DOM 顯示切換，所有連結永遠在 HTML 裡（SEO 不受影響）
+  const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((x) => x.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.f;
+      document.querySelectorAll<HTMLElement>('.pcard').forEach((card) => {
+        card.style.display = f === 'all' || card.dataset.c === f ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 26px; }
+  .chip {
+    background: var(--panel); color: var(--dim); border: 1px solid var(--line);
+    padding: 7px 16px; border-radius: 99px; font-size: 13.5px; font-weight: 600;
+    cursor: pointer; transition: color .15s, border-color .15s; font-family: inherit;
+  }
+  .chip:hover { color: var(--txt); border-color: var(--cg, var(--accent)); }
+  .chip.active { color: #fff; border-color: var(--cg, var(--accent)); background: #20315a; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  .pcard {
+    display: flex; flex-direction: column; text-decoration: none;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; transition: transform .18s, border-color .18s;
+  }
+  .pcard:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+  .cover {
+    aspect-ratio: 16 / 8; position: relative; padding: 14px 16px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .cover-brand {
+    position: absolute; top: 12px; left: 16px;
+    font-size: 11px; font-weight: 800; color: rgba(255,255,255,.85); letter-spacing: .4px;
+  }
+  .cover-title {
+    color: #fff; font-weight: 800; font-size: 17px; line-height: 1.4;
+    text-shadow: 0 1px 6px rgba(0,0,0,.35);
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .cover-tag {
+    position: absolute; bottom: 12px; right: 16px;
+    font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,.9);
+    background: rgba(0,0,0,.25); padding: 2px 10px; border-radius: 99px;
+  }
+  .pbody { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .pdesc {
+    margin: 0; color: var(--dim); font-size: 13.5px; line-height: 1.6;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .pmeta { margin: auto 0 0; color: var(--dim); font-size: 12px; opacity: .75; }
+</style>
