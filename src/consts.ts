@@ -2,4 +2,4 @@
 export const AUDIT_EMAIL = 'mcsomcso00@gmail.com';
 // Web3Forms access key：到 https://web3forms.com 輸入上面信箱 → Create Access Key → 從 Gmail 取得後貼here。
 // （formsubmit.co 在部分網路的 DNS 被擋，已棄用。）
-export const WEB3FORMS_KEY = 'PASTE-YOUR-ACCESS-KEY-HERE';
+export const WEB3FORMS_KEY = '047cdab7-6f2f-4a58-996b-b9f32418518e';
