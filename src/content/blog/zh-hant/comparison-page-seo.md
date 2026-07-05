@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-22
 date_updated: 2026-07-22
+translations:
+  zh-hans: comparison-page-seo
+  en: comparison-page-seo
 ---
 # 比較頁／vs 頁怎麼寫才不被判 spam
 

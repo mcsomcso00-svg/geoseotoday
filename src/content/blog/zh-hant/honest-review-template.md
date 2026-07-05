@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-22
 date_updated: 2026-07-22
+translations:
+  zh-hans: honest-review-template
+  en: honest-review-template
 ---
 # 誠實評測頁範本：敢寫自己輸在哪
 

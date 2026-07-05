@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-26
 date_updated: 2026-07-26
+translations:
+  zh-hans: multilingual-keyword-research
+  en: multilingual-keyword-research
 ---
 # 多語言關鍵字研究：各語言各自做
 

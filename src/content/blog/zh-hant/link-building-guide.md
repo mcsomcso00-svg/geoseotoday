@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-23
 date_updated: 2026-07-23
+translations:
+  zh-hans: link-building-guide
+  en: link-building-guide
 ---
 # 連結建立與關鍵字研究完整指南（2026 白帽做法）
 

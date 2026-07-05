@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-26
 date_updated: 2026-07-26
+translations:
+  zh-hans: hreflang-generator-guide
+  en: hreflang-generator-guide
 ---
 # hreflang 產生器使用教學：一鍵產生正確標籤
 

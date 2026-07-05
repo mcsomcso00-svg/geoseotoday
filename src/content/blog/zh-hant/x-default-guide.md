@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-24
 date_updated: 2026-07-24
+translations:
+  zh-hans: x-default-guide
+  en: x-default-guide
 ---
 # x-default 要指到哪個語言？
 

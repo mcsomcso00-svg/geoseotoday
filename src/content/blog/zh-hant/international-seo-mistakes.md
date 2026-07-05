@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-26
 date_updated: 2026-07-26
+translations:
+  zh-hans: international-seo-mistakes
+  en: international-seo-mistakes
 ---
 # 國際 SEO 常見錯誤 8 個
 

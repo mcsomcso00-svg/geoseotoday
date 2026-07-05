@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-25
 date_updated: 2026-07-25
+translations:
+  zh-hans: localization-vs-translation
+  en: localization-vs-translation
 ---
 # 在地化 vs 翻譯：為什麼不能只丟機器翻譯
 

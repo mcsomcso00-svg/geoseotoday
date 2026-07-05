@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-19
 date_updated: 2026-07-19
+translations:
+  zh-hans: ahrefs-spam-domains
+  en: ahrefs-spam-domains
 ---
 # Ahrefs 看到一堆 Spam domain 該怎麼辦
 

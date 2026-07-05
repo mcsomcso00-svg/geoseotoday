@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-19
 date_updated: 2026-07-19
+translations:
+  zh-hans: exact-match-anchor-risk
+  en: exact-match-anchor-risk
 ---
 # 買外鏈全用同一關鍵字為什麼是災難
 

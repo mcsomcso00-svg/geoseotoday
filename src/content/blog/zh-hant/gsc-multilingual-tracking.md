@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-25
 date_updated: 2026-07-25
+translations:
+  zh-hans: gsc-multilingual-tracking
+  en: gsc-multilingual-tracking
 ---
 # GSC 如何依語言資料夾分開追蹤
 

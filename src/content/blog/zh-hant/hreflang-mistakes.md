@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-23
 date_updated: 2026-07-23
+translations:
+  zh-hans: hreflang-mistakes
+  en: hreflang-mistakes
 ---
 # hreflang 常見錯誤導致繁簡自我蠶食
 

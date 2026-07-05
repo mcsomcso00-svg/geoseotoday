@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-20
 date_updated: 2026-07-20
+translations:
+  zh-hans: guest-posting-2026
+  en: guest-posting-2026
 ---
 # 客座文章（guest post）還有效嗎、怎麼做
 

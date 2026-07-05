@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-24
 date_updated: 2026-07-24
+translations:
+  zh-hans: zh-hant-vs-zh-hans-seo
+  en: zh-hant-vs-zh-hans-seo
 ---
 # 繁中 vs 簡中 SEO：不是字轉換那麼簡單
 

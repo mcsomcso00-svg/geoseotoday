@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-27
 date_updated: 2026-07-27
+translations:
+  zh-hans: multilingual-seo-guide
+  en: multilingual-seo-guide
 ---
 # 多語言／國際 SEO 完整指南：hreflang、架構與在地化
 

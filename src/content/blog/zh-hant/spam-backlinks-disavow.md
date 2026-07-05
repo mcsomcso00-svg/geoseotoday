@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-19
 date_updated: 2026-07-19
+translations:
+  zh-hans: spam-backlinks-disavow
+  en: spam-backlinks-disavow
 ---
 # 垃圾外鏈要不要 disavow？大部分不用
 

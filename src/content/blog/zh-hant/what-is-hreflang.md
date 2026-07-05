@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-23
 date_updated: 2026-07-23
+translations:
+  zh-hans: what-is-hreflang
+  en: what-is-hreflang
 ---
 # hreflang 是什麼？多語言站必備教學
 

@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-21
 date_updated: 2026-07-21
+translations:
+  zh-hans: competitor-backlink-analysis
+  en: competitor-backlink-analysis
 ---
 # 競爭對手外鏈分析：用 Ahrefs 找機會
 

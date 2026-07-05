@@ -7,6 +7,9 @@ cluster: 多語言 / 國際 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-24
 date_updated: 2026-07-24
+translations:
+  zh-hans: multilingual-site-structure
+  en: multilingual-site-structure
 ---
 # 多語言站架構：子目錄 vs 子網域 vs ccTLD
 

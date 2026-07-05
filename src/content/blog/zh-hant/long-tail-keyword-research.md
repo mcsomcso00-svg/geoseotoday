@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-21
 date_updated: 2026-07-21
+translations:
+  zh-hans: long-tail-keyword-research
+  en: long-tail-keyword-research
 ---
 # 長尾關鍵字研究：怎麼找、怎麼分群
 

@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-21
 date_updated: 2026-07-21
+translations:
+  zh-hans: brand-search-authority
+  en: brand-search-authority
 ---
 # 品牌搜尋量為什麼是最強的權威訊號
 
