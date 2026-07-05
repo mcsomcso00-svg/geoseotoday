@@ -54,8 +54,8 @@ const alternates = { 'zh-hant': '/zh-hant/', 'zh-hans': '/zh-hans/', en: '/en/' 
   <h1>{T.h1}</h1>
   <p>{T.intro}</p>
   <div class="hero-ctas">
-    <a class="hero-btn primary" href={`/${lang}/geo/`}>{T.ctaPrimary}</a>
-    <a class="hero-btn ghost" href={`/${lang}/audit/`}>{T.ctaSecondary}</a>
+    <a class="hero-btn primary" href={`/${lang}/geo/`} data-ga="hero_geo_checker">{T.ctaPrimary}</a>
+    <a class="hero-btn ghost" href={`/${lang}/audit/`} data-ga="hero_audit">{T.ctaSecondary}</a>
   </div>
 
   <h2>{T.tool}</h2>

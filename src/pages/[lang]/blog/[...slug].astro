@@ -134,8 +134,8 @@ const breadcrumbs = [
     <p class="post-cta-title">{CTA.title}</p>
     <p class="post-cta-desc">{CTA.desc}</p>
     <div class="post-cta-btns">
-      <a class="post-cta-btn" href={`/${lang}/audit/`}>{CTA.primary}</a>
-      <a class="post-cta-link" href={`/${lang}/geo/`}>{CTA.secondary} →</a>
+      <a class="post-cta-btn" href={`/${lang}/audit/`} data-ga="article_audit">{CTA.primary}</a>
+      <a class="post-cta-link" href={`/${lang}/geo/`} data-ga="article_geo_checker">{CTA.secondary} →</a>
     </div>
   </aside>
 

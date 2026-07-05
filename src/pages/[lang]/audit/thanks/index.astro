@@ -77,6 +77,13 @@ const alternates = { 'zh-hant': '/zh-hant/audit/thanks/', 'zh-hans': '/zh-hans/a
   </div>
 
   <p class="ok-note">{T.note}</p>
+
+  <!-- GA4: lead conversion — fires when the thank-you page loads (i.e. a form was submitted) -->
+  <script is:inline>
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', { page_path: location.pathname });
+    }
+  </script>
 </Base>
 
 <style>

@@ -63,6 +63,14 @@ const nav = NAV[lang];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-J7ZQ0VMBRV"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J7ZQ0VMBRV');
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -101,7 +109,7 @@ const nav = NAV[lang];
         <a href={`/${lang}/geo/`}>{nav.geo}</a>
         <a href={`/${lang}/aio/`}>{nav.aio}</a>
       </nav>
-      <a class="nav-cta" href={`/${lang}/audit/`}>{nav.audit}</a>
+      <a class="nav-cta" href={`/${lang}/audit/`} data-ga="nav_audit">{nav.audit}</a>
       <div class="lang-switch">
         {(['zh-hant', 'zh-hans', 'en'] as const).map((l) => (
           <a href={alternates?.[l] ?? `/${l}/`} class={l === lang ? 'active' : ''}>
@@ -112,8 +120,20 @@ const nav = NAV[lang];
     </header>
     <main><slot /></main>
     <footer class="site-footer">
-      <p>© 2026 GeoSeoToday · <a href={`/${lang}/blog/`}>{nav.blog}</a> · <a href={`/${lang}/geo/`}>{nav.geo}</a> · <a href={`/${lang}/audit/`}>{nav.audit}</a></p>
+      <p>© 2026 GeoSeoToday · <a href={`/${lang}/blog/`}>{nav.blog}</a> · <a href={`/${lang}/geo/`}>{nav.geo}</a> · <a href={`/${lang}/audit/`} data-ga="footer_audit">{nav.audit}</a></p>
     </footer>
+    <!-- GA4: delegated CTA click tracking -->
+    <script is:inline>
+      addEventListener('click', function (e) {
+        var el = e.target.closest('[data-ga]');
+        if (!el || typeof gtag !== 'function') return;
+        gtag('event', 'cta_click', {
+          cta_id: el.getAttribute('data-ga'),
+          link_url: el.getAttribute('href') || '',
+          page_path: location.pathname
+        });
+      });
+    </script>
   </body>
 </html>
 
