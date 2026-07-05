@@ -28,9 +28,20 @@ const CLUSTER_STYLE: Record<string, { key: string; short: string; g1: string; g2
   '5': { key: 'c5', short: '多語言', g1: '#4c1d95', g2: '#a78bfa' },
   '6': { key: 'c6', short: 'AIO', g1: '#155e75', g2: '#22d3ee' },
 };
+// 群集編號：先讀繁中「群集 N」，再退回英文/簡體別名，讓 en / zh-hans 卡片也對到色系
+const CLUSTER_ALIAS: [RegExp, string][] = [
+  [/geo/i, '1'],
+  [/ai\s*(content|產線|产线|pipeline)/i, '2'],
+  [/on-?page|technical/i, '3'],
+  [/off-?page|keyword|關鍵字|关键词/i, '4'],
+  [/multiling|international|多語|多语/i, '5'],
+  [/aio|ai\s*search/i, '6'],
+];
 function clusterOf(c?: string) {
   const m = c?.match(/群集\s*(\d)/);
-  return (m && CLUSTER_STYLE[m[1]]) || { key: 'c0', short: 'SEO', g1: '#2a313c', g2: '#5b6675' };
+  if (m && CLUSTER_STYLE[m[1]]) return CLUSTER_STYLE[m[1]];
+  if (c) for (const [re, n] of CLUSTER_ALIAS) if (re.test(c)) return CLUSTER_STYLE[n];
+  return { key: 'c0', short: 'SEO', g1: '#2a313c', g2: '#5b6675' };
 }
 // chips：只列實際有文章的群集
 const chipKeys = [...new Set(posts.map((p) => clusterOf(p.data.cluster).key))];
