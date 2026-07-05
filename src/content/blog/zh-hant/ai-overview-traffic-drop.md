@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: ai-overview-traffic-drop
+  en: ai-overview-traffic-drop
 ---
 # AI Overview 讓點擊掉了？零點擊搜尋的應對策略
 

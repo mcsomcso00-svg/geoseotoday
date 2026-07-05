@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: track-ai-visibility
+  en: track-ai-visibility
 ---
 # AI 搜尋可見度怎麼追蹤？工具與方法
 

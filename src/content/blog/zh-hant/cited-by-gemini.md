@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: cited-by-gemini
+  en: cited-by-gemini
 ---
 # 如何被 Gemini／Google AI 引用？做法與注意事項
 

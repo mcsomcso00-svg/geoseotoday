@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: ai-crawler-management
+  en: ai-crawler-management
 ---
 # AI 爬蟲清單與管理（GPTBot、PerplexityBot、Google-Extended）
 

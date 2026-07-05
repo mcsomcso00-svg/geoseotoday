@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: ai-brand-monitoring
+  en: ai-brand-monitoring
 ---
 # 品牌在 AI 答案裡的聲量監測怎麼做
 

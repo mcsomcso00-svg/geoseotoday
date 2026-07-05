@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: seo-aeo-geo-aio-evolution
+  en: seo-aeo-geo-aio-evolution
 ---
 # SEO → AEO → GEO → AIO 演進史一次看懂
 

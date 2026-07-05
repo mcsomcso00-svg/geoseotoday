@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: what-is-ai-overview
+  en: what-is-ai-overview
 ---
 # Google AI Overview 是什麼？運作原理與對流量的影響
 

@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: ai-search-tools-2026
+  en: ai-search-tools-2026
 ---
 # AI 搜尋優化工具推薦（2026）
 

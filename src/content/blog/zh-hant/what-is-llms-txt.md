@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: what-is-llms-txt
+  en: what-is-llms-txt
 ---
 # llms.txt 是什麼？要不要幫網站加（附範例）
 
