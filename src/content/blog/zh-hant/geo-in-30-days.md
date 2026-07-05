@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
 date_updated: 2026-07-06
+translations:
+  zh-hans: geo-in-30-days
+  en: geo-in-30-days
 ---
 # 新手如何 30 天做出第一個 GEO 就緒頁面
 

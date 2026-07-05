@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
 date_updated: 2026-07-06
+translations:
+  zh-hans: geo-tracking
+  en: geo-tracking
 ---
 # GEO 成效怎麼追蹤？AI 引用監測方法
 

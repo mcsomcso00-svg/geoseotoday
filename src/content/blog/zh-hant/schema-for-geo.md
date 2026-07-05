@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
 date_updated: 2026-07-06
+translations:
+  zh-hans: schema-for-geo
+  en: schema-for-geo
 ---
 # Schema 結構化資料如何幫助被 AI 引用
 
