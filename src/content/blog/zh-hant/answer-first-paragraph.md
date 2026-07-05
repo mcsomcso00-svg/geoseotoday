@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: answer-first-paragraph
+  en: answer-first-paragraph
 ---
 # 「答案優先」開頭段落怎麼寫（附範例）
 

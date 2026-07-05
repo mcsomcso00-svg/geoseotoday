@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-04
 date_updated: 2026-07-04
+translations:
+  zh-hans: ai-overview-optimization
+  en: ai-overview-optimization
 ---
 # Google AI Overview 優化實戰指南
 

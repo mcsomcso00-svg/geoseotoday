@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-03
 date_updated: 2026-07-03
+translations:
+  zh-hans: geo-aeo-aio
+  en: geo-aeo-aio
 ---
 # GEO、AEO、AIO 差在哪？三者關係一次搞懂
 

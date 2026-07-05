@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: geo-content-structure
+  en: geo-content-structure
 ---
 # GEO 內容結構範本：可被 AI 引用的段落怎麼寫
 

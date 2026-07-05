@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: geo-common-mistakes
+  en: geo-common-mistakes
 ---
 # GEO 常見錯誤 7 個，讓 AI 永遠不引用你
 
