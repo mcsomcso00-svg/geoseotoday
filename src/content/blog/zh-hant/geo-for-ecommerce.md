@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-07
 date_updated: 2026-07-07
+translations:
+  zh-hans: geo-for-ecommerce
+  en: geo-for-ecommerce
 ---
 # 電商產品頁如何做 GEO，被 AI 導購
 

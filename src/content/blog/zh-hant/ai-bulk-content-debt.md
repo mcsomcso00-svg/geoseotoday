@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-10
 date_updated: 2026-07-10
+translations:
+  zh-hans: ai-bulk-content-debt
+  en: ai-bulk-content-debt
 ---
 # AI 批量產文如何不變成「內容負債」
 

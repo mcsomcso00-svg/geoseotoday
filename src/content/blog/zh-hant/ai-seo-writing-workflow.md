@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-09
 date_updated: 2026-07-09
+translations:
+  zh-hans: ai-seo-writing-workflow
+  en: ai-seo-writing-workflow
 ---
 # 用 AI 寫 SEO 文章不被 Google 降權的工作流
 

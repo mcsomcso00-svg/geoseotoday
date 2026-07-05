@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-09
 date_updated: 2026-07-09
+translations:
+  zh-hans: what-is-synthid
+  en: what-is-synthid
 ---
 # SynthID 浮水印是什麼？對 Google 收錄的影響
 

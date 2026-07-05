@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-11
 date_updated: 2026-07-11
+translations:
+  zh-hans: intent-matrix-method
+  en: intent-matrix-method
 ---
 # 意圖矩陣：用公式讓 AI 產出幾百篇長尾文
 

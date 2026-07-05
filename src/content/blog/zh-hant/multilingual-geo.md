@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-07
 date_updated: 2026-07-07
+translations:
+  zh-hans: multilingual-geo
+  en: multilingual-geo
 ---
 # 多語言網站的 GEO：讓 AI 用各語言引用你
 

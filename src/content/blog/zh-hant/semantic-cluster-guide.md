@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-11
 date_updated: 2026-07-11
+translations:
+  zh-hans: semantic-cluster-guide
+  en: semantic-cluster-guide
 ---
 # 語意集群怎麼建？AI 農文的正確用法
 

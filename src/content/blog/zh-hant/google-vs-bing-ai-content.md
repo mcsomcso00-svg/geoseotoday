@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-10
 date_updated: 2026-07-10
+translations:
+  zh-hans: google-vs-bing-ai-content
+  en: google-vs-bing-ai-content
 ---
 # Google 對 AI 內容的態度 vs Bing 的差異
 

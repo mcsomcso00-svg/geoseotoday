@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-10
 date_updated: 2026-07-10
+translations:
+  zh-hans: split-model-workflow
+  en: split-model-workflow
 ---
 # 拆分工作流：分析與寫作為何要用不同模型
 

@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-08
 date_updated: 2026-07-08
+translations:
+  zh-hans: geo-readiness-check
+  en: geo-readiness-check
 ---
 # GEO 就緒度檢測：你的文章夠格被 AI 引用嗎？
 

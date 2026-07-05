@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-08
 date_updated: 2026-07-08
+translations:
+  zh-hans: geo-tools-2026
+  en: geo-tools-2026
 ---
 # GEO 工具推薦：2026 值得用的 8 個
 

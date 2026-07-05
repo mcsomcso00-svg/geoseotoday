@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-07
 date_updated: 2026-07-07
+translations:
+  zh-hans: geo-for-saas
+  en: geo-for-saas
 ---
 # SaaS 網站的 GEO 策略：讓 AI 推薦你的產品
 
