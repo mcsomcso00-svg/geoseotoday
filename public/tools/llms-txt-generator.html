@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>llms.txt 產生器 · llms.txt Generator</title>
+<style>
+  :root{--bg:#0e1116;--panel:#171b22;--panel2:#1f242d;--line:#2a313c;--txt:#e6edf3;
+    --dim:#9aa4b2;--accent:#4f8cff;--cta:#f97316;--good:#3fb950;--radius:14px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);padding:24px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Noto Sans SC",Roboto,Arial,sans-serif;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto}
+  header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  h1{font-size:22px;margin:0}
+  .sub{color:var(--dim);font-size:13px;margin:2px 0 18px}
+  .langs{display:flex;gap:6px}
+  .langs button{background:var(--panel2);color:var(--dim);border:1px solid var(--line);padding:6px 10px;border-radius:8px;cursor:pointer;font-size:12px}
+  .langs button.active{color:#fff;border-color:var(--accent);background:#20315a}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px}
+  label{display:block;font-size:13px;color:var(--dim);margin:10px 0 6px}
+  input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:11px 12px;font-size:14px;font-family:inherit;resize:vertical}
+  textarea{min-height:130px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+  .hint{color:var(--dim);font-size:12px;background:var(--panel2);border:1px dashed var(--line);border-radius:8px;padding:8px 12px;margin:6px 0}
+  .btn{background:var(--cta);color:#131313;border:none;padding:12px 22px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:14px;box-shadow:0 0 18px rgba(249,115,22,.30)}
+  .btn:hover{filter:brightness(1.08)}
+  pre{background:#0b0e13;border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto;font-size:13px;color:#cdd6e0;white-space:pre-wrap;word-break:break-word}
+  .out{display:none}
+  .actions{display:flex;gap:8px;margin-top:10px}
+  .actions button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:13px}
+  .foot{color:var(--dim);font-size:12px}
+  .foot b{color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 id="t_title">llms.txt 產生器</h1>
+    <div class="langs">
+      <button data-l="zh-Hant" class="active">繁中</button>
+      <button data-l="zh-Hans">简中</button>
+      <button data-l="en">EN</button>
+    </div>
+  </header>
+  <p class="sub" id="t_sub">一鍵產生放在網站根目錄 /llms.txt 的檔案，讓 AI 爬蟲更容易理解與引用你的網站。</p>
+
+  <div class="card">
+    <label id="t_lblName">網站名稱</label>
+    <input id="siteName" type="text" placeholder="GeoSeoToday">
+    <label id="t_lblDesc">一句話描述（會變成 &gt; 引言）</label>
+    <input id="siteDesc" type="text" placeholder="SEO / GEO 實戰內容與工具">
+    <label id="t_lblSection">區塊標題</label>
+    <input id="sectionName" type="text" placeholder="核心內容">
+    <label id="t_lblLinks">重要頁面（每行一個：標題 | 網址 | 說明）</label>
+    <p class="hint" id="t_hint"></p>
+    <textarea id="links" placeholder=""></textarea>
+    <button class="btn" id="t_btn" onclick="gen()">產生 llms.txt</button>
+  </div>
+
+  <div class="card out" id="out">
+    <pre id="code"></pre>
+    <div class="actions">
+      <button id="t_copy" onclick="copyCode()">複製</button>
+      <button id="t_dl" onclick="download()">下載 llms.txt</button>
+    </div>
+  </div>
+  <p class="foot" id="t_foot"></p>
+</div>
+
+<script>
+const I18N={
+  "zh-Hant":{title:"llms.txt 產生器",sub:"一鍵產生放在網站根目錄 /llms.txt 的檔案，讓 AI 爬蟲更容易理解與引用你的網站。",
+    lblName:"網站名稱",lblDesc:"一句話描述（會變成 > 引言）",lblSection:"區塊標題",lblLinks:"重要頁面（每行一個：標題 | 網址 | 說明）",
+    hint:"格式：<b>標題 | https://網址 | 說明</b>（說明可省略）。一行一個，貼上你最重要的 5–15 個頁面。",
+    btn:"產生 llms.txt",copy:"複製",copied:"已複製！",dl:"下載 llms.txt",
+    foot:"<b>llms.txt</b> 是 2024 年提出的前瞻性提案標準（非官方），放在網站根目錄 /llms.txt。目前主流 AI 引擎尚未全面採用，但先備好無壞處。產生後上傳到你網站根目錄即可。",
+    placeholder:"GEO 是什麼 | https://geoseotoday.com/zh-hant/blog/what-is-geo/ | 生成式引擎優化完整定義\nGEO 檢測器 | https://geoseotoday.com/zh-hant/geo/ | 免費檢測文章的 AI 引用友善度"},
+  "zh-Hans":{title:"llms.txt 生成器",sub:"一键生成放在网站根目录 /llms.txt 的文件，让 AI 爬虫更容易理解与引用你的网站。",
+    lblName:"网站名称",lblDesc:"一句话描述（会变成 > 引言）",lblSection:"区块标题",lblLinks:"重要页面（每行一个：标题 | 网址 | 说明）",
+    hint:"格式：<b>标题 | https://网址 | 说明</b>（说明可省略）。一行一个，贴上你最重要的 5–15 个页面。",
+    btn:"生成 llms.txt",copy:"复制",copied:"已复制！",dl:"下载 llms.txt",
+    foot:"<b>llms.txt</b> 是 2024 年提出的前瞻性提案标准（非官方），放在网站根目录 /llms.txt。目前主流 AI 引擎尚未全面采用，但先备好无坏处。生成后上传到你网站根目录即可。",
+    placeholder:"GEO 是什么 | https://geoseotoday.com/zh-hans/blog/what-is-geo/ | 生成式引擎优化完整定义"},
+  "en":{title:"llms.txt Generator",sub:"Generate an /llms.txt file for your site root so AI crawlers understand and cite you more easily.",
+    lblName:"Site name",lblDesc:"One-line description (becomes the > quote)",lblSection:"Section heading",lblLinks:"Key pages (one per line: Title | URL | note)",
+    hint:"Format: <b>Title | https://url | note</b> (note optional). One per line — paste your 5–15 most important pages.",
+    btn:"Generate llms.txt",copy:"Copy",copied:"Copied!",dl:"Download llms.txt",
+    foot:"<b>llms.txt</b> is a forward-looking proposed standard (2024, unofficial) placed at your site root /llms.txt. Major AI engines haven't fully adopted it yet, but it costs nothing to prepare. Upload the result to your site root.",
+    placeholder:"What is GEO | https://geoseotoday.com/en/blog/what-is-geo/ | Complete definition of Generative Engine Optimization"}
+};
+let LANG="zh-Hant", lastOut="";
+document.querySelectorAll(".langs button").forEach(b=>{b.onclick=()=>{LANG=b.dataset.l;document.querySelectorAll(".langs button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.documentElement.lang=LANG;applyLang();};});
+function applyLang(){const t=I18N[LANG];
+  t_title.textContent=t.title;t_sub.textContent=t.sub;t_lblName.textContent=t.lblName;t_lblDesc.textContent=t.lblDesc;
+  t_lblSection.textContent=t.lblSection;t_lblLinks.textContent=t.lblLinks;t_hint.innerHTML=t.hint;t_btn.textContent=t.btn;
+  t_copy.textContent=t.copy;t_dl.textContent=t.dl;t_foot.innerHTML=t.foot;document.getElementById("links").placeholder=t.placeholder;}
+function gen(){
+  const name=(document.getElementById("siteName").value||"My Site").trim();
+  const desc=(document.getElementById("siteDesc").value||"").trim();
+  const section=(document.getElementById("sectionName").value||"Content").trim();
+  const rows=document.getElementById("links").value.split("\n").map(l=>l.trim()).filter(Boolean);
+  let out="# "+name+"\n";
+  if(desc) out+="\n> "+desc+"\n";
+  if(rows.length){
+    out+="\n## "+section+"\n\n";
+    for(const r of rows){
+      const p=r.split("|").map(x=>x.trim());
+      const title=p[0]||"", url=p[1]||"", note=p[2]||"";
+      if(!title||!url) continue;
+      out+="- ["+title+"]("+url+")"+(note?": "+note:"")+"\n";
+    }
+  }
+  lastOut=out;
+  document.getElementById("code").textContent=out;
+  document.getElementById("out").style.display="block";
+}
+function copyCode(){navigator.clipboard.writeText(lastOut).then(()=>{const b=t_copy,o=b.textContent;b.textContent=I18N[LANG].copied;setTimeout(()=>b.textContent=o,1500);});}
+function download(){const blob=new Blob([lastOut],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="llms.txt";a.click();}
+applyLang();
+</script>
+</body>
+</html>

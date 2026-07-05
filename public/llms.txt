@@ -1,0 +1,16 @@
+# GeoSeoToday
+
+> SEO / GEO / AIO 實戰內容與免費工具：讓你的內容被 Google 排名，也被 ChatGPT、Perplexity、Google AI Overview 引用。三語（繁中／简中／English）。
+
+## 免費工具
+- [GEO 就緒度檢測器](https://geoseotoday.com/zh-hant/geo/): 貼上文章，30 秒拿到 0–100 分與九項訊號的 AI 引用友善度修正建議
+- [llms.txt 產生器](https://geoseotoday.com/zh-hant/aio/): 一鍵產生給 AI 爬蟲的 llms.txt 檔
+- [免費 SEO/GEO 診斷報告](https://geoseotoday.com/zh-hant/audit/): 實測你被 AI 引用幾次、和對手差多少，指名到頁面與段落
+
+## 核心文章
+- [GEO 是什麼？](https://geoseotoday.com/zh-hant/blog/what-is-geo/): 生成式引擎優化完整定義（2026）
+- [GEO 與傳統 SEO 有什麼不同](https://geoseotoday.com/zh-hant/blog/geo-vs-seo/): 一張表看懂差異
+- [GEO、AEO、AIO 差在哪](https://geoseotoday.com/zh-hant/blog/geo-aeo-aio/): 三者關係一次搞懂
+
+## 全部內容
+- [部落格](https://geoseotoday.com/zh-hant/blog/): SEO / GEO / AIO 實戰教學，涵蓋語意集群、AI 內容產線、被 AI 引用的方法，每天更新

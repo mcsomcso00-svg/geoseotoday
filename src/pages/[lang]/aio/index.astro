@@ -1,0 +1,129 @@
+---
+import Base from '../../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh-hant' } }, { params: { lang: 'zh-hans' } }, { params: { lang: 'en' } }];
+}
+const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
+
+// Boss 頁 B6：AIO / AI 搜尋優化 + 內嵌 llms.txt 產生器（護城河工具）
+const T = {
+  'zh-hant': {
+    title: 'AIO / AI 搜尋優化 — 讓每個 AI 引擎都認識你',
+    desc: '免費 llms.txt 產生器＋AIO（AI 搜尋優化）完整指南：Google AI Overview、ChatGPT、Perplexity、Gemini、Copilot 逐一優化，管理 AI 爬蟲、追蹤 AI 可見度。',
+    h1: 'AIO：AI 搜尋優化',
+    lead: 'AIO（AI Optimization）是讓你的網站在各個 AI 搜尋介面被看見、被引用的實戰功夫——涵蓋 Google AI Overview、ChatGPT、Perplexity、Gemini、Copilot，以及 llms.txt、AI 爬蟲管理與可見度追蹤。下面這個免費工具幫你一鍵產生 llms.txt。',
+    covers: 'AIO 涵蓋什麼',
+    items: [
+      'Google AI Overview：運作原理、優化、流量衝擊應對',
+      '逐一 AI 引擎：Gemini、Copilot／Bing（ChatGPT／Perplexity 見 GEO 群集）',
+      'llms.txt：給 AI 爬蟲看的網站地圖',
+      'AI 爬蟲管理：GPTBot、PerplexityBot、Google-Extended…',
+      'AI 搜尋可見度追蹤＋品牌聲量監測',
+    ],
+    read: '延伸閱讀',
+    links: [
+      ['/zh-hant/blog/what-is-aio/', 'AIO 是什麼？與 SEO／GEO／AEO 的關係'],
+      ['/zh-hant/blog/what-is-ai-overview/', 'Google AI Overview 是什麼？運作原理與影響'],
+      ['/zh-hant/blog/what-is-llms-txt/', 'llms.txt 是什麼？要不要幫網站加'],
+    ],
+    ctaTitle: '想知道你的網站在 AI 搜尋裡的表現？',
+    ctaDesc: '免費領取一份診斷報告：實測你被 ChatGPT／Perplexity／AI Overview 引用幾次、和對手差多少、每個問題指名到頁面與段落。',
+    ctaBtn: '免費領取 AI 可見度診斷',
+  },
+  'zh-hans': {
+    title: 'AIO / AI 搜索优化 — 让每个 AI 引擎都认识你',
+    desc: '免费 llms.txt 生成器＋AIO（AI 搜索优化）完整指南：Google AI Overview、ChatGPT、Perplexity、Gemini、Copilot 逐一优化，管理 AI 爬虫、追踪 AI 可见度。',
+    h1: 'AIO：AI 搜索优化',
+    lead: 'AIO（AI Optimization）是让你的网站在各个 AI 搜索界面被看见、被引用的实战功夫——涵盖 Google AI Overview、ChatGPT、Perplexity、Gemini、Copilot，以及 llms.txt、AI 爬虫管理与可见度追踪。下面这个免费工具帮你一键生成 llms.txt。',
+    covers: 'AIO 涵盖什么',
+    items: [
+      'Google AI Overview：运作原理、优化、流量冲击应对',
+      '逐一 AI 引擎：Gemini、Copilot／Bing（ChatGPT／Perplexity 见 GEO 群集）',
+      'llms.txt：给 AI 爬虫看的网站地图',
+      'AI 爬虫管理：GPTBot、PerplexityBot、Google-Extended…',
+      'AI 搜索可见度追踪＋品牌声量监测',
+    ],
+    read: '延伸阅读',
+    links: [
+      ['/zh-hans/blog/', '博客'],
+    ],
+    ctaTitle: '想知道你的网站在 AI 搜索里的表现？',
+    ctaDesc: '免费领取一份诊断报告：实测你被 ChatGPT／Perplexity／AI Overview 引用几次、和对手差多少、每个问题指名到页面与段落。',
+    ctaBtn: '免费领取 AI 可见度诊断',
+  },
+  en: {
+    title: 'AIO / AI Search Optimization — get known by every AI engine',
+    desc: 'Free llms.txt generator + a complete AIO guide: optimize for Google AI Overview, ChatGPT, Perplexity, Gemini, Copilot; manage AI crawlers and track AI visibility.',
+    h1: 'AIO: AI Search Optimization',
+    lead: 'AIO (AI Optimization) is the hands-on work of getting your site seen and cited across every AI search interface — Google AI Overview, ChatGPT, Perplexity, Gemini, Copilot — plus llms.txt, AI crawler management, and visibility tracking. The free tool below generates your llms.txt in one click.',
+    covers: 'What AIO covers',
+    items: [
+      'Google AI Overview: how it works, optimization, traffic-drop response',
+      'Per-engine: Gemini, Copilot/Bing (ChatGPT/Perplexity are in the GEO cluster)',
+      'llms.txt: a site map for AI crawlers',
+      'AI crawler management: GPTBot, PerplexityBot, Google-Extended…',
+      'AI visibility tracking + brand-mention monitoring',
+    ],
+    read: 'Further reading',
+    links: [
+      ['/en/blog/', 'Blog'],
+    ],
+    ctaTitle: 'Want to know how your site performs in AI search?',
+    ctaDesc: 'Get a free diagnosis: how many times ChatGPT/Perplexity/AI Overview cite you, your gap vs competitors, every issue pinned to a page and paragraph.',
+    ctaBtn: 'Get my free AI-visibility audit',
+  },
+}[lang];
+
+const alternates = { 'zh-hant': '/zh-hant/aio/', 'zh-hans': '/zh-hans/aio/', en: '/en/aio/' };
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'llms.txt Generator',
+  applicationCategory: 'SEO Tool',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0' },
+  publisher: { '@type': 'Organization', name: 'GeoSeoToday' },
+};
+const BC = { 'zh-hant': { home: '首頁' }, 'zh-hans': { home: '首页' }, en: { home: 'Home' } }[lang];
+const breadcrumbs = [
+  { name: BC.home, url: `/${lang}/` },
+  { name: T.h1, url: `/${lang}/aio/` },
+];
+---
+<Base title={T.title} description={T.desc} lang={lang} alternates={alternates} schemas={[schema]} breadcrumbs={breadcrumbs}>
+  <h1>{T.h1}</h1>
+  <p>{T.lead}</p>
+
+  <iframe class="tool-frame" src="/tools/llms-txt-generator.html" title="llms.txt generator" loading="lazy"></iframe>
+
+  <section class="cta-card">
+    <h2 class="cta-title">{T.ctaTitle}</h2>
+    <p>{T.ctaDesc}</p>
+    <a class="cta-btn" href={`/${lang}/audit/`}>{T.ctaBtn}</a>
+  </section>
+
+  <h2>{T.covers}</h2>
+  <ul>
+    {T.items.map((s) => <li>{s}</li>)}
+  </ul>
+
+  <h2>{T.read}</h2>
+  <ul>
+    {T.links.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+  </ul>
+</Base>
+
+<style>
+  .cta-card {
+    margin-top: 36px; background: linear-gradient(135deg, #1a2740, #171b22);
+    border: 1px solid #2f4a7a; border-radius: 14px; padding: 28px 26px;
+  }
+  .cta-title { margin-top: 0; border-bottom: none; font-size: 21px; }
+  .cta-btn {
+    display: inline-block; background: var(--cta); color: var(--cta-ink) !important;
+    text-decoration: none; font-weight: 700; font-size: 16px; padding: 13px 26px;
+    border-radius: 10px; box-shadow: var(--cta-glow); transition: filter .2s; margin-top: 8px;
+  }
+  .cta-btn:hover { filter: brightness(1.08); }
+</style>
