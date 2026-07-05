@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-04
 date_updated: 2026-07-04
+translations:
+  zh-hans: cited-by-chatgpt
+  en: cited-by-chatgpt
 ---
 # 如何讓 ChatGPT 引用你的網站內容
 

@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-03
 date_updated: 2026-07-03
+translations:
+  zh-hans: what-is-geo
+  en: what-is-geo
 ---
 # GEO 是什麼？生成式引擎優化完整定義（2026）
 

@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-03
 date_updated: 2026-07-03
+translations:
+  zh-hans: geo-vs-seo
+  en: geo-vs-seo
 ---
 # GEO 與傳統 SEO 有什麼不同？一張表看懂
 
