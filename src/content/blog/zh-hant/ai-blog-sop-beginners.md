@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-12
 date_updated: 2026-07-12
+translations:
+  zh-hans: ai-blog-sop-beginners
+  en: ai-blog-sop-beginners
 ---
 # 新手用 AI 寫第一批部落格文章的 SOP
 

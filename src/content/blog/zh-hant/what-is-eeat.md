@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-14
 date_updated: 2026-07-14
+translations:
+  zh-hans: what-is-eeat
+  en: what-is-eeat
 ---
 # E-E-A-T 是什麼？2026 怎麼做到
 

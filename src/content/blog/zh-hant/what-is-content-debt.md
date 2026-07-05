@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-13
 date_updated: 2026-07-13
+translations:
+  zh-hans: what-is-content-debt
+  en: what-is-content-debt
 ---
 # 內容負債是什麼？90 天 0 點擊頁面正在拖垮你
 

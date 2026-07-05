@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-17
 date_updated: 2026-07-17
+translations:
+  zh-hans: new-site-90-days-seo
+  en: new-site-90-days-seo
 ---
 # 新站前 90 天 SEO 該做什麼（清單）
 

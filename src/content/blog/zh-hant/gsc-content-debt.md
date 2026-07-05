@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-13
 date_updated: 2026-07-13
+translations:
+  zh-hans: gsc-content-debt
+  en: gsc-content-debt
 ---
 # GSC 三個地方揪出內容負債（附操作）
 

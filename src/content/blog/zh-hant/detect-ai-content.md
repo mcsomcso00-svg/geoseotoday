@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-12
 date_updated: 2026-07-12
+translations:
+  zh-hans: detect-ai-content
+  en: detect-ai-content
 ---
 # 如何檢測一段內容是 AI 還是人寫的
 

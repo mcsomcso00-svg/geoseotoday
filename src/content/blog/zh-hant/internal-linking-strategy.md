@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-14
 date_updated: 2026-07-14
+translations:
+  zh-hans: internal-linking-strategy
+  en: internal-linking-strategy
 ---
 # 內部連結策略：把權重灌進賺錢頁
 

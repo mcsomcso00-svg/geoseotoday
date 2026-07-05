@@ -7,6 +7,9 @@ cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-18
 date_updated: 2026-07-18
+translations:
+  zh-hans: anchor-text-diversity
+  en: anchor-text-diversity
 ---
 # 錨文本多樣化實戰：五類錨怎麼配
 

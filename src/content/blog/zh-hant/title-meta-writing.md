@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-16
 date_updated: 2026-07-16
+translations:
+  zh-hans: title-meta-writing
+  en: title-meta-writing
 ---
 # 標題標籤與 meta description 怎麼寫
 

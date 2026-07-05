@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-16
 date_updated: 2026-07-16
+translations:
+  zh-hans: image-seo
+  en: image-seo
 ---
 # 圖片 SEO：alt、格式、壓縮一次搞定
 

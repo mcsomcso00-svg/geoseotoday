@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-17
 date_updated: 2026-07-17
+translations:
+  zh-hans: topic-cluster-planning
+  en: topic-cluster-planning
 ---
 # 主題群集（topic cluster）怎麼規劃
 

@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-15
 date_updated: 2026-07-15
+translations:
+  zh-hans: what-is-crawl-budget
+  en: what-is-crawl-budget
 ---
 # crawl budget 是什麼？小網站要在意嗎
 

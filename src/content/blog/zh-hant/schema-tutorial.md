@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-15
 date_updated: 2026-07-15
+translations:
+  zh-hans: schema-tutorial
+  en: schema-tutorial
 ---
 # Schema 結構化資料新手實作教學
 

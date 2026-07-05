@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-12
 date_updated: 2026-07-12
+translations:
+  zh-hans: ai-content-shell-mistakes
+  en: ai-content-shell-mistakes
 ---
 # AI 內容常見錯誤：article-shaped shell 空殼文
 

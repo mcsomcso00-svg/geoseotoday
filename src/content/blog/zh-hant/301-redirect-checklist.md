@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-17
 date_updated: 2026-07-17
+translations:
+  zh-hans: 301-redirect-checklist
+  en: 301-redirect-checklist
 ---
 # 網站搬家不掉排名的 301 轉址清單
 

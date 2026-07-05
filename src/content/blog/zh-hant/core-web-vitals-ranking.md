@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-15
 date_updated: 2026-07-15
+translations:
+  zh-hans: core-web-vitals-ranking
+  en: core-web-vitals-ranking
 ---
 # Core Web Vitals 對排名的實際影響
 

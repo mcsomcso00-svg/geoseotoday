@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-18
 date_updated: 2026-07-18
+translations:
+  zh-hans: onpage-technical-seo-guide
+  en: onpage-technical-seo-guide
 ---
 # On-page 與技術 SEO 完整指南（2026）
 

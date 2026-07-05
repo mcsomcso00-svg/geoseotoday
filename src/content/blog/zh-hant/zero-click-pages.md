@@ -7,6 +7,9 @@ cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-14
 date_updated: 2026-07-14
+translations:
+  zh-hans: zero-click-pages
+  en: zero-click-pages
 ---
 # 0 點擊頁面該合併、刪除還是補料？決策流程
 

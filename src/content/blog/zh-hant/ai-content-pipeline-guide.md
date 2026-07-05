@@ -7,6 +7,9 @@ cluster: AI 內容產線（群集 2）
 author: GeoSeoToday
 date_published: 2026-07-13
 date_updated: 2026-07-13
+translations:
+  zh-hans: ai-content-pipeline-guide
+  en: ai-content-pipeline-guide
 ---
 # AI 內容產線完整指南：批量產文不被降權的系統方法
 
