@@ -7,6 +7,9 @@ cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-04
 date_updated: 2026-07-04
+translations:
+  zh-hans: cited-by-perplexity
+  en: cited-by-perplexity
 ---
 # 如何被 Perplexity 當作來源引用
 

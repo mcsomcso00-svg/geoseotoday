@@ -5,8 +5,11 @@ target_keyword: geo 完整指南
 intent: commercial
 cluster: GEO（群集 1）
 author: GeoSeoToday
-date_published: 2026-07-08
-date_updated: 2026-07-08
+date_published: 2026-07-05
+date_updated: 2026-07-05
+translations:
+  zh-hans: geo-complete-guide
+  en: geo-complete-guide
 ---
 # GEO 完整指南：生成式引擎優化從入門到實戰
 

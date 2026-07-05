@@ -7,6 +7,9 @@ cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
 date_updated: 2026-07-05
+translations:
+  zh-hans: what-is-aio
+  en: what-is-aio
 ---
 # AIO 是什麼？AI 優化完整定義（與 SEO／GEO／AEO 的關係）
 
