@@ -27,6 +27,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # OG 縮圖用 sharp+SVG 疊中文標題；Linux runner 預設無 CJK 字型，否則中文會變豆腐格
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
       - run: npx astro build
       - uses: actions/upload-pages-artifact@v3
         with:

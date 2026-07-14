@@ -17,7 +17,9 @@ const { Content } = await render(post);
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
 
 // hreflang：本文 + frontmatter.translations 指到的其他語言版本
-const selfPath = `/${lang}/blog/${post.id.split('/').slice(1).join('/')}/`;
+const slug = post.id.split('/').slice(1).join('/');
+const selfPath = `/${lang}/blog/${slug}/`;
+const ogPath = `/og-image/${lang}--${slug}.png`;
 const alternates: Record<string, string> = { [lang]: selfPath };
 if (post.data.translations) {
   for (const [l, slug] of Object.entries(post.data.translations)) {
@@ -33,6 +35,7 @@ const articleSchema = {
   description: post.data.description,
   author: { '@type': 'Organization', name: post.data.author },
   publisher: { '@type': 'Organization', name: 'GeoSeoToday' },
+  image: new URL(ogPath, Astro.site).toString(),
   datePublished: post.data.date_published.toISOString(),
   dateModified: (post.data.date_updated ?? post.data.date_published).toISOString(),
   inLanguage: lang === 'en' ? 'en' : lang === 'zh-hans' ? 'zh-Hans' : 'zh-Hant',
@@ -120,6 +123,7 @@ const breadcrumbs = [
   alternates={alternates}
   schemas={schemas}
   breadcrumbs={breadcrumbs}
+  ogImage={ogPath}
 >
   <article>
     <p class="post-meta">
