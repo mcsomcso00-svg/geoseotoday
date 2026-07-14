@@ -63,7 +63,8 @@ const chips = Object.values(CLUSTER_STYLE).filter((c) => chipKeys.includes(c.key
       const slug = p.id.split('/').slice(1).join('/');
       return (
         <a class="pcard" href={`/${lang}/blog/${slug}/`} data-c={c.key}>
-          <div class="cover" style={`background:linear-gradient(135deg,${c.g1},${c.g2} 130%)`}>
+          <div class="cover">
+            <img class="cover-img" src={c.key === 'c6' ? '/og/base-aio.png' : '/og/base-geo.png'} alt="" loading="lazy" />
             <span class="cover-brand">GeoSeoToday</span>
             <span class="cover-title">{p.data.title}</span>
             <span class="cover-tag">{c.short}</span>
@@ -119,20 +120,27 @@ const chips = Object.values(CLUSTER_STYLE).filter((c) => chipKeys.includes(c.key
   .cover {
     aspect-ratio: 16 / 8; position: relative; padding: 14px 16px;
     display: flex; flex-direction: column; justify-content: center;
+    background: #0e1116; overflow: hidden;
+  }
+  .cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .cover::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(14,17,22,.9) 0%, rgba(14,17,22,.55) 52%, rgba(14,17,22,.15) 100%);
   }
   .cover-brand {
-    position: absolute; top: 12px; left: 16px;
+    position: absolute; top: 12px; left: 16px; z-index: 2;
     font-size: 11px; font-weight: 800; color: rgba(255,255,255,.85); letter-spacing: .4px;
   }
   .cover-title {
+    position: relative; z-index: 2;
     color: #fff; font-weight: 800; font-size: 15px; line-height: 1.45;
-    text-shadow: 0 1px 6px rgba(0,0,0,.35);
+    text-shadow: 0 1px 6px rgba(0,0,0,.55);
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
   }
   .cover-tag {
-    position: absolute; bottom: 12px; right: 16px;
+    position: absolute; bottom: 12px; right: 16px; z-index: 2;
     font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,.9);
-    background: rgba(0,0,0,.25); padding: 2px 10px; border-radius: 99px;
+    background: rgba(0,0,0,.35); padding: 2px 10px; border-radius: 99px;
   }
   .pbody { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .pdesc {

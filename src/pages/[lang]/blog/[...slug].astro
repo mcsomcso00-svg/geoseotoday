@@ -126,6 +126,7 @@ const breadcrumbs = [
   ogImage={ogPath}
 >
   <article>
+    <img class="post-cover" src={ogPath} alt="" width="1200" height="630" loading="eager" fetchpriority="high" />
     <p class="post-meta">
       {post.data.author} · {fmt(post.data.date_published)}
       {post.data.date_updated && ` · 更新 ${fmt(post.data.date_updated)}`}
@@ -159,6 +160,11 @@ const breadcrumbs = [
 </Base>
 
 <style>
+  .post-cover {
+    display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630;
+    object-fit: cover; border: 1px solid var(--line); border-radius: 14px;
+    margin: 0 0 24px;
+  }
   .post-cta {
     margin-top: 40px; padding: 24px 26px; border-radius: 14px;
     background: linear-gradient(135deg, #1a2740, #171b22);
