@@ -1,5 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import ArticleCardGrid from '../../../components/ArticleCardGrid.astro';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'zh-hant' } }, { params: { lang: 'zh-hans' } }, { params: { lang: 'en' } }];
@@ -22,11 +23,6 @@ const T = {
       'AI 搜尋可見度追蹤＋品牌聲量監測',
     ],
     read: '延伸閱讀',
-    links: [
-      ['/zh-hant/blog/what-is-aio/', 'AIO 是什麼？與 SEO／GEO／AEO 的關係'],
-      ['/zh-hant/blog/what-is-ai-overview/', 'Google AI Overview 是什麼？運作原理與影響'],
-      ['/zh-hant/blog/what-is-llms-txt/', 'llms.txt 是什麼？要不要幫網站加'],
-    ],
     ctaTitle: '想知道你的網站在 AI 搜尋裡的表現？',
     ctaDesc: '免費領取一份診斷報告：實測你被 ChatGPT／Perplexity／AI Overview 引用幾次、和對手差多少、每個問題指名到頁面與段落。',
     ctaBtn: '免費領取 AI 可見度診斷',
@@ -45,9 +41,6 @@ const T = {
       'AI 搜索可见度追踪＋品牌声量监测',
     ],
     read: '延伸阅读',
-    links: [
-      ['/zh-hans/blog/', '博客'],
-    ],
     ctaTitle: '想知道你的网站在 AI 搜索里的表现？',
     ctaDesc: '免费领取一份诊断报告：实测你被 ChatGPT／Perplexity／AI Overview 引用几次、和对手差多少、每个问题指名到页面与段落。',
     ctaBtn: '免费领取 AI 可见度诊断',
@@ -66,9 +59,6 @@ const T = {
       'AI visibility tracking + brand-mention monitoring',
     ],
     read: 'Further reading',
-    links: [
-      ['/en/blog/', 'Blog'],
-    ],
     ctaTitle: 'Want to know how your site performs in AI search?',
     ctaDesc: 'Get a free diagnosis: how many times ChatGPT/Perplexity/AI Overview cite you, your gap vs competitors, every issue pinned to a page and paragraph.',
     ctaBtn: 'Get my free AI-visibility audit',
@@ -109,9 +99,7 @@ const breadcrumbs = [
   </ul>
 
   <h2>{T.read}</h2>
-  <ul>
-    {T.links.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
-  </ul>
+  <ArticleCardGrid lang={lang} slugs={['what-is-aio', 'what-is-ai-overview', 'what-is-llms-txt']} />
 </Base>
 
 <style>

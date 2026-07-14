@@ -1,5 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import ArticleCardGrid from '../../../components/ArticleCardGrid.astro';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'zh-hant' } }, { params: { lang: 'zh-hans' } }, { params: { lang: 'en' } }];
@@ -161,17 +162,7 @@ const schema = {
   </ul>
 
   <h2>{T.read}</h2>
-  <ul>
-    {lang === 'zh-hant' ? (
-      <>
-        <li><a href="/zh-hant/blog/what-is-geo/">GEO 是什麼？生成式引擎優化完整定義（2026）</a></li>
-        <li><a href="/zh-hant/blog/geo-vs-seo/">GEO 與傳統 SEO 有什麼不同？一張表看懂</a></li>
-        <li><a href="/zh-hant/blog/geo-aeo-aio/">GEO、AEO、AIO 差在哪？三者關係一次搞懂</a></li>
-      </>
-    ) : (
-      <li><a href={`/${lang}/blog/`}>Blog</a></li>
-    )}
-  </ul>
+  <ArticleCardGrid lang={lang} slugs={['what-is-geo', 'geo-vs-seo', 'geo-aeo-aio']} />
 </Base>
 
 <style>
