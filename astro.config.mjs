@@ -1,7 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, statSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import { renderOg } from './src/lib/renderOg.js';
 
 // 極簡 frontmatter 取值（title/cluster 可能含冒號且加引號）
@@ -13,6 +15,15 @@ function fmValue(fm, key) {
     v = v.slice(1, -1).replace(/\\"/g, '"');
   }
   return v;
+}
+
+function walkHtml(dir, acc = []) {
+  for (const e of readdirSync(dir)) {
+    const p = join(dir, e);
+    if (statSync(p).isDirectory()) walkHtml(p, acc);
+    else if (e.endsWith('.html')) acc.push(p);
+  }
+  return acc;
 }
 
 // build 結束後，為每篇「已發布」文章產一張 OG 縮圖 → dist/og-image/<lang>--<slug>.png
@@ -52,6 +63,39 @@ function ogImages() {
   };
 }
 
+// build 後掃 dist HTML：內部部落格連結若指向「未建置（未來日期/不存在）」的頁面，改成純文字（不連）。
+// 到期後（每日 cron 重建）目標頁存在 → 自動變回連結 → 永遠不會有未來日期 404。
+function pruneForwardLinks() {
+  return {
+    name: 'geoseotoday-prune-forward-links',
+    hooks: {
+      'astro:build:done': async ({ dir, logger }) => {
+        const root = fileURLToPath(dir);
+        const linkRe = /<a\s+([^>]*?)href="(\/(?:zh-hant|zh-hans|en)\/blog\/[^"?#]+?)\/?"([^>]*?)>([\s\S]*?)<\/a>/g;
+        const cache = new Map();
+        const targetExists = (p) => {
+          if (cache.has(p)) return cache.get(p);
+          const ok = existsSync(join(root, p, 'index.html'));
+          cache.set(p, ok);
+          return ok;
+        };
+        let pruned = 0, filesChanged = 0;
+        for (const f of walkHtml(root)) {
+          let changed = false;
+          const html = readFileSync(f, 'utf8').replace(linkRe, (whole, _pre, href, _post, text) => {
+            if (targetExists(href)) return whole;
+            pruned++;
+            changed = true;
+            return `<span class="link-pending">${text}</span>`;
+          });
+          if (changed) { writeFileSync(f, html); filesChanged++; }
+        }
+        logger.info(`Forward-dated links pruned: ${pruned} across ${filesChanged} file(s)`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
   site: 'https://geoseotoday.com',
   trailingSlash: 'always',
@@ -71,5 +115,6 @@ export default defineConfig({
       },
     }),
     ogImages(),
+    pruneForwardLinks(),
   ],
 });
