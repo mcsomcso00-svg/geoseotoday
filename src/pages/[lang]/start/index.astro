@@ -1,0 +1,93 @@
+---
+import Base from '../../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh-hant' } }, { params: { lang: 'zh-hans' } }, { params: { lang: 'en' } }];
+}
+const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
+
+// link-in-bio 落地頁：社群 bio 連到這裡，一頁把訪客分流到工具 / 免費健檢 / 文章。
+// bio 連結記得帶 UTM，例：https://geoseotoday.com/en/start/?utm_source=threads&utm_medium=social
+type Link = { emoji: string; label: string; sub: string; href: string; primary?: boolean };
+const T: Record<string, { title: string; desc: string; h1: string; lead: string; links: Link[] }> = {
+  'zh-hant': {
+    title: '從這裡開始 — GeoSeoToday',
+    desc: '免費工具＋免費健檢，讓你的網站被 Google 排名，也被 ChatGPT、Perplexity、AI Overview 引用。',
+    h1: '讓 Google 排名，也讓 AI 引用你。',
+    lead: '免費工具＋免費診斷，幫你的網站在 Google 與 AI 答案裡被看見。從下面任何一個開始：',
+    links: [
+      { emoji: '🔍', label: '免費 SEO／GEO／AIO 健檢', sub: '留下網址，拿一份指名到「哪一頁、哪一段」的診斷', href: `/${lang}/audit/`, primary: true },
+      { emoji: '✅', label: 'GEO 就緒度檢測器', sub: '貼上文章，30 秒拿到 0–100 分與修正方向', href: `/${lang}/geo/` },
+      { emoji: '🤖', label: 'llms.txt 產生器', sub: '一鍵產生給 AI 爬蟲看的網站導覽檔', href: `/${lang}/aio/` },
+      { emoji: '📘', label: 'GEO 新手？先讀這篇', sub: '用白話搞懂什麼是 GEO（2026）', href: `/${lang}/blog/what-is-geo/` },
+      { emoji: '📚', label: '全部文章', sub: 'SEO、GEO、AIO 實戰教學', href: `/${lang}/blog/` },
+    ],
+  },
+  'zh-hans': {
+    title: '从这里开始 — GeoSeoToday',
+    desc: '免费工具＋免费诊断，让你的网站被 Google 排名，也被 ChatGPT、Perplexity、AI Overview 引用。',
+    h1: '让 Google 排名，也让 AI 引用你。',
+    lead: '免费工具＋免费诊断，帮你的网站在 Google 与 AI 答案里被看见。从下面任何一个开始：',
+    links: [
+      { emoji: '🔍', label: '免费 SEO／GEO／AIO 诊断', sub: '留下网址，拿一份指名到「哪一页、哪一段」的诊断', href: `/${lang}/audit/`, primary: true },
+      { emoji: '✅', label: 'GEO 就绪度检测器', sub: '粘贴文章，30 秒拿到 0–100 分与修改方向', href: `/${lang}/geo/` },
+      { emoji: '🤖', label: 'llms.txt 生成器', sub: '一键生成给 AI 爬虫看的网站导览文件', href: `/${lang}/aio/` },
+      { emoji: '📘', label: 'GEO 新手？先读这篇', sub: '用白话搞懂什么是 GEO（2026）', href: `/${lang}/blog/what-is-geo/` },
+      { emoji: '📚', label: '全部文章', sub: 'SEO、GEO、AIO 实战教学', href: `/${lang}/blog/` },
+    ],
+  },
+  en: {
+    title: 'Start Here — GeoSeoToday',
+    desc: 'Free tools and a free audit to get your site ranked by Google and cited by ChatGPT, Perplexity and AI Overviews.',
+    h1: 'Get found by Google — and cited by AI.',
+    lead: 'Free tools and a free diagnosis to help your business show up in Google and in AI answers (ChatGPT, Perplexity, Google AI Overview). Start with any of these:',
+    links: [
+      { emoji: '🔍', label: 'Free SEO / GEO / AIO audit', sub: 'Send your URL, get a diagnosis pinned to the exact page & paragraph', href: `/${lang}/audit/`, primary: true },
+      { emoji: '✅', label: 'GEO Readiness Checker', sub: 'Paste an article, get a 0–100 score in 30 seconds', href: `/${lang}/geo/` },
+      { emoji: '🤖', label: 'llms.txt Generator', sub: 'Generate the file AI crawlers use to understand your site', href: `/${lang}/aio/` },
+      { emoji: '📘', label: 'New to GEO? Read this first', sub: 'GEO explained in plain language (2026)', href: `/${lang}/blog/what-is-geo/` },
+      { emoji: '📚', label: 'All articles', sub: '150+ guides on SEO, GEO & AIO', href: `/${lang}/blog/` },
+    ],
+  },
+}[lang];
+
+const alternates = { 'zh-hant': '/zh-hant/start/', 'zh-hans': '/zh-hans/start/', en: '/en/start/' };
+---
+<Base title={T.title} description={T.desc} lang={lang} alternates={alternates}>
+  <h1 class="start-h1">{T.h1}</h1>
+  <p class="start-lead">{T.lead}</p>
+
+  <div class="links">
+    {T.links.map((l) => (
+      <a class:list={['link', { primary: l.primary }]} href={l.href} data-ga={`start_${l.href}`}>
+        <span class="link-emoji">{l.emoji}</span>
+        <span class="link-text">
+          <span class="link-label">{l.label}</span>
+          <span class="link-sub">{l.sub}</span>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .start-h1 { text-align: center; font-size: 26px; margin: 8px 0 6px; }
+  .start-lead { text-align: center; color: var(--dim); max-width: 34em; margin: 0 auto 26px; }
+  .links { display: flex; flex-direction: column; gap: 12px; max-width: 560px; margin: 0 auto; }
+  .link {
+    display: flex; align-items: center; gap: 14px; text-decoration: none;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 18px; transition: transform .15s, border-color .15s;
+  }
+  .link:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .link.primary { border-color: var(--cta); background: linear-gradient(135deg, rgba(249,115,22,.12), var(--panel)); box-shadow: var(--cta-glow); }
+  .link.primary:hover { border-color: var(--cta); }
+  .link-emoji { font-size: 22px; flex: none; }
+  .link-text { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  .link-label { color: var(--txt); font-weight: 700; font-size: 15.5px; }
+  .link.primary .link-label { color: #fff; }
+  .link-sub { color: var(--dim); font-size: 12.5px; line-height: 1.45; }
+  .link-arrow { color: var(--dim); font-size: 18px; flex: none; }
+  .link.primary .link-arrow { color: var(--cta); }
+</style>
