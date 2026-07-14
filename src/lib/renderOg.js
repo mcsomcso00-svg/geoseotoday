@@ -42,12 +42,29 @@ function titleFont(lang) {
 }
 
 const MAX_W = 700; // 標題文字欄寬（左側安全區）
+// 切成「排版單位」：連續英數字/點視為一個不可拆單位（如 2026、GEO），其餘（中日韓、標點）逐字。
+function tokenize(title) {
+  return title.match(/[A-Za-z0-9.]+|\s+|[^A-Za-z0-9.\s]/g) || [];
+}
 function wrap(title, lang, fs) {
   if (isCJK(lang)) {
-    const per = Math.max(1, Math.floor(MAX_W / (fs * 1.02)));
-    const chars = [...title];
+    const cjkW = fs * 1.02, asciiW = fs * 0.56, spaceW = fs * 0.32;
+    const widthOf = (t) => (/^\s+$/.test(t) ? t.length * spaceW : /^[A-Za-z0-9.]+$/.test(t) ? t.length * asciiW : cjkW);
     const lines = [];
-    for (let i = 0; i < chars.length; i += per) lines.push(chars.slice(i, i + per).join(''));
+    let cur = '', curW = 0;
+    for (const t of tokenize(title)) {
+      const w = widthOf(t);
+      if (curW + w > MAX_W && cur !== '') {
+        lines.push(cur.replace(/\s+$/, ''));
+        const startsSpace = /^\s+$/.test(t);
+        cur = startsSpace ? '' : t;
+        curW = startsSpace ? 0 : w;
+      } else {
+        cur += t;
+        curW += w;
+      }
+    }
+    if (cur.trim()) lines.push(cur.replace(/\s+$/, ''));
     return lines;
   }
   const per = Math.max(1, Math.floor(MAX_W / (fs * 0.54)));
