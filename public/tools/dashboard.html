@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>GeoSeoToday 成效儀表板（GSC + GA4）</title>
+<style>
+  :root{--bg:#0e1116;--panel:#171b22;--panel2:#1f242d;--line:#2a313c;--txt:#e6edf3;--dim:#9aa4b2;
+    --accent:#4f8cff;--cta:#f97316;--good:#3fb950;--warn:#d29922;--bad:#f85149;--radius:12px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"Segoe UI","Noto Sans TC",Roboto,Arial,sans-serif;line-height:1.55;padding:22px}
+  .wrap{max-width:1120px;margin:0 auto}
+  h1{font-size:20px;margin:0 0 2px}
+  .sub{color:var(--dim);font-size:13px;margin:0 0 18px}
+  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+  button,select,input{font-family:inherit;font-size:14px}
+  .btn{background:var(--cta);color:#131313;border:none;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer}
+  .btn.sec{background:var(--panel2);color:var(--txt);border:1px solid var(--line);font-weight:600}
+  select,input{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+  .grid{display:grid;gap:12px}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+  .kpi .lbl{font-size:12px;color:var(--dim);display:flex;justify-content:space-between}
+  .kpi .lbl .src{color:#5b6675}
+  .kpi .val{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;margin:3px 0 0}
+  .charts{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:12px}
+  .card h3{font-size:13px;color:var(--dim);font-weight:600;margin:0 0 10px}
+  .chartbox{position:relative;height:190px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{color:var(--dim);font-weight:600}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  td.u{max-width:340px;overflow:hidden;text-overflow:ellipsis}
+  .note{color:var(--dim);font-size:12px}
+  .msg{padding:12px 14px;border-radius:10px;margin:10px 0;font-size:13px}
+  .msg.err{background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.4);color:#ffb4ae}
+  .msg.ok{background:rgba(63,185,80,.1);border:1px solid rgba(63,185,80,.4);color:#8ee6a0}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px}
+  summary{cursor:pointer;font-weight:700}
+  details ol{margin:10px 0;padding-left:20px}details li{margin:6px 0;font-size:13.5px;color:var(--dim)}
+  details code{background:var(--panel2);padding:1px 6px;border-radius:4px;color:#cdd6e0}
+  .cfg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:8px}
+  .cfg label{display:block;font-size:12px;color:var(--dim);margin-bottom:4px}
+  .cfg input{width:100%}
+  .hide{display:none}
+  .sectlabel{font-size:12px;color:var(--dim);margin:18px 0 6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>GeoSeoToday 成效儀表板</h1>
+  <p class="sub">GSC + GA4 即時數據 · 資料只留在你的瀏覽器 · 用你的 Google 帳號登入</p>
+
+  <details id="setup">
+    <summary>⚙️ 首次設定（一次做好，約 10 分鐘）</summary>
+    <ol>
+      <li>到 <code>console.cloud.google.com</code> 建一個專案（或用現有的）。</li>
+      <li>啟用兩個 API：<b>Google Search Console API</b> 與 <b>Google Analytics Data API</b>（API 和服務 → 程式庫 → 搜尋啟用）。</li>
+      <li>OAuth 同意畫面：User type 選「外部」，把你自己的 Google email 加進「測試使用者」。</li>
+      <li>建立憑證 → <b>OAuth 用戶端 ID</b> → 類型「網頁應用程式」→ <b>已授權的 JavaScript 來源</b> 加入 <code>https://geoseotoday.com</code>（若本機測試再加 <code>http://localhost</code>）。複製「用戶端 ID」。</li>
+      <li>把下面三個欄位填好（存在你瀏覽器本機，不會外流），按「儲存並登入」。</li>
+    </ol>
+    <div class="cfg">
+      <div><label>OAuth 用戶端 ID</label><input id="cfgClient" placeholder="xxxx.apps.googleusercontent.com"></div>
+      <div><label>GA4 資源 ID（純數字，非 G-xxx）</label><input id="cfgGa4" placeholder="例：456789123"></div>
+      <div><label>GSC 網站</label><input id="cfgGsc" placeholder="sc-domain:geoseotoday.com"></div>
+    </div>
+    <p class="note" style="margin-top:8px">GA4 資源 ID：GA4 → 管理 → 資源設定 → 資源 ID（一串數字）。GSC 網站：網域資源用 <code>sc-domain:geoseotoday.com</code>，網址前綴資源用 <code>https://geoseotoday.com/</code>。</p>
+    <button class="btn sec" onclick="saveCfg()" style="margin-top:6px">儲存設定</button>
+  </details>
+
+  <div class="bar">
+    <button class="btn" id="connectBtn" onclick="connect()">用 Google 登入並載入</button>
+    <select id="range" onchange="if(TOKEN)loadAll()">
+      <option value="7">近 7 天</option>
+      <option value="28" selected>近 28 天</option>
+      <option value="90">近 90 天</option>
+    </select>
+    <button class="btn sec" onclick="loadAll()" id="refreshBtn">重新整理</button>
+    <span class="note" id="status"></span>
+  </div>
+
+  <div id="messages"></div>
+
+  <div id="dash" class="hide">
+    <div class="grid kpis" id="kpis"></div>
+
+    <div class="grid charts">
+      <div class="card"><h3>每日曝光 · GSC</h3><div class="chartbox"><canvas id="cImp"></canvas></div></div>
+      <div class="card"><h3>每日點擊 · GSC</h3><div class="chartbox"><canvas id="cClk"></canvas></div></div>
+    </div>
+    <div class="grid charts">
+      <div class="card"><h3>每日名單（generate_lead）· GA4</h3><div class="chartbox"><canvas id="cLead"></canvas></div></div>
+      <div class="card"><h3>工作階段 × 國家 · GA4</h3><div class="chartbox"><canvas id="cGeo"></canvas></div></div>
+    </div>
+
+    <div class="grid charts">
+      <div class="card">
+        <h3>熱門頁面 · GSC</h3>
+        <table><thead><tr><th>頁面</th><th class="n">點擊</th><th class="n">曝光</th><th class="n">CTR</th><th class="n">排名</th></tr></thead><tbody id="tPages"></tbody></table>
+      </div>
+      <div class="card">
+        <h3>熱門查詢 · GSC</h3>
+        <table><thead><tr><th>查詢</th><th class="n">點擊</th><th class="n">曝光</th><th class="n">排名</th></tr></thead><tbody id="tQueries"></tbody></table>
+      </div>
+    </div>
+    <p class="note" style="margin-top:12px">GSC 數據延遲約 2–3 天；GA4 近即時。名單漏斗需先在 GA4 把 <code>generate_lead</code> 標記為關鍵事件、<code>cta_id</code> 註冊為自訂維度（見 dashboard-setup.md）。</p>
+  </div>
+</div>
+
+<script src="https://accounts.google.com/gsi/client" async></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+var TOKEN=null, tokenClient=null, CHARTS={};
+var CFG={ client:'', ga4:'', gsc:'sc-domain:geoseotoday.com' };
+
+function loadCfg(){
+  CFG.client = localStorage.getItem('gd_client')||'';
+  CFG.ga4 = localStorage.getItem('gd_ga4')||'';
+  CFG.gsc = localStorage.getItem('gd_gsc')||'sc-domain:geoseotoday.com';
+  cfgClient.value=CFG.client; cfgGa4.value=CFG.ga4; cfgGsc.value=CFG.gsc;
+  if(!CFG.client||!CFG.ga4){ document.getElementById('setup').open=true; }
+}
+function saveCfg(){
+  CFG.client=cfgClient.value.trim(); CFG.ga4=cfgGa4.value.trim(); CFG.gsc=cfgGsc.value.trim();
+  localStorage.setItem('gd_client',CFG.client); localStorage.setItem('gd_ga4',CFG.ga4); localStorage.setItem('gd_gsc',CFG.gsc);
+  msg('設定已儲存。','ok');
+}
+function msg(t,cls){ document.getElementById('messages').innerHTML='<div class="msg '+(cls||'')+'">'+t+'</div>'; }
+function setStatus(t){ document.getElementById('status').textContent=t||''; }
+
+function connect(){
+  if(!CFG.client||!CFG.ga4){ msg('請先在上方「首次設定」填好 OAuth 用戶端 ID 與 GA4 資源 ID。','err'); document.getElementById('setup').open=true; return; }
+  if(!window.google||!google.accounts){ msg('Google 登入元件還在載入，請 2 秒後再按一次。','err'); return; }
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: CFG.client,
+    scope: 'https://www.googleapis.com/auth/webmasters.readonly https://www.googleapis.com/auth/analytics.readonly',
+    callback: function(resp){
+      if(resp.error){ msg('登入失敗：'+resp.error,'err'); return; }
+      TOKEN=resp.access_token; loadAll();
+    }
+  });
+  tokenClient.requestAccessToken();
+}
+
+function dateStr(d){ return d.toISOString().slice(0,10); }
+function range(){
+  var n=parseInt(document.getElementById('range').value,10);
+  var end=new Date(); end.setDate(end.getDate()-1);
+  var start=new Date(); start.setDate(start.getDate()-n);
+  return { start:dateStr(start), end:dateStr(end), n:n };
+}
+
+async function gsc(body){
+  var r=await fetch('https://searchconsole.googleapis.com/webmasters/v3/sites/'+encodeURIComponent(CFG.gsc)+'/searchAnalytics/query',
+    {method:'POST',headers:{Authorization:'Bearer '+TOKEN,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok) throw new Error('GSC '+r.status+'：'+(await r.text()).slice(0,180));
+  return r.json();
+}
+async function ga4(body){
+  var r=await fetch('https://analyticsdata.googleapis.com/v1beta/properties/'+CFG.ga4+':runReport',
+    {method:'POST',headers:{Authorization:'Bearer '+TOKEN,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok) throw new Error('GA4 '+r.status+'：'+(await r.text()).slice(0,180));
+  return r.json();
+}
+
+async function loadAll(){
+  if(!TOKEN){ connect(); return; }
+  var R=range(); setStatus('載入中… ('+R.start+' ~ '+R.end+')'); msg('');
+  try{
+    var dr=[{startDate:R.start,endDate:R.end}];
+    var leadFilter={filter:{fieldName:'eventName',stringFilter:{value:'generate_lead'}}};
+    var results=await Promise.all([
+      gsc({startDate:R.start,endDate:R.end}),                                   // 0 GSC totals
+      gsc({startDate:R.start,endDate:R.end,dimensions:['date'],rowLimit:1000}), // 1 GSC by date
+      gsc({startDate:R.start,endDate:R.end,dimensions:['page'],rowLimit:10}),   // 2 GSC top pages
+      gsc({startDate:R.start,endDate:R.end,dimensions:['query'],rowLimit:10}),  // 3 GSC top queries
+      ga4({dateRanges:dr,metrics:[{name:'sessions'},{name:'activeUsers'},{name:'engagedSessions'}]}), // 4 GA4 totals
+      ga4({dateRanges:dr,dimensions:[{name:'eventName'}],metrics:[{name:'eventCount'}]}),             // 5 GA4 events
+      ga4({dateRanges:dr,dimensions:[{name:'date'}],metrics:[{name:'eventCount'}],dimensionFilter:leadFilter,orderBys:[{dimension:{dimensionName:'date'}}]}), // 6 leads/day
+      ga4({dateRanges:dr,dimensions:[{name:'country'}],metrics:[{name:'sessions'}],limit:8,orderBys:[{metric:{metricName:'sessions'},desc:true}]}) // 7 country
+    ]);
+    render(results,R);
+    setStatus('更新於 '+new Date().toLocaleString());
+    document.getElementById('dash').classList.remove('hide');
+  }catch(e){
+    msg('讀取失敗：'+e.message+'<br><span class="note">常見原因：API 未啟用、OAuth 來源未加 geoseotoday.com、GA4 資源 ID 或 GSC 網站字串填錯、或此 Google 帳號沒有該資源權限。</span>','err');
+    setStatus('');
+  }
+}
+
+function num(x){ return (x==null?0:x).toLocaleString(); }
+function kpi(lbl,src,val){ return '<div class="card kpi"><div class="lbl">'+lbl+'<span class="src">'+src+'</span></div><div class="val">'+val+'</div></div>'; }
+
+function render(res,R){
+  var gt=res[0].rows&&res[0].rows[0]?res[0].rows[0]:{clicks:0,impressions:0,ctr:0,position:0};
+  var ga=res[4].rows&&res[4].rows[0]?res[4].rows[0].metricValues.map(function(m){return +m.value;}):[0,0,0];
+  var ev={}; (res[5].rows||[]).forEach(function(r){ ev[r.dimensionValues[0].value]=+r.metricValues[0].value; });
+
+  document.getElementById('kpis').innerHTML=[
+    kpi('曝光','GSC',num(gt.impressions)),
+    kpi('點擊','GSC',num(gt.clicks)),
+    kpi('CTR','GSC',(gt.ctr*100).toFixed(2)+'%'),
+    kpi('平均排名','GSC',gt.position.toFixed(1)),
+    kpi('工作階段','GA4',num(ga[0])),
+    kpi('使用者','GA4',num(ga[1])),
+    kpi('CTA 點擊','GA4',num(ev['cta_click']||0)),
+    kpi('名單','GA4',num(ev['generate_lead']||0))
+  ].join('');
+
+  var byDate=(res[1].rows||[]).sort(function(a,b){return a.keys[0]<b.keys[0]?-1:1;});
+  var labels=byDate.map(function(r){return r.keys[0].slice(5);});
+  line('cImp',labels,byDate.map(function(r){return r.impressions;}),'#4f8cff');
+  line('cClk',labels,byDate.map(function(r){return r.clicks;}),'#1baf7a');
+
+  var ld=res[6].rows||[]; var lmap={}; ld.forEach(function(r){lmap[r.dimensionValues[0].value]=+r.metricValues[0].value;});
+  bar('cLead',labels,byDate.map(function(r){var d=r.keys[0].replace(/-/g,'');return lmap[d]||0;}),'#f97316');
+
+  var geo=res[7].rows||[];
+  hbar('cGeo',geo.map(function(r){return r.dimensionValues[0].value||'(其他)';}),geo.map(function(r){return +r.metricValues[0].value;}));
+
+  document.getElementById('tPages').innerHTML=(res[2].rows||[]).map(function(r){
+    return '<tr><td class="u">'+r.keys[0].replace('https://geoseotoday.com','')+'</td><td class="n">'+num(r.clicks)+'</td><td class="n">'+num(r.impressions)+'</td><td class="n">'+(r.ctr*100).toFixed(1)+'%</td><td class="n">'+r.position.toFixed(0)+'</td></tr>';
+  }).join('')||'<tr><td colspan="5" class="note">尚無資料</td></tr>';
+  document.getElementById('tQueries').innerHTML=(res[3].rows||[]).map(function(r){
+    return '<tr><td class="u">'+r.keys[0]+'</td><td class="n">'+num(r.clicks)+'</td><td class="n">'+num(r.impressions)+'</td><td class="n">'+r.position.toFixed(0)+'</td></tr>';
+  }).join('')||'<tr><td colspan="4" class="note">尚無資料</td></tr>';
+}
+
+function baseOpts(){ return {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{grid:{display:false},ticks:{color:'#5b6675',font:{size:10},maxTicksLimit:7}},y:{grid:{color:'#2a313c'},ticks:{color:'#5b6675',font:{size:10}}}}}; }
+function fresh(id){ if(CHARTS[id])CHARTS[id].destroy(); return document.getElementById(id); }
+function line(id,labels,data,c){ CHARTS[id]=new Chart(fresh(id),{type:'line',data:{labels:labels,datasets:[{data:data,borderColor:c,backgroundColor:c+'22',borderWidth:2,fill:true,tension:.35,pointRadius:0}]},options:baseOpts()}); }
+function bar(id,labels,data,c){ var o=baseOpts(); o.scales.y.ticks.stepSize=1; CHARTS[id]=new Chart(fresh(id),{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:c,borderRadius:3,barThickness:7}]},options:o}); }
+function hbar(id,labels,data){ CHARTS[id]=new Chart(fresh(id),{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:'#4f8cff',borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#2a313c'},ticks:{color:'#5b6675',font:{size:10}}},y:{grid:{display:false},ticks:{color:'#e6edf3',font:{size:11}}}}}); }
+
+loadCfg();
+</script>
+</body>
+</html>
