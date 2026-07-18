@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>GeoSeoToday 外鏈追蹤器</title>
+<style>
+  :root{--bg:#0e1116;--panel:#171b22;--panel2:#1f242d;--line:#2a313c;--txt:#e6edf3;--dim:#9aa4b2;
+    --accent:#4f8cff;--cta:#f97316;--good:#3fb950;--warn:#d29922;--bad:#f85149;--radius:12px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"Segoe UI","Noto Sans TC",Roboto,Arial,sans-serif;line-height:1.5;padding:22px;font-size:14px}
+  .wrap{max-width:1100px;margin:0 auto}
+  h1{font-size:20px;margin:0 0 2px}
+  .sub{color:var(--dim);font-size:13px;margin:0 0 16px}
+  button,select,input{font-family:inherit;font-size:13px}
+  .btn{background:var(--panel2);color:var(--txt);border:1px solid var(--line);padding:7px 12px;border-radius:8px;cursor:pointer}
+  .btn.cta{background:var(--cta);color:#131313;border:none;font-weight:700}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px 14px}
+  .stat .l{font-size:12px;color:var(--dim)}
+  .stat .v{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;position:sticky;top:0;background:var(--bg)}
+  td a{color:var(--accent);text-decoration:none}
+  td a:hover{text-decoration:underline}
+  select.st{border:1px solid var(--line);border-radius:99px;padding:3px 8px;background:var(--panel2);color:var(--txt);font-size:11.5px}
+  input.note{width:100%;background:transparent;border:1px solid transparent;border-radius:6px;padding:4px 6px;color:var(--txt)}
+  input.note:hover,input.note:focus{border-color:var(--line);background:var(--panel2);outline:none}
+  .cat{font-size:11px;color:var(--dim)}
+  .del{color:var(--bad);cursor:pointer;background:none;border:none;font-size:14px}
+  .add{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px;margin-top:14px;display:grid;grid-template-columns:1.2fr 2fr 1fr auto;gap:8px}
+  .add input{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px;color:var(--txt)}
+  .note-hint{color:var(--dim);font-size:12px;margin-top:14px}
+  .warn{color:var(--warn)}
+  @media(max-width:720px){.add{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>外鏈追蹤器</h1>
+  <p class="sub">已預載 25 個實查過的目標 · 資料存你的瀏覽器(localStorage) · 配 backlink-outreach-templates.md 的信件用</p>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="bar">
+    <label style="color:var(--dim);font-size:12px">篩選：</label>
+    <select id="fStatus" class="btn" onchange="render()">
+      <option value="">全部狀態</option><option>待投稿</option><option>已投稿</option><option>已上線</option><option>拒絕</option><option>略過</option>
+    </select>
+    <select id="fCat" class="btn" onchange="render()"><option value="">全部類別</option></select>
+    <span style="flex:1"></span>
+    <button class="btn" onclick="exportCsv()">匯出 CSV</button>
+    <button class="btn" onclick="if(confirm('重設回預載的 25 個目標？你的狀態會清掉。'))reset()">重設</button>
+  </div>
+
+  <table>
+    <thead><tr><th style="width:96px">狀態</th><th>目標</th><th style="width:90px">類別</th><th style="width:120px">難度/型式</th><th style="width:88px">日期</th><th>備註</th><th></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <div class="add">
+    <input id="aName" placeholder="目標名稱">
+    <input id="aUrl" placeholder="https://…">
+    <input id="aCat" placeholder="類別（如 AI目錄）">
+    <button class="btn cta" onclick="addRow()">+ 新增</button>
+  </div>
+  <p class="note-hint">狀態改成「已投稿」會自動填今天日期。<span class="warn">⚠️ 標註的目標(Dang.ai / TAAFT)先確認現行條款再投。</span> 小提醒：一天投 5 個、寫人味信，別群發。</p>
+</div>
+
+<script>
+var SEED=[
+  ['AlternativeTo','https://alternativeto.net/','AI目錄','免費·易'],
+  ['Hacker News（Show HN）','https://news.ycombinator.com/showhn.html','發佈','免費·易·用llms.txt'],
+  ['OpenFuture.ai','https://openfuture.ai/submit-tool','AI目錄','免費·易'],
+  ['SaaSHub','https://www.saashub.com/services/submit','AI目錄','免費·易'],
+  ['Peerlist Launch','https://peerlist.io/launch','發佈','免費·易·週一'],
+  ['awesome-GEO (amplifying-ai)','https://github.com/amplifying-ai/awesome-generative-engine-optimization','GitHub清單','免費·易·PR·超貼題'],
+  ['Answer-Engine-Optimization','https://github.com/geotoolco/Answer-Engine-Optimization','GitHub清單','免費·易·PR'],
+  ['GEO-tools (izak-fisher)','https://github.com/izak-fisher/generative-engine-optimization-tools','GitHub清單','免費·易·PR'],
+  ['awesome-geo (tentenco)','https://github.com/tentenco/awesome-geo','GitHub清單','免費·易·PR'],
+  ['Future Tools','https://futuretools.io/submit-a-tool','AI目錄','免費·中'],
+  ['PoweredByAI','https://poweredbyai.app/','AI目錄','免費·易'],
+  ['AIToolSync','https://aitoolsync.com/submit-a-tool','AI目錄','免費·易·較新'],
+  ['AI Tools Directory','https://aitoolsdirectory.com/submit-tool','AI目錄','免費·中'],
+  ['Toolify.ai','https://www.toolify.ai/submit','AI目錄','免費·中·排隊2-4週'],
+  ['Smol Launch','https://smollaunch.com/','發佈','免費·中'],
+  ['Dang.ai','https://dang.ai/','AI目錄','⚠️需放徽章·先確認'],
+  ["There's An AI For That",'https://theresanaiforthat.com/','AI目錄','⚠️查現行表單'],
+  ['Indie Hackers','https://www.indiehackers.com/','發佈','免費·易·長期'],
+  ['Product Hunt','https://www.producthunt.com/','發佈','免費·中·需launch day'],
+  ['BetaList','https://betalist.com/submit','發佈','免費·慢·排隊2-4月'],
+  ['G2（基本檔案）','https://sell.g2.com/create-a-profile','目錄','免費·易·DA高'],
+  ['Capterra','https://www.capterra.com/','目錄','免費·中·claim'],
+  ['Backlinko — Best SEO Tools','https://backlinko.com/best-free-seo-tools','資源頁','信件·難·高值'],
+  ['Marketer Milk','https://www.marketermilk.com/blog/best-seo-tools','資源頁','信件·中'],
+  ['Nightwatch','https://nightwatch.io/blog/best-free-seo-tools/','資源頁','信件·中']
+];
+var STATUSES=['待投稿','已投稿','已上線','拒絕','略過'];
+var COLOR={'待投稿':'#9aa4b2','已投稿':'#4f8cff','已上線':'#3fb950','拒絕':'#f85149','略過':'#5b6675'};
+var DATA=[];
+
+function load(){
+  try{ DATA=JSON.parse(localStorage.getItem('bl_tracker')||'null'); }catch(e){ DATA=null; }
+  if(!DATA){ reset(false); }
+  buildCatFilter();
+  render();
+}
+function save(){ localStorage.setItem('bl_tracker',JSON.stringify(DATA)); }
+function reset(re){ DATA=SEED.map(function(s,i){return {id:'s'+i,name:s[0],url:s[1],cat:s[2],diff:s[3],status:'待投稿',date:'',note:''};}); save(); if(re!==false){ buildCatFilter(); render(); } }
+function today(){ var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+
+function setStatus(id,v){ var r=DATA.find(function(x){return x.id===id;}); r.status=v; if(v==='已投稿'&&!r.date)r.date=today(); if(v==='已上線'&&!r.date)r.date=today(); save(); render(); }
+function setNote(id,v){ var r=DATA.find(function(x){return x.id===id;}); r.note=v; save(); }
+function del(id){ DATA=DATA.filter(function(x){return x.id!==id;}); save(); render(); }
+function addRow(){ var n=aName.value.trim(),u=aUrl.value.trim(); if(!n)return; DATA.unshift({id:'u'+Date.now(),name:n,url:u,cat:aCat.value.trim()||'自訂',diff:'',status:'待投稿',date:'',note:''}); aName.value=aUrl.value=aCat.value=''; save(); buildCatFilter(); render(); }
+
+function buildCatFilter(){ var cats=[].concat.apply([],DATA.map(function(d){return d.cat;})).filter(function(v,i,a){return a.indexOf(v)===i;}); var s=document.getElementById('fCat'); var cur=s.value; s.innerHTML='<option value="">全部類別</option>'+cats.map(function(c){return '<option>'+c+'</option>';}).join(''); s.value=cur; }
+
+function render(){
+  var fs=document.getElementById('fStatus').value, fc=document.getElementById('fCat').value;
+  var rows=DATA.filter(function(d){return (!fs||d.status===fs)&&(!fc||d.cat===fc);});
+  document.getElementById('rows').innerHTML=rows.map(function(d){
+    var opts=STATUSES.map(function(s){return '<option'+(s===d.status?' selected':'')+'>'+s+'</option>';}).join('');
+    return '<tr>'
+      +'<td><select class="st" style="color:'+COLOR[d.status]+'" onchange="setStatus(\''+d.id+'\',this.value)">'+opts+'</select></td>'
+      +'<td><a href="'+d.url+'" target="_blank" rel="noopener">'+d.name+'</a></td>'
+      +'<td class="cat">'+d.cat+'</td>'
+      +'<td class="cat">'+(d.diff||'')+'</td>'
+      +'<td class="cat">'+(d.date||'')+'</td>'
+      +'<td><input class="note" value="'+(d.note||'').replace(/"/g,'&quot;')+'" placeholder="回覆情況/聯絡人…" onchange="setNote(\''+d.id+'\',this.value)"></td>'
+      +'<td><button class="del" title="刪除" onclick="del(\''+d.id+'\')">×</button></td>'
+      +'</tr>';
+  }).join('')||'<tr><td colspan="7" class="cat">沒有符合的項目</td></tr>';
+
+  var c=function(s){return DATA.filter(function(d){return d.status===s;}).length;};
+  var live=c('已上線'), sent=c('已投稿'), rej=c('拒絕'), att=live+sent+rej;
+  var wk=DATA.filter(function(d){return d.date&&(new Date()-new Date(d.date))/864e5<=7&&(d.status==='已投稿'||d.status==='已上線');}).length;
+  document.getElementById('stats').innerHTML=[
+    ['總目標',DATA.length,'var(--txt)'],['待投稿',c('待投稿'),'var(--dim)'],['已投稿',sent,'var(--accent)'],
+    ['已上線',live,'var(--good)'],['成功率',att?Math.round(live/att*100)+'%':'—','var(--good)'],['本週投稿',wk,'var(--cta)']
+  ].map(function(s){return '<div class="stat"><div class="l">'+s[0]+'</div><div class="v" style="color:'+s[2]+'">'+s[1]+'</div></div>';}).join('');
+}
+
+function exportCsv(){
+  var h=['name','url','cat','difficulty','status','date','note'];
+  var rows=DATA.map(function(d){return [d.name,d.url,d.cat,d.diff,d.status,d.date,d.note].map(function(v){return '"'+String(v||'').replace(/"/g,'""')+'"';}).join(',');});
+  var csv=h.join(',')+'\n'+rows.join('\n');
+  var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='backlink-tracker.csv'; a.click();
+}
+load();
+</script>
+</body>
+</html>
