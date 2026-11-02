@@ -15,6 +15,8 @@ const blog = defineCollection({
     date_published: z.coerce.date(),
     date_updated: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    // 已跑過優化批次（補外部來源＋輪替式同群集延伸閱讀）；由每週排程逐批開啟
+    enhanced: z.boolean().default(false),
     // 有其他語言版本時填，供 hreflang 使用：{ 'zh-hant': 'what-is-geo', en: 'what-is-geo' }
     translations: z.record(z.string()).optional(),
   }),

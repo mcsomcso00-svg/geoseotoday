@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { AUTHOR } from '../../../consts';
 
 export async function getStaticPaths() {
   const now = new Date();
@@ -15,6 +16,7 @@ const { post } = Astro.props;
 const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
 const { Content } = await render(post);
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
+const authorPath = `/${lang}/about/`;
 
 // hreflang：本文 + frontmatter.translations 指到的其他語言版本
 const slug = post.id.split('/').slice(1).join('/');
@@ -33,7 +35,14 @@ const articleSchema = {
   '@type': 'Article',
   headline: post.data.title,
   description: post.data.description,
-  author: { '@type': 'Organization', name: post.data.author },
+  author: {
+    '@type': 'Person',
+    name: AUTHOR.name,
+    alternateName: AUTHOR.displayName,
+    url: new URL(authorPath, Astro.site).toString(),
+    worksFor: { '@type': 'Organization', name: 'GeoSeoToday', url: Astro.site?.toString() },
+    ...(AUTHOR.sameAs.length ? { sameAs: AUTHOR.sameAs } : {}),
+  },
   publisher: { '@type': 'Organization', name: 'GeoSeoToday' },
   image: { '@type': 'ImageObject', url: new URL(ogPath, Astro.site).toString(), width: 1200, height: 630 },
   datePublished: post.data.date_published.toISOString(),
@@ -70,21 +79,38 @@ const BC = {
   en: { home: 'Home', blog: 'Blog' },
 }[lang];
 
-// 相關文章：同群集、日期已上線、排除自己，取 3 篇（提升 session 深度）
+// 相關文章：同群集、日期已上線、排除自己
+// - enhanced 文章：取群集內（依日期排序、頭尾相接）前後各 3 篇，共 6 篇 → 每篇都分到入站連結，不再集中在最新幾篇
+// - 其他文章：維持原本「最新 3 篇」
 const now = new Date();
-const related = (
+const clusterPosts = (
   await getCollection(
     'blog',
     (p) =>
       p.id.startsWith(`${lang}/`) &&
       !p.data.draft &&
       p.data.date_published <= now &&
-      p.id !== post.id &&
       p.data.cluster === post.data.cluster
   )
-)
-  .sort((a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf())
-  .slice(0, 3);
+).sort((a, b) => a.data.date_published.valueOf() - b.data.date_published.valueOf() || a.id.localeCompare(b.id));
+let related: typeof clusterPosts;
+if (post.data.enhanced) {
+  const i = clusterPosts.findIndex((p) => p.id === post.id);
+  const n = clusterPosts.length;
+  const picks = new Map<string, (typeof clusterPosts)[number]>();
+  for (let d = 1; d < n && picks.size < 6; d++) {
+    for (const j of [i - d, i + d]) {
+      const p = clusterPosts[((j % n) + n) % n];
+      if (p.id !== post.id && picks.size < 6) picks.set(p.id, p);
+    }
+  }
+  related = [...picks.values()];
+} else {
+  related = clusterPosts
+    .filter((p) => p.id !== post.id)
+    .reverse()
+    .slice(0, 3);
+}
 
 // 文末轉換卡文案
 const CTA = {
@@ -94,6 +120,8 @@ const CTA = {
     primary: '免費領取診斷報告',
     secondary: '先用免費檢測器試試',
     related: '延伸閱讀',
+    updated: '更新',
+    by: '作者',
   },
   'zh-hans': {
     title: '想知道你的网站离「被 AI 引用」还有多远？',
@@ -101,6 +129,8 @@ const CTA = {
     primary: '免费领取诊断报告',
     secondary: '先用免费检测器试试',
     related: '延伸阅读',
+    updated: '更新',
+    by: '作者',
   },
   en: {
     title: 'How far is your site from being cited by AI?',
@@ -108,6 +138,8 @@ const CTA = {
     primary: 'Get my free audit report',
     secondary: 'Try the free checker first',
     related: 'Related articles',
+    updated: 'Updated',
+    by: 'By',
   },
 }[lang];
 const breadcrumbs = [
@@ -128,8 +160,8 @@ const breadcrumbs = [
   <article>
     <img class="post-cover" src={ogPath} alt="" width="1200" height="630" loading="eager" fetchpriority="high" />
     <p class="post-meta">
-      {post.data.author} · {fmt(post.data.date_published)}
-      {post.data.date_updated && ` · 更新 ${fmt(post.data.date_updated)}`}
+      {CTA.by} <a href={authorPath} rel="author">{AUTHOR.displayName}</a> · {fmt(post.data.date_published)}
+      {post.data.date_updated && post.data.date_updated > post.data.date_published && ` · ${CTA.updated} ${fmt(post.data.date_updated)}`}
       {post.data.cluster && ` · ${post.data.cluster}`}
     </p>
     <Content />

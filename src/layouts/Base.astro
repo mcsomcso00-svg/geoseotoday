@@ -54,10 +54,10 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length
     }
   : null;
 const allSchemas = [orgSchema, websiteSchema, ...(breadcrumbSchema ? [breadcrumbSchema] : []), ...schemas];
-const NAV: Record<string, { home: string; blog: string; geo: string; aio: string; audit: string }> = {
-  'zh-hant': { home: '首頁', blog: '部落格', geo: 'GEO 檢測', aio: 'AIO', audit: '免費診斷' },
-  'zh-hans': { home: '首页', blog: '博客', geo: 'GEO 检测', aio: 'AIO', audit: '免费诊断' },
-  en: { home: 'Home', blog: 'Blog', geo: 'GEO Checker', aio: 'AIO', audit: 'Free Audit' },
+const NAV: Record<string, { home: string; blog: string; geo: string; aio: string; audit: string; about: string }> = {
+  'zh-hant': { home: '首頁', blog: '部落格', geo: 'GEO 檢測', aio: 'AIO', audit: '免費診斷', about: '關於作者' },
+  'zh-hans': { home: '首页', blog: '博客', geo: 'GEO 检测', aio: 'AIO', audit: '免费诊断', about: '关于作者' },
+  en: { home: 'Home', blog: 'Blog', geo: 'GEO Checker', aio: 'AIO', audit: 'Free Audit', about: 'About' },
 };
 const nav = NAV[lang];
 ---
@@ -126,7 +126,7 @@ const nav = NAV[lang];
     </header>
     <main><slot /></main>
     <footer class="site-footer">
-      <p>© 2026 GeoSeoToday · <a href={`/${lang}/blog/`}>{nav.blog}</a> · <a href={`/${lang}/geo/`}>{nav.geo}</a> · <a href={`/${lang}/audit/`} data-ga="footer_audit">{nav.audit}</a></p>
+      <p>© 2026 GeoSeoToday · <a href={`/${lang}/blog/`}>{nav.blog}</a> · <a href={`/${lang}/geo/`}>{nav.geo}</a> · <a href={`/${lang}/audit/`} data-ga="footer_audit">{nav.audit}</a> · <a href={`/${lang}/about/`}>{nav.about}</a></p>
     </footer>
     <!-- GA4: delegated CTA click tracking -->
     <script is:inline>

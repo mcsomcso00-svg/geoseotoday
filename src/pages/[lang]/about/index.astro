@@ -1,0 +1,106 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { AUTHOR } from '../../../consts';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh-hant' } }, { params: { lang: 'zh-hans' } }, { params: { lang: 'en' } }];
+}
+const lang = Astro.params.lang as 'zh-hant' | 'zh-hans' | 'en';
+
+// 作者／關於頁：Person 實體（E-E-A-T、GEO 實體清晰度）。
+// 簡介只寫網站實際做的事；名字與社群帳號統一由 consts.ts 的 AUTHOR 管理。
+const T = {
+  'zh-hant': {
+    title: `關於作者 ${AUTHOR.displayName} — GeoSeoToday`,
+    desc: `${AUTHOR.displayName} 經營 GeoSeoToday，以繁中、简中、English 三語撰寫 SEO、GEO 與 AIO 實戰內容，並開發免費的 GEO 檢測工具。`,
+    h1: `關於作者：${AUTHOR.displayName}`,
+    home: '首頁',
+    crumb: '關於作者',
+    paras: [
+      `${AUTHOR.displayName} 是 GeoSeoToday 的作者與經營者。`,
+      '這個網站專注三件事：讓內容在 Google 取得排名（SEO）、被 ChatGPT、Perplexity、Google AI Overview 等生成式引擎引用（GEO），以及針對 AI 搜尋的整體優化（AIO）。',
+      '所有內容以繁體中文、简体中文與 English 三種語言發布，涵蓋六個主題群集：GEO、AI 內容產線、On-page 與技術 SEO、Off-page 與關鍵字研究、多語言／國際 SEO、AIO。',
+      '網站也提供免費工具，包括 GEO 就緒度檢測器與 llms.txt 產生器，讓你直接檢查自己的內容。',
+    ],
+    linksTitle: '從這裡開始',
+    links: [
+      { label: '全部文章', href: `/${lang}/blog/` },
+      { label: 'GEO 就緒度檢測器', href: `/${lang}/geo/` },
+      { label: 'llms.txt 產生器', href: `/${lang}/aio/` },
+      { label: '免費網站診斷', href: `/${lang}/audit/` },
+    ],
+  },
+  'zh-hans': {
+    title: `关于作者 ${AUTHOR.displayName} — GeoSeoToday`,
+    desc: `${AUTHOR.displayName} 经营 GeoSeoToday，以繁中、简中、English 三语撰写 SEO、GEO 与 AIO 实战内容，并开发免费的 GEO 检测工具。`,
+    h1: `关于作者：${AUTHOR.displayName}`,
+    home: '首页',
+    crumb: '关于作者',
+    paras: [
+      `${AUTHOR.displayName} 是 GeoSeoToday 的作者与经营者。`,
+      '这个网站专注三件事：让内容在 Google 获得排名（SEO）、被 ChatGPT、Perplexity、Google AI Overview 等生成式引擎引用（GEO），以及针对 AI 搜索的整体优化（AIO）。',
+      '所有内容以繁体中文、简体中文与 English 三种语言发布，涵盖六个主题群集：GEO、AI 内容产线、On-page 与技术 SEO、Off-page 与关键字研究、多语言／国际 SEO、AIO。',
+      '网站也提供免费工具，包括 GEO 就绪度检测器与 llms.txt 生成器，让你直接检查自己的内容。',
+    ],
+    linksTitle: '从这里开始',
+    links: [
+      { label: '全部文章', href: `/${lang}/blog/` },
+      { label: 'GEO 就绪度检测器', href: `/${lang}/geo/` },
+      { label: 'llms.txt 生成器', href: `/${lang}/aio/` },
+      { label: '免费网站诊断', href: `/${lang}/audit/` },
+    ],
+  },
+  en: {
+    title: `About the author: ${AUTHOR.displayName} — GeoSeoToday`,
+    desc: `${AUTHOR.displayName} runs GeoSeoToday, publishing practical SEO, GEO and AIO content in English, Traditional Chinese and Simplified Chinese, plus free GEO tools.`,
+    h1: `About the author: ${AUTHOR.displayName}`,
+    home: 'Home',
+    crumb: 'About',
+    paras: [
+      `${AUTHOR.displayName} writes and runs GeoSeoToday.`,
+      'The site focuses on three things: ranking content on Google (SEO), getting it cited by generative engines such as ChatGPT, Perplexity and Google AI Overviews (GEO), and optimizing for AI search as a whole (AIO).',
+      'Everything is published in three languages — English, Traditional Chinese and Simplified Chinese — across six topic clusters: GEO, AI content workflows, on-page and technical SEO, off-page SEO and keyword research, multilingual SEO, and AIO.',
+      'The site also offers free tools, including a GEO readiness checker and an llms.txt generator, so you can test your own content directly.',
+    ],
+    linksTitle: 'Start here',
+    links: [
+      { label: 'All articles', href: `/${lang}/blog/` },
+      { label: 'GEO readiness checker', href: `/${lang}/geo/` },
+      { label: 'llms.txt generator', href: `/${lang}/aio/` },
+      { label: 'Free site audit', href: `/${lang}/audit/` },
+    ],
+  },
+}[lang];
+
+const selfPath = `/${lang}/about/`;
+const alternates = { 'zh-hant': '/zh-hant/about/', 'zh-hans': '/zh-hans/about/', en: '/en/about/' };
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  url: new URL(selfPath, Astro.site).toString(),
+  mainEntity: {
+    '@type': 'Person',
+    name: AUTHOR.name,
+    alternateName: AUTHOR.displayName,
+    url: new URL(selfPath, Astro.site).toString(),
+    description: T.desc,
+    knowsAbout: ['SEO', 'Generative Engine Optimization', 'AI search optimization', 'Multilingual SEO'],
+    worksFor: { '@type': 'Organization', name: 'GeoSeoToday', url: Astro.site?.toString() },
+    ...(AUTHOR.sameAs.length ? { sameAs: AUTHOR.sameAs } : {}),
+  },
+};
+const breadcrumbs = [
+  { name: T.home, url: `/${lang}/` },
+  { name: T.crumb, url: selfPath },
+];
+---
+<Base title={T.title} description={T.desc} lang={lang} alternates={alternates} schemas={[personSchema]} breadcrumbs={breadcrumbs}>
+  <article>
+    <h1>{T.h1}</h1>
+    {T.paras.map((p) => <p>{p}</p>)}
+    <h2>{T.linksTitle}</h2>
+    <ul>
+      {T.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
+  </article>
+</Base>
