@@ -6,7 +6,9 @@ Runs twice a week (Mon + Thu). Each run upgrades **5 articles × 3 languages = 1
 Google trust in this site is low (many pages "discovered/crawled – not indexed", impressions near zero) and no article cites any external source. Each enhanced article gets (a) clickable, verified primary sources for its key claims, (b) corrections where a claim turns out wrong or outdated, and (c) the `enhanced: true` flag, which switches its related-links block from "3 newest in cluster" to "6 rotating same-cluster neighbours" (see `src/pages/[lang]/blog/[...slug].astro`).
 
 ## Step 1 — pick the batch
-List `src/content/blog/zh-hant/*.md` whose frontmatter does NOT contain `enhanced: true`. Sort by `date_published` ascending, then slug. Take the first 5. Skip any slug that lacks an `en/` or `zh-hans/` twin with the same slug (report it). If fewer than 5 remain, do what is left; if none remain, report "all articles enhanced" and stop.
+**First** take slugs from `automation/priority-refresh.md` (rows with status `todo`, top to bottom, honouring each row's "When" rule). For those slugs, also apply the row's specific "What to change" in all three languages, and mark the row `done YYYY-MM-DD` when all its slugs are finished. If a priority slug is already `enhanced: true`, still apply its specific change and bump `date_updated`.
+
+Fill the rest of the batch from `src/content/blog/zh-hant/*.md` whose frontmatter does NOT contain `enhanced: true`. Sort by `date_published` ascending, then slug. Take the first 5. Skip any slug that lacks an `en/` or `zh-hans/` twin with the same slug (report it). If fewer than 5 remain, do what is left; if none remain, report "all articles enhanced" and stop.
 
 ## Step 2 — per article (zh-hant first, then en, then zh-hans)
 1. Read the zh-hant file and identify the 2–5 most important factual claims (definitions, numbers, dates, how a platform behaves, official guidance).
@@ -27,10 +29,10 @@ List `src/content/blog/zh-hant/*.md` whose frontmatter does NOT contain `enhance
 - YAML: any `title:`/`description:` containing a halfwidth `:` must be wrapped in double quotes.
 - `node automation/score.cjs <the 5 zh-hant files>` → every file PASS (≥75).
 - `npm ci` (if `node_modules` is missing) then `npx astro build` must complete. Astro 7 needs Node ≥22; if the sandbox Node is older and you cannot upgrade it, skip the build, say so in the report, and rely on the YAML check.
-- `git diff --stat` shows exactly the 15 expected files (plus nothing else).
+- `git diff --stat` shows only the expected article files (3 per slug) plus `automation/priority-refresh.md` if you updated it.
 
 ## Step 4 — commit and push
-`git add` the 15 files, commit `Enhancement batch YYYY-MM-DD: <slug1>, <slug2>, …` and push to `main` (pushing to main triggers the GitHub Pages deploy). If pushing to `main` is refused, push a branch `enhance/YYYY-MM-DD` and open a pull request instead, and say so.
+`git add` those files, commit `Enhancement batch YYYY-MM-DD: <slug1>, <slug2>, …` and push to `main` (pushing to main triggers the GitHub Pages deploy). If pushing to `main` is refused, push a branch `enhance/YYYY-MM-DD` and open a pull request instead, and say so.
 
 ## Report (≤10 lines)
 Slugs done, number of sources added per slug, any claims corrected or removed (one line each), gate results, commit hash / PR link, and how many zh-hant articles are still not enhanced.

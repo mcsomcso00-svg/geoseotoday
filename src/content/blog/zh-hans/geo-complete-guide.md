@@ -6,7 +6,8 @@ intent: commercial
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-02
+enhanced: true
 translations:
   zh-hant: geo-complete-guide
   en: geo-complete-guide
@@ -17,16 +18,22 @@ translations:
 
 ## 为什么你需要一份 GEO 指南
 
-搜索的终点正在从「十个蓝色链接」移到「一段 AI 生成的答案」。2023 年普林斯顿大学等机构发表的 GEO 论文首次系统化验证：通过调整内容写法（加入统计数据、引用来源、专业术语），页面在生成式引擎答案中的可见度最多可提升约 40%。这个研究用 10,000 笔查询建立 GEO-bench 基准，也让「生成式引擎优化」正式成为一门可实验、可量化的学科。
+搜索的终点正在从「十个蓝色链接」移到「一段 AI 生成的答案」。2023 年普林斯顿大学等机构发表的 [GEO 论文](https://arxiv.org/abs/2311.09735)首次系统化验证：通过调整内容写法（例如加入统计数据、引述与引用来源），页面在生成式引擎答案中的可见度最多可提升约 40%。这个研究用 10,000 笔查询建立 GEO-bench 基准，也让「生成式引擎优化」正式成为一门可实验、可量化的学科。需要留意的是，论文的实验是以研究者自建的生成式引擎（GPT-3.5-turbo 搭配前五条 Google 结果）为主，另外在 Perplexity 上做了验证，结果不能直接当成所有引擎的保证。
 
 换句话说：GEO 不是玄学，而是一组可以逐项执行、逐项验收的工程。本指南就是那张总地图——每一节先给你结论，再连到本站的深入教学。
+
+## Google 官方怎么说
+
+Google 在 Search Central 的〈[Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)〉指南中，把 AEO 与 GEO 都视为提升 AI 搜索可见度的工作，并表示为生成式 AI 搜索优化就是为搜索体验优化，「仍然是 SEO」。指南同时列出它认为对 Google 搜索不必要的做法：创建 llms.txt 等 AI 专用文件、把内容切块、为 AI 系统专门改写内容、刻意制造网络「提及」，以及过度执着于结构化数据。
+
+我们怎么看：这与本指南的主轴并不冲突——可被收录、内容有用、主题权威这个共用地基，本来就是 GEO 的前提，所以本指南的重点放在「写得清楚、有数据、可被摘录」，而不是技术花招。但 Google 的指南只涵盖 Google 自家的 AI 功能（AI Overview、AI Mode 等），并未讨论 ChatGPT、Perplexity；这些引擎有各自的爬虫与规则（见第二步）。因此本指南把对 Google 的做法与对其他引擎的检查分开看：前者回到 SEO 基本功，后者才需要逐一确认爬虫与引用行为。与传统 SEO 的并列比较表见〈[GEO 与 SEO 有什么不同](/zh-hans/blog/geo-vs-seo/)〉。
 
 ## 第一步：搞懂 GEO 是什么、和 SEO 差在哪
 
 GEO 的目标不是排名，而是**被引用**。当用户问 AI 一个问题，AI 会检索若干来源、综合成答案，并附上引用链接——你要争的就是那几个引用位。它与 SEO 共用底层（语义覆盖、主题权威），但评分者从 Google 算法换成了 LLM 的检索与生成机制。
 
 三个入门观念：
-1. **被读懂**：AI 爬虫（GPTBot、PerplexityBot、Google-Extended）能抓取并解析你的页面。
+1. **被读懂**：AI 搜索爬虫（如 OAI-SearchBot、PerplexityBot）与 Googlebot 能抓取并解析你的页面。
 2. **被信任**：作者、品牌、Schema、E-E-A-T 信号完整。
 3. **被引用**：段落自包含、具体、有数据，AI 可以直接摘录。
 
@@ -38,11 +45,11 @@ GEO 的目标不是排名，而是**被引用**。当用户问 AI 一个问题�
 
 | 引擎 | 检索特性 | 优化重点 |
 |---|---|---|
-| ChatGPT（搜索） | 依 Bing 索引＋自家爬虫 | 允许 GPTBot、段落自包含、品牌实体清晰 |
+| ChatGPT（搜索） | 由 OpenAI 的搜索爬虫 OAI-SearchBot 决定是否呈现网站 | 允许 OAI-SearchBot、段落自包含、品牌实体清晰 |
 | Perplexity | 实时检索、重视新鲜度 | 明确日期、数据密度、来源标注 |
 | Google AI Overview | 依 Google 索引与排名信号 | 传统 SEO 底子＋可摘录段落＋Schema |
 
-在动手优化前，先确认技术前提：检查你的 robots.txt 没有封锁这些 AI 爬虫。很多网站在 2023–2024 年跟风封锁了 GPTBot，后来想做 GEO 才发现自己早就把门关上了。确认方式很简单：打开 `你的域名/robots.txt`，搜索 GPTBot、PerplexityBot、Google-Extended 三个字符串，确定没有对它们 Disallow 全站。另外，Google AI Overview 走的是一般 Googlebot 索引，Google-Extended 控制的是 Gemini 训练用途——两者常被搞混，封锁前务必分清楚。
+在动手优化前，先确认技术前提：检查你的 robots.txt 没有封锁这些 AI 搜索爬虫。依 [OpenAI 的说明](https://developers.openai.com/api/docs/bots)，OAI-SearchBot 负责让网站出现在 ChatGPT 搜索结果，GPTBot 则是用于模型训练的爬虫，两者的 robots.txt 设置彼此独立——封锁 GPTBot 不等于退出 ChatGPT 搜索，但封锁 OAI-SearchBot 会让网站无法出现在搜索答案中。[Perplexity 的说明](https://docs.perplexity.ai/guides/bots)则指出，PerplexityBot 负责在其搜索结果中呈现并链接网站，想被呈现就应在 robots.txt 允许它。确认方式很简单：打开 `你的域名/robots.txt`，搜索 OAI-SearchBot、PerplexityBot 两个字符串，确定没有对它们 Disallow 全站（是否允许 GPTBot 属于「是否同意内容用于训练」的另一个决定）。另外，Google AI Overview 走的是一般 Googlebot 索引，Google-Extended 只是控制内容可否用于 Gemini 训练与 grounding 的 robots.txt 标记，依 [Google 的文档](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)，它不影响网站在 Google 搜索中的收录，也不是排名信号——两者常被搞混，封锁前务必分清楚。
 
 三者的共通点是：**它们都引用「答得最干净的那一段」，而不是「网站最大的那一家」**。针对单一引擎的实战步骤，分别见〈[如何让 ChatGPT 引用你的网站内容](/zh-hans/blog/cited-by-chatgpt/)〉与〈[如何被 Perplexity 当作来源引用](/zh-hans/blog/cited-by-perplexity/)〉。
 
@@ -77,7 +84,7 @@ AI 引擎在判断「这是谁写的、讲什么、多新」时，结构化数�
 GEO 的失败模式很集中，常见的包括：
 1. 开头铺陈 300 字才进入重点（AI 摘不到结论）。
 2. 通篇形容词、零数据（没有可引用的硬信息）。
-3. robots.txt 封锁了 GPTBot 或 Google-Extended（直接出局）。
+3. robots.txt 封锁了 OAI-SearchBot 或 PerplexityBot（对应的搜索引擎直接出局）。
 4. 没有日期或日期过旧（新鲜度信号缺失）。
 5. 同一主题只有一篇孤文，缺乏集群支撑（实体权威不足）。
 6. 内容正确但写法松散，被写得更干净的对手抢走引用位。
@@ -88,7 +95,7 @@ GEO 的失败模式很集中，常见的包括：
 
 GEO 没有官方的 Search Console，追踪要自己建：
 - **引用监测**：每月拿 10–20 个目标问题去问 ChatGPT（开启搜索）、Perplexity、AI Overview，记录你是否出现在引用来源。
-- **爬虫日志**：在服务器 log 过滤 GPTBot、PerplexityBot、Google-Extended 的抓取频率。
+- **爬虫日志**：在服务器 log 过滤 OAI-SearchBot、GPTBot、PerplexityBot 的抓取频率（Google-Extended 没有独立的 user agent，无法在 log 中单独过滤）。
 - **推荐流量**：在 GA4 分离 chatgpt.com、perplexity.ai 的 referral。
 - **品牌搜索量**：被 AI 提及会反映在品牌词搜索增长上——用户在 AI 答案里看到你的名字之后，常见的下一步是直接搜索品牌名确认，这条间接路径在报表上不会标示来源，却是 GEO 成效最真实的下游指标。
 
@@ -107,6 +114,14 @@ GEO 没有官方的 Search Console，追踪要自己建：
 这 8 个检核点正好对应 AI 引擎挑选来源的信号。跑顺之后，一篇文章的 GEO 化成本会压到 30 分钟以内——这也是为什么 GEO 适合流程化而不是逐篇即兴发挥。
 
 另一个常被忽略的流程环节是**旧文回收**：GEO 的投资回报率最高的对象往往不是新文章，而是那些已经有排名、只差「可引用写法」的旧文。每季挑出 GSC 曝光前 20 名但未被 AI 引用的页面，套用上述清单重写开头与补数据，通常比写 20 篇新文更快看到引用增长。
+
+## 参考资料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等，arXiv，2023）
+- [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central，2026）
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
 
 ## 常见问题（FAQ）
 

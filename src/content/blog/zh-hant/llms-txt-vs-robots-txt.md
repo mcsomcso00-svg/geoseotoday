@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-08-05
-date_updated: 2026-08-05
+date_updated: 2026-11-02
+enhanced: true
 translations:
   zh-hans: llms-txt-vs-robots-txt
   en: llms-txt-vs-robots-txt
@@ -19,10 +20,14 @@ translations:
 
 先把兩個檔各自的職責釘死，後面所有取捨都從這裡推導：
 
-- **robots.txt** 是 1994 年就存在的爬蟲協定，放在根目錄，用 `User-agent` 加 `Allow`／`Disallow` 規範「哪隻爬蟲能不能存取哪些路徑」。它管的是**存取權限**，主流合規爬蟲（含 GPTBot、OAI-SearchBot、PerplexityBot、Google-Extended、ClaudeBot）會遵守。
-- **llms.txt** 是 2024 年由 Jeremy Howard／Answer.AI 提出的社群提案，同樣放根目錄，但用 Markdown 列出「這個網站最重要的頁面與說明」，目的是讓大型語言模型**更快抓到重點**。它管的是**理解與取材引導**，且截至 2026 年**尚未被任何主流引擎正式採用**。
+- **robots.txt** 是 1994 年就存在的爬蟲協定，放在根目錄，用 `User-agent` 加 `Allow`／`Disallow` 規範「哪隻爬蟲能不能存取哪些路徑」。它管的是**存取權限**（[Google 說明](https://developers.google.com/search/docs/crawling-indexing/robots/intro)它是告訴爬蟲可以存取哪些網址，並非把頁面排除在 Google 之外的機制），主流合規爬蟲（含 GPTBot、OAI-SearchBot、PerplexityBot、Google-Extended、ClaudeBot）會遵守。
+- **llms.txt** 是 2024 年由 Jeremy Howard／Answer.AI 提出的[社群提案](https://llmstxt.org/)，同樣放根目錄，但用 Markdown 列出「這個網站最重要的頁面與說明」，目的是讓大型語言模型**更快抓到重點**。它管的是**理解與取材引導**，且 Google 已表示 **Google 搜尋不使用它**（見下方「Google 的立場」）。
 
 關鍵差異一句話：**robots.txt 決定「讀不讀得到」，llms.txt 建議「先讀哪些」。** 前者是硬性的存取閘門，後者是軟性的閱讀建議。
+
+> **Google 的立場（2026-06-15 發布，2026-11-02 查證）**
+>
+> Google 於 2026 年 6 月 15 日在[搜尋文件更新日誌](https://developers.google.com/search/updates)澄清，並寫入其[生成式 AI 優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide#mythbusting)：Google 搜尋會忽略 llms.txt，建立它對 Google 搜尋的可見度與排名既不會有幫助、也不會有傷害；若想為其他服務或系統維護這類檔案，也沒有問題。所以下表中 llms.txt 的「取材引導」用途，只適用於會讀取它的其他服務，不適用於 Google 搜尋與 AI 總覽。
 
 ## 分工對照表：六個維度一次看懂
 
@@ -33,11 +38,11 @@ translations:
 | **管什麼** | 能不能爬（存取權限） | 該優先讀哪些重點（取材引導） | 有哪些網址（索引清單） |
 | **給誰看** | 所有爬蟲 | 大型語言模型（LLM） | 搜尋引擎 |
 | **格式** | 純文字指令（User-agent／Allow／Disallow） | Markdown（標題、清單、連結） | XML |
-| **是否強制** | 約定，合規爬蟲會遵守 | 純建議，且尚未被主流引擎採用 | 建議，引擎參考但不保證 |
-| **採用現況（2026）** | 全面通用、事實標準 | 提案階段，主流引擎未正式讀取 | 全面通用、事實標準 |
+| **是否強制** | 約定，合規爬蟲會遵守 | 純建議；Google 搜尋明確不使用 | 建議，引擎參考但不保證 |
+| **採用現況（2026）** | 全面通用、事實標準 | 提案階段；Google 搜尋不使用，其他服務各自而異 | 全面通用、事實標準 |
 | **設錯的代價** | 極高：一行 Disallow 就能讓整站對 AI 隱形 | 極低：頂多是沒效果，不會有壞處 | 中：漏網址影響索引，但爬蟲仍能自行發現 |
 
-這張表帶出一個最重要的實務結論：**robots.txt 是「不能設錯」的檔，llms.txt 是「設了加分、不設也不扣分」的檔。** 兩者的風險量級差好幾個數量級，投入的謹慎程度也該不同。
+這張表帶出一個最重要的實務結論：**robots.txt 是「不能設錯」的檔，llms.txt 是「對 Google 搜尋設了沒差、不設也不扣分」的檔。** 兩者的風險量級差好幾個數量級，投入的謹慎程度也該不同。
 
 ## 「誰負責什麼」情境矩陣：這個問題該動哪個檔？
 
@@ -48,9 +53,9 @@ translations:
 | 讓 ChatGPT 搜尋／Perplexity 讀得到我 | **robots.txt** | 放行 OAI-SearchBot、PerplexityBot（`Allow: /`） |
 | 不想內容被拿去訓練模型 | **robots.txt** | 封鎖訓練型爬蟲 GPTBot、ClaudeBot（`Disallow: /`） |
 | 擋掉某個 AI 爬蟲、保留一般 Google 排名 | **robots.txt** | 只 Disallow Google-Extended，不動 Googlebot |
-| 告訴 LLM「我站上最重要的三篇是哪三篇」 | **llms.txt** | 在 llms.txt 用 Markdown 列出核心頁加一句說明 |
+| 告訴 LLM「我站上最重要的三篇是哪三篇」 | **llms.txt** | 在 llms.txt 用 Markdown 列出核心頁加一句說明（僅對會讀取它的非 Google 服務有意義） |
 | 幫 LLM 省下解析導覽列／廣告的成本 | **llms.txt** | 提供精煉的 Markdown 網站導覽 |
-| 「我加了 llms.txt 但 AI 還是引用不到我」 | **先查 robots.txt** | 九成是爬蟲被擋或內容需 JS 才渲染，不是 llms.txt 的問題 |
+| 「我加了 llms.txt 但 AI 還是引用不到我」 | **先查 robots.txt** | 常見原因是爬蟲被擋或內容需 JS 才渲染；而且 Google 搜尋本來就不使用 llms.txt |
 
 最後一列是本文最想強調的反模式：**當 AI 引用不到你，第一個要檢查的永遠是 robots.txt 與爬蟲可達性，而不是急著寫 llms.txt。** llms.txt 解決的是「讀得到之後、讀得夠不夠精準」，它無法解決「根本讀不到」。順序錯了，力氣全白費。
 
@@ -58,16 +63,24 @@ translations:
 
 把兩個檔擺對先後，才不會本末倒置：
 
-1. **先修 robots.txt（地基，必做）**：確認沒有殘留的 `User-agent: * Disallow: /` 或把 AI 爬蟲全擋的舊設定。想被引用，至少放行檢索型爬蟲（OAI-SearchBot、PerplexityBot、Bingbot）與 Google-Extended。
+1. **先修 robots.txt（地基，必做）**：確認沒有殘留的 `User-agent: * Disallow: /` 或把 AI 爬蟲全擋的舊設定。想被引用，至少放行檢索型爬蟲（OAI-SearchBot、PerplexityBot、Bingbot）。Google-Extended 只管 Gemini 的訓練與 grounding 用途，[不影響 Google 搜尋的收錄與排名](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)，所以封鎖它不會讓你從 Google 搜尋消失。
 2. **驗證爬蟲真的讀得到（必做）**：開 `你的網域/robots.txt` 肉眼確認規則；查 access log 確認上述 user-agent 回應是 200 而非 403／404；確認重要內容不需 JavaScript 才渲染得出來。
 3. **確保內容本身可被引用（必做）**：答案優先段、清單、表格、明確作者實體——這才是真正決定被不被引用的主因。
-4. **最後才加 llms.txt（加分，選做）**：地基都穩了，再花十分鐘寫一份精煉的 llms.txt，當作前瞻性佈局。它不會現在就見效，但成本近乎零、未來有引擎採用時你已就緒。
+4. **最後才加 llms.txt（選做，非 Google 用途）**：地基都穩了，而且你確實有想服務的非 Google 工具，再花十分鐘寫一份精煉的 llms.txt。它對 Google 搜尋沒有效果，成本近乎零。
 
-一句話總結順序：**robots.txt 與爬蟲可達性是必做地基，llms.txt 是做完地基後的免費加分項。** 別把加分項當地基修。
+一句話總結順序：**robots.txt 與爬蟲可達性是必做地基，llms.txt 是做完地基後、與 Google 搜尋無關的選配。** 別把選配當地基修。
 
 ## 一個誠實的邊界：llms.txt 目前不是「見效手段」
 
-要說清楚避免誤導：**截至 2026 年，OpenAI、Google、Perplexity 等主流引擎尚未公開宣布正式讀取 llms.txt，所以加它現在不會直接提升你的 AI 可見度。** 它的價值是「成本極低的前瞻佈局」，不是「補上就會被引用」的開關。相對地，robots.txt 設對與否，是此刻就在影響你能不能被 AI 讀到的硬變數。所以資源有限時，順序永遠是：先把 robots.txt 與爬蟲可達性做對（高槓桿、立即生效），再把 llms.txt 當作有餘力時的加分（低槓桿、未來生效）。把兩者的權重擺對，才不會在錯的檔上過度投資。
+要說清楚避免誤導：**Google 已明確表示 Google 搜尋不使用 llms.txt，所以加它不會提升你在 Google 搜尋或 AI 總覽的表現，也不會有損害。** 它頂多是替「其他願意讀取它的服務或系統」準備的低成本選配；至於 OpenAI、Perplexity 等其他服務目前是否讀取，本文沒有逐一查證，請以各家官方文件為準。相對地，robots.txt 設對與否，是此刻就在影響爬蟲能不能讀到你的硬變數。所以資源有限時，順序永遠是：先把 robots.txt 與爬蟲可達性做對（高槓桿、立即生效），再把 llms.txt 當作有餘力、且確實有非 Google 使用情境時的選配。把兩者的權重擺對，才不會在錯的檔上過度投資。
+
+## 參考資料
+
+- [Google 搜尋文件更新日誌：Clarifying guidance on llms.txt files（2026-06-15）](https://developers.google.com/search/updates)（Google Search Central, 2026）
+- [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central, 2026）
+- [Introduction to robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro)（Google Search Central）
+- [Google's common crawlers：Google-Extended](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)（Google Crawling Infrastructure）
+- [llms.txt 提案](https://llmstxt.org/)（llmstxt.org，Jeremy Howard, 2024）
 
 ## 常見問題（FAQ）
 
@@ -78,10 +91,10 @@ translations:
 不會，兩者管不同層、互不覆蓋。robots.txt 管「能不能爬這個路徑」，llms.txt 管「讀我的網站時該優先看哪些重點」。合理的組合是：robots.txt 放行檢索型爬蟲，llms.txt 引導它們看重點——分工互補，不打架。
 
 **Q3：加了 llms.txt，AI 現在就會引用我嗎？**
-不會直接因此被引用。截至 2026 年它尚未被主流引擎正式採用，真正決定引用的是內容可不可引用與爬蟲讀不讀得到。把它當免費的前瞻佈局，別當見效的主力。
+不會。Google 搜尋明確不使用 llms.txt；真正決定引用的是內容可不可引用與爬蟲讀不讀得到。把它當低成本選配，別當見效的主力。
 
 **Q4：那到底哪個比較重要、該先花時間在哪個？**
-robots.txt 明顯優先。它設錯的代價極高（一行 Disallow 讓整站對 AI 隱形），且立即生效；llms.txt 設了頂多加分、不設也不扣分，且尚未被採用。資源有限時，先把 robots.txt 與爬蟲可達性做對，再有餘力才加 llms.txt。
+robots.txt 明顯優先。它設錯的代價極高（一行 Disallow 讓整站對 AI 隱形），且立即生效；llms.txt 對 Google 搜尋既無益也無害（Google 搜尋不使用它），不設也不扣分。資源有限時，先把 robots.txt 與爬蟲可達性做對，再有餘力才加 llms.txt。
 
 ---
 

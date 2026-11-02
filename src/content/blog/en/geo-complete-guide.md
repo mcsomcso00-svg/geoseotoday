@@ -6,7 +6,8 @@ intent: commercial
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-02
+enhanced: true
 translations:
   zh-hant: geo-complete-guide
   zh-hans: geo-complete-guide
@@ -17,16 +18,22 @@ translations:
 
 ## Why you need a GEO guide
 
-The end point of search is moving from "ten blue links" to "one AI-generated answer." The 2023 GEO paper from Princeton and collaborators was the first to systematically show that adjusting how content is written — adding statistics, citations, and domain terms — can raise a page's visibility inside generative-engine answers by up to ~40%. The study built a 10,000-query benchmark (GEO-bench), turning "generative engine optimization" into a measurable, testable discipline.
+The end point of search is moving from "ten blue links" to "one AI-generated answer." The 2023 [GEO paper](https://arxiv.org/abs/2311.09735) from Princeton and collaborators was the first to systematically show that adjusting how content is written — for example adding statistics, quotations, and cited sources — can raise a page's visibility inside generative-engine answers by up to ~40%. The study built a 10,000-query benchmark (GEO-bench), turning "generative engine optimization" into a measurable, testable discipline. One caveat: the experiments ran mainly on a generative engine the researchers built themselves (GPT-3.5-turbo plus the top five Google results), with a further test on Perplexity, so the numbers are not a guarantee for every engine.
 
 In other words, GEO isn't mysticism — it's a set of steps you execute and check off one by one. This guide is the map: each section gives you the conclusion first, then points to a deeper article.
+
+## What Google says
+
+In its Search Central guide [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), Google treats AEO and GEO as names for work on AI search visibility and says that optimizing for generative AI search is optimizing for the search experience, "and thus still SEO." The guide also lists practices it considers unnecessary for Google Search: creating llms.txt or other AI-specific files, chunking content, rewriting content specifically for AI systems, seeking inauthentic mentions across the web, and over-focusing on structured data.
+
+Our take: this doesn't contradict the spine of this guide. A crawlable, useful, topically authoritative site is the shared foundation and the precondition for GEO, which is why the guide stresses clear writing, data and quotable passages rather than technical tricks. But Google's guide covers only Google's own AI features (AI Overviews, AI Mode and so on); it doesn't discuss ChatGPT or Perplexity, which have their own crawlers and rules (see Step 2). So treat the two separately: for Google, go back to SEO fundamentals; for other engines, check crawler access and citation behavior engine by engine. For a side-by-side table against classic SEO, see [GEO vs SEO](/en/blog/geo-vs-seo/).
 
 ## Step 1: Understand what GEO is, and how it differs from SEO
 
 GEO's goal isn't ranking — it's **being cited**. When a user asks an AI a question, the AI retrieves several sources, synthesizes an answer, and attaches citation links. Those citation slots are what you compete for. GEO shares its foundation with SEO (semantic coverage, topical authority), but the judge changes from Google's algorithm to an LLM's retrieval-and-generation.
 
 Three starter concepts:
-1. **Be readable** — AI crawlers (GPTBot, PerplexityBot, Google-Extended) can fetch and parse your page.
+1. **Be readable** — AI search crawlers (such as OAI-SearchBot and PerplexityBot) and Googlebot can fetch and parse your page.
 2. **Be trusted** — author, brand, schema, and E-E-A-T signals are complete.
 3. **Be quotable** — passages are self-contained, specific, and data-backed, so the AI can lift them directly.
 
@@ -38,11 +45,11 @@ Different engines prefer different sources, so the optimization differs:
 
 | Engine | Retrieval behavior | Where to focus |
 |---|---|---|
-| ChatGPT (Search) | Bing index + its own crawler | Allow GPTBot, self-contained passages, clear brand entity |
+| ChatGPT (Search) | OpenAI's search crawler, OAI-SearchBot, decides whether your site is surfaced | Allow OAI-SearchBot, self-contained passages, clear brand entity |
 | Perplexity | Live retrieval, values freshness | Explicit dates, data density, cited sources |
 | Google AI Overview | Google index + ranking signals | Classic SEO base + liftable passages + schema |
 
-Before optimizing, check the technical prerequisite: your `robots.txt` doesn't block these AI crawlers. Many sites blocked GPTBot in the 2023–2024 panic and only discovered later — when they wanted to do GEO — that they'd shut the door. Open `yourdomain/robots.txt` and confirm you don't `Disallow` GPTBot, PerplexityBot, or Google-Extended site-wide. (Note: Google AI Overview rides on ordinary Googlebot indexing; Google-Extended controls Gemini training use — don't confuse the two.)
+Before optimizing, check the technical prerequisite: your `robots.txt` doesn't block these AI search crawlers. According to [OpenAI's documentation](https://developers.openai.com/api/docs/bots), OAI-SearchBot is what surfaces sites in ChatGPT search while GPTBot is the crawler tied to model training, and their robots.txt settings are independent — blocking GPTBot does not remove you from ChatGPT search, but blocking OAI-SearchBot keeps your site out of search answers. [Perplexity's documentation](https://docs.perplexity.ai/guides/bots) says PerplexityBot is what surfaces and links sites in its search results, and recommends allowing it in robots.txt. Open `yourdomain/robots.txt` and confirm you don't `Disallow` OAI-SearchBot or PerplexityBot site-wide (whether to allow GPTBot is a separate decision about training use). Also, Google AI Overview rides on ordinary Googlebot indexing; Google-Extended is only a robots.txt token controlling use of your content for Gemini training and grounding, and per [Google's documentation](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) it doesn't affect inclusion in Google Search or act as a ranking signal — don't confuse the two.
 
 What all three share: **they cite the passage that answers most cleanly, not the biggest site.** For engine-specific steps see [How to Get ChatGPT to Cite Your Website](/en/blog/cited-by-chatgpt/) and [How to Get Cited by Perplexity](/en/blog/cited-by-perplexity/).
 
@@ -77,7 +84,7 @@ Add FAQPage markup on your FAQ block so the engine can map question → answer d
 GEO's failure modes are concentrated:
 1. 300 words of throat-clearing before the point (the AI can't find a conclusion).
 2. All adjectives, zero data (no quotable hard facts).
-3. `robots.txt` blocking GPTBot or Google-Extended (instant disqualification).
+3. `robots.txt` blocking OAI-SearchBot or PerplexityBot (instant disqualification from that engine's search answers).
 4. No date, or a stale one (missing freshness signal).
 5. A single orphan article with no cluster behind it (thin entity authority).
 6. Correct content, loose writing — a cleaner competitor takes the citation slot.
@@ -88,7 +95,7 @@ If you're starting fresh, run a 30-day path: fix crawlability, rewrite openings,
 
 GEO has no official Search Console; you build tracking yourself:
 - **Citation monitoring** — monthly, ask 10–20 target questions in ChatGPT (search on), Perplexity, and AI Overview, and log whether you appear as a source.
-- **Crawler logs** — filter server logs for GPTBot, PerplexityBot, Google-Extended fetch frequency.
+- **Crawler logs** — filter server logs for OAI-SearchBot, GPTBot and PerplexityBot fetch frequency (Google-Extended has no separate user agent, so it can't be filtered on its own).
 - **Referral traffic** — separate chatgpt.com and perplexity.ai referrals in GA4.
 - **Brand search volume** — being mentioned by AI shows up as growth in brand-name searches; a user who sees your name in an answer often searches your brand next. That indirect path isn't labeled in analytics, yet it's the truest downstream GEO signal.
 
@@ -107,6 +114,14 @@ Single-article optimization is tactics; a process is strategy. Distill GEO into 
 Those eight checks map exactly to the signals AI engines use to pick sources. Once the flow is smooth, GEO-ifying an article drops under 30 minutes — which is why GEO suits a process, not per-article improvisation.
 
 One overlooked step is **old-content recycling**: GEO's highest ROI is often not new articles but old ones that already rank and just lack a quotable rewrite. Each quarter, pull your top-20-impression pages that AI doesn't cite yet, apply the checklist, rewrite the opening and add data — usually faster to see citation growth than writing 20 new posts.
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv, 2023)
+- [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central, 2026)
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
 
 ## FAQ
 
