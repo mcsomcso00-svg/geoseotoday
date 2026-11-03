@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SEO／GEO／AIO 健檢診斷報告 — {{SITE_DOMAIN}}</title>
+<!--
+  ══════════════════════════════════════════════════════════════
+  使用方法（30 分鐘 SOP 見同資料夾 SOP-30min.md）
+  1. 全文搜尋 {{ 把所有佔位符換掉（Ctrl+F "{{"）
+  2. 依實際發現增刪表格列（列多寡不影響版面）
+  3. 瀏覽器開啟 → Ctrl+P → 存成 PDF（A4，已設好列印樣式）→ 回信寄出
+  佔位符慣例：{{...}} 必填；表格列可整列複製增刪。
+  版本：三戰線（SEO／GEO／AIO）免費版。付費項目已移除，文末為免費索取。
+  ══════════════════════════════════════════════════════════════
+-->
+<style>
+  :root{
+    --ink:#1a2233; --dim:#5b6675; --line:#e3e8ef; --accent:#2f6bff; --aio:#0891b2;
+    --good:#1a9e50; --warn:#c98a00; --bad:#d64545; --panel:#f6f8fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);background:#fff;
+    font-family:-apple-system,"Segoe UI","Noto Sans TC",Roboto,sans-serif;
+    font-size:13px;line-height:1.65}
+  .page{max-width:820px;margin:0 auto;padding:36px 44px}
+  .rpt-head{display:flex;justify-content:space-between;align-items:flex-start;
+    border-bottom:3px solid var(--accent);padding-bottom:14px;margin-bottom:22px}
+  .brand{font-size:20px;font-weight:800}
+  .brand small{display:block;font-weight:400;color:var(--dim);font-size:11px;letter-spacing:.5px}
+  .meta{text-align:right;color:var(--dim);font-size:11.5px;line-height:1.7}
+  h1{font-size:19px;margin:0 0 4px}
+  h2{font-size:14.5px;margin:26px 0 10px;padding:6px 10px;background:var(--panel);
+    border-left:4px solid var(--accent);border-radius:0 6px 6px 0}
+  .h2-good{border-left-color:var(--good)}
+  .h2-aio{border-left-color:var(--aio)}
+  .scoreband{display:flex;gap:14px;margin:18px 0}
+  .scorebox{flex:1;border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-align:center}
+  .scorebox.aio{border-color:#bde3ec;background:#f2fbfd}
+  .scorebox .num{font-size:30px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+  .scorebox .lbl{color:var(--dim);font-size:11px;margin-top:3px}
+  .g{color:var(--good)} .w{color:var(--warn)} .b{color:var(--bad)} .c{color:var(--aio)}
+  table{border-collapse:collapse;width:100%;font-size:12px;margin:8px 0 4px}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:700;white-space:nowrap}
+  .num-cell{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sev{font-weight:700;white-space:nowrap}
+  .sev.high{color:var(--bad)} .sev.mid{color:var(--warn)} .sev.low{color:var(--dim)}
+  .yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700} .maybe{color:var(--warn);font-weight:700}
+  .evi{background:#fbf4f4;border-left:3px solid var(--bad);padding:8px 12px;margin:8px 0;
+    border-radius:0 6px 6px 0;font-size:12px}
+  .evi.aio{background:#f0fafc;border-left-color:var(--aio)}
+  .evi b{color:var(--bad)} .evi.aio b{color:var(--aio)}
+  .h2-good+p+.goodbox{margin-top:6px}
+  .goodbox{background:#f2faf5;border:1px solid #bfe5cc;border-radius:10px;padding:10px 16px}
+  .good-row{padding:5px 0;color:#166534;font-size:12.5px}
+  .good-row+.good-row{border-top:1px dashed #cfe9d8}
+  .note{color:var(--dim);font-size:11px;margin-top:2px}
+  .cta{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:800;font-size:14px;padding:12px;border-radius:9px;margin:14px 0 4px}
+  .foot{border-top:1px solid var(--line);margin-top:26px;padding-top:10px;
+    color:var(--dim);font-size:10.5px;line-height:1.7}
+  @media print{
+    .page{padding:10mm 12mm;max-width:none}
+    h2{break-after:avoid}
+    table,.evi,.goodbox{break-inside:avoid}
+    a{color:var(--accent)}
+    @page{size:A4;margin:8mm}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="rpt-head">
+    <div class="brand">GeoSeoToday<small>SEO / GEO / AIO 健檢</small></div>
+    <div class="meta">
+      報告對象：<b>{{SITE_URL}}</b><br>
+      產出日期：{{REPORT_DATE}}｜受檢頁數：{{PAGES_SCANNED}} 頁（抽樣）<br>
+      分析師：GeoSeoToday
+    </div>
+  </div>
+
+  <h1>SEO／GEO／AIO 健檢診斷報告（免費版）</h1>
+  <p style="color:var(--dim);margin:2px 0 0">
+    本報告涵蓋三條戰線：<b>Google 排名（SEO）</b>、<b>被 AI 引用（GEO）</b>、以及
+    <b>AI 搜尋引擎的可讀取性（AIO）</b>。每個問題都指名到「哪一頁、哪一段」。
+    想要完整的修正做法與執行藍圖，文末可免費索取。
+  </p>
+
+  <!-- ═══ 總評分 ═══ -->
+  <div class="scoreband">
+    <div class="scorebox"><div class="num {{OVERALL_CLASS}}">{{OVERALL_SCORE}}</div><div class="lbl">GEO 就緒度總分 /100</div></div>
+    <div class="scorebox"><div class="num {{CITE_CLASS}}">{{CITE_SCORE}}</div><div class="lbl">內容可引用性 /100</div></div>
+    <div class="scorebox aio"><div class="num {{AIO_CLASS}}">{{AIO_SCORE}}</div><div class="lbl">AI 可讀取性 /100</div></div>
+    <div class="scorebox"><div class="num {{TECH_CLASS}}">{{TECH_SCORE}}</div><div class="lbl">技術與實體 /100</div></div>
+  </div>
+  <p class="note">評分方法：九項 GEO 訊號逐頁掃描（答案優先段、可引用數據、結構、FAQ、清單表格、深度、實體、來源、時效）＋ AI 搜尋爬蟲可達性、JS 渲染與實體結構化資料檢查，加權平均。簡化版邏輯可在本站免費工具驗證。</p>
+
+  <!-- ═══ 1｜先給糖 ═══ -->
+  <h2 class="h2-good">1｜先說好消息：你已經做對的地方</h2>
+  <p>公平起見，先列出你網站目前的優勢——這些是後續改善的地基，不用動：</p>
+  <div class="goodbox">
+    <div class="good-row">✓ {{GOOD_1}}</div>
+    <div class="good-row">✓ {{GOOD_2}}</div>
+    <div class="good-row">✓ {{GOOD_3}}</div>
+  </div>
+
+  <!-- ═══ 2｜GEO ═══ -->
+  <h2>2｜GEO 就緒度：你沒被 AI 引用的具體原因</h2>
+  <p>抽樣 {{SAMPLE_N}} 個重點頁面逐頁掃描，主要缺陷（只列問題，不列修法）：</p>
+  <table>
+    <tr><th>頁面</th><th>GEO 分數</th><th>主要缺陷</th></tr>
+    <tr><td>{{PAGE_1_URL}}</td><td class="sev high num-cell">{{PAGE_1_SCORE}}</td><td>{{PAGE_1_ISSUES}}</td></tr>
+    <tr><td>{{PAGE_2_URL}}</td><td class="sev mid num-cell">{{PAGE_2_SCORE}}</td><td>{{PAGE_2_ISSUES}}</td></tr>
+    <tr><td>{{PAGE_3_URL}}</td><td class="sev mid num-cell">{{PAGE_3_SCORE}}</td><td>{{PAGE_3_ISSUES}}</td></tr>
+    <tr><td>{{PAGE_4_URL}}</td><td class="sev low num-cell">{{PAGE_4_SCORE}}</td><td>{{PAGE_4_ISSUES}}</td></tr>
+    <tr><td>{{PAGE_5_URL}}</td><td class="sev low num-cell">{{PAGE_5_SCORE}}</td><td>{{PAGE_5_ISSUES}}</td></tr>
+  </table>
+  <div class="evi">
+    <b>段落級證據 ①</b>｜{{EVIDENCE_1_PAGE}}<br>
+    「{{EVIDENCE_1_QUOTE}}」<br>
+    <span class="note">→ 問題：{{EVIDENCE_1_WHY}}（AI 無法從此段落抽出可直接引用的自包含答案）</span>
+  </div>
+  <div class="evi">
+    <b>段落級證據 ②</b>｜{{EVIDENCE_2_PAGE}}<br>
+    「{{EVIDENCE_2_QUOTE}}」<br>
+    <span class="note">→ 問題：{{EVIDENCE_2_WHY}}</span>
+  </div>
+
+  <!-- ═══ 3｜AI 可讀取性 ═══ -->
+  <h2 class="h2-aio">3｜AI 可讀取性：AI 搜尋引擎能不能讀懂你的網站</h2>
+  <p>檢查 AI 搜尋引擎能不能讀取並理解你的網站（AI 專屬的可讀取性基建）：</p>
+  <table>
+    <tr><th>AI 可讀取性基建</th><th>狀態</th><th>說明</th></tr>
+    <tr><td>/llms.txt（選配：部分 AI 服務會參考；Google 搜尋不使用，不計分）</td><td class="{{LLMS_CLASS}}">{{LLMS_STATUS}}</td><td>{{LLMS_NOTE}}</td></tr>
+    <tr><td>AI 搜尋爬蟲放行（OAI-SearchBot／PerplexityBot／Googlebot）</td><td class="{{CRAWLER_CLASS}}">{{CRAWLER_STATUS}}</td><td>{{CRAWLER_NOTE}}</td></tr>
+    <tr><td>正文是否需 JS 才顯示</td><td class="{{JS_CLASS}}">{{JS_STATUS}}</td><td>{{JS_NOTE}}</td></tr>
+    <tr><td>實體結構化資料（Organization／sameAs）</td><td class="{{ENTITY_CLASS}}">{{ENTITY_STATUS}}</td><td>{{ENTITY_NOTE}}</td></tr>
+  </table>
+  <p class="note">註：Google-Extended 只控制 Gemini 的訓練與 grounding，不影響 Google 搜尋與 AI Overview；Google 搜尋也不使用 llms.txt（Google，2026-06），因此 llms.txt 只列出供參考、不計入分數。</p>
+
+  <!-- ═══ 4｜內容負債 ═══ -->
+  <h2>4｜內容負債盤點：正在拖垮你的頁面</h2>
+  <p>以收錄狀態、內容厚度、更新時間與內鏈孤立度掃描，找出正在稀釋網站權重、浪費爬蟲預算的頁面：</p>
+  <table>
+    <tr><th>風險類型</th><th>頁數</th><th>代表頁面（節錄）</th></tr>
+    <tr><td>未被 Google 收錄／收錄異常</td><td class="sev high num-cell">{{DEBT_NOINDEX_N}}</td><td>{{DEBT_NOINDEX_EXAMPLES}}</td></tr>
+    <tr><td>內容單薄（不足以完整回答任一意圖）</td><td class="sev high num-cell">{{DEBT_THIN_N}}</td><td>{{DEBT_THIN_EXAMPLES}}</td></tr>
+    <tr><td>孤立頁（幾乎沒有內部連結指入）</td><td class="sev mid num-cell">{{DEBT_ORPHAN_N}}</td><td>{{DEBT_ORPHAN_EXAMPLES}}</td></tr>
+    <tr><td>過時內容（久未更新且含時效資訊）</td><td class="sev mid num-cell">{{DEBT_STALE_N}}</td><td>{{DEBT_STALE_EXAMPLES}}</td></tr>
+  </table>
+  <p class="note">註：若你能提供 Google Search Console 唯讀權限，我們可進一步精確列出「90 天 0 點擊」完整清單與點擊流失趨勢。</p>
+
+  <!-- ═══ 5｜競爭落差 ═══ -->
+  <h2>5｜競爭落差：你 vs 前 3 名對手</h2>
+  <div style="overflow-x:auto">
+  <table>
+    <tr><th></th><th>你（{{SITE_DOMAIN}}）</th><th>{{COMP_1}}</th><th>{{COMP_2}}</th><th>{{COMP_3}}</th></tr>
+    <tr><td>核心主題語意覆蓋（子題數）</td><td class="sev high num-cell">{{YOU_COVERAGE}}</td><td class="num-cell">{{C1_COVERAGE}}</td><td class="num-cell">{{C2_COVERAGE}}</td><td class="num-cell">{{C3_COVERAGE}}</td></tr>
+    <tr><td>結構化資料（Schema 種類）</td><td class="num-cell">{{YOU_SCHEMA}}</td><td class="num-cell">{{C1_SCHEMA}}</td><td class="num-cell">{{C2_SCHEMA}}</td><td class="num-cell">{{C3_SCHEMA}}</td></tr>
+    <tr><td>llms.txt（選配）</td><td class="{{YOU_LLMS_CLASS}}">{{YOU_LLMS}}</td><td>{{C1_LLMS}}</td><td>{{C2_LLMS}}</td><td>{{C3_LLMS}}</td></tr>
+    <tr><td>功能型內容（工具／計算器）</td><td>{{YOU_TOOLS}}</td><td>{{C1_TOOLS}}</td><td>{{C2_TOOLS}}</td><td>{{C3_TOOLS}}</td></tr>
+  </table>
+  </div>
+  <p>{{COMPETITIVE_SUMMARY}}</p>
+
+  <!-- ═══ 6｜問題總清單 ═══ -->
+  <h2>6｜問題總清單（依嚴重度排序）</h2>
+  <table>
+    <tr><th>#</th><th>嚴重度</th><th>問題</th><th>影響範圍</th></tr>
+    <tr><td class="num-cell">1</td><td class="sev high">高</td><td>{{ISSUE_1}}</td><td>{{ISSUE_1_SCOPE}}</td></tr>
+    <tr><td class="num-cell">2</td><td class="sev high">高</td><td>{{ISSUE_2}}</td><td>{{ISSUE_2_SCOPE}}</td></tr>
+    <tr><td class="num-cell">3</td><td class="sev high">高</td><td>{{ISSUE_3}}</td><td>{{ISSUE_3_SCOPE}}</td></tr>
+    <tr><td class="num-cell">4</td><td class="sev mid">中</td><td>{{ISSUE_4}}</td><td>{{ISSUE_4_SCOPE}}</td></tr>
+    <tr><td class="num-cell">5</td><td class="sev mid">中</td><td>{{ISSUE_5}}</td><td>{{ISSUE_5_SCOPE}}</td></tr>
+    <tr><td class="num-cell">6</td><td class="sev low">低</td><td>{{ISSUE_6}}</td><td>{{ISSUE_6_SCOPE}}</td></tr>
+  </table>
+
+  <!-- ═══ 7｜下一步（免費） ═══ -->
+  <h2>7｜下一步：完整修正建議（免費索取）</h2>
+  <p>這份報告已點出你在 <b>SEO／GEO／AIO</b> 三條戰線上的問題所在。想要每個問題的
+    <b>具體修正做法、逐頁改寫範本（{{SAMPLE_N}} 頁）＋ Schema 實作代碼</b>，以及
+    <b>依影響力排序的完整修正清單＋90 天執行藍圖</b>？</p>
+  <p>直接回覆本信免費索取。目前為早期階段，親自服務的名額有限，先到先得。</p>
+
+  <a class="cta" href="mailto:{{REPLY_EMAIL}}?subject=索取完整修正建議（{{SITE_DOMAIN}}）">回覆索取完整修正建議（免費）→</a>
+  <p class="note" style="text-align:center">{{OFFER_DEADLINE}} 前回覆的免費名額仍開放。回覆本報告 Email 即可。</p>
+
+  <div class="foot">
+    方法論：本診斷使用 GeoSeoToday 語意集群方法（九項 GEO 訊號、AI 可讀取性檢查、內容負債盤點、語意覆蓋比對），工具化版本可於本站免費驗證。
+    免責：診斷基於 {{REPORT_DATE}} 當日公開可存取之頁面；搜尋與 AI 引擎演算法變動頻繁，分數為當日快照。
+    本報告僅供 {{SITE_DOMAIN}} 內部使用。© {{YEAR}} GeoSeoToday
+  </div>
+
+</div>
+</body>
+</html>

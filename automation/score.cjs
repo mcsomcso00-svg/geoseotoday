@@ -1,5 +1,5 @@
 // GEO 就緒度評分（與 geo-readiness-checker.html 同一套邏輯）
-// 用法：node score.js <file.md> [file2.md ...]  → 每檔輸出分數與訊號；<75 exit code 1
+// 用法：[BRAND=品牌名] node score.cjs <file.md> [file2.md ...]  → 每檔輸出分數與訊號；<75 exit code 1（BRAND 預設 GeoSeoToday）
 const fs = require('fs');
 function analyze(raw, brand) {
   const body = raw.replace(/^---[\s\S]*?---\s*/, ''); // 去 frontmatter
@@ -34,7 +34,7 @@ function analyze(raw, brand) {
 }
 let fail = 0;
 for (const f of process.argv.slice(2)) {
-  const r = analyze(fs.readFileSync(f, 'utf8'), 'GeoSeoToday');
+  const r = analyze(fs.readFileSync(f, 'utf8'), process.env.BRAND || 'GeoSeoToday');
   const ok = r.score >= 75;
   if (!ok) fail++;
   console.log(`${ok ? 'PASS' : 'FAIL'} ${r.score} ${f} units=${r.units} ${JSON.stringify(r.S)}`);
