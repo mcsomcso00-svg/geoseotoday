@@ -29,10 +29,21 @@ Fill the rest of the batch from `src/content/blog/zh-hant/*.md` whose frontmatte
 - YAML: any `title:`/`description:` containing a halfwidth `:` must be wrapped in double quotes.
 - `node automation/score.cjs <the 5 zh-hant files>` → every file PASS (≥75).
 - `npm ci` (if `node_modules` is missing) then `npx astro build` must complete. Astro 7 needs Node ≥22; if the sandbox Node is older and you cannot upgrade it, skip the build, say so in the report, and rely on the YAML check.
-- `git diff --stat` shows only the expected article files (3 per slug) plus `automation/priority-refresh.md` if you updated it.
+- `git diff --stat` shows only the expected article files (3 per slug) plus `automation/priority-refresh.md` if you updated it, plus `automation/run-log.md`.
 
 ## Step 4 — commit and push
 `git add` those files, commit `Enhancement batch YYYY-MM-DD: <slug1>, <slug2>, …` and push to `main` (pushing to main triggers the GitHub Pages deploy). If pushing to `main` is refused, push a branch `enhance/YYYY-MM-DD` and open a pull request instead, and say so.
 
-## Report (≤10 lines)
-Slugs done, number of sources added per slug, any claims corrected or removed (one line each), gate results, commit hash / PR link, and how many zh-hant articles are still not enhanced.
+## Report — the owner wants the article links every time
+Article URL pattern: `https://geoseotoday.com/<lang>/blog/<slug>/` for `zh-hant`, `zh-hans`, `en`. Enhanced articles are already live; the update shows on the site once the deploy triggered by your push finishes (about 2 minutes).
+
+1. **Append to `automation/run-log.md`** (create it with heading `# Cloud routine run log` if missing) and include it in the commit:
+   ```
+   ## YYYY-MM-DD — Enhancement batch
+   - <zh-Hant title> — <N> sources; <one-line summary of corrections, or "no corrections">
+     - 繁中 https://geoseotoday.com/zh-hant/blog/<slug>/
+     - 简中 https://geoseotoday.com/zh-hans/blog/<slug>/
+     - EN https://geoseotoday.com/en/blog/<slug>/
+   ```
+2. **Send a push notification** (PushNotification tool) titled `GeoSeoToday 文章優化` listing, per article, the zh-Hant title and its zh-Hant link (the run log has all three languages).
+3. **Final reply (≤15 lines):** per article the zh-Hant title, the three links, sources added and corrections made; then gate results, commit hash / PR link, and how many zh-hant articles are still not enhanced.

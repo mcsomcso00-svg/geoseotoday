@@ -55,7 +55,18 @@ translations:
 - In `automation/content-plan.md` set the row's `status` to `written`.
 
 ## Step 5 — commit and push
-Commit `New articles: <slug> (<date>), …` with the 3 files per article plus the plan update, push to `main`. If pushing to `main` is refused, push branch `articles/YYYY-MM-DD` and open a pull request, and say so.
+Commit `New articles: <slug> (<date>), …` with the 3 files per article, the plan update and `automation/run-log.md`, push to `main`. If pushing to `main` is refused, push branch `articles/YYYY-MM-DD` and open a pull request, and say so.
 
-## Report (≤8 lines)
-Slugs + dates written, score per zh-hant file, sources per article, gate results, commit hash / PR link, rows remaining in the plan.
+## Report — the owner wants the article links every time
+Article URL pattern: `https://geoseotoday.com/<lang>/blog/<slug>/` for `zh-hant`, `zh-hans`, `en`. New articles are date-gated: each link goes live after the daily 02:00 UTC rebuild on its `date_published`, so always state the go-live date next to the links.
+
+1. **Append to `automation/run-log.md`** (create it with heading `# Cloud routine run log` if missing) and include it in the commit:
+   ```
+   ## YYYY-MM-DD — New articles
+   - <zh-Hant title> — live <date_published>
+     - 繁中 https://geoseotoday.com/zh-hant/blog/<slug>/
+     - 简中 https://geoseotoday.com/zh-hans/blog/<slug>/
+     - EN https://geoseotoday.com/en/blog/<slug>/
+   ```
+2. **Send a push notification** (PushNotification tool) titled `GeoSeoToday 新文章` listing, per article, the zh-Hant title, go-live date and the three links.
+3. **Final reply (≤12 lines):** the same title / go-live date / three links per article, then score per zh-hant file, sources per article, gate results, commit hash / PR link, rows remaining in the plan.
