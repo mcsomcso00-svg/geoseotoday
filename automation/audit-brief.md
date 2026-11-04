@@ -32,11 +32,11 @@ Fill the template (translate headings and copy to the report language for zh-Han
 Run `base64 -w0 .audit-work/report.html`, then call `create_draft` with:
 - `to` = the form's `email` field, `subject` = `Re: <original subject>`;
 - `body` = a 3-line note in the report language: a greeting, one line saying the full report is attached, and "reply to this email for the full fix recommendations". Do not paste the report into the body;
-- `attachments` = one item: `filename` `GeoSeoToday-report-<domain>.html`, `mimeType` `text/html`, `content` = the exact base64 output, copied character for character.
+- `attachments` = one item: `filename` `GeoSeoToday-report-<domain>.html`, `mimeType` `application/octet-stream` (with `text/html` the connector turns Chinese text into `?`), `content` = the exact base64 output, copied character for character.
 
 **Never pass `replyToMessageId`, and never paste any part of the form notification into the draft**: a reply appends the Web3Forms email, which shows the visitor IP and a Report Spam link.
 
-Read the draft back with `get_draft` and confirm it has the attachment and its body does not contain `web3forms` or `Visitor IP`. Then append the message hash to `automation/audit-processed.txt`.
+Read the draft back with `get_draft` using `messageFormat` `RAW` (the other formats do not show attachments) and confirm it has the attachment and does not contain `web3forms` or `Visitor IP`. Then append the message hash to `automation/audit-processed.txt`.
 
 ## Step 4 — commit, notify, report
 - If `automation/audit-processed.txt` changed: commit `Audit drafts: N processed`, `git pull --rebase origin main`, push to `main`.
