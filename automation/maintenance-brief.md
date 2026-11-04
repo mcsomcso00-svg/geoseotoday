@@ -2,6 +2,8 @@
 
 Runs every Monday. All paths are relative to the repo root. Only commit when something actually needs to change.
 
+**Unattended run:** nobody is watching, so a permission prompt hangs the run forever. Keep Bash commands short and plain, never put braces next to quotes in a Bash command or heredoc, and change files with the Edit/Write tools rather than inline scripts.
+
 ## A. llms.txt — every week
 `/llms.txt` is generated at build time by `src/pages/llms.txt.js` (tools + About page, then per language and cluster: 2 pillar articles + 3 most recently updated). The daily rebuild refreshes it, so this check is about correctness:
 1. Fetch https://geoseotoday.com/llms.txt. Confirm HTTP 200, `Last generated:` is within the last 2 days, all three language sections exist, and every cluster lists articles.

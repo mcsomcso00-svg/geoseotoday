@@ -2,8 +2,11 @@
 
 Runs twice a day. For every new request from the site's free audit form (`/[lang]/audit/`), produce the free SEO/GEO diagnosis report and save it as a **Gmail draft reply** to the requester. **Never send email** — the owner reviews each draft and sends it. All paths are relative to the repo root.
 
+## Unattended run — never trigger a permission prompt
+Nobody is watching this run, so a permission prompt hangs it forever (this happened on 2026-11-03 and 11-04: a Bash heredoc containing the template's `{{…}}` placeholders stopped at "Contains brace with quote character", and no draft was created). Keep Bash commands short and plain. Never put `{{`, `}}`, or braces next to quotes inside a Bash command or heredoc. To fill the template, use the **Write tool** to create `.audit-work/fill.py` (gitignored) and run it with `python3 .audit-work/fill.py`.
+
 ## Privacy rules (this repo is public)
-- Never commit a report, a requester's email, name, URL or message to the repo. Work in `/tmp`.
+- Never commit a report, a requester's email, name, URL or message to the repo. Work in `/tmp` or the gitignored `.audit-work/`, and `git add` only `automation/audit-processed.txt`.
 - The only thing committed is `automation/audit-processed.txt`: one line per processed request = the SHA-256 of the Gmail message ID (`printf %s "<id>" | sha256sum | cut -c1-16`). Nothing else.
 - Push notifications may name the requester's domain (they go only to the owner).
 

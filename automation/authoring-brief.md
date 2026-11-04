@@ -2,6 +2,8 @@
 
 Runs once a week (Saturday). Publishing cadence: **2 articles per week** (Tuesday + Friday), each in zh-Hant, en and zh-Hans. Articles are date-gated: a file dated in the future stays hidden until the daily 02:00 UTC rebuild after its date, so writing a few days ahead is the normal workflow. All paths are relative to the repo root.
 
+**Unattended run:** nobody is watching, so a permission prompt hangs the run forever. Keep Bash commands short and plain, never put braces next to quotes in a Bash command or heredoc, and change files with the Edit/Write tools rather than inline scripts.
+
 ## Step 1 — pick what to write
 Open `automation/content-plan.md`. A row is **due** when its `status` is `todo` and its date is ≤ today + 10 days. Write every due row (oldest first), at most 3 per run. If none are due, report that and stop.
 

@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # 本機暫存預覽檔（底線開頭），不部署
 public/_*
+
+# audit routine working files (never commit)
+.audit-work/

@@ -2,6 +2,8 @@
 
 Runs twice a week (Mon + Thu). Each run upgrades **5 articles × 3 languages = 15 files**. All paths are relative to the repo root.
 
+**Unattended run:** nobody is watching, so a permission prompt hangs the run forever. Keep Bash commands short and plain, never put braces next to quotes in a Bash command or heredoc, and change files with the Edit/Write tools rather than inline scripts.
+
 ## Why
 Google trust in this site is low (many pages "discovered/crawled – not indexed", impressions near zero) and no article cites any external source. Each enhanced article gets (a) clickable, verified primary sources for its key claims, (b) corrections where a claim turns out wrong or outdated, and (c) the `enhanced: true` flag, which switches its related-links block from "3 newest in cluster" to "6 rotating same-cluster neighbours" (see `src/pages/[lang]/blog/[...slug].astro`).
 
