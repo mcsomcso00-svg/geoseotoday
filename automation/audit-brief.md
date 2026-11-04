@@ -19,18 +19,24 @@ With the Gmail connector, search: `subject:(GeoSeoToday 健檢診斷報告索取
 Report language: zh-Hant if the subject is 【…】健檢…, zh-Hans if 健检…, English if `[GeoSeoToday] Free…`.
 
 ## Step 2 — build the report (follow `automation/audit/SOP.md`)
-The SOP and `automation/audit/report-template.html` define the 7 sections and every placeholder. Do all checks with `curl` / WebFetch / WebSearch:
+The SOP and `automation/audit/report-template.html` define the 6 sections and every placeholder. Do all checks with `curl` / WebFetch:
 1. **Pages:** read `<site>/sitemap.xml` (or the homepage nav); pick 5 key pages (home + 4 main content/service pages).
 2. **GEO readiness:** for each page, save its visible text to `/tmp/page-N.md` and run `BRAND="<brand name>" node automation/score.cjs /tmp/page-*.md`. Turn weak signals into concrete problems with 1–2 quoted sentences as evidence (quote the page exactly; never invent).
 3. **AI readability:** `/robots.txt` (OAI-SearchBot, PerplexityBot, Googlebot blocked or not; mention GPTBot / Google-Extended only as a note — they do not affect search or AI Overviews), raw HTML vs rendered content (is main text in the HTML?), `application/ld+json` (Organization + sameAs?), `/llms.txt` (optional, not scored).
 4. **Content debt:** sample 10–15 sitemap URLs for thin pages, missing/old dates, orphan pages (no internal links found from the pages you read). Indexation counts need Search Console — say so instead of guessing.
-5. **Competitors:** WebSearch the site's main keyword (in the report language / target market) and take the top 3 organic competitors; compare topic coverage (order of magnitude), schema types, llms.txt (optional), tools.
-6. **Good points + issue list + next step** exactly as the SOP describes. Every number must come from something you fetched. If a check failed (site blocks bots, timeout), say so in the report rather than filling it in.
+5. **Good points + issue list + next step** exactly as the SOP describes. Every number must come from something you fetched. If a check failed (site blocks bots, timeout), say so in the report rather than filling it in.
 
-Fill the template (translate headings and copy to the report language for zh-Hans / English requests).
+Fill the template (translate headings and copy to the report language for zh-Hans / English requests). Do not add a competitor comparison. Save the result as `.audit-work/report.html`: one standalone HTML document with its `<style>` block, no `{{` left, and the usage comment at the top removed.
 
-## Step 3 — save as a Gmail draft (do NOT send)
-Create a draft reply in the same thread, To = the form's `email` field, subject `Re: <original subject>`, body = a 2-line greeting in the report language + the full report (HTML body if the connector supports it, otherwise well-structured plain text with the same sections). Then append the message hash to `automation/audit-processed.txt`.
+## Step 3 — save as a Gmail draft with the report attached (do NOT send)
+Run `base64 -w0 .audit-work/report.html`, then call `create_draft` with:
+- `to` = the form's `email` field, `subject` = `Re: <original subject>`;
+- `body` = a 3-line note in the report language: a greeting, one line saying the full report is attached, and "reply to this email for the full fix recommendations". Do not paste the report into the body;
+- `attachments` = one item: `filename` `GeoSeoToday-report-<domain>.html`, `mimeType` `text/html`, `content` = the exact base64 output, copied character for character.
+
+**Never pass `replyToMessageId`, and never paste any part of the form notification into the draft**: a reply appends the Web3Forms email, which shows the visitor IP and a Report Spam link.
+
+Read the draft back with `get_draft` and confirm it has the attachment and its body does not contain `web3forms` or `Visitor IP`. Then append the message hash to `automation/audit-processed.txt`.
 
 ## Step 4 — commit, notify, report
 - If `automation/audit-processed.txt` changed: commit `Audit drafts: N processed`, `git pull --rebase origin main`, push to `main`.

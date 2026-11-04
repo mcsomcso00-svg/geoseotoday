@@ -1,10 +1,10 @@
-# 免費診斷報告 — 產出 SOP（約 25 分鐘，三戰線 SEO／GEO／AIO）
+# 免費診斷報告 — 產出 SOP（約 22 分鐘，三戰線 SEO／GEO／AIO）
 
-> **Cloud routine note:** when this SOP is run by the scheduled audit routine (`automation/audit-brief.md`), score pages with `BRAND="<brand>" node automation/score.cjs` instead of the browser checker, keep everything in `/tmp`, skip the file-saving and PDF steps, and deliver the filled report as a Gmail draft as the brief describes. The template is `automation/audit/report-template.html`.
+> **Cloud routine note:** when this SOP is run by the scheduled audit routine (`automation/audit-brief.md`), score pages with `BRAND="<brand>" node automation/score.cjs` instead of the browser checker, keep everything in `/tmp`, and deliver the filled report as an HTML attachment on a Gmail draft as the brief describes. The template is `automation/audit/report-template.html`.
 
 
-> 目標：收到表單（Gmail 會收到 Web3Forms 轉寄，含對方網址）後，約 25 分鐘內產出一份 PDF 診斷回寄。
-> 範本：[diagnosis-report-template.html](diagnosis-report-template.html)（**7 段，含 AI 可讀取性**；開啟 → Ctrl+F 搜 `{{` 逐一替換 → Ctrl+P 存 PDF）。已填好的樣子見 [demo-report-SAMPLE.html](demo-report-SAMPLE.html)。
+> 目標：收到表單（Gmail 會收到 Web3Forms 轉寄，含對方網址）後，約 22 分鐘內產出一份 HTML 診斷報告，附在回信寄出。
+> 範本：[diagnosis-report-template.html](diagnosis-report-template.html)（**6 段，含 AI 可讀取性**；開啟 → Ctrl+F 搜 `{{` 逐一替換 → 存成 HTML 檔）。已填好的樣子見 [demo-report-SAMPLE.html](demo-report-SAMPLE.html)。
 > 最快做法：直接把對方網址丟給 Claude Code 說「照 SOP-30min.md 幫我填好診斷報告」，我會自動跑完下面全部步驟並輸出已填好的 HTML。
 > 版本說明：報告為三戰線。AIO 段（第 2 步）只做「AI 可讀取性檢查」，不做各 AI 引擎的即時引用測試（已移除，方便由雲端 agent 自動產出）。
 
@@ -35,21 +35,13 @@
 2. 從 sitemap 抽 10–15 頁快掃：字數過少 → `{{DEBT_THIN_*}}`；無日期或年份過舊 → `{{DEBT_STALE_*}}`；站內搜不到指入連結 → `{{DEBT_ORPHAN_*}}`。
 3. 數字抓保守值即可，代表頁列 2–3 條 URL。
 
-## 第 5 步｜競爭落差（3 分鐘）
-1. Google 搜對方的主關鍵字，取自然搜尋結果前 3 名的競品網域（略過百科、論壇、電商平台等非同業）→ `{{COMP_1..3}}`。
-2. 每家看部落格/資源區，數核心主題的子題覆蓋量級（量級即可：如 6 vs 40+）→ `{{YOU_COVERAGE}}`、`{{C1..3_COVERAGE}}`。
-3. `{{YOU_SCHEMA}}`／`{{C1..3_SCHEMA}}` 看原始碼 ld+json 種類數。
-4. **`{{YOU_LLMS}}`（＋`{{YOU_LLMS_CLASS}}` 填 `yes`/`no`）與 `{{C1..3_LLMS}}`**：各家有無 llms.txt，填 `✓`／`✗`（選配，僅供參考，不作為落差主因）。
-5. `{{YOU_TOOLS}}`／`{{C1..3_TOOLS}}` 看有無計算器/工具（有/無）。
-6. `{{COMPETITIVE_SUMMARY}}`：一句話講「落差主因」（例：對手把主題寫成 40+ 篇集群＋工具＋結構化資料，你只有 6 篇零散文章、AI 讀取基建缺失）。
-
-## 第 6 步｜先給糖＋問題總清單（2 分鐘）
+## 第 5 步｜先給糖＋問題總清單（2 分鐘）
 1. **做得好的地方 `{{GOOD_1..3}}`**：從掃描中挑 3 個真實優點（例：全站 HTTPS 且速度佳／部落格更新頻率穩定／**AI 爬蟲未被誤擋**／品牌名搜尋有排第一）。要具體、要真——這一節建立公平感，讓後面的問題清單更可信。找不到 3 個就寫 2 個＋刪一列。
 2. 把前面各節發現濃縮成 6 條問題，依嚴重度排 `{{ISSUE_1..6}}` ＋影響範圍 `{{..._SCOPE}}`（例：全站／主力服務頁／全站 AIO）。**記得納入 AIO 缺口**：無自包含答案段、JS 擋住 AI 取材、缺實體結構化資料等，通常就是最高優先的幾條。
 
-## 第 7 步｜輸出寄送（1 分鐘）
-瀏覽器開啟 → Ctrl+P → 目的地「另存為 PDF」→ 檔名 `GeoSeoToday-診斷報告-{{網域}}.pdf` → 回覆對方來信附上 PDF。
-信件內文一句話即可：「附上你的網站 SEO／GEO／AIO 診斷，重點先看第 3 節（AI 可讀取性）與第 6 節的問題清單；若要完整修正建議與執行，回信告訴我即可。」
+## 第 6 步｜輸出寄送（1 分鐘）
+存成 `GeoSeoToday-report-{{網域}}.html`，開新信寄到對方填的 Email 並附上這個 HTML 檔。**不要直接回覆表單通知信**：引用內容會帶出訪客 IP 和 Report Spam 連結。
+信件內文一句話即可：「附上你的網站 SEO／GEO／AIO 診斷，重點先看第 3 節（AI 可讀取性）與第 5 節的問題清單；若要完整修正建議與執行，回信告訴我即可。」
 
 ## 紀律（照 AK 的免費活動教訓）
 - **免費版只給「問題」，一個修法都不給**——價值感來自診斷深度，轉換動力來自問題清單。

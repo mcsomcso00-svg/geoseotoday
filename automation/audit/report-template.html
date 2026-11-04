@@ -8,7 +8,7 @@
   使用方法（30 分鐘 SOP 見同資料夾 SOP-30min.md）
   1. 全文搜尋 {{ 把所有佔位符換掉（Ctrl+F "{{"）
   2. 依實際發現增刪表格列（列多寡不影響版面）
-  3. 瀏覽器開啟 → Ctrl+P → 存成 PDF（A4，已設好列印樣式）→ 回信寄出
+  3. 存成 HTML 檔 → 附在回信寄出（信內不貼報告，也不要引用原表單通知信）
   佔位符慣例：{{...}} 必填；表格列可整列複製增刪。
   版本：三戰線（SEO／GEO／AIO）免費版。付費項目已移除，文末為免費索取。
   ══════════════════════════════════════════════════════════════
@@ -151,21 +151,8 @@
   </table>
   <p class="note">註：若你能提供 Google Search Console 唯讀權限，我們可進一步精確列出「90 天 0 點擊」完整清單與點擊流失趨勢。</p>
 
-  <!-- ═══ 5｜競爭落差 ═══ -->
-  <h2>5｜競爭落差：你 vs 前 3 名對手</h2>
-  <div style="overflow-x:auto">
-  <table>
-    <tr><th></th><th>你（{{SITE_DOMAIN}}）</th><th>{{COMP_1}}</th><th>{{COMP_2}}</th><th>{{COMP_3}}</th></tr>
-    <tr><td>核心主題語意覆蓋（子題數）</td><td class="sev high num-cell">{{YOU_COVERAGE}}</td><td class="num-cell">{{C1_COVERAGE}}</td><td class="num-cell">{{C2_COVERAGE}}</td><td class="num-cell">{{C3_COVERAGE}}</td></tr>
-    <tr><td>結構化資料（Schema 種類）</td><td class="num-cell">{{YOU_SCHEMA}}</td><td class="num-cell">{{C1_SCHEMA}}</td><td class="num-cell">{{C2_SCHEMA}}</td><td class="num-cell">{{C3_SCHEMA}}</td></tr>
-    <tr><td>llms.txt（選配）</td><td class="{{YOU_LLMS_CLASS}}">{{YOU_LLMS}}</td><td>{{C1_LLMS}}</td><td>{{C2_LLMS}}</td><td>{{C3_LLMS}}</td></tr>
-    <tr><td>功能型內容（工具／計算器）</td><td>{{YOU_TOOLS}}</td><td>{{C1_TOOLS}}</td><td>{{C2_TOOLS}}</td><td>{{C3_TOOLS}}</td></tr>
-  </table>
-  </div>
-  <p>{{COMPETITIVE_SUMMARY}}</p>
-
-  <!-- ═══ 6｜問題總清單 ═══ -->
-  <h2>6｜問題總清單（依嚴重度排序）</h2>
+  <!-- ═══ 5｜問題總清單 ═══ -->
+  <h2>5｜問題總清單（依嚴重度排序）</h2>
   <table>
     <tr><th>#</th><th>嚴重度</th><th>問題</th><th>影響範圍</th></tr>
     <tr><td class="num-cell">1</td><td class="sev high">高</td><td>{{ISSUE_1}}</td><td>{{ISSUE_1_SCOPE}}</td></tr>
@@ -176,8 +163,8 @@
     <tr><td class="num-cell">6</td><td class="sev low">低</td><td>{{ISSUE_6}}</td><td>{{ISSUE_6_SCOPE}}</td></tr>
   </table>
 
-  <!-- ═══ 7｜下一步（免費） ═══ -->
-  <h2>7｜下一步：完整修正建議（免費索取）</h2>
+  <!-- ═══ 6｜下一步（免費） ═══ -->
+  <h2>6｜下一步：完整修正建議（免費索取）</h2>
   <p>這份報告已點出你在 <b>SEO／GEO／AIO</b> 三條戰線上的問題所在。想要每個問題的
     <b>具體修正做法、逐頁改寫範本（{{SAMPLE_N}} 頁）＋ Schema 實作代碼</b>，以及
     <b>依影響力排序的完整修正清單＋90 天執行藍圖</b>？</p>
@@ -187,7 +174,7 @@
   <p class="note" style="text-align:center">{{OFFER_DEADLINE}} 前回覆的免費名額仍開放。回覆本報告 Email 即可。</p>
 
   <div class="foot">
-    方法論：本診斷使用 GeoSeoToday 語意集群方法（九項 GEO 訊號、AI 可讀取性檢查、內容負債盤點、語意覆蓋比對），工具化版本可於本站免費驗證。
+    方法論：本診斷使用 GeoSeoToday 語意集群方法（九項 GEO 訊號、AI 可讀取性檢查、內容負債盤點），工具化版本可於本站免費驗證。
     免責：診斷基於 {{REPORT_DATE}} 當日公開可存取之頁面；搜尋與 AI 引擎演算法變動頻繁，分數為當日快照。
     本報告僅供 {{SITE_DOMAIN}} 內部使用。© {{YEAR}} GeoSeoToday
   </div>
