@@ -1,19 +1,27 @@
 ---
-title: Ahrefs 看到一堆 Spam domain 该怎么办
+title: Ahrefs 看到一堆垃圾链接（Spam links／Spam domains）该怎么办
 description: Ahrefs 外链报表突然冒出几十个看不懂的 spam domain？先别慌也别急着 disavow。本文解释这些域名从哪来、为什么多数只是想卖你外链服务的诱饵、Google 怎么看待它们，以及唯一值得你动手的情况。
 target_keyword: ahrefs spam domain
 intent: informational
 cluster: Off-page & 关键字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-19
-date_updated: 2026-07-19
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: ahrefs-spam-domains
   en: ahrefs-spam-domains
 ---
-# Ahrefs 看到一堆 Spam domain 该怎么办
+# Ahrefs 看到一堆垃圾链接（Spam links／Spam domains）该怎么办
 
 **Ahrefs 里冒出一堆 spam domain，九成以上的正确处理方式是：不处理。** 这些域名绝大多数是自动化爬虫乱扫乱挂的产物，不少背后的目的就是吓你、然后卖你外链或「清理」服务。Google 通常把这类链接当背景噪音忽略，它们既不会拖垮你的排名，也不值得你熬夜整理 disavow 清单。
+
+> **三步骤速查：该做什么、该忽略什么**
+> 1. **先确认有没有信号**：打开 Search Console 的「人工处置」，没有链接相关通知、排名也没有异常，就不用处理。
+> 2. **忽略**：爬虫乱挂的垃圾链接（spam links）与垃圾域名（spam domains）、DR 波动、各种「毒性分数」。
+> 3. **只处理自己造成的**：你或外包商买的、换的链接，以及 Google 已发出人工处置的情况。
+>
+> 名词厘清：spam links（垃圾链接）是单一条外链，spam domains（垃圾域名）是整个引用域名；两者在 Ahrefs 报表里分属 Backlinks 与 Referring domains 两个视角，但判断逻辑相同。Ahrefs 本身[没有「垃圾分数」这种指标](https://help.ahrefs.com/site-explorer/faqs-and-troubleshooting/does-ahrefs-have-a-spam-score-or-something-similar)，官方建议改用 Best links 筛选器把影响力低的外链从报表中隐藏。
 
 ## 这些 spam domain 是怎么冒出来的？
 
@@ -28,7 +36,7 @@ translations:
 
 ## Google 怎么看这些链接？
 
-Google 的公开立场多年一致：算法能自动识别并忽略绝大多数垃圾链接。从 2016 年 Penguin 4.0 开始，Google 对可疑链接的默认处理从「惩罚网站」改成「让链接失效」——也就是说，这些 spam domain 对你的影响趋近于零，既不加分也不扣分。
+Google 的公开立场多年一致：算法能自动识别并忽略绝大多数垃圾链接。2016 年 Penguin 并入核心算法时，Google 说明它[改为「依垃圾信号调整排名来让垃圾失效，而不是影响整个网站的排名」](https://developers.google.com/search/blog/2016/09/penguin-is-now-part-of-our-core)；2022 年的链接垃圾更新中，Google 也表示[利用 SpamBrain 来抵消不自然链接的影响，这些链接传递的权重会消失](https://developers.google.com/search/blog/2022/12/december-22-link-spam-update)。也就是说，这些 spam domain 对你的影响趋近于零，既不加分也不扣分。
 
 三个可以放心的理由：
 
@@ -59,6 +67,14 @@ Google 的公开立场多年一致：算法能自动识别并忽略绝大多数�
 1. 每月看一次 Referring domains，重点看**新增的优质来源**（真的有人引用你吗），而不是数垃圾。
 2. 在 Ahrefs 把明显的垃圾域名加进 **Hidden**／排除清单，让报表干净，方便你追踪真实趋势——这只影响 Ahrefs 显示，跟 Google 无关，也就够了。
 3. 把省下来的时间拿去做会带来真链接的事：可引用的数据内容、工具页、数字 PR。
+
+## 参考资料
+
+- [Penguin is now part of our core algorithm](https://developers.google.com/search/blog/2016/09/penguin-is-now-part-of-our-core)（Google Search Central, 2016）
+- [December 2022 link spam update](https://developers.google.com/search/blog/2022/12/december-22-link-spam-update)（Google Search Central, 2022）
+- [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies)（Google Search Central）
+- [Disavow links to your site](https://support.google.com/webmasters/answer/2648487)（Google Search Console Help）
+- [Does Ahrefs have a spam score?](https://help.ahrefs.com/site-explorer/faqs-and-troubleshooting/does-ahrefs-have-a-spam-score-or-something-similar)（Ahrefs Help Center）
 
 ## 常见问题（FAQ）
 

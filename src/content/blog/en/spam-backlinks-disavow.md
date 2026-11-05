@@ -6,7 +6,8 @@ intent: informational
 cluster: Off-page SEO
 author: GeoSeoToday
 date_published: 2026-07-19
-date_updated: 2026-07-19
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: spam-backlinks-disavow
   zh-hans: spam-backlinks-disavow
@@ -14,6 +15,8 @@ translations:
 # Spam Backlinks: Should You Disavow Them? Usually Not
 
 **Most spam backlinks do not need to be disavowed.** Those random spam domains pointing at your site are almost always the output of crawler bots scraping and auto-linking indiscriminately, and Google has long since learned to treat this kind of link as background noise and simply ignore it. The situations that genuinely call for the disavow tool are rare: mainly links *you actively bought yourself*, links *an outsourced team delivered*, and cases where you've received a manual action notice.
+
+> This article covers only the disavow decision: whether to do it and how. If your question is whether to worry about unfamiliar spam links or spam domains showing up in Ahrefs, read the primary guide first: [Ahrefs Spam Links and Spam Domains: What to Do and What to Ignore](/en/blog/ahrefs-spam-domains/).
 
 ## First, where do these junk links even come from?
 
@@ -27,7 +30,7 @@ Notice the common thread: **these links are not aimed at you**. The exact same j
 
 ## Google's official stance: ignore by default
 
-Google's public line has been consistent for years: the algorithm can already identify and ignore the vast majority of spam links, and disavow is only advised in two situations —
+Google's public line has been consistent for years: the algorithm can already identify and ignore the vast majority of spam links ([Google says it uses SpamBrain to neutralize the impact of unnatural links](https://developers.google.com/search/blog/2022/12/december-22-link-spam-update)). According to [Google's disavow documentation](https://support.google.com/webmasters/answer/2648487), use the tool only if you have both a considerable number of spammy, artificial or low-quality links and those links have caused, or will likely cause, a manual action — and try to get the links removed first. Google calls it an advanced feature that can harm your performance if used incorrectly. In practice that maps to two situations —
 
 1. Your site received a **link-related Manual Action** and needs cleanup before submitting a reconsideration request.
 2. You know for a fact that you (or a previous SEO, or a contractor) **bought or manufactured links at scale**, and you want to cut them loose proactively before a penalty lands.
@@ -51,14 +54,20 @@ To judge whether a link should be disavowed, ask three questions: Is this site r
 1. **Export all backlinks**: cross-reference Ahrefs / Semrush against the link report in Google Search Console — the GSC list is the one Google actually sees.
 2. **Work at the domain level**: when you're sure an entire domain is junk, use the `domain:example.com` format — it's cleaner than listing URLs one by one.
 3. **Build a plain-text file**: one domain per line; you can use `#` to add comments recording the reason and date.
-4. **Submit it to the Disavow Tool**: upload it on the disavow page in Google Search Console. Note that this is a replace-all system — a new file completely overwrites the old one.
+4. **Submit it to the Disavow Tool**: upload it on the disavow page in Google Search Console. Note that this is a replace-all system — a new file completely overwrites the old one. The file must be a UTF-8 or 7-bit ASCII .txt of at most 100,000 lines and 2 MB, and a file with errors is rejected. Also, [Domain properties cannot use the tool](https://support.google.com/webmasters/answer/2648487), so use a URL-prefix property instead.
 5. **Don't expect an instant effect**: Google has to re-crawl those links before it applies the change, and that usually takes weeks to months.
 
 ## Three common misuses of disavow
 
 - **Disavowing anything with a low DR**: link value and DR are not the same thing. Mass-disavowing harmless low-DR links does nothing for you and can cause collateral damage.
 - **Treating it as a cure-all for ranking drops**: if rankings fell, first check content quality and algorithm updates. Disavow can't fix a content problem.
-- **Routine "maintenance" submissions**: there's no evidence that periodic disavowing helps. Google has said plainly that most sites will never need to use this tool.
+- **Routine "maintenance" submissions**: there's no evidence that periodic disavowing helps. Google says most sites will not need this tool, because it can usually decide which links to trust on its own.
+
+## Sources
+
+- [Disavow links to your site](https://support.google.com/webmasters/answer/2648487) (Google Search Console Help)
+- [December 2022 link spam update](https://developers.google.com/search/blog/2022/12/december-22-link-spam-update) (Google Search Central, 2022)
+- [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies) (Google Search Central)
 
 ## Frequently Asked Questions (FAQ)
 

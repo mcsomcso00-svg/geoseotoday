@@ -6,7 +6,8 @@ intent: informational
 cluster: Off-page & 關鍵字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-22
-date_updated: 2026-07-22
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hans: keyword-intent-types
   en: keyword-intent-types
@@ -37,6 +38,27 @@ translations:
 3. **交易型**：頁面重點是消除最後疑慮——價格透明、規格清楚、FAQ 處理反對意見。SEO 上競爭最兇，通常靠商業型與資訊型頁面灌內鏈支撐。
 4. **導航型**：搜別人品牌的詞不要硬搶（意圖是去官網，你排上去也沒點擊）；自己品牌的導航詞則務必守住第一。
 
+## 導航型意圖（Navigational intent）：定義、例子與處理方式
+
+**導航型意圖是使用者已經知道要去哪個網站或頁面，搜尋只是捷徑。** Google 的搜尋品質評估指南把這類查詢稱為 [Website query：目的是找到使用者指定的某個特定網站或網頁](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf)，查詢可能是完整網址，也可能是品牌名加上頁面名稱。
+
+六個典型例子（其中前四個取自該指南的範例）：
+
+1. 純品牌名：`tiktok` → 想看 TikTok 網站。
+2. 品牌加登入：`reddit login` → 想進 Reddit 登入頁。
+3. 品牌加服務：`yahoo mail` → 想進 Yahoo Mail。
+4. 網域名：`walmart.com` → 想進 Walmart 官網。
+5. 網站名加頁面：`你的品牌 價格`、`某工具 下載` → 想進該站的特定頁。
+6. 打錯或不完整的網址：使用者心中有特定頁面，只是沒打對。
+
+**怎麼處理：**
+
+- 自己的品牌詞（品牌名、品牌＋登入、品牌＋價格）要守住第一，並確保首頁與關鍵子頁的標題、描述清楚；這是你最容易拿到、也最容易被別人搶走的流量。
+- 別人品牌的導航詞不要當成關鍵字目標：使用者想去的是對方官網，你排上去也沒有點擊，除非你確實有合法的比較或評測內容並寫在商業型頁面。
+- 不要為了「導航詞」硬做一堆薄頁，這類查詢的搜尋量屬於品牌資產，不是內容能創造的。
+
+**補充：** 「資訊／商業／交易／導航」是業界通用的四分法；Google 自家指南使用的是 Know、Do、Website、Visit-in-person 四種意圖框架，其中 [Website 對應導航型](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf)。兩套框架不是一對一，所以本站仍以 SERP 實際呈現的頁型為最後判準。
+
 ## 判斷意圖的三個方法（由準到快）
 
 - **看 SERP（最準）**：把詞丟進 Google，看前 10 名是什麼頁型。前 10 有 7 個是清單比較文，它就是商業型，不用猜。
@@ -48,6 +70,10 @@ translations:
 - **把商業型當資訊型寫**：最貴的錯。「geo 工具推薦」寫成 GEO 科普 → 重寫為附比較表的清單文。
 - **把混合意圖硬選一邊**：先查 SERP 主流頁型，跟隨多數，用內容差異化取勝。
 - **忽略中文語感**：中文常省略修飾詞，「網站搬家」查詢者多半要教學（資訊型），詞面完全看不出來——所以中文分類更依賴 SERP 反推。
+
+## 參考資料
+
+- [General Guidelines for Search Quality Evaluators, §12.7 Understanding User Intent](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf)（Google, 2025-09-11）
 
 ## 常見問題（FAQ）
 

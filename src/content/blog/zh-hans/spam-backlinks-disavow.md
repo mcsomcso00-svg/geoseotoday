@@ -6,7 +6,8 @@ intent: informational
 cluster: Off-page & 关键字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-19
-date_updated: 2026-07-19
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: spam-backlinks-disavow
   en: spam-backlinks-disavow
@@ -14,6 +15,8 @@ translations:
 # 垃圾外链要不要 disavow？大部分不用
 
 **大部分垃圾外链不需要 disavow。** 那些莫名其妙指向你的 spam 域名，多半是爬虫程序乱扫乱挂的产物，Google 早已把这类链接当背景噪音直接忽略。真正需要动用 disavow 工具的情形非常少：主要是你「自己主动买的」或「外包团队交付的」低质量链接，以及收到人工处置通知的时候。
+
+> 本文专谈「要不要 disavow、怎么做」这个决策。若你的疑问是 Ahrefs 报表上冒出一堆陌生垃圾链接／垃圾域名该不该理会，请先读主文〈[Ahrefs 看到一堆垃圾链接（Spam links／Spam domains）该怎么办](/zh-hans/blog/ahrefs-spam-domains/)〉。
 
 ## 先搞懂：这些垃圾链接是哪来的？
 
@@ -27,7 +30,7 @@ Google 在 2012 年推出 disavow 工具，同年 Penguin 算法上线——工�
 
 ## Google 官方立场：默认忽略
 
-Google 的公开说法多年来一致：算法已经能识别并忽略绝大多数垃圾链接，disavow 只建议用在两种情况——
+Google 的公开说法多年来一致：算法已经能识别并忽略绝大多数垃圾链接（[Google 表示会用 SpamBrain 抵消不自然链接的影响](https://developers.google.com/search/blog/2022/12/december-22-link-spam-update)）。依 [Google 的 disavow 说明](https://support.google.com/webmasters/answer/2648487)，只有在同时具备「大量垃圾、人为或低质量链接」且「这些链接已造成或可能造成人工处置」时才该使用，并且应先尽量请对方移除链接；该说明也把这个工具定位为高级功能，误用可能伤害网站在 Google 搜索的表现。实务上对应两种情况——
 
 1. 你的网站收到了**链接相关的人工处置（Manual Action）**，需要清理后提交重审。
 2. 你明确知道自己（或前任 SEO、外包商）**大规模买过或制造过链接**，想在被处置前主动切割。
@@ -51,14 +54,20 @@ Google 的公开说法多年来一致：算法已经能识别并忽略绝大多�
 1. **导出全量外链**：Ahrefs／Semrush 加上 Google Search Console 的链接报表交叉比对，GSC 的清单才是 Google 实际看到的。
 2. **以域名为单位**：确定整个域名都是垃圾时用 `domain:example.com` 格式，比逐条列 URL 干净。
 3. **建立纯文本文件**：一行一个域名，可用 `#` 加注释记录原因与日期。
-4. **提交到 Disavow Tool**：在 Google Search Console 的 disavow 页面上传，注意这是覆盖制——新文件会完全取代旧文件。
+4. **提交到 Disavow Tool**：在 Google Search Console 的 disavow 页面上传，注意这是覆盖制——新文件会完全取代旧文件；文件须为 UTF-8 或 7-bit ASCII 的 .txt，上限 10 万行、2 MB，有错误的文件会被拒收。另外，[域名资源（Domain property）无法使用此工具](https://support.google.com/webmasters/answer/2648487)，需改用网址前缀资源。
 5. **不要期待立刻见效**：Google 要重新爬到那些链接才会套用，通常以周到月计。
 
 ## disavow 的三个常见误用
 
 - **看到 DR 低就否认**：链接价值跟 DR 不是同一回事，大量否认无害的低 DR 链接没有任何好处，还可能误伤。
 - **当成排名下滑的万灵丹**：排名掉了先查内容质量与算法更新，disavow 治不了内容问题。
-- **定期「保养式」提交**：没有证据显示定期 disavow 有帮助；Google 明确说过大多数网站永远不需要用这个工具。
+- **定期「保养式」提交**：没有证据显示定期 disavow 有帮助；Google 在说明中提到多数网站不需要用这个工具，因为 Google 通常能自行判断哪些链接可信。
+
+## 参考资料
+
+- [Disavow links to your site](https://support.google.com/webmasters/answer/2648487)（Google Search Console Help）
+- [December 2022 link spam update](https://developers.google.com/search/blog/2022/12/december-22-link-spam-update)（Google Search Central, 2022）
+- [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies)（Google Search Central）
 
 ## 常见问题（FAQ）
 

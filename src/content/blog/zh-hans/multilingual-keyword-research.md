@@ -6,7 +6,8 @@ intent: informational
 cluster: 多语言 / 国际 SEO（群集 5）
 author: GeoSeoToday
 date_published: 2026-07-26
-date_updated: 2026-07-26
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: multilingual-keyword-research
   en: multilingual-keyword-research
@@ -53,11 +54,43 @@ translations:
 
 注意第三列：不只是字形不同，连「健检 vs 诊断」的概念包装都不同。这种差异只有原生研究抓得到。
 
+## 自己做还是找服务商做（DIY vs hire a service）？
+
+**判断标准：你有没有该语言的母语者，以及你能不能验证交付物。** 内部有母语者、市场单一、词量在几百以内，自己做通常够用；要同时开多个语言市场、缺母语人才，或需要快速铺第一轮，才值得外包。
+
+**好的多语言关键词研究交付物应该包含：**
+
+1. 每个语言独立的关键词清单（不是翻译版），标明目标市场与搜索引擎。
+2. 每个词的意图标签（信息／商业／交易／导航）与对应页型。
+3. 说明搜索量的来源与地区语言设置，并注明数据的限制。
+4. 实际 SERP 检查记录：前 10 名页型与竞争者用词。
+5. 可追踪的对照表：关键词对应哪个页面、哪个语言 URL。
+
+**影响报价的因素（不同服务商差异很大，请以书面报价为准）：** 语言与市场数量、关键词数量、是否含 SERP 人工检查、是否由母语者执行、是否含内容地图与对应页面规划、是否持续追踪。
+
+**签约前向服务商问的 8 个问题：**
+
+1. 每个语言由谁执行？是否为该语言母语者？
+2. 清单是原生研究，还是由英文清单翻译而来？
+3. 搜索量用什么来源？地区与语言怎么设置？
+4. 意图标签是人工判断还是自动分类？有没有 SERP 查证？
+5. 繁中与简中是分开做，还是由转换工具生成？
+6. 交付物格式为何？能否导入我们的追踪系统？
+7. 如何处理工具数据偏低的中文长尾词？
+8. 研究完成后怎么对应页面、URL 与 hreflang？
+
+另外要记得，语言版本的 URL 与配对也影响研究成果能否落地：[Google 建议每个语言版本使用不同的 URL](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)，并且[每个语言版本都必须列出自己与其他所有语言版本](https://developers.google.com/search/docs/specialty/international/localized-versions)。
+
 ## 研究完成后的三个配套
 
 1. **每个语言的 title、slug、meta 都用该语言矩阵里的词**，不共用。
-2. **hreflang 把各语言版本正确配对**，避免研究做对了、流量却被端错版本。
+2. **hreflang 把各语言版本正确配对**，避免研究做对了、流量却被端错版本。Google 说明 hreflang 是用来[让它理解这些页面是同一内容的本地化版本](https://developers.google.com/search/docs/specialty/international/localized-versions)，且[只有主要内容未翻译时才会被视为重复内容](https://developers.google.com/search/docs/specialty/international/localized-versions)。
 3. **GSC 分语言目录追踪查询字词**，验证实际拿到的查询是否为当地用语，每季回头修正矩阵。
+
+## 参考资料
+
+- [Tell Google about localized versions of your page](https://developers.google.com/search/docs/specialty/international/localized-versions)（Google Search Central）
+- [Managing multi-regional and multilingual sites](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)（Google Search Central）
 
 ## 常见问题（FAQ）
 

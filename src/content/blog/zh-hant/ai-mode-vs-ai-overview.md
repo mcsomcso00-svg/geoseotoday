@@ -1,12 +1,13 @@
 ---
 title: Google AI Mode 與 AI Overview 差在哪：兩種介面的優化重點不同
-description: AI Mode 是對話式多輪追問，AI Overview 是搜尋結果頂端的單次摘要。前者要覆蓋整條 follow-up 意圖鏈，後者要一段話就給出可摘取答案。本文用一張對照表拆解兩者差異與各自的優化清單。
+description: 什麼是 Google AI Mode？AI Mode 是對話式多輪追問，AI Overview 是搜尋結果頂端的單次摘要。前者要覆蓋整條 follow-up 意圖鏈，後者要一段話就給出可摘取答案。本文用一張對照表拆解兩者差異與各自的優化清單。
 target_keyword: ai mode 優化
 intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-28
-date_updated: 2026-07-28
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hans: ai-mode-vs-ai-overview
   en: ai-mode-vs-ai-overview
@@ -15,9 +16,17 @@ translations:
 
 **AI Overview 是搜尋結果頂端的單次摘要，優化重點是「一段話就給出可摘取答案」；AI Mode 是獨立的對話式介面，會多輪追問，優化重點是「覆蓋整條 follow-up 意圖鏈」。同一篇文章要同時吃到兩者，就得既有自足答案塊、又把後續子問題全寫進去。** 兩者共用 Gemini 與同一套檢索底層，但取材粒度不同，用同一招打兩個介面會漏掉一半流量。
 
+## 什麼是 Google AI Mode？
+
+Google AI Mode（AI 模式）是 Google 搜尋裡的對話式 AI 搜尋介面：它把複雜問題拆成多個子主題，同時發出多組相關搜尋再合成一則帶連結的回答，[Google 官方形容它特別適合需要深入探索、推理或複雜比較的查詢](https://developers.google.com/search/docs/appearance/ai-features)。這種「同時對多個子主題、多個資料來源發出相關搜尋」的做法，Google 稱為[查詢扇出（query fan-out）](https://blog.google/products/search/ai-mode-search/)。
+
+在 Search Console 裡，出現在 AI Overview 與 AI Mode 的網站流量，[都計入整體搜尋流量，並出現在成效報表的「網頁」搜尋類型下](https://developers.google.com/search/docs/appearance/ai-features)。
+
 ## AI Mode 與 AI Overview 到底是不是同一個東西？
 
 不是。AI Overview 是嵌在傳統搜尋結果頁（SERP）頂端的 AI 摘要，使用者輸入一次查詢、得到一段綜合答案加幾個來源連結，本質仍是「搜尋結果的一部分」。AI Mode 則是 Google 在 2025 年推出的獨立分頁／介面，體驗更接近 ChatGPT——使用者可以連續追問、一輪一輪把問題聊深，Google 在背後用「查詢扇出（query fan-out）」把一個問題拆成多個子查詢再合成答案。
+
+兩者引用的網址也不一樣：Ahrefs 以 2025 年 9 月美國資料、54 萬組查詢配對分析，發現 [AI Mode 與 AI Overview 引用相同網址的比例只有 13.7%](https://ahrefs.com/blog/ai-overviews-vs-ai-mode)（該研究也提醒這是單次生成的快照，實際重疊可能略高）。
 
 關鍵差別在互動模式：**AI Overview 是單次（one-shot），AI Mode 是多輪（multi-turn）**。這直接決定了兩者對內容的偏好——前者要你「一句話講清楚一件事」，後者要你「把一個主題的完整子問題樹都答到」。
 
@@ -55,6 +64,12 @@ AI Mode 的使用者不會問完一個問題就走，他會追問。所以你要
 ## 一篇文章能同時吃到兩者嗎？
 
 能，而且應該。兩者共用 Gemini 底層，優化並不衝突：**用「答案優先段」滿足 AI Overview 的單段取材，用「完整 follow-up 子問題覆蓋」滿足 AI Mode 的多輪扇出**。實作上就是——每個 H2 開頭給一段自足答案（吃 AI Overview），整篇把子問題樹答滿並串好內部連結（吃 AI Mode）。這也正是 AIO 內容的通則，延伸見〈[AI Overview 是什麼？](/zh-hant/blog/what-is-ai-overview/)〉。
+
+## 參考資料
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central, 2026）
+- [Expanding AI Overviews and introducing AI Mode](https://blog.google/products/search/ai-mode-search/)（Google, 2025）
+- [AI Mode vs. AI Overviews: citation overlap study](https://ahrefs.com/blog/ai-overviews-vs-ai-mode)（Ahrefs, 2025）
 
 ## 常見問題（FAQ）
 

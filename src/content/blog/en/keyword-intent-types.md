@@ -6,7 +6,8 @@ intent: informational
 cluster: Off-page SEO
 author: GeoSeoToday
 date_published: 2026-07-22
-date_updated: 2026-07-22
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: keyword-intent-types
   zh-hans: keyword-intent-types
@@ -37,6 +38,27 @@ Shares drift by industry, but the general rule holds: **informational is the hig
 3. **Transactional**: the page's whole job is to erase the last doubts — transparent pricing, clear specs, an FAQ that handles objections. It is the fiercest SEO competition, usually supported by internal links poured in from commercial and informational pages.
 4. **Navigational**: do not fight for searches on someone else's brand (the intent is to reach *their* official site — ranking there wins you no clicks); for your own brand's navigational terms, hold the number-one spot without exception.
 
+## Navigational intent: definition, examples and how to treat it
+
+**Navigational intent means the user already knows which site or page they want and uses search as a shortcut.** Google's Search Quality Evaluator Guidelines call these Website queries, where [the intent is to locate a specific website or webpage the user has requested](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf). The query can be a full URL or a brand name plus a page name.
+
+Six typical examples (the first four come from the guidelines' own examples):
+
+1. Bare brand: `tiktok` → wants the TikTok website.
+2. Brand + login: `reddit login` → wants Reddit's login page.
+3. Brand + service: `yahoo mail` → wants Yahoo Mail.
+4. Domain name: `walmart.com` → wants the Walmart site.
+5. Site name + page: `your brand pricing`, `some tool download` → wants that site's specific page.
+6. Misspelled or partial URLs: the user has a specific page in mind but did not type it correctly.
+
+**How to treat it:**
+
+- Hold the number-one spot for your own brand terms (brand, brand + login, brand + pricing) and make sure your homepage and key subpages have clear titles and descriptions; this is the easiest traffic to win and the easiest to lose.
+- Do not target other brands' navigational terms: the user wants *their* official site, so ranking there wins no clicks — unless you have genuine comparison or review content, which belongs on a commercial-intent page.
+- Do not build thin pages just to catch navigational queries; that demand is brand equity, not something content can create.
+
+**Note:** informational / commercial / transactional / navigational is the common industry four-way split. Google's own guidelines use a different framework — Know, Do, Website and Visit-in-person — in which [Website corresponds to navigational](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf). The two frameworks do not map one-to-one, so we still treat the page types actually shown in the SERP as the final test.
+
 ## Three ways to read intent (most accurate to fastest)
 
 - **Read the SERP (most accurate)**: drop the term into Google and look at what page formats fill the top 10. If 7 of the top 10 are list-style comparison posts, it is commercial — no guessing needed.
@@ -48,6 +70,10 @@ Shares drift by industry, but the general rule holds: **informational is the hig
 - **Writing a commercial term as informational**: the most expensive mistake. "best geo tools" written as a GEO explainer → rewrite it as a listicle with a comparison table.
 - **Forcing a mixed-intent term onto one side**: check the SERP's dominant format first, follow the majority, and win on content differentiation.
 - **Ignoring language nuance**: some languages routinely drop the modifier — a query like "site migration" is usually a how-to (informational) even though the wording gives no hint — so classification leans even harder on reverse-engineering the SERP.
+
+## Sources
+
+- [General Guidelines for Search Quality Evaluators, §12.7 Understanding User Intent](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf) (Google, 2025-09-11)
 
 ## Frequently asked questions (FAQ)
 

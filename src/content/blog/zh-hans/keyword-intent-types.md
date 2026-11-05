@@ -6,7 +6,8 @@ intent: informational
 cluster: Off-page & 关键字研究（群集 4）
 author: GeoSeoToday
 date_published: 2026-07-22
-date_updated: 2026-07-22
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: keyword-intent-types
   en: keyword-intent-types
@@ -37,6 +38,27 @@ translations:
 3. **交易型**：页面重点是消除最后疑虑——价格透明、规格清楚、FAQ 处理反对意见。SEO 上竞争最凶，通常靠商业型与信息型页面灌内链支撑。
 4. **导航型**：搜别人品牌的词不要硬抢（意图是去官网，你排上去也没点击）；自己品牌的导航词则务必守住第一。
 
+## 导航型意图（Navigational intent）：定义、例子与处理方式
+
+**导航型意图是用户已经知道要去哪个网站或页面，搜索只是捷径。** Google 的搜索质量评估指南把这类查询称为 [Website query：目的是找到用户指定的某个特定网站或网页](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf)，查询可能是完整网址，也可能是品牌名加上页面名称。
+
+六个典型例子（其中前四个取自该指南的示例）：
+
+1. 纯品牌名：`tiktok` → 想看 TikTok 网站。
+2. 品牌加登录：`reddit login` → 想进 Reddit 登录页。
+3. 品牌加服务：`yahoo mail` → 想进 Yahoo Mail。
+4. 域名：`walmart.com` → 想进 Walmart 官网。
+5. 网站名加页面：`你的品牌 价格`、`某工具 下载` → 想进该站的特定页。
+6. 打错或不完整的网址：用户心中有特定页面，只是没打对。
+
+**怎么处理：**
+
+- 自己的品牌词（品牌名、品牌＋登录、品牌＋价格）要守住第一，并确保首页与关键子页的标题、描述清楚；这是你最容易拿到、也最容易被别人抢走的流量。
+- 别人品牌的导航词不要当成关键词目标：用户想去的是对方官网，你排上去也没有点击，除非你确实有合法的比较或评测内容并写在商业型页面。
+- 不要为了「导航词」硬做一堆薄页，这类查询的搜索量属于品牌资产，不是内容能创造的。
+
+**补充：** 「信息／商业／交易／导航」是业界通用的四分法；Google 自家指南使用的是 Know、Do、Website、Visit-in-person 四种意图框架，其中 [Website 对应导航型](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf)。两套框架不是一对一，所以本站仍以 SERP 实际呈现的页型为最后判准。
+
 ## 判断意图的三个方法（由准到快）
 
 - **看 SERP（最准）**：把词丢进谷歌，看前 10 名是什么页型。前 10 有 7 个是清单比较文，它就是商业型，不用猜。
@@ -48,6 +70,10 @@ translations:
 - **把商业型当信息型写**：最贵的错。「geo 工具推荐」写成 GEO 科普 → 重写为附比较表的清单文。
 - **把混合意图硬选一边**：先查 SERP 主流页型，跟随多数，用内容差异化取胜。
 - **忽略中文语感**：中文常省略修饰词，「网站搬家」查询者多半要教程（信息型），词面完全看不出来——所以中文分类更依赖 SERP 反推。
+
+## 参考资料
+
+- [General Guidelines for Search Quality Evaluators, §12.7 Understanding User Intent](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf)（Google, 2025-09-11）
 
 ## 常见问题（FAQ）
 

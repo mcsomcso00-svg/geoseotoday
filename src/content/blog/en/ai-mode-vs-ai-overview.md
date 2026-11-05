@@ -1,12 +1,13 @@
 ---
 title: "AI Mode vs AI Overview: Why the Two Interfaces Need Different Optimization"
-description: AI Mode is a conversational, multi-turn interface; AI Overview is a one-shot summary at the top of search. One rewards a liftable single paragraph, the other rewards covering the whole follow-up intent chain. Here's a table breaking down both, plus a checklist for each.
+description: What is Google AI Mode? AI Mode is a conversational, multi-turn interface; AI Overview is a one-shot summary at the top of search. One rewards a liftable single paragraph, the other rewards covering the whole follow-up intent chain. Here's a table breaking down both, plus a checklist for each.
 target_keyword: ai mode optimization
 intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-28
-date_updated: 2026-07-28
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: ai-mode-vs-ai-overview
   zh-hans: ai-mode-vs-ai-overview
@@ -15,9 +16,17 @@ translations:
 
 **AI Overview is the one-shot summary at the top of search results, and optimizing for it means "give a liftable answer in a single paragraph." AI Mode is a standalone conversational interface that asks follow-ups, and optimizing for it means "cover the entire follow-up intent chain." To win both from one article, you need self-contained answer blocks *and* every downstream sub-question written in.** Both share Gemini and the same retrieval layer underneath, but they lift content at different granularities — using one tactic for both interfaces leaves half your traffic on the table.
 
+## What is Google AI Mode?
+
+Google AI Mode is the conversational AI search interface inside Google Search: it breaks a complex question into subtopics, runs several related searches at once and synthesizes one answer with links. [Google describes it as particularly helpful for queries where further exploration, reasoning or complex comparisons are needed](https://developers.google.com/search/docs/appearance/ai-features). Google calls the technique of [issuing multiple related searches concurrently across subtopics and data sources "query fan-out"](https://blog.google/products/search/ai-mode-search/).
+
+In Search Console, traffic from sites shown in AI Overviews and AI Mode is [included in overall search traffic and reported in the Performance report under the "Web" search type](https://developers.google.com/search/docs/appearance/ai-features).
+
 ## Are AI Mode and AI Overview actually the same thing?
 
 No. AI Overview is the AI summary embedded at the top of the traditional search results page (SERP): the user types one query, gets one synthesized answer plus a few source links, and it's still fundamentally "part of the search results." AI Mode is the standalone tab/interface Google launched in 2025, and the experience is much closer to ChatGPT — the user can keep asking follow-ups, going one turn deeper at a time, while Google uses "query fan-out" behind the scenes to split one question into multiple sub-queries and then synthesize an answer.
+
+The two also cite different URLs: in an Ahrefs analysis of 540,000 query pairs (US data, September 2025), [AI Mode and AI Overviews cited the same URLs only 13.7% of the time](https://ahrefs.com/blog/ai-overviews-vs-ai-mode). Ahrefs cautions this is a single-generation snapshot, so true overlap may be somewhat higher.
 
 The key difference is the interaction model: **AI Overview is one-shot, AI Mode is multi-turn.** That single distinction decides each one's content preference — the former wants you to "say one thing clearly in one sentence," the latter wants you to "answer the entire sub-question tree for a topic."
 
@@ -55,6 +64,12 @@ AI Mode users don't leave after one question — they ask follow-ups. So you hav
 ## Can one article win both at once?
 
 Yes — and it should. The two share the Gemini layer, so the optimizations don't conflict: **use the "answer-first paragraph" to satisfy AI Overview's single-passage lift, and use "complete follow-up sub-question coverage" to satisfy AI Mode's multi-turn fan-out.** In practice that means giving every H2 a self-contained opening answer (for AI Overview), while the whole article fully answers the sub-question tree and links up its internal cluster (for AI Mode). This is the general rule for AIO content — more in [What Is AI Overview?](/en/blog/what-is-ai-overview/).
+
+## Sources
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central, 2026)
+- [Expanding AI Overviews and introducing AI Mode](https://blog.google/products/search/ai-mode-search/) (Google, 2025)
+- [AI Mode vs. AI Overviews: citation overlap study](https://ahrefs.com/blog/ai-overviews-vs-ai-mode) (Ahrefs, 2025)
 
 ## FAQ
 

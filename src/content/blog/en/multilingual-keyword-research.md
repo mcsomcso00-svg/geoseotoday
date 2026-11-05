@@ -6,7 +6,8 @@ intent: informational
 cluster: Multilingual SEO
 author: GeoSeoToday
 date_published: 2026-07-26
-date_updated: 2026-07-26
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: multilingual-keyword-research
   zh-hans: multilingual-keyword-research
@@ -53,11 +54,43 @@ Cross-expand a list of micro-intents for the language with `[topic] × [action] 
 
 Look at the third row: it isn't just different characters — even the conceptual packaging differs ("健檢/health check" vs "诊断/diagnosis"). Only native research catches a gap like that.
 
+## DIY or hire a service?
+
+**The deciding test: do you have native speakers of that language, and can you verify the deliverable?** If you have in-house native speakers, a single market and a few hundred terms, DIY is usually enough. Outsource when you are opening several language markets at once, lack native talent, or need a fast first pass.
+
+**A good multilingual keyword research deliverable includes:**
+
+1. A separate keyword set per language (not a translated one), labeled with the target market and search engine.
+2. An intent label for each term (informational / commercial / transactional / navigational) and the page type it maps to.
+3. The search-volume source and the location/language settings used, with its limitations stated.
+4. A SERP check record: the page types and competitor wording in the top 10.
+5. A trackable map: which keyword goes to which page and which language URL.
+
+**Cost drivers (quotes vary widely; rely on a written quote):** number of languages and markets, number of keywords, whether manual SERP checks are included, whether native speakers do the work, whether a content map and page plan are included, and whether tracking continues afterwards.
+
+**Eight questions to ask a vendor before signing:**
+
+1. Who does the work in each language, and are they native speakers?
+2. Is the list original research or translated from an English list?
+3. What is the volume source, and how are location and language set?
+4. Are intent labels judged by a person or auto-classified, and is there SERP verification?
+5. Are Traditional and Simplified Chinese researched separately, or is one generated from the other by a converter?
+6. What format is the deliverable, and can we import it into our tracking?
+7. How do you handle Chinese long-tail terms that tools under-report?
+8. After the research, how are pages, URLs and hreflang mapped?
+
+Also remember that URL structure and pairing decide whether the research can land: [Google recommends a different URL for each language version of a page](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites), and [each language version must list itself as well as all other language versions](https://developers.google.com/search/docs/specialty/international/localized-versions).
+
 ## Three things to line up after the research
 
 1. **Every language's title, slug, and meta use terms from that language's matrix** — never shared.
 2. **hreflang correctly pairs each language version**, so you don't do the research right only to have traffic served the wrong version.
 3. **Track query strings by language directory in GSC**, verify whether the queries you actually win are local phrasings, and revise the matrix each quarter.
+
+## Sources
+
+- [Tell Google about localized versions of your page](https://developers.google.com/search/docs/specialty/international/localized-versions) (Google Search Central)
+- [Managing multi-regional and multilingual sites](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites) (Google Search Central)
 
 ## Frequently asked questions (FAQ)
 

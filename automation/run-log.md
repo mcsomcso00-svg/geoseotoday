@@ -36,3 +36,25 @@ Every scheduled run appends its section here (newest last), with the live links 
 
 ## 2026-11-03 — Cloud push test
 - 2026-11-03T12:32:26Z push test: geoseotoday.com=200, developers.google.com=200
+
+## 2026-11-05 — Enhancement batch
+- Google AI Mode 與 AI Overview 差在哪：兩種介面的優化重點不同 — 3 sources; added "What is Google AI Mode" H2, Search Console Web-type fact, Ahrefs 13.7% URL overlap; Gen AI report fact not added (no verifiable source)
+  - 繁中 https://geoseotoday.com/zh-hant/blog/ai-mode-vs-ai-overview/
+  - 简中 https://geoseotoday.com/zh-hans/blog/ai-mode-vs-ai-overview/
+  - EN https://geoseotoday.com/en/blog/ai-mode-vs-ai-overview/
+- Ahrefs 看到一堆垃圾連結（Spam links／Spam domains）該怎麼辦 — 5 sources; retitled, added 3-step box; replaced unsourced "Penguin 4.0 neutralizes links" with Google's Penguin 2016 and SpamBrain 2022 wording
+  - 繁中 https://geoseotoday.com/zh-hant/blog/ahrefs-spam-domains/
+  - 简中 https://geoseotoday.com/zh-hans/blog/ahrefs-spam-domains/
+  - EN https://geoseotoday.com/en/blog/ahrefs-spam-domains/
+- 垃圾外鏈要不要 disavow？大部分不用 — 3 sources; narrowed to disavow decision, aligned with Google's conditions (spam plus actual/likely manual action), file limits, Domain property limitation
+  - 繁中 https://geoseotoday.com/zh-hant/blog/spam-backlinks-disavow/
+  - 简中 https://geoseotoday.com/zh-hans/blog/spam-backlinks-disavow/
+  - EN https://geoseotoday.com/en/blog/spam-backlinks-disavow/
+- 關鍵字意圖分類：資訊/商業/交易/導航 — 1 source; added Navigational intent H2; Google rater-guideline framework noted; Bing intents taxonomy not added (could not verify)
+  - 繁中 https://geoseotoday.com/zh-hant/blog/keyword-intent-types/
+  - 简中 https://geoseotoday.com/zh-hans/blog/keyword-intent-types/
+  - EN https://geoseotoday.com/en/blog/keyword-intent-types/
+- 多語言關鍵字研究：各語言各自做 — 2 sources; added DIY vs hire a service H2 (deliverable, cost drivers, 8 vendor questions); no corrections
+  - 繁中 https://geoseotoday.com/zh-hant/blog/multilingual-keyword-research/
+  - 简中 https://geoseotoday.com/zh-hans/blog/multilingual-keyword-research/
+  - EN https://geoseotoday.com/en/blog/multilingual-keyword-research/

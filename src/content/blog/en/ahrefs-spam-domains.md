@@ -1,19 +1,27 @@
 ---
-title: "Ahrefs Is Showing a Pile of Spam Domains: What to Do"
+title: "Ahrefs Spam Links and Spam Domains: What to Do and What to Ignore"
 description: A few dozen unknown spam domains suddenly appear in your Ahrefs backlink report? Don't panic, and don't rush to disavow. This article explains where these domains come from, why most are just bait to sell you link services, how Google treats them, and the only situation actually worth acting on.
 target_keyword: ahrefs spam domain
 intent: informational
 cluster: Off-page SEO
 author: GeoSeoToday
 date_published: 2026-07-19
-date_updated: 2026-07-19
+date_updated: 2026-11-05
+enhanced: true
 translations:
   zh-hant: ahrefs-spam-domains
   zh-hans: ahrefs-spam-domains
 ---
-# Ahrefs Is Showing a Pile of Spam Domains: What to Do
+# Ahrefs Spam Links and Spam Domains: What to Do and What to Ignore
 
 **When a pile of spam domains shows up in Ahrefs, the correct response nine times out of ten is: do nothing.** The vast majority of these domains are the by-product of automated crawlers scraping and linking at random, and plenty of them exist to scare you and then sell you a backlink or "cleanup" service. Google normally treats links like these as background noise and ignores them — they won't drag down your rankings, and they aren't worth losing sleep over a disavow file.
+
+> **Three-step quick check: what to do and what to ignore**
+> 1. **Look for a real signal first**: open the Manual Actions report in Search Console. No link-related notice and no unusual ranking drop means nothing to do.
+> 2. **Ignore**: crawler-made spam links and spam domains, DR swings, and any "toxicity score".
+> 3. **Act only on what you caused**: links you or a contractor bought or swapped, and cases where Google has issued a manual action.
+>
+> Terminology: spam links are individual backlinks and spam domains are whole referring domains; they show up in Ahrefs' Backlinks and Referring domains views, but the decision logic is the same. Ahrefs itself [has no spam score](https://help.ahrefs.com/site-explorer/faqs-and-troubleshooting/does-ahrefs-have-a-spam-score-or-something-similar) and recommends its Best links filter to hide low-impact backlinks from reports.
 
 ## Where do these spam domains come from?
 
@@ -28,7 +36,7 @@ The common thread: **this is not an attack aimed at you.** Drop any competitor's
 
 ## How does Google view these links?
 
-Google's public position has been consistent for years: the algorithm can automatically identify and ignore the overwhelming majority of spam links. Since Penguin 4.0 in 2016, Google's default handling of suspicious links shifted from "penalize the site" to "neutralize the link" — meaning these spam domains have an effect on you that rounds to zero, neither helping nor hurting.
+Google's public position has been consistent for years: the algorithm can automatically identify and ignore the overwhelming majority of spam links. When Penguin became part of the core algorithm in 2016, Google explained that it [devalues spam by adjusting ranking based on spam signals, rather than affecting the ranking of the whole site](https://developers.google.com/search/blog/2016/09/penguin-is-now-part-of-our-core). In its 2022 link spam update Google also said it uses [SpamBrain to neutralize the impact of unnatural links, so any credit those links pass is lost](https://developers.google.com/search/blog/2022/12/december-22-link-spam-update) — meaning these spam domains have an effect on you that rounds to zero, neither helping nor hurting.
 
 Three reasons you can relax:
 
@@ -59,6 +67,14 @@ Note that the second case is the one that matters: **the links you actually need
 1. Check Referring domains once a month, focusing on **newly added quality sources** (is anyone actually citing you?) rather than counting junk.
 2. Add the obvious junk domains to Ahrefs' **Hidden** / exclusion list so the report stays clean and you can track the real trend — this only affects what Ahrefs displays and has nothing to do with Google, and that's exactly enough.
 3. Spend the time you save on things that earn real links: citable data content, tool pages, digital PR.
+
+## Sources
+
+- [Penguin is now part of our core algorithm](https://developers.google.com/search/blog/2016/09/penguin-is-now-part-of-our-core) (Google Search Central, 2016)
+- [December 2022 link spam update](https://developers.google.com/search/blog/2022/12/december-22-link-spam-update) (Google Search Central, 2022)
+- [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies) (Google Search Central)
+- [Disavow links to your site](https://support.google.com/webmasters/answer/2648487) (Google Search Console Help)
+- [Does Ahrefs have a spam score?](https://help.ahrefs.com/site-explorer/faqs-and-troubleshooting/does-ahrefs-have-a-spam-score-or-something-similar) (Ahrefs Help Center)
 
 ## Frequently asked questions (FAQ)
 
