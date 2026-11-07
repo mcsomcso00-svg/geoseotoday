@@ -58,3 +58,9 @@ Every scheduled run appends its section here (newest last), with the live links 
   - 繁中 https://geoseotoday.com/zh-hant/blog/multilingual-keyword-research/
   - 简中 https://geoseotoday.com/zh-hans/blog/multilingual-keyword-research/
   - EN https://geoseotoday.com/en/blog/multilingual-keyword-research/
+
+## 2026-11-07 — New articles
+- FAQ 富結果 2026 年 5 月退場：FAQPage schema 還要留嗎？ — live 2026-11-17
+  - 繁中 https://geoseotoday.com/zh-hant/blog/faq-rich-result-deprecated/
+  - 简中 https://geoseotoday.com/zh-hans/blog/faq-rich-result-deprecated/
+  - EN https://geoseotoday.com/en/blog/faq-rich-result-deprecated/
