@@ -64,3 +64,25 @@ Every scheduled run appends its section here (newest last), with the live links 
   - 繁中 https://geoseotoday.com/zh-hant/blog/faq-rich-result-deprecated/
   - 简中 https://geoseotoday.com/zh-hans/blog/faq-rich-result-deprecated/
   - EN https://geoseotoday.com/en/blog/faq-rich-result-deprecated/
+
+## 2026-11-09 — Enhancement batch
+- Schema 結構化資料新手實作教學 — 4 sources; replaced outdated 'FAQ rich result limited to authoritative sites' with Google's May 7 2026 retirement; ranking/manual-action wording aligned with Google docs
+  - 繁中 https://geoseotoday.com/zh-hant/blog/schema-tutorial/
+  - 简中 https://geoseotoday.com/zh-hans/blog/schema-tutorial/
+  - EN https://geoseotoday.com/en/blog/schema-tutorial/
+- Schema 結構化資料如何幫助被 AI 引用 — 4 sources; FAQ rich result Q&A corrected to the May 2026 retirement; manual-action wording aligned
+  - 繁中 https://geoseotoday.com/zh-hant/blog/schema-for-geo/
+  - 简中 https://geoseotoday.com/zh-hans/blog/schema-for-geo/
+  - EN https://geoseotoday.com/en/blog/schema-for-geo/
+- robots.txt 怎麼設才不擋掉 AI 引用：訓練與檢索爬蟲分開處理 — 4 sources; ChatGPT-User/Perplexity-User noted as user-triggered (robots.txt may not apply); Google-Extended wording aligned; 24h propagation noted
+  - 繁中 https://geoseotoday.com/zh-hant/blog/robots-txt-for-ai-bots/
+  - 简中 https://geoseotoday.com/zh-hans/blog/robots-txt-for-ai-bots/
+  - EN https://geoseotoday.com/en/blog/robots-txt-for-ai-bots/
+- AI 爬蟲清單與管理（GPTBot、PerplexityBot、Google-Extended） — 4 sources; fixed claim that Google-Extended supplies AI Overview (it does not; training only); added user-triggered fetchers and 24h note
+  - 繁中 https://geoseotoday.com/zh-hant/blog/ai-crawler-management/
+  - 简中 https://geoseotoday.com/zh-hans/blog/ai-crawler-management/
+  - EN https://geoseotoday.com/en/blog/ai-crawler-management/
+- GEO、AEO、AIO 差在哪？三者關係一次搞懂 — 2 sources; GEO paper claim softened to the abstract's 'up to 40%' upper bound, removed unverified affiliation; added Google's position that GEO/AEO is still SEO
+  - 繁中 https://geoseotoday.com/zh-hant/blog/geo-aeo-aio/
+  - 简中 https://geoseotoday.com/zh-hans/blog/geo-aeo-aio/
+  - EN https://geoseotoday.com/en/blog/geo-aeo-aio/

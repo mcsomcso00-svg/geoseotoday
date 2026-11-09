@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-30
-date_updated: 2026-07-30
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hans: robots-txt-for-ai-bots
   en: robots-txt-for-ai-bots
@@ -22,7 +23,7 @@ translations:
 這是全篇最重要的區分，決定你該放行誰：
 
 - **訓練型爬蟲**：把你的內容抓回去，當作訓練或更新大型語言模型的語料。擋掉它，主要是防止內容被納入模型權重——但它**不負責**回答當下問題時的即時引用。是否放行，取決於你對「內容被拿去訓練」的版權與競爭立場。
-- **檢索型爬蟲**：使用者在 ChatGPT、Perplexity 等處提問時，AI 即時派它來抓你的頁面，用來生成答案並**附上指向你的引用連結**。這隻就是 GEO 曝光的命脈——擋掉它，等於主動退出該引擎的即時引用。
+- **檢索型爬蟲**：使用者在 ChatGPT、Perplexity 等處提問時，AI 即時派它來抓你的頁面（其中使用者觸發的抓取器如 ChatGPT-User、[Perplexity-User](https://docs.perplexity.ai/guides/bots)，官方說明 robots.txt 可能不適用或通常被忽略），用來生成答案並**附上指向你的引用連結**。這隻就是 GEO 曝光的命脈——擋掉它，等於主動退出該引擎的即時引用。
 
 一句話：**訓練 = 內容進不進模型；檢索 = 你進不進答案的引用。** 兩者是不同的 user-agent、不同的商業取捨，robots.txt 必須分開寫。
 
@@ -32,13 +33,13 @@ translations:
 
 | User-agent | 所屬 | 類型 | 擋掉它 = 放棄什麼 |
 |---|---|---|---|
-| **GPTBot** | OpenAI | 訓練 | 內容不進 OpenAI 訓練語料（不影響 ChatGPT 搜尋引用） |
-| **OAI-SearchBot** | OpenAI | 檢索 | ChatGPT 搜尋不再即時引用你、附連結 |
-| **ChatGPT-User** | OpenAI | 檢索（使用者觸發） | 使用者在 ChatGPT 內開你連結時抓不到內容 |
-| **PerplexityBot** | Perplexity | 檢索 | Perplexity 答案與來源清單不再收錄你 |
-| **ClaudeBot** | Anthropic | 訓練 | 內容不進 Anthropic 訓練語料 |
-| **Claude-SearchBot** | Anthropic | 檢索 | Claude 即時檢索與引用抓不到你 |
-| **Google-Extended** | Google | 訓練／AI 使用 | 內容不供 Gemini／AI 產品使用（**不影響一般 Google 排名**） |
+| **[GPTBot](https://developers.openai.com/api/docs/bots)** | OpenAI | 訓練 | 內容不進 OpenAI 訓練語料（不影響 ChatGPT 搜尋引用） |
+| **[OAI-SearchBot](https://developers.openai.com/api/docs/bots)** | OpenAI | 檢索 | 不會出現在 ChatGPT 搜尋答案中（OpenAI 說明約需 24 小時生效） |
+| **[ChatGPT-User](https://developers.openai.com/api/docs/bots)** | OpenAI | 使用者觸發 | OpenAI 說明因由使用者發起，robots.txt 規則可能不適用，不能當作管控 ChatGPT 搜尋收錄的開關 |
+| **[PerplexityBot](https://docs.perplexity.ai/guides/bots)** | Perplexity | 檢索 | Perplexity 搜尋結果不再顯示與連結你（不用於訓練基礎模型） |
+| **[ClaudeBot](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)** | Anthropic | 訓練 | 內容不進 Anthropic 訓練語料 |
+| **[Claude-SearchBot](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)** | Anthropic | 檢索 | 內容不被索引供搜尋使用，可能降低在 Claude 搜尋結果中的能見度 |
+| **[Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)** | Google | 訓練 | 內容不用於訓練 Gemini 模型（Google 說明**不影響搜尋收錄，也不是排名訊號**） |
 | **Googlebot** | Google | 索引（驅動 AI Overview） | 一般搜尋與 AI Overview 一起消失（幾乎不該擋） |
 | **Bingbot** | Microsoft | 索引（驅動 Copilot） | Bing 搜尋與 Copilot 同時放棄 |
 
@@ -50,6 +51,7 @@ translations:
 
 ```
 # ── 檢索型：全部放行，這是 AI 引用曝光的命脈 ──
+# （ChatGPT-User 由使用者觸發，OpenAI 稱 robots.txt 規則可能不適用；列出僅為明確表態）
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -101,16 +103,23 @@ Sitemap: https://你的網域/sitemap.xml
 2. **查伺服器 access log**：搜尋上表的 user-agent，確認它們真的有來、且回應是 200。看得到爬取行為，才代表放行生效——這也是唯一能觀察 AI bot 真實抓取的地方。
 3. **順手看爬取預算**：AI 爬蟲共享你的伺服器資源，量大時優先用快取／CDN 而非封鎖來解，別為了省頻寬把引用一起犧牲，詳見〈[crawl budget 是什麼](/zh-hant/blog/what-is-crawl-budget/)〉。
 
+## 參考資料
+
+- [OpenAI：Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity：Perplexity Crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [Google：Common crawlers（含 Google-Extended）](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [Anthropic：Does Anthropic crawl data from the web, and how can site owners block the crawler?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)（Anthropic）
+
 ## 常見問題（FAQ）
 
 **Q1：訓練爬蟲和檢索爬蟲到底差在哪？**
 訓練型（如 GPTBot、ClaudeBot）抓內容去訓練模型，擋它只防內容進模型；檢索型（如 OAI-SearchBot、PerplexityBot）在使用者提問當下即時來抓你的頁面、生成答案並附引用連結。想被 AI 引用一定要放行檢索型，訓練型才是可自由取捨的那一組。
 
 **Q2：擋掉 GPTBot，ChatGPT 就引用不到我了嗎？**
-不會。GPTBot 是訓練用；ChatGPT 搜尋的即時引用主要靠 OAI-SearchBot 與 ChatGPT-User。所以你可以「放行 OAI-SearchBot、封鎖 GPTBot」，既保住被引用又不被訓練——但兩者務必分開設定，別一起擋。
+不會。GPTBot 是訓練用；OpenAI 說明 OAI-SearchBot 負責讓網站出現在 ChatGPT 搜尋結果，ChatGPT-User 則處理使用者發起的動作。所以你可以「放行 OAI-SearchBot、封鎖 GPTBot」，既保住被引用又不被訓練——但兩者務必分開設定，別一起擋。
 
 **Q3：擋 Google-Extended 會傷到我的 Google 排名嗎？**
-不會。Google-Extended 只控制內容是否供 Gemini 等 AI 產品使用，與驅動一般搜尋和 AI Overview 的 Googlebot 是兩隻獨立爬蟲。擋 Google-Extended 只影響 AI 使用，傳統 SEO 排名不受影響。
+不會。Google-Extended 只控制內容是否供 Gemini 等 AI 產品使用，與驅動一般搜尋和 AI Overview 的 Googlebot 是兩隻獨立爬蟲。Google 文件明確說它不影響網站在 Google 搜尋的收錄，也不是排名訊號。
 
 **Q4：robots.txt 擋得住不守規矩的爬蟲嗎？**
 robots.txt 是「約定」而非強制。上表這些主流合規爬蟲會遵守，但它靠自律。若要技術性硬擋（含惡意仿冒），得在伺服器或 CDN 層做 user-agent／IP 過濾，光靠 robots.txt 不夠。

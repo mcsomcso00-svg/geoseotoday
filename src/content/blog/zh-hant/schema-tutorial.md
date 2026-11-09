@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-15
-date_updated: 2026-07-15
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hans: schema-tutorial
   en: schema-tutorial
@@ -17,17 +18,17 @@ translations:
 
 ## Schema 能帶來什麼？先講清楚期望值
 
-1. **複合搜尋結果（rich results）**：符合條件的標記可能讓搜尋結果多出評分星星、FAQ 摺疊、麵包屑路徑，提升點閱率。
+1. **複合搜尋結果（rich results）**：符合條件的標記可能讓搜尋結果多出評分星星、麵包屑路徑，提升點閱率。
 2. **消歧義**：明確告訴機器「這個『Apple』是公司不是水果」，強化實體理解。
 3. **對 AI 引擎友善**：結構化的作者、日期、組織資訊，讓 LLM 檢索時更容易判定內容可信度與時效。
 
-也要講清楚它**不能**做什麼：Schema 本身不是排名加分項——Google 官方立場是結構化資料幫助「理解」，不直接提升排名。內容爛，標記再完整也沒用。
+也要講清楚它**不能**做什麼：Schema 本身不是排名加分項——Google 的[說明文件](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)把結構化資料的好處放在複合式結果與理解頁面，並未說它會提升排名。內容爛，標記再完整也沒用。
 
-另外注意 2026 年的現實：Google 這幾年**縮減**了部分 rich result 的展示（FAQ rich result 自 2023 年 8 月起只保留給知名政府與健康網站）。所以做 FAQPage 標記的主要價值已轉向機器理解與 AI 引用，不是搜尋版面。
+另外注意 2026 年的現實：Google 已[停止顯示 FAQ 富結果](https://developers.google.com/search/updates)——更新紀錄寫明該功能「自 2026 年 5 月 7 日起不再出現在 Google 搜尋」，文件並於 6 月 15 日移除。所以 FAQPage 標記換不到搜尋版面上的展開問答；Google 的 [AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也說，生成式 AI 搜尋不需要結構化資料或特殊的 schema.org 標記。是否保留 FAQPage 的判斷，見〈FAQ 富結果 2026 年 5 月退場〉（11 月 17 日上線）。
 
 ## 三種格式，只學 JSON-LD
 
-結構化資料有三種寫法：JSON-LD、Microdata、RDFa。**Google 官方推薦 JSON-LD**，它是一段獨立的 `<script>`，不用改動 HTML 結構，最好維護。本文只教這一種。
+結構化資料有三種寫法：JSON-LD、Microdata、RDFa。**Google 官方推薦 [JSON-LD](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)**，它是一段獨立的 `<script>`，不用改動 HTML 結構，最好維護。本文只教這一種。
 
 ## 實作：部落格文章的 Article 標記
 
@@ -63,7 +64,7 @@ translations:
 
 ## 實作：FAQPage 標記
 
-文章有 FAQ 段落時，加上對應標記——**標記內容必須和頁面上實際顯示的文字一致**，這是 Google 的硬性規範：
+文章有 FAQ 段落時，加上對應標記——**標記內容必須和頁面上實際顯示的文字一致**，這是 [Google 的結構化資料政策](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)：不可標記頁面上看不到的內容。
 
 ```html
 <script type="application/ld+json">
@@ -88,8 +89,8 @@ translations:
 
 1. **寫**：用上面的模板改內容。靜態網站（Astro、Next 等）建議寫成模板元件，從 frontmatter 自動帶入欄位，避免手動維護不同步。
 2. **驗**：貼進 Google 的 **複合搜尋結果測試**（Rich Results Test，search.google.com/test/rich-results）看有沒有錯誤與警告；再用 **Schema.org validator**（validator.schema.org）檢查語法。
-3. **部署後監控**：GSC 左側「**體驗與強化**」區會出現對應報表（例如「常見問題」「導覽標記」），列出有效與錯誤的頁面。
-4. **維護**：內容改版時同步更新標記——「標記與頁面內容不符」是最常見的違規，可能導致手動處罰。
+3. **部署後監控**：GSC 左側「**體驗與強化**」區會出現對應報表（例如「導覽標記」等類型），列出有效與錯誤的頁面。
+4. **維護**：內容改版時同步更新標記——「標記與頁面內容不符」是最常見的違規，可能導致手動處置（依 Google 說明，後果是該頁失去複合式結果資格，不影響一般網頁排名）。
 
 ## 新手優先順序
 
@@ -100,6 +101,13 @@ translations:
 | 3 | FAQPage | 有 FAQ 段的文章 |
 | 4 | Organization / Person | 首頁與作者頁，建立實體 |
 | 5 | HowTo、Product 等 | 有對應內容類型才加 |
+
+## 參考資料
+
+- [Google：Intro to How Structured Data Markup Works](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)（Google Search Central）
+- [Google：General Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)（Google Search Central）
+- [Google Search 更新紀錄：FAQ 富結果停用（2026-05-08、2026-06-15）](https://developers.google.com/search/updates)（Google Search Central）
+- [Google：生成式 AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central）
 
 ## 常見問題（FAQ）
 

@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page SEO
 author: GeoSeoToday
 date_published: 2026-07-30
-date_updated: 2026-07-30
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: robots-txt-for-ai-bots
   zh-hans: robots-txt-for-ai-bots
@@ -22,7 +23,7 @@ Most sites that get no AI traffic aren't losing on content quality — some engi
 This is the most important distinction in the article, and it decides who you should allow:
 
 - **Training crawlers**: pull your content back as corpus to train or update a large language model. Blocking one mainly stops your content from being baked into model weights — but it is **not** the bot that provides the live citation when someone asks a question. Whether to allow it depends on how you feel about your content being used for training.
-- **Retrieval crawlers**: when a user asks something in ChatGPT, Perplexity, and the like, the AI dispatches this bot in real time to fetch your page, generate an answer, and **attach a citation link pointing to you**. This bot is the lifeblood of GEO exposure — block it and you've opted out of that engine's live citations.
+- **Retrieval crawlers**: when a user asks something in ChatGPT, Perplexity, and the like, the AI dispatches this bot in real time to fetch your page (user-triggered fetchers such as ChatGPT-User and [Perplexity-User](https://docs.perplexity.ai/guides/bots) may not follow robots.txt, per their vendors' docs), generate an answer, and **attach a citation link pointing to you**. This bot is the lifeblood of GEO exposure — block it and you've opted out of that engine's live citations.
 
 In one line: **training = whether your content enters the model; retrieval = whether you enter the answer's citations.** They are different user-agents with different business trade-offs, and robots.txt has to address them separately.
 
@@ -32,13 +33,13 @@ The table below lists the crawlers you most need to recognize, which type each i
 
 | User-agent | Owner | Type | Blocking it = giving up |
 |---|---|---|---|
-| **GPTBot** | OpenAI | Training | Content out of OpenAI's training corpus (no effect on ChatGPT search citations) |
-| **OAI-SearchBot** | OpenAI | Retrieval | ChatGPT search stops citing you live with a link |
-| **ChatGPT-User** | OpenAI | Retrieval (user-triggered) | Content unreadable when a user opens your link inside ChatGPT |
-| **PerplexityBot** | Perplexity | Retrieval | Perplexity answers and source lists drop you |
-| **ClaudeBot** | Anthropic | Training | Content out of Anthropic's training corpus |
-| **Claude-SearchBot** | Anthropic | Retrieval | Claude's live retrieval and citations can't reach you |
-| **Google-Extended** | Google | Training / AI use | Content withheld from Gemini / AI products (**no effect on regular Google rankings**) |
+| **[GPTBot](https://developers.openai.com/api/docs/bots)** | OpenAI | Training | Content out of OpenAI's training corpus (no effect on ChatGPT search citations) |
+| **[OAI-SearchBot](https://developers.openai.com/api/docs/bots)** | OpenAI | Retrieval | You won't be shown in ChatGPT search answers (OpenAI says changes take ~24 hours) |
+| **[ChatGPT-User](https://developers.openai.com/api/docs/bots)** | OpenAI | User-triggered | OpenAI says robots.txt rules may not apply because users initiate the visit; it is not a switch for ChatGPT search inclusion |
+| **[PerplexityBot](https://docs.perplexity.ai/guides/bots)** | Perplexity | Retrieval | Perplexity stops showing and linking you in results (not used for training foundation models) |
+| **[ClaudeBot](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)** | Anthropic | Training | Content out of Anthropic's training corpus |
+| **[Claude-SearchBot](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)** | Anthropic | Retrieval | Your content isn't indexed for search, which may reduce visibility in Claude search results |
+| **[Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)** | Google | Training | Content not used to train Gemini models (Google says it **does not affect Search inclusion and is not a ranking signal**) |
 | **Googlebot** | Google | Indexing (powers AI Overviews) | Regular search and AI Overviews disappear together (almost never block this) |
 | **Bingbot** | Microsoft | Indexing (powers Copilot) | Bing search and Copilot given up at once |
 
@@ -101,16 +102,23 @@ Once configured, don't trust your gut — run three checks:
 2. **Check your server access log**: search for the user-agents in the table above and confirm they actually visit and return 200. Seeing the crawl behavior is how you know the allow took effect — and it's the only place you can observe an AI bot's real fetching.
 3. **Glance at crawl budget while you're there**: AI crawlers share your server resources; when volume is high, solve it with caching/CDN rather than blocking — don't sacrifice citations to save bandwidth. See [What Is Crawl Budget](/en/blog/what-is-crawl-budget/).
 
+## Sources
+
+- [OpenAI: Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity: Perplexity Crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
+- [Google: Common crawlers (incl. Google-Extended)](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
+- [Anthropic: Does Anthropic crawl data from the web, and how can site owners block the crawler?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) (Anthropic)
+
 ## FAQ
 
 **Q1: What exactly is the difference between training and retrieval crawlers?**
 Training bots (like GPTBot, ClaudeBot) pull content to train models, and blocking one only stops your content from entering the model. Retrieval bots (like OAI-SearchBot, PerplexityBot) fetch your page live the moment a user asks, generate the answer, and attach a citation link. To be cited by AI you must allow the retrieval bots; the training bots are the group you're free to decide on.
 
 **Q2: If I block GPTBot, can ChatGPT no longer cite me?**
-No. GPTBot is for training; ChatGPT search's live citations come mainly from OAI-SearchBot and ChatGPT-User. So you can "allow OAI-SearchBot, block GPTBot" and keep being cited without being trained on — but set the two separately and never block them together.
+No. GPTBot is for training; OpenAI says OAI-SearchBot is what surfaces sites in ChatGPT search, while ChatGPT-User handles user-initiated actions. So you can "allow OAI-SearchBot, block GPTBot" and keep being cited without being trained on — but set the two separately and never block them together.
 
 **Q3: Does blocking Google-Extended hurt my Google rankings?**
-No. Google-Extended only controls whether your content is used by Gemini and other AI products; it's a separate crawler from the Googlebot that powers regular search and AI Overviews. Blocking Google-Extended affects AI use only — traditional SEO rankings are unaffected.
+No. Google-Extended only controls whether your content is used by Gemini and other AI products; it's a separate crawler from the Googlebot that powers regular search and AI Overviews. Google's docs say it does not impact inclusion in Google Search and is not a ranking signal.
 
 **Q4: Can robots.txt stop crawlers that don't play by the rules?**
 robots.txt is a convention, not enforcement. The compliant mainstream crawlers in the table above obey it, but it relies on good faith. To technically block anything (including malicious impersonators), you need user-agent/IP filtering at the server or CDN layer — robots.txt alone isn't enough.

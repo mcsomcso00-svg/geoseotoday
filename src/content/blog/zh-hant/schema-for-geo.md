@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-07-06
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hans: schema-for-geo
   en: schema-for-geo
@@ -38,7 +39,7 @@ translations:
 
 ## 實作方式：JSON-LD 一段搞定
 
-Google 官方建議用 JSON-LD 格式，放在頁面 `<head>` 或 `<body>` 皆可。一篇文章的最小可用範例：
+Google 官方[建議用 JSON-LD](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) 格式，放在頁面 `<head>` 或 `<body>` 皆可。一篇文章的最小可用範例：
 
 ```json
 {
@@ -59,7 +60,7 @@ Google 官方建議用 JSON-LD 格式，放在頁面 `<head>` 或 `<body>` 皆�
 
 ## 三個實作地雷
 
-- **Schema 與可見內容不一致**：標了 FAQPage 但頁面上根本沒有那些問答——這違反 Google 的結構化資料規範，可能招致手動處置。Schema 只能描述頁面上真實存在的內容。
+- **Schema 與可見內容不一致**：標了 FAQPage 但頁面上根本沒有那些問答——這違反 [Google 的結構化資料政策](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)，可能招致手動處置（依 Google 說明，後果是該頁失去複合式結果資格）。Schema 只能描述頁面上真實存在的內容。
 - **日期造假**：把 `dateModified` 改成今天但內容沒動。引擎會比對內容差異，長期會侵蝕信任。改日期的前提是真的有實質更新。
 - **堆疊無關類型**：一個頁面標七八種 schema 不會加分。準確的兩三種勝過雜訊的一堆。
 
@@ -67,13 +68,20 @@ Google 官方建議用 JSON-LD 格式，放在頁面 `<head>` 或 `<body>` 皆�
 
 兩個免費工具：Google 的「複合式搜尋結果測試」（Rich Results Test）驗證 Google 可讀性；Schema.org 的 Validator 驗證語法正確性。上線後在 GSC 的「強化項目」報表確認全站的結構化資料健康狀態，有錯誤會列出具體頁面。每季檢查一次即可。
 
+## 參考資料
+
+- [Google：Intro to How Structured Data Markup Works](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)（Google Search Central）
+- [Google：General Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)（Google Search Central）
+- [Google Search 更新紀錄：FAQ 富結果停用（2026-05-08、2026-06-15）](https://developers.google.com/search/updates)（Google Search Central）
+- [Google：生成式 AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central）
+
 ## 常見問題（FAQ）
 
 **Q1：沒有 Schema 就完全不會被 AI 引用嗎？**
 不是。內容寫得好照樣可能被引用。Schema 的價值在「同分加賽」：當多個來源內容品質相近時，實體清楚、日期明確的一方更常勝出。
 
 **Q2：FAQPage schema 現在還有 Google 複合式搜尋結果可拿嗎？**
-Google 自 2023 年起把 FAQ 複合式結果限縮到少數權威網站，一般網站拿不到搜尋版面上的 FAQ 樣式。但這不影響它作為 AI 引擎理解問答結構的訊號——GEO 價值仍在。
+沒有了。Google 更新紀錄寫明 FAQ 富結果「自 2026 年 5 月 7 日起不再出現在 Google 搜尋」（[Google Search 更新紀錄](https://developers.google.com/search/updates)），所以 FAQPage 標記已換不到搜尋版面上的展開問答。同時，Google 的 [AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也說生成式 AI 搜尋不需要結構化資料或特殊標記。因此 FAQPage 只能算「機器可讀的問答對齊」，我們沒有數據證明它提高被 AI 引用的機率；頁面上看得見的問答文字才是核心。
 
 **Q3：JSON-LD、Microdata、RDFa 該用哪個？**
 用 JSON-LD。它是 Google 官方推薦格式，與版面解耦、最好維護，2026 年沒有理由用另外兩種。

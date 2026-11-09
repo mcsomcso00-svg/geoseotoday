@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page SEO
 author: GeoSeoToday
 date_published: 2026-07-15
-date_updated: 2026-07-15
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: schema-tutorial
   zh-hans: schema-tutorial
@@ -17,17 +18,17 @@ translations:
 
 ## What can schema do for you? Set expectations first
 
-1. **Rich results**: Eligible markup can add star ratings, an FAQ accordion, or a breadcrumb trail to your search listing, lifting click-through rate.
+1. **Rich results**: Eligible markup can add star ratings, or a breadcrumb trail to your search listing, lifting click-through rate.
 2. **Disambiguation**: It tells machines explicitly that this "Apple" is the company, not the fruit, strengthening entity understanding.
 3. **Friendly to AI engines**: Structured author, date, and organization info makes it easier for an LLM to judge how trustworthy and current your content is when it retrieves you.
 
-Be just as clear about what it **cannot** do: schema is not a ranking boost in itself — Google's official position is that structured data helps *understanding*, and does not directly improve rankings. If the content is bad, no amount of perfect markup will save it.
+Be just as clear about what it **cannot** do: schema is not a ranking boost in itself — Google's [documentation](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) frames the benefit as rich results and page understanding, and never claims a ranking boost. If the content is bad, no amount of perfect markup will save it.
 
-Also reckon with the 2026 reality: over the past few years Google has **cut back** the display of several rich results (the FAQ rich result has been reserved for well-known government and health sites since August 2023). So the main value of FAQPage markup has shifted toward machine understanding and AI citation, not the search layout.
+Also reckon with the 2026 reality: Google has [retired the FAQ rich result](https://developers.google.com/search/updates) — its changelog says the feature "will no longer appear in Google Search starting May 7, 2026," and the documentation was removed on June 15. FAQPage markup no longer earns an expandable Q&A in search results, and Google's [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) says structured data isn't required for generative AI search and no special schema.org markup is needed. For whether to keep FAQPage, see our FAQ rich result retirement article (live 17 November).
 
 ## Three formats — only learn JSON-LD
 
-Structured data can be written three ways: JSON-LD, Microdata, and RDFa. **Google officially recommends JSON-LD**: it's a self-contained `<script>` block, requires no changes to your HTML structure, and is the easiest to maintain. This tutorial teaches only this one.
+Structured data can be written three ways: JSON-LD, Microdata, and RDFa. **Google officially recommends [JSON-LD](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)**: it's a self-contained `<script>` block, requires no changes to your HTML structure, and is the easiest to maintain. This tutorial teaches only this one.
 
 ## Hands-on: Article markup for a blog post
 
@@ -63,7 +64,7 @@ Key fields:
 
 ## Hands-on: FAQPage markup
 
-When your article has an FAQ section, add the matching markup — **the marked-up content must be identical to the text actually shown on the page**. That is a hard Google requirement:
+When your article has an FAQ section, add the matching markup — **the marked-up content must be identical to the text actually shown on the page**. That is part of [Google's structured data policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies): don't mark up content that isn't visible on the page.
 
 ```html
 <script type="application/ld+json">
@@ -88,8 +89,8 @@ When your article has an FAQ section, add the matching markup — **the marked-u
 
 1. **Write**: Adapt the templates above. On static sites (Astro, Next, etc.), it's best to build them as a template component that pulls fields from frontmatter automatically, so nothing drifts out of sync by hand.
 2. **Validate**: Paste it into Google's **Rich Results Test** (search.google.com/test/rich-results) to check for errors and warnings; then run the **Schema.org validator** (validator.schema.org) to check the syntax.
-3. **Monitor after deploy**: In Google Search Console, the **Experience & Enhancements** section will show matching reports (e.g. "FAQ", "Breadcrumbs"), listing valid and invalid pages.
-4. **Maintain**: When you revise content, update the markup in step — "markup does not match page content" is the most common violation and can trigger a manual action.
+3. **Monitor after deploy**: In Google Search Console, the **Experience & Enhancements** section will show matching reports (e.g. "Breadcrumbs"), listing valid and invalid pages.
+4. **Maintain**: When you revise content, update the markup in step — "markup does not match page content" is the most common violation and can trigger a manual action (per Google, the page loses rich result eligibility; it does not affect web ranking).
 
 ## Priority order for beginners
 
@@ -100,6 +101,13 @@ When your article has an FAQ section, add the matching markup — **the marked-u
 | 3 | FAQPage | Articles with an FAQ section |
 | 4 | Organization / Person | Home page and author pages, to build the entity |
 | 5 | HowTo, Product, etc. | Only when you have the matching content type |
+
+## Sources
+
+- [Google: Intro to How Structured Data Markup Works](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) (Google Search Central)
+- [Google: General Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies) (Google Search Central)
+- [Google Search updates: FAQ rich result deprecation (2026-05-08, 2026-06-15)](https://developers.google.com/search/updates) (Google Search Central)
+- [Google: Optimizing for generative AI features in Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central)
 
 ## Frequently asked questions (FAQ)
 

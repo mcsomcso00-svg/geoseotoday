@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-03
-date_updated: 2026-07-03
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hans: geo-aeo-aio
   en: geo-aeo-aio
@@ -20,10 +21,10 @@ translations:
 | 縮寫 | 全名 | 優化目標 | 出現時間 |
 |---|---|---|---|
 | **AEO** | Answer Engine Optimization | 精選摘要、語音助理、「答案盒」 | ~2018（語音搜尋時代） |
-| **GEO** | Generative Engine Optimization | ChatGPT、Perplexity、Gemini 等生成式引擎的引用 | 2023（普林斯頓大學論文定名） |
+| **GEO** | Generative Engine Optimization | ChatGPT、Perplexity、Gemini 等生成式引擎的引用 | 2023（[學術論文定名](https://arxiv.org/abs/2311.09735)） |
 | **AIO** | AI Optimization / AI Overview 優化 | 統稱對所有 AI 介面的優化；或專指 Google AI Overview | 2024–2025 |
 
-> 補充：GEO 這個詞來自 2023 年普林斯頓等機構的論文《GEO: Generative Engine Optimization》，論文實測發現「加入統計數據、引用來源、專家語氣」能把內容在 AI 答案中的可見度提升最多 40%。這也是 GEO 方法論的實證起點。
+> 補充：GEO 這個詞來自 2023 年 11 月發表的論文《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》（Aggarwal 等人，arXiv）。論文摘要寫道，GEO 方法「最多可將內容在生成式引擎回答中的可見度提升 40%」——這是論文實驗環境下的上限，不是你網站會得到的保證。
 
 ## 為什麼會有三個詞？演化脈絡 30 秒看完
 
@@ -36,7 +37,7 @@ translations:
 三者的技術要求收斂到同一組內容標準——這也是本站每篇文章的固定結構：
 
 1. **答案優先段**（40–80 字自包含結論）→ 同時餵 AEO 的答案盒與 GEO 的引用。
-2. **可引用的硬數據**（數字、日期、來源）→ GEO 論文實證最有效的手法。
+2. **可引用的硬數據**（數字、日期、來源）→ 論文測試的方法包含加入統計數據與引用來源，是 GEO 方法論的實證起點之一。
 3. **H2 段落自包含**＋**FAQ**（3–5 題）→ AEO 的問答格式＋GEO 的段落級檢索都吃這套。
 4. **Schema**（Article、FAQPage）＋清楚的作者/品牌實體 → 三者共同的信任層。
 5. **誠實平衡**（敢寫限制與缺點）→ 生成式引擎特別會避開一面倒的行銷文。
@@ -48,6 +49,15 @@ translations:
 只有兩種情境：
 - **對外溝通/提案**：客戶或老闆聽過哪個詞，就用哪個詞包裝同一套工作。
 - **追蹤成效**：AI Overview（Google 體系）與 ChatGPT/Perplexity（獨立體系）要分開記錄引用率，因為兩者的檢索來源與更新頻率不同。
+
+## Google 怎麼看這三個詞？
+
+Google 在其[生成式 AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)中表示，AEO、GEO 這些名稱談的是提升 AI 搜尋中的能見度，但從 Google 的角度看，「優化生成式 AI 搜尋就是優化搜尋體驗，因此仍然是 SEO」。指南也說，Google 搜尋的生成式 AI 功能「植根於核心搜尋排名與品質系統」，並不需要特別的 AI 檔案或標記。這與本文的結論一致：不必為三個縮寫做三套功。你可以沿用自己的詞彙，但別把任何縮寫當成需要另立一套規則的理由。
+
+## 參考資料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等人，arXiv，2023）
+- [Google：生成式 AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central）
 
 ## 常見問題（FAQ）
 

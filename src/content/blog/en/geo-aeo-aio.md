@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-03
-date_updated: 2026-07-03
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: geo-aeo-aio
   zh-hans: geo-aeo-aio
@@ -20,10 +21,10 @@ translations:
 | Acronym | Full name | What it optimizes for | When it appeared |
 |---|---|---|---|
 | **AEO** | Answer Engine Optimization | Featured snippets, voice assistants, "answer boxes" | ~2018 (the voice-search era) |
-| **GEO** | Generative Engine Optimization | Citations inside ChatGPT, Perplexity, Gemini and other generative engines | 2023 (named in the Princeton paper) |
+| **GEO** | Generative Engine Optimization | Citations inside ChatGPT, Perplexity, Gemini and other generative engines | 2023 ([named in an academic paper](https://arxiv.org/abs/2311.09735)) |
 | **AIO** | AI Optimization / AI Overview optimization | A catch-all for optimizing every AI interface; or specifically Google AI Overview | 2024–2025 |
 
-> Note: the term GEO comes from the 2023 paper *GEO: Generative Engine Optimization* by Princeton and collaborators. Their experiments found that "adding statistics, citing sources, and using an authoritative voice" could lift a page's visibility inside AI answers by up to 40%. That's the empirical starting point for the whole GEO methodology.
+> Note: the term GEO comes from the November 2023 paper *[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)* (Aggarwal et al., arXiv). Its abstract says GEO methods can "boost visibility by up to 40% in generative engine responses" — an upper bound in the paper's experiments, not a guarantee for your site.
 
 ## Why are there three terms? The 30-second timeline
 
@@ -36,7 +37,7 @@ translations:
 The technical requirements of all three converge on the same content standard — which is exactly the fixed structure of every article on this site:
 
 1. **Answer-first paragraph** (a self-contained 40–80 word conclusion) → feeds both AEO's answer box and GEO's citation at once.
-2. **Quotable hard data** (numbers, dates, sources) → the single most effective move the GEO paper proved.
+2. **Quotable hard data** (numbers, dates, sources) → the methods the paper tested include adding statistics and citations, one empirical starting point for GEO.
 3. **Self-contained H2 sections** + a **FAQ** (3–5 questions) → satisfies AEO's Q&A format and GEO's passage-level retrieval alike.
 4. **Schema** (Article, FAQPage) + a clear author/brand entity → the trust layer all three share.
 5. **Honest balance** (willing to state limits and downsides) → generative engines actively avoid one-sided marketing copy.
@@ -48,6 +49,15 @@ In other words: **don't build three sets of work for three acronyms.** Build one
 Only in two situations:
 - **External communication / pitching:** whichever term the client or your boss has heard, use that word to package the same work.
 - **Tracking performance:** log citation rates for AI Overview (the Google system) and ChatGPT/Perplexity (independent systems) separately, because their retrieval sources and refresh cadences differ.
+
+## What does Google say about the three terms?
+
+Google's [guide to optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) says AEO and GEO describe work to improve visibility in AI search, but from Google's perspective "optimizing for generative AI search is optimizing for the search experience, and thus still SEO." It adds that Google Search's generative AI features are "rooted in our core Search ranking and quality systems" and need no special AI files or markup. That agrees with this article's conclusion: don't build three playbooks for three acronyms. Use whichever vocabulary your audience knows, but don't treat any acronym as a reason for a separate rulebook.
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv, 2023)
+- [Google: Optimizing for generative AI features in Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central)
 
 ## FAQ
 

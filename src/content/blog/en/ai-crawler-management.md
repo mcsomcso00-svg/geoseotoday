@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: ai-crawler-management
   zh-hans: ai-crawler-management
@@ -21,20 +22,22 @@ As of 2026, there are six AI crawlers worth recognizing, each serving a differen
 
 | User-agent | Owner | Primary purpose |
 |---|---|---|
-| **GPTBot** | OpenAI | Crawls content for model training |
-| **OAI-SearchBot** | OpenAI | Real-time retrieval for ChatGPT search |
-| **PerplexityBot** | Perplexity | Retrieval and citation for Perplexity |
-| **Google-Extended** | Google | Controls whether content is used by Gemini / AI products |
-| **ClaudeBot** | Anthropic | Crawls content for use by Claude |
+| **GPTBot** | OpenAI | [Crawls content for model training](https://developers.openai.com/api/docs/bots) |
+| **OAI-SearchBot** | OpenAI | [Surfaces sites in ChatGPT search results](https://developers.openai.com/api/docs/bots) |
+| **PerplexityBot** | Perplexity | [Shows and links sites in Perplexity results; not used for training foundation models](https://docs.perplexity.ai/guides/bots) |
+| **Google-Extended** | Google | [Controls whether crawled content is used to train future Gemini models](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) |
+| **ClaudeBot** | Anthropic | [Training crawler; collects content that may contribute to model training](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) |
 | **Bingbot** | Microsoft | Bing indexing (which also powers Copilot) |
 
-Two common misconceptions are worth clearing up. **Google-Extended is not regular Googlebot** — blocking Google-Extended does not affect your ranking in normal Google Search; it only affects whether your content is used by AI products like Gemini. And **Bingbot serves both Bing Search and Copilot**, so blocking it means giving up both at once.
+Two common misconceptions are worth clearing up. **Google-Extended is not regular Googlebot** — blocking Google-Extended does not affect your ranking in normal Google Search (Google says it "does not impact a site's inclusion in Google Search nor is it used as a ranking signal"); it only affects whether your content is used to train Gemini models. And **Bingbot serves both Bing Search and Copilot**, so blocking it means giving up both at once.
 
 ## Allow or block? Get your goal straight first
 
 This is a trade-off, not a binary of "allow everything" or "block everything":
 
-- **You want AI citations and AI exposure** → allow the retrieval crawlers (OAI-SearchBot, PerplexityBot, Bingbot), and allow Google-Extended.
+- **You want AI citations and AI exposure** → allow the retrieval crawlers (OAI-SearchBot, PerplexityBot, Bingbot), and optionally allow Google-Extended. Note that Google-Extended does not control Google Search or AI Overviews; Googlebot does.
+
+There are also user-triggered fetchers: OpenAI says ChatGPT-User robots.txt rules [may not apply](https://developers.openai.com/api/docs/bots) because users initiate the visit; Perplexity-User [generally ignores robots.txt](https://docs.perplexity.ai/guides/bots); Anthropic's Claude-User can be controlled via robots.txt.
 - **You don't want your content used for model training** → consider blocking the training crawlers (GPTBot, ClaudeBot), but understand this also lowers your odds of being cited by that engine.
 - **Your content is paid, confidential, or has copyright concerns** → blocking the relevant crawlers is a reasonable call.
 
@@ -53,7 +56,7 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Allow Google's AI use (for Gemini / AI Overview)
+# Allow Google's AI use (Gemini training; does not affect Search or AI Overviews)
 User-agent: Google-Extended
 Allow: /
 
@@ -78,13 +81,20 @@ User-agent: ClaudeBot
 Disallow: /
 ```
 
-The principle: **allow the retrieval crawlers to preserve exposure; decide on the training crawlers based on your copyright stance.** Don't indiscriminately Disallow everything.
+The principle: **allow the retrieval crawlers to preserve exposure; decide on the training crawlers based on your copyright stance.** Don't indiscriminately Disallow everything. Also note that both OpenAI and Perplexity say robots.txt changes can take about 24 hours to take effect ([OpenAI](https://developers.openai.com/api/docs/bots), [Perplexity](https://docs.perplexity.ai/guides/bots)), so don't judge a change immediately.
 
 ## Check and verify: three actions
 
 1. **Read your current robots.txt**: open `yourdomain/robots.txt` directly and confirm there's no leftover `User-agent: * Disallow: /` or an old config that blocks all the crawlers above.
 2. **Check your server logs**: search your access log for the user-agents above to confirm they're actually crawling, and that responses are 200 — not 403/404.
 3. **Check whether JavaScript is required**: most AI crawlers don't execute JavaScript. If your important content only renders with JS, the crawler can't read it even when allowed — a common fatal flaw.
+
+## Sources
+
+- [OpenAI: Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity: Perplexity Crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
+- [Google: Common crawlers (incl. Google-Extended)](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
+- [Anthropic: Does Anthropic crawl data from the web, and how can site owners block the crawler?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) (Anthropic)
 
 ## Frequently asked questions (FAQ)
 

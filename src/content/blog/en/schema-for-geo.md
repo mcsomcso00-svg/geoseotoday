@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-07-06
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: schema-for-geo
   zh-hans: schema-for-geo
@@ -38,7 +39,7 @@ Optional and advanced: add HowTo to tutorials, Product to product pages (the key
 
 ## Implementation: one block of JSON-LD
 
-Google officially recommends JSON-LD, and it can sit in either the page `<head>` or `<body>`. A minimal, usable example for an article:
+Google officially [recommends JSON-LD](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data), and it can sit in either the page `<head>` or `<body>`. A minimal, usable example for an article:
 
 ```json
 {
@@ -59,7 +60,7 @@ Your implementation path depends on the site type:
 
 ## Three implementation traps
 
-- **Schema that doesn't match visible content**: You mark up FAQPage, but the page has no such Q&A. That violates Google's structured-data guidelines and can trigger a manual action. Schema may only describe content that genuinely exists on the page.
+- **Schema that doesn't match visible content**: You mark up FAQPage, but the page has no such Q&A. That violates [Google's structured data policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies) and can trigger a manual action (per Google, the page loses rich result eligibility). Schema may only describe content that genuinely exists on the page.
 - **Faked dates**: Changing `dateModified` to today when the content hasn't moved. Engines compare content diffs, and over time this erodes trust. The precondition for changing the date is a real, substantive update.
 - **Stacking irrelevant types**: Marking a single page with seven or eight schema types earns no bonus. Two or three accurate types beat a pile of noise.
 
@@ -67,13 +68,20 @@ Your implementation path depends on the site type:
 
 Two free tools: Google's Rich Results Test verifies Google readability, and the Schema.org Validator verifies syntactic correctness. After launch, use the Enhancements report in Google Search Console to confirm the health of structured data across the whole site — it lists the specific pages with errors. Checking once a quarter is enough.
 
+## Sources
+
+- [Google: Intro to How Structured Data Markup Works](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) (Google Search Central)
+- [Google: General Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies) (Google Search Central)
+- [Google Search updates: FAQ rich result deprecation (2026-05-08, 2026-06-15)](https://developers.google.com/search/updates) (Google Search Central)
+- [Google: Optimizing for generative AI features in Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central)
+
 ## Frequently asked questions (FAQ)
 
 **Q1: Without schema, will AI never cite me at all?**
 No. Well-written content can still get cited. Schema's value is in the tiebreaker: when several sources are comparable in content quality, the one with clearer entities and explicit dates wins more often.
 
 **Q2: Does FAQPage schema still earn a Google rich result?**
-Google has, since 2023, narrowed FAQ rich results to a small set of authoritative sites, so most sites won't get the FAQ treatment in the search layout. But that doesn't affect its value as a signal that helps AI engines understand the Q&A structure — the GEO value remains.
+No. Google's changelog says the FAQ rich result "will no longer appear in Google Search starting May 7, 2026" ([Google Search updates](https://developers.google.com/search/updates)), so FAQPage markup no longer earns an expandable Q&A in results. Google's [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) also says structured data isn't required for generative AI search. FAQPage is therefore only machine-readable Q&A alignment; we have no data showing it raises AI citation odds, and the visible Q&A text on the page is what matters.
 
 **Q3: JSON-LD, Microdata, or RDFa — which should I use?**
 Use JSON-LD. It's Google's officially recommended format, decoupled from your layout and the easiest to maintain. In 2026 there's no reason to use the other two.

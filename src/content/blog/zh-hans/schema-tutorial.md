@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page & 技术 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-15
-date_updated: 2026-07-15
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: schema-tutorial
   en: schema-tutorial
@@ -17,17 +18,17 @@ translations:
 
 ## Schema 能带来什么？先讲清楚期望值
 
-1. **富媒体搜索结果（rich results）**：符合条件的标记可能让搜索结果多出评分星星、FAQ 折叠、面包屑路径，提升点击率。
+1. **富媒体搜索结果（rich results）**：符合条件的标记可能让搜索结果多出评分星星、面包屑路径，提升点击率。
 2. **消歧义**：明确告诉机器「这个『Apple』是公司不是水果」，强化实体理解。
 3. **对 AI 引擎友好**：结构化的作者、日期、组织信息，让 LLM 检索时更容易判定内容可信度与时效。
 
-也要讲清楚它**不能**做什么：Schema 本身不是排名加分项——Google 官方立场是结构化数据帮助「理解」，不直接提升排名。内容差，标记再完整也没用。
+也要讲清楚它**不能**做什么：Schema 本身不是排名加分项——Google 的[说明文档](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)把结构化数据的好处放在富媒体结果与理解页面，并未说它会提升排名。内容差，标记再完整也没用。
 
-另外注意 2026 年的现实：Google 这几年**缩减**了部分 rich result 的展示（FAQ rich result 自 2023 年 8 月起只保留给知名政府与健康网站）。所以做 FAQPage 标记的主要价值已转向机器理解与 AI 引用，不是搜索版面。
+另外注意 2026 年的现实：Google 已[停止显示 FAQ 富结果](https://developers.google.com/search/updates)——更新记录写明该功能“自 2026 年 5 月 7 日起不再出现在 Google 搜索”，文档并于 6 月 15 日移除。所以 FAQPage 标记换不到搜索版面上的展开问答；Google 的 [AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也说，生成式 AI 搜索不需要结构化数据或特殊的 schema.org 标记。是否保留 FAQPage 的判断，见〈FAQ 富结果 2026 年 5 月退场〉（11 月 17 日上线）。
 
 ## 三种格式，只学 JSON-LD
 
-结构化数据有三种写法：JSON-LD、Microdata、RDFa。**Google 官方推荐 JSON-LD**，它是一段独立的 `<script>`，不用改动 HTML 结构，最好维护。本文只教这一种。
+结构化数据有三种写法：JSON-LD、Microdata、RDFa。**Google 官方推荐 [JSON-LD](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)**，它是一段独立的 `<script>`，不用改动 HTML 结构，最好维护。本文只教这一种。
 
 ## 实操：博客文章的 Article 标记
 
@@ -63,7 +64,7 @@ translations:
 
 ## 实操：FAQPage 标记
 
-文章有 FAQ 段落时，加上对应标记——**标记内容必须和页面上实际显示的文字一致**，这是 Google 的硬性规范：
+文章有 FAQ 段落时，加上对应标记——**标记内容必须和页面上实际显示的文字一致**，这是 [Google 的结构化数据政策](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)：不可标记页面上看不到的内容。
 
 ```html
 <script type="application/ld+json">
@@ -100,6 +101,13 @@ translations:
 | 3 | FAQPage | 有 FAQ 段的文章 |
 | 4 | Organization / Person | 首页与作者页，建立实体 |
 | 5 | HowTo、Product 等 | 有对应内容类型才加 |
+
+## 参考资料
+
+- [Google：Intro to How Structured Data Markup Works](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)（Google Search Central）
+- [Google：General Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)（Google Search Central）
+- [Google Search 更新记录：FAQ 富结果停用（2026-05-08、2026-06-15）](https://developers.google.com/search/updates)（Google Search Central）
+- [Google：生成式 AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central）
 
 ## 常见问题（FAQ）
 

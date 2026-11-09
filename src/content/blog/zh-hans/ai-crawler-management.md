@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜索优化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: ai-crawler-management
   en: ai-crawler-management
@@ -21,20 +22,22 @@ translations:
 
 | User-agent | 所属 | 主要用途 |
 |---|---|---|
-| **GPTBot** | OpenAI | 抓取内容供模型训练 |
-| **OAI-SearchBot** | OpenAI | 供 ChatGPT 搜索实时检索 |
-| **PerplexityBot** | Perplexity | 供 Perplexity 检索与引用 |
-| **Google-Extended** | Google | 控制内容是否供 Gemini／AI 产品使用 |
-| **ClaudeBot** | Anthropic | 抓取内容供 Claude 使用 |
+| **GPTBot** | OpenAI | [抓取内容供模型训练](https://developers.openai.com/api/docs/bots) |
+| **OAI-SearchBot** | OpenAI | [让网站出现在 ChatGPT 搜索结果](https://developers.openai.com/api/docs/bots) |
+| **PerplexityBot** | Perplexity | [供 Perplexity 搜索结果显示与链接，不用于训练基础模型](https://docs.perplexity.ai/guides/bots) |
+| **Google-Extended** | Google | [控制内容是否用于训练未来世代的 Gemini 模型](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) |
+| **ClaudeBot** | Anthropic | [训练型爬虫，收集可能用于模型训练的内容](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) |
 | **Bingbot** | Microsoft | Bing 索引（同时驱动 Copilot） |
 
-注意两个常见误解：**Google-Extended 不是一般 Googlebot**——挡掉 Google-Extended 不影响你在 Google 一般搜索的排名，只影响是否供 Gemini 等 AI 产品使用。而 **Bingbot 同时服务 Bing 搜索与 Copilot**，挡掉它等于同时放弃两者。
+注意两个常见误解：**Google-Extended 不是一般 Googlebot**——挡掉 Google-Extended 不影响你在 Google 一般搜索的排名——Google 文档明确指出它“不影响网站在 Google 搜索中的收录，也不是排名信号”，只影响内容是否用于 Gemini 模型训练。而 **Bingbot 同时服务 Bing 搜索与 Copilot**，挡掉它等于同时放弃两者。
 
 ## 放行还是封锁？先想清楚你的目标
 
 这是一个取舍，不是「全放」或「全挡」的二选一：
 
-- **想被 AI 引用、拿 AI 曝光** → 放行检索型爬虫（OAI-SearchBot、PerplexityBot、Bingbot），并放行 Google-Extended。
+- **想被 AI 引用、拿 AI 曝光** → 放行检索型爬虫（OAI-SearchBot、PerplexityBot、Bingbot），并可放行 Google-Extended。注意：Google-Extended 不控制 Google 搜索与 AI Overview，那由 Googlebot 负责。
+
+另有“用户触发”的抓取器：OpenAI 说明 ChatGPT-User 因由用户发起，robots.txt 规则[可能不适用](https://developers.openai.com/api/docs/bots)；Perplexity-User 也[通常忽略 robots.txt](https://docs.perplexity.ai/guides/bots)；Anthropic 的 Claude-User 则可用 robots.txt 控制。
 - **不希望内容被拿去训练模型** → 可考虑封锁训练型爬虫（GPTBot、ClaudeBot），但这会连带降低被该引擎引用的机会。
 - **内容是付费、机密、或有版权疑虑** → 封锁相应爬虫是合理选择。
 
@@ -53,7 +56,7 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# 放行 Google 的 AI 使用（供 Gemini／AI Overview）
+# 放行 Google 的 AI 使用（Gemini 训练；不影响搜索与 AI Overview）
 User-agent: Google-Extended
 Allow: /
 
@@ -78,13 +81,20 @@ User-agent: ClaudeBot
 Disallow: /
 ```
 
-原则：**检索型放行以保曝光，训练型依你的版权立场决定。** 别无差别地一律 Disallow。
+原则：**检索型放行以保曝光，训练型依你的版权立场决定。** 别无差别地一律 Disallow。另外，OpenAI 与 Perplexity 都说明 robots.txt 更新后，约需 24 小时系统才会调整（[OpenAI](https://developers.openai.com/api/docs/bots)、[Perplexity](https://docs.perplexity.ai/guides/bots)），改完不要马上判断有没有生效。
 
 ## 检查与验证：三个动作
 
 1. **看现有 robots.txt**：直接开 `你的域名/robots.txt`，确认没有残留的 `User-agent: * Disallow: /` 或把上述爬虫全挡的旧设置。
 2. **查服务器日志**：在 access log 搜索上述 user-agent，确认它们真的有来抓，且响应是 200 而非 403/404。
 3. **检查是否需要 JavaScript**：多数 AI 爬虫不执行 JavaScript。若你的重要内容要 JS 才渲染得出来，爬虫即使放行也读不到——这是常见致命伤。
+
+## 参考资料
+
+- [OpenAI：Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity：Perplexity Crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [Google：Common crawlers（含 Google-Extended）](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [Anthropic：Does Anthropic crawl data from the web, and how can site owners block the crawler?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)（Anthropic）
 
 ## 常见问题（FAQ）
 

@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page & 技术 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-30
-date_updated: 2026-07-30
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: robots-txt-for-ai-bots
   en: robots-txt-for-ai-bots
@@ -22,7 +23,7 @@ translations:
 这是全篇最重要的区分，决定你该放行谁：
 
 - **训练型爬虫**：把你的内容抓回去，当作训练或更新大型语言模型的语料。挡掉它，主要是防止内容被纳入模型权重——但它**不负责**回答当下问题时的即时引用。是否放行，取决于你对「内容被拿去训练」的版权与竞争立场。
-- **检索型爬虫**：用户在 ChatGPT、Perplexity 等处提问时，AI 即时派它来抓你的页面，用来生成答案并**附上指向你的引用链接**。这只就是 GEO 曝光的命脉——挡掉它，等于主动退出该引擎的即时引用。
+- **检索型爬虫**：用户在 ChatGPT、Perplexity 等处提问时，AI 即时派它来抓你的页面（其中用户触发的抓取器如 ChatGPT-User、[Perplexity-User](https://docs.perplexity.ai/guides/bots)，官方说明 robots.txt 可能不适用或通常被忽略），用来生成答案并**附上指向你的引用链接**。这只就是 GEO 曝光的命脉——挡掉它，等于主动退出该引擎的即时引用。
 
 一句话：**训练 = 内容进不进模型；检索 = 你进不进答案的引用。** 两者是不同的 user-agent、不同的商业取舍，robots.txt 必须分开写。
 
@@ -32,13 +33,13 @@ translations:
 
 | User-agent | 所属 | 类型 | 挡掉它 = 放弃什么 |
 |---|---|---|---|
-| **GPTBot** | OpenAI | 训练 | 内容不进 OpenAI 训练语料（不影响 ChatGPT 搜索引用） |
-| **OAI-SearchBot** | OpenAI | 检索 | ChatGPT 搜索不再即时引用你、附链接 |
-| **ChatGPT-User** | OpenAI | 检索（用户触发） | 用户在 ChatGPT 内开你链接时抓不到内容 |
-| **PerplexityBot** | Perplexity | 检索 | Perplexity 答案与来源列表不再收录你 |
+| **[GPTBot](https://developers.openai.com/api/docs/bots)** | OpenAI | 训练 | 内容不进 OpenAI 训练语料（不影响 ChatGPT 搜索引用） |
+| **[OAI-SearchBot](https://developers.openai.com/api/docs/bots)** | OpenAI | 检索 | 不会出现在 ChatGPT 搜索答案中（OpenAI 说明约需 24 小时生效） |
+| **[ChatGPT-User](https://developers.openai.com/api/docs/bots)** | OpenAI | 用户触发 | OpenAI 说明因由用户发起，robots.txt 规则可能不适用，不能当作管控 ChatGPT 搜索收录的开关 |
+| **[PerplexityBot](https://docs.perplexity.ai/guides/bots)** | Perplexity | 检索 | Perplexity 搜索结果不再显示与链接你（不用于训练基础模型） |
 | **ClaudeBot** | Anthropic | 训练 | 内容不进 Anthropic 训练语料 |
 | **Claude-SearchBot** | Anthropic | 检索 | Claude 即时检索与引用抓不到你 |
-| **Google-Extended** | Google | 训练／AI 使用 | 内容不供 Gemini／AI 产品使用（**不影响一般 Google 排名**） |
+| **[Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)** | Google | 训练 | 内容不用于训练 Gemini 模型（Google 说明**不影响搜索收录，也不是排名信号**） |
 | **Googlebot** | Google | 索引（驱动 AI Overview） | 一般搜索与 AI Overview 一起消失（几乎不该挡） |
 | **Bingbot** | Microsoft | 索引（驱动 Copilot） | Bing 搜索与 Copilot 同时放弃 |
 
@@ -101,16 +102,23 @@ Sitemap: https://你的域名/sitemap.xml
 2. **查服务器 access log**：搜索上表的 user-agent，确认它们真的有来、且响应是 200。看得到爬取行为，才代表放行生效——这也是唯一能观察 AI bot 真实抓取的地方。
 3. **顺手看爬取预算**：AI 爬虫共享你的服务器资源，量大时优先用缓存／CDN 而非封锁来解，别为了省带宽把引用一起牺牲，详见〈[crawl budget 是什么](/zh-hans/blog/what-is-crawl-budget/)〉。
 
+## 参考资料
+
+- [OpenAI：Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity：Perplexity Crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [Google：Common crawlers（含 Google-Extended）](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [Anthropic：Does Anthropic crawl data from the web, and how can site owners block the crawler?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)（Anthropic）
+
 ## 常见问题（FAQ）
 
 **Q1：训练爬虫和检索爬虫到底差在哪？**
 训练型（如 GPTBot、ClaudeBot）抓内容去训练模型，挡它只防内容进模型；检索型（如 OAI-SearchBot、PerplexityBot）在用户提问当下即时来抓你的页面、生成答案并附引用链接。想被 AI 引用一定要放行检索型，训练型才是可自由取舍的那一组。
 
 **Q2：挡掉 GPTBot，ChatGPT 就引用不到我了吗？**
-不会。GPTBot 是训练用；ChatGPT 搜索的即时引用主要靠 OAI-SearchBot 与 ChatGPT-User。所以你可以「放行 OAI-SearchBot、封锁 GPTBot」，既保住被引用又不被训练——但两者务必分开设置，别一起挡。
+不会。GPTBot 是训练用；OpenAI 说明 OAI-SearchBot 负责让网站出现在 ChatGPT 搜索结果，ChatGPT-User 则处理用户发起的动作。所以你可以「放行 OAI-SearchBot、封锁 GPTBot」，既保住被引用又不被训练——但两者务必分开设置，别一起挡。
 
 **Q3：挡 Google-Extended 会伤到我的 Google 排名吗？**
-不会。Google-Extended 只控制内容是否供 Gemini 等 AI 产品使用，与驱动一般搜索和 AI Overview 的 Googlebot 是两只独立爬虫。挡 Google-Extended 只影响 AI 使用，传统 SEO 排名不受影响。
+不会。Google-Extended 只控制内容是否供 Gemini 等 AI 产品使用，与驱动一般搜索和 AI Overview 的 Googlebot 是两只独立爬虫。Google 文档明确说它不影响网站在 Google 搜索的收录，也不是排名信号。
 
 **Q4：robots.txt 挡得住不守规矩的爬虫吗？**
 robots.txt 是「约定」而非强制。上表这些主流合规爬虫会遵守，但它靠自律。若要技术性硬挡（含恶意仿冒），得在服务器或 CDN 层做 user-agent／IP 过滤，光靠 robots.txt 不够。

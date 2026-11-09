@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-07-06
+date_updated: 2026-11-09
+enhanced: true
 translations:
   zh-hant: schema-for-geo
   en: schema-for-geo
@@ -38,7 +39,7 @@ translations:
 
 ## 实现方式：JSON-LD 一段搞定
 
-Google 官方建议用 JSON-LD 格式，放在页面 `<head>` 或 `<body>` 皆可。一篇文章的最小可用示例：
+Google 官方[建议用 JSON-LD](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) 格式，放在页面 `<head>` 或 `<body>` 皆可。一篇文章的最小可用示例：
 
 ```json
 {
@@ -67,13 +68,20 @@ Google 官方建议用 JSON-LD 格式，放在页面 `<head>` 或 `<body>` 皆�
 
 两个免费工具：Google 的「富媒体搜索结果测试」（Rich Results Test）验证 Google 可读性；Schema.org 的 Validator 验证语法正确性。上线后在 GSC 的「增强功能」报表确认全站的结构化数据健康状态，有错误会列出具体页面。每季度检查一次即可。
 
+## 参考资料
+
+- [Google：Intro to How Structured Data Markup Works](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)（Google Search Central）
+- [Google：General Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)（Google Search Central）
+- [Google Search 更新记录：FAQ 富结果停用（2026-05-08、2026-06-15）](https://developers.google.com/search/updates)（Google Search Central）
+- [Google：生成式 AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central）
+
 ## 常见问题（FAQ）
 
 **Q1：没有 Schema 就完全不会被 AI 引用吗？**
 不是。内容写得好照样可能被引用。Schema 的价值在「同分加赛」：当多个来源内容质量相近时，实体清楚、日期明确的一方更常胜出。
 
 **Q2：FAQPage schema 现在还有 Google 富媒体搜索结果可拿吗？**
-Google 自 2023 年起把 FAQ 富媒体结果限缩到少数权威网站，一般网站拿不到搜索版面上的 FAQ 样式。但这不影响它作为 AI 引擎理解问答结构的信号——GEO 价值仍在。
+没有了。Google 更新记录写明 FAQ 富结果“自 2026 年 5 月 7 日起不再出现在 Google 搜索”（[Google Search 更新记录](https://developers.google.com/search/updates)），所以 FAQPage 标记已换不到搜索版面上的展开问答。同时，Google 的 [AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也说生成式 AI 搜索不需要结构化数据或特殊标记。因此 FAQPage 只能算“机器可读的问答对齐”，我们没有数据证明它提高被 AI 引用的概率；页面上看得见的问答文字才是核心。
 
 **Q3：JSON-LD、Microdata、RDFa 该用哪个？**
 用 JSON-LD。它是 Google 官方推荐格式，与版面解耦、最好维护，2026 年没有理由用另外两种。
