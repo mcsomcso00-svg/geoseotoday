@@ -9,6 +9,8 @@ User-agent: OAI-SearchBot
 Allow: /
 User-agent: ChatGPT-User
 Allow: /
+User-agent: OAI-AdsBot
+Allow: /
 # Anthropic
 User-agent: ClaudeBot
 Allow: /
@@ -24,6 +26,8 @@ Allow: /
 # Google（Gemini／AI 訓練）、Apple、Microsoft、Meta、其他
 User-agent: Google-Extended
 Allow: /
+User-agent: Google-CloudVertexBot
+Allow: /
 User-agent: Applebot
 Allow: /
 User-agent: Applebot-Extended
@@ -31,6 +35,10 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 User-agent: meta-externalagent
+Allow: /
+User-agent: meta-webindexer
+Allow: /
+User-agent: meta-externalfetcher
 Allow: /
 User-agent: DuckAssistBot
 Allow: /
