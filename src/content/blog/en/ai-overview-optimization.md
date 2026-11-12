@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-04
-date_updated: 2026-07-04
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hant: ai-overview-optimization
   zh-hans: ai-overview-optimization
@@ -23,7 +24,7 @@ It differs fundamentally from the old Featured Snippet. A Featured Snippet lifts
 
 ## Before you optimize: ranking is still the entry ticket
 
-Multiple industry studies consistently observe that the sources AI Overview cites mostly come from pages ranking in the top 10–20 for that query. That means:
+Per [Google's documentation](https://developers.google.com/search/docs/appearance/ai-features), a page is eligible to appear as a supporting link in AI Overviews or AI Mode if it is indexed and can be shown in Search with a snippet, with no additional technical requirements or "special optimizations". Google publishes no ranking threshold; industry observers often report that cited pages tend to rank well, which is anecdotal. So:
 
 1. A page with no ranking at all can't be optimized for AI Overview directly — get classic SEO to a passing grade first.
 2. Pages that already rank but are "buried underneath" the AI Overview are the prime targets: the goal shifts from *being clicked* to *being cited*.
@@ -33,7 +34,7 @@ Multiple industry studies consistently observe that the sources AI Overview cite
 
 ### 1. Confirm Google-Extended isn't blocked
 
-`Google-Extended` is Google's crawler control for generative AI. Blocking it in robots.txt effectively opts you out of Gemini-related generative experiences. Check your robots.txt and CDN settings to make sure it isn't blocked by mistake. Note: AI Overview's retrieval still relies mainly on the regular Googlebot, so Googlebot crawlability is an equally hard floor.
+First, a common misconception: [Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) only controls whether content is used for Gemini model training and grounding. Google states it does not affect inclusion in Google Search and is not a ranking signal, and Google's [AI features documentation](https://developers.google.com/search/docs/appearance/ai-features) does not list it as a requirement for AI Overviews. The real floor is regular Googlebot: the page must be crawlable, indexed and snippet-eligible. Check that robots.txt, your CDN and `nosnippet` settings are not blocking it by mistake.
 
 ### 2. Give every query intent a direct answer
 
@@ -57,7 +58,13 @@ For time-sensitive queries, AI Overview favors recently updated sources. Mark th
 
 ## Should you worry about AI Overview eating your clicks?
 
-Yes and no. Studies from several analytics firms across 2025 show that on queries where AI Overview appears, the click-through rate for organic results drops noticeably (measured declines range from roughly 20% to 50% depending on the study). But flip it around: **the disappearing click is a settled fact, and your only choice is "inside the AI answer" or "outside it."** Being cited at least preserves brand exposure and the slow build of trust — which is exactly GEO's central argument. The full case is in [What Is GEO?](/en/blog/what-is-geo/).
+Yes and no. Studies from several analytics firms across 2025 show that on queries where AI Overview appears, the click-through rate for organic results can drop (results vary by study, so we do not quote a specific figure). But flip it around: **the disappearing click is a settled fact, and your only choice is "inside the AI answer" or "outside it."** Being cited at least preserves brand exposure and the slow build of trust — which is exactly GEO's central argument. The full case is in [What Is GEO?](/en/blog/what-is-geo/).
+
+## Sources
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central)
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
+- [Robots meta tag, data-nosnippet, and X-Robots-Tag](https://developers.google.com/search/docs/appearance/snippet) (Google Search Central)
 
 ## FAQ
 
@@ -65,7 +72,7 @@ Yes and no. Studies from several analytics firms across 2025 show that on querie
 Searching it directly and looking at the result is the most reliable test. The general rule: informational and question-shaped queries trigger it often; transactional, branded, and local queries trigger it rarely. Run each of your target keywords through and log the outcome.
 
 **Q2: Can I opt out of AI Overview but keep my regular ranking?**
-There's no dedicated opt-out switch. Directives like `nosnippet` can limit your content from being excerpted, but they usually also affect how your snippet appears in regular search — in practice, the downside outweighs the upside.
+There's no dedicated opt-out switch. Directives like `nosnippet` can limit your content from being excerpted (see [Google's snippet documentation](https://developers.google.com/search/docs/appearance/snippet)), but they usually also affect how your snippet appears in regular search — in practice, the downside outweighs the upside.
 
 **Q3: Is optimizing for AI Overview the same thing as GEO?**
 AI Overview optimization is a subset of GEO. The same writing approach — answer-first, data-backed, structured — works on ChatGPT, Perplexity, and AI Overview alike; the difference is that AI Overview leans extra hard on classic ranking signals.

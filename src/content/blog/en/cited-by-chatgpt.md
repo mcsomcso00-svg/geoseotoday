@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hant: cited-by-chatgpt
   zh-hans: cited-by-chatgpt
@@ -17,16 +18,19 @@ translations:
 
 ## First: when does ChatGPT cite a website at all?
 
-ChatGPT cites external sites mainly when answering in **search mode** (ChatGPT Search) — it retrieves live web pages, picks the sources that best answer the question, and attaches links. The 2023 Princeton-led paper *GEO: Generative Engine Optimization* measured that content optimized for generative engines can lift visibility by up to **40%**. In other words, being cited is largely a matter of *how you write*, not luck.
+ChatGPT cites external sites mainly when answering in **search mode** (ChatGPT Search) — it retrieves live web pages, picks the sources that best answer the question, and attaches links. The 2023 paper *[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)* (Aggarwal et al., later published at KDD 2024) measured that content optimized for generative engines can lift visibility by up to **40%**. In other words, being cited is largely a matter of *how you write*, not luck.
 
 To enter ChatGPT's citation pool, your page has to clear three gates: crawlable, readable, quotable.
 
 ## Step 1: Confirm OpenAI's crawlers can reach you
 
-OpenAI runs two main crawlers with different jobs — don't block either:
+Per [OpenAI's documentation](https://developers.openai.com/api/docs/bots), its crawlers are independent and do different jobs:
 
-- **GPTBot** — collects model training data. Block it and future model versions won't "know" you exist.
-- **OAI-SearchBot** — powers live retrieval for ChatGPT Search. Block it and you can never be cited in search mode.
+- **GPTBot** — crawls content that may be used to train OpenAI's generative AI foundation models. It is unrelated to search citations: OpenAI says each setting is independent, so you can allow OAI-SearchBot while disallowing GPTBot.
+- **OAI-SearchBot** — surfaces sites in ChatGPT's search features. OpenAI states that sites opted out of OAI-SearchBot will not be shown in ChatGPT search answers (they may still appear as navigational links); allow it to be cited.
+- **ChatGPT-User** — visits pages on behalf of a user's question or GPT Actions; it is not used for automatic crawling and does not determine search inclusion.
+
+So the bot that matters for ChatGPT Search citations is OAI-SearchBot; whether to allow GPTBot depends on whether you accept your content being used for model training.
 
 Check your `robots.txt` and confirm neither user-agent is disallowed. Many sites enabled a "block AI crawlers" plugin or CDN setting (for example Cloudflare's AI-bot blocking) and don't realize they've shut OpenAI out entirely. Also: keep important content in the HTML source (not JS-rendered only), and make sure no login wall, paywall, or bot-check page blocks the crawler.
 
@@ -36,7 +40,7 @@ ChatGPT prefers passages that are **complete on their own**:
 
 | Writing move | Wrong | Right |
 |---|---|---|
-| Self-contained | "As above, just do that" | "To allow GPTBot, remove its Disallow rule in robots.txt" |
+| Self-contained | "As above, just do that" | "To appear in ChatGPT search, remove the Disallow rule for OAI-SearchBot in robots.txt" |
 | Answer-first | Three paragraphs before the point | The point in the first 40–80 words |
 | Concrete | "Works great" | "Up to 40% more visibility (GEO paper)" |
 | Structured | One wall of text | Lists, tables, H2 sections |
@@ -55,6 +59,11 @@ Choosing between sources, ChatGPT favors pages with clear provenance:
 ## How to verify whether you're being cited
 
 Take your target questions (e.g. your article titles), ask them in ChatGPT with search on, and log which sites it cites. Build a tracking sheet: test 10–20 questions monthly and watch your appearance rate. Content changes usually show up in citations within 4–8 weeks — faster than Google rankings react.
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv/KDD 2024)
+- [OpenAI crawlers overview](https://developers.openai.com/api/docs/bots) (OpenAI)
 
 ## FAQ
 

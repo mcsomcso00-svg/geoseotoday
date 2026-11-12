@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hans: ai-brand-monitoring
   en: ai-brand-monitoring
@@ -53,11 +54,17 @@ translations:
 監測的價值在於能行動。針對常見狀況：
 
 - **AI 講錯你的資訊** → 檢查官網、關於頁、第三方資料是否有正確、清楚、可被抓取的事實；AI 多半引用它讀得到的公開資訊，把權威來源寫對是根本解。
-- **描述偏負面或過時** → 產出更多正面、具體、時效性的內容，稀釋舊印象；並確保這些內容 AI 爬蟲讀得到（見〈[AI 爬蟲清單與管理](/zh-hant/blog/ai-crawler-management/)〉）。
+- **描述偏負面或過時** → 產出更多正面、具體、時效性的內容，稀釋舊印象；並確保這些內容 AI 爬蟲讀得到（各家機器人的角色見 [OpenAI](https://developers.openai.com/api/docs/bots) 與 [Perplexity](https://docs.perplexity.ai/guides/bots) 官方文件）（見〈[AI 爬蟲清單與管理](/zh-hant/blog/ai-crawler-management/)〉）。
 - **總被對手壓過** → 分析對手為何被引用——通常是內容更具體、實體更清晰、被引用來源更多，對症補齊。
 - **完全沒被提及** → 這是可見度問題而非聲量問題，先回到把內容寫成「可被引用」的基本功。
 
 強化品牌實體與被搜尋的權威度，也直接幫助 AI 正確認識你，本站另有〈[品牌搜尋與權威度](/zh-hant/blog/brand-search-authority/)〉可延伸。
+
+## 參考資料
+
+- [OpenAI crawlers overview](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central）
 
 ## 常見問題（FAQ）
 

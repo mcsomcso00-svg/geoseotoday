@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hant: cited-by-chatgpt
   en: cited-by-chatgpt
@@ -17,16 +18,19 @@ translations:
 
 ## 先搞懂：ChatGPT 什么时候会引用网站？
 
-ChatGPT 引用外部网站主要发生在「搜索模式」（ChatGPT Search）回答时——它会实时检索网页、挑出最能回答问题的来源，在答案中附上链接。2023 年普林斯顿等机构发表的《GEO: Generative Engine Optimization》论文实测显示，针对生成式引擎优化内容，可见度最多可提升 40%。也就是说，被不被引用，很大程度是「写法问题」而非运气。
+ChatGPT 引用外部网站主要发生在「搜索模式」（ChatGPT Search）回答时——它会实时检索网页、挑出最能回答问题的来源，在答案中附上链接。2023 年发表的《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》论文（Aggarwal 等人，后收录于 KDD 2024）实测显示，针对生成式引擎优化内容，可见度最多可提升 40%。也就是说，被不被引用，很大程度是「写法问题」而非运气。
 
 要进入 ChatGPT 的引用池，你的页面要通过三道关卡：抓得到、读得懂、值得引。以下逐一拆解。
 
 ## 第一步：确认 OpenAI 爬虫抓得到你
 
-OpenAI 有两支主要爬虫，用途不同，都不能挡：
+依 [OpenAI 官方文档](https://developers.openai.com/api/docs/bots)，OpenAI 的爬虫各自独立、用途不同：
 
-- **GPTBot**：收集模型训练数据。挡掉它，未来版本的模型「脑中」就没有你。
-- **OAI-SearchBot**：支持 ChatGPT Search 的实时检索。挡掉它，搜索模式永远引用不到你。
+- **GPTBot**：抓取可能用于训练生成式 AI 基础模型的内容。它与搜索引用无关：OpenAI 说明各项设置互相独立，可以允许 OAI-SearchBot 而封锁 GPTBot。
+- **OAI-SearchBot**：让网站出现在 ChatGPT 搜索功能中。OpenAI 说明，退出 OAI-SearchBot 的网站不会显示在 ChatGPT 搜索答案中（仍可能以导航链接出现）；想被搜索引用，请允许它。
+- **ChatGPT-User**：用户提问或使用 GPT Actions 时代为访问页面，不用于自动爬取，也不决定内容是否出现在搜索中。
+
+因此“想被 ChatGPT 搜索引用”的关键是 OAI-SearchBot；是否开放 GPTBot 取决于你是否同意内容用于模型训练。
 
 检查方式：打开你的 `robots.txt`，确认没有 `Disallow` 这两个 user-agent。很多网站用了「一键挡 AI 爬虫」的插件或 CDN 设置（例如 Cloudflare 的 AI bot 封锁），自己都不知道已经把 OpenAI 全挡在门外。另外：
 
@@ -40,7 +44,7 @@ ChatGPT 生成答案时，偏好抓取「单独拿出来也完整成立」的段
 
 | 写法 | 错误示范 | 正确示范 |
 |---|---|---|
-| 自包含 | 「如上所述，这样做即可」 | 「要开放 GPTBot，请在 robots.txt 移除对它的 Disallow 规则」 |
+| 自包含 | 「如上所述，这样做即可」 | 「要出现在 ChatGPT 搜索，请在 robots.txt 移除对 OAI-SearchBot 的 Disallow 规则」 |
 | 答案优先 | 铺陈三段才给结论 | 第一段 40–80 字直接给结论 |
 | 具体 | 「效果很好」 | 「可见度最多提升 40%（GEO 论文实测）」 |
 | 有结构 | 一大坨纯文字 | 清单、表格、H2 分段 |
@@ -59,6 +63,11 @@ ChatGPT 在多个来源之间挑选时，会偏向「来历清楚」的页面。
 ## 如何验证自己有没有被引用？
 
 方法很直接：拿你的目标问题（例如你文章的标题）去问开启搜索功能的 ChatGPT，记录它引用了哪些网站。建议做一张追踪表，每月测一次、每次测 10–20 个问题，观察自己出现的比率变化。一般而言，内容改写后 4–8 周内就能观察到引用变化，比 Google 排名的反应快。
+
+## 参考资料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等人，arXiv／KDD 2024）
+- [OpenAI crawlers overview](https://developers.openai.com/api/docs/bots)（OpenAI）
 
 ## 常见问题（FAQ）
 

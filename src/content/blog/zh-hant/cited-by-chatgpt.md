@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-04
-date_updated: 2026-07-04
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hans: cited-by-chatgpt
   en: cited-by-chatgpt
@@ -17,18 +18,21 @@ translations:
 
 ## 先搞懂：ChatGPT 什麼時候會引用網站？
 
-ChatGPT 引用外部網站主要發生在「搜尋模式」（ChatGPT Search）回答時——它會即時檢索網頁、挑出最能回答問題的來源，在答案中附上連結。2023 年普林斯頓等機構發表的《GEO: Generative Engine Optimization》論文實測顯示，針對生成式引擎優化內容，可見度最多可提升 40%。也就是說，被不被引用，很大程度是「寫法問題」而非運氣。
+ChatGPT 引用外部網站主要發生在「搜尋模式」（ChatGPT Search）回答時——它會即時檢索網頁、挑出最能回答問題的來源，在答案中附上連結。2023 年發表的《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》論文（Aggarwal 等人，後收錄於 KDD 2024）實測顯示，針對生成式引擎優化內容，可見度最多可提升 40%。也就是說，被不被引用，很大程度是「寫法問題」而非運氣。
 
 要進入 ChatGPT 的引用池，你的頁面要通過三道關卡：抓得到、讀得懂、值得引。以下逐一拆解。
 
 ## 第一步：確認 OpenAI 爬蟲抓得到你
 
-OpenAI 有兩支主要爬蟲，用途不同，都不能擋：
+依 [OpenAI 官方文件](https://developers.openai.com/api/docs/bots)，OpenAI 的爬蟲各自獨立、用途不同：
 
-- **GPTBot**：收集模型訓練資料。擋掉它，未來版本的模型「腦中」就沒有你。
-- **OAI-SearchBot**：支援 ChatGPT Search 的即時檢索。擋掉它，搜尋模式永遠引用不到你。
+- **GPTBot**：抓取可能用於訓練生成式 AI 基礎模型的內容。它與搜尋引用無關：OpenAI 說明各項設定互相獨立，可以允許 OAI-SearchBot 而封鎖 GPTBot。
+- **OAI-SearchBot**：讓網站出現在 ChatGPT 搜尋功能中。OpenAI 說明，退出 OAI-SearchBot 的網站不會顯示在 ChatGPT 搜尋答案中（仍可能以導航連結出現）；想被搜尋引用，請允許它。
+- **ChatGPT-User**：使用者提問或使用 GPT Actions 時代為造訪頁面，不用於自動爬取，也不決定內容是否出現在搜尋中。
 
-檢查方式：打開你的 `robots.txt`，確認沒有 `Disallow` 這兩個 user-agent。很多網站用了「一鍵擋 AI 爬蟲」的外掛或 CDN 設定（例如 Cloudflare 的 AI bot 封鎖），自己都不知道已經把 OpenAI 全擋在門外。另外：
+因此「想被 ChatGPT 搜尋引用」的關鍵是 OAI-SearchBot；是否開放 GPTBot 取決於你是否同意內容用於模型訓練。
+
+檢查方式：打開你的 `robots.txt`，確認沒有 `Disallow` OAI-SearchBot（GPTBot 則視你對訓練用途的立場而定）。很多網站用了「一鍵擋 AI 爬蟲」的外掛或 CDN 設定（例如 Cloudflare 的 AI bot 封鎖），自己都不知道已經把 OpenAI 全擋在門外。另外：
 
 1. 頁面內容不要全靠 JavaScript 渲染後才出現——爬蟲對 JS 的處理能力有限，重要內容要在 HTML 原始碼就讀得到。
 2. 用 log 檔或 GSC 類工具確認 GPTBot 真的有來訪。
@@ -40,7 +44,7 @@ ChatGPT 生成答案時，偏好抓取「單獨拿出來也完整成立」的段
 
 | 寫法 | 錯誤示範 | 正確示範 |
 |---|---|---|
-| 自包含 | 「如上所述，這樣做即可」 | 「要開放 GPTBot，請在 robots.txt 移除對它的 Disallow 規則」 |
+| 自包含 | 「如上所述，這樣做即可」 | 「要出現在 ChatGPT 搜尋，請在 robots.txt 移除對 OAI-SearchBot 的 Disallow 規則」 |
 | 答案優先 | 鋪陳三段才給結論 | 第一段 40–80 字直接給結論 |
 | 具體 | 「效果很好」 | 「可見度最多提升 40%（GEO 論文實測）」 |
 | 有結構 | 一大坨純文字 | 清單、表格、H2 分段 |
@@ -59,6 +63,11 @@ ChatGPT 在多個來源之間挑選時，會偏向「來歷清楚」的頁面。
 ## 如何驗證自己有沒有被引用？
 
 方法很直接：拿你的目標問題（例如你文章的標題）去問開啟搜尋功能的 ChatGPT，記錄它引用了哪些網站。建議做一張追蹤表，每月測一次、每次測 10–20 個問題，觀察自己出現的比率變化。一般而言，內容改寫後 4–8 週內就能觀察到引用變化，比 Google 排名的反應快。更完整的監測方法可參考〈[GEO 成效怎麼追蹤？](/zh-hant/blog/geo-tracking/)〉。
+
+## 參考資料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等人，arXiv／KDD 2024）
+- [OpenAI crawlers overview](https://developers.openai.com/api/docs/bots)（OpenAI）
 
 ## 常見問題（FAQ）
 

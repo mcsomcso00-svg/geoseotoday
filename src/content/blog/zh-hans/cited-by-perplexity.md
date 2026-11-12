@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hant: cited-by-perplexity
   en: cited-by-perplexity
@@ -17,7 +18,7 @@ translations:
 
 ## 为什么 Perplexity 值得优先攻？
 
-三个理由。第一，**引用是它的产品核心**：Perplexity 的每个答案默认附上编号来源，被引用等于直接曝光。第二，**回馈周期短**：它实时检索网页，内容改好后常常数周内就能观察到引用变化，远快于等 Google 排名。第三，**它是验证 GEO 写法的最佳实验场**——2023 年《GEO: Generative Engine Optimization》论文提出的优化手法（加数据、加引用、加统计）实测让来源可见度最多提升 40%，这套逻辑在 Perplexity 上最容易验证。
+三个理由。第一，**引用是它的产品核心**：Perplexity 的每个答案默认附上编号来源，被引用等于直接曝光。第二，**回馈周期短**：它实时检索网页，内容改好后常常数周内就能观察到引用变化，远快于等 Google 排名。第三，**它是验证 GEO 写法的最佳实验场**——2023 年《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》论文提出的优化手法（加数据、加引用、加统计）实测让来源可见度最多提升 40%，这套逻辑在 Perplexity 上最容易验证。
 
 ## Perplexity 怎么挑来源？先理解它的流程
 
@@ -28,6 +29,8 @@ Perplexity 回答问题的流程大致是：解析你的问题 → 通过搜索�
 ## 五个实作步骤
 
 ### 1. 开放 PerplexityBot
+依 [Perplexity 官方文档](https://docs.perplexity.ai/guides/bots)，PerplexityBot 负责让网站出现在 Perplexity 搜索结果并附上链接，并非用于训练基础模型；要出现在结果中，需在 robots.txt 允许它并放行其公布的 IP 范围。另有 Perplexity-User：用户提问时代为访问页面，通常不受 robots.txt 规则约束。
+
 检查 `robots.txt`，确认没有挡 `PerplexityBot`。同时确认 CDN 或防火墙（如 Cloudflare 的 bot 管理）没有把它列入封锁清单。内容要在 HTML 源码中直接可读，不要依赖 JavaScript 渲染。
 
 ### 2. 每个 H2 段落自包含
@@ -56,6 +59,11 @@ Perplexity 的用户输入的是完整问题。你的 H1、H2 越接近真实问
 | 优化重点 | 段落可抽取性、数据 | 实体信任、训练数据涵盖 |
 
 两者的内容基本功相同，先把 Perplexity 打下来，同一批内容通常也会开始在 ChatGPT 出现。细部差异可对照〈[如何让 ChatGPT 引用你的网站内容](/zh-hans/blog/cited-by-chatgpt/)〉。
+
+## 参考资料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等人，arXiv／KDD 2024）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
 
 ## 常见问题（FAQ）
 

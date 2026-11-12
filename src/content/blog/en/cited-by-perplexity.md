@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hant: cited-by-perplexity
   zh-hans: cited-by-perplexity
@@ -17,7 +18,7 @@ translations:
 
 ## Why attack Perplexity first?
 
-Three reasons. First, **citation is its core product**: every Perplexity answer ships with numbered sources by default, so being cited is direct exposure. Second, **the feedback loop is short**: it retrieves live, so improved content often shows citation changes within weeks — far faster than waiting on Google rankings. Third, **it's the best lab for validating GEO writing** — the optimizations from the 2023 *GEO: Generative Engine Optimization* paper (add data, add citations, add statistics) lifted source visibility by up to 40% in testing, and that logic is easiest to verify on Perplexity.
+Three reasons. First, **citation is its core product**: every Perplexity answer ships with numbered sources by default, so being cited is direct exposure. Second, **the feedback loop is short**: it retrieves live, so improved content often shows citation changes within weeks — far faster than waiting on Google rankings. Third, **it's the best lab for validating GEO writing** — the optimizations from the 2023 *[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)* paper (add data, add citations, add statistics) lifted source visibility by up to 40% in testing, and that logic is easiest to verify on Perplexity.
 
 ## How Perplexity picks sources
 
@@ -28,6 +29,8 @@ Perplexity's flow is roughly: parse your question → retrieve candidate pages v
 ## Five steps
 
 ### 1. Allow PerplexityBot
+[Perplexity's documentation](https://docs.perplexity.ai/guides/bots) says PerplexityBot surfaces and links sites in Perplexity search results and is not used to train foundation models; to appear, allow it in robots.txt and permit its published IP ranges. A second agent, Perplexity-User, fetches pages on a user's behalf and generally ignores robots.txt rules.
+
 Check `robots.txt` for a `PerplexityBot` block, and confirm your CDN or firewall (e.g. Cloudflare bot management) hasn't quietly listed it. Keep content readable in the HTML source, not JavaScript-only.
 
 ### 2. Make every H2 self-contained
@@ -56,6 +59,11 @@ One article's citation is luck; a whole cluster's is strategy. Write 10–18 int
 | Focus | Passage extractability, data | Entity trust, training coverage |
 
 The content fundamentals are the same, so win Perplexity first and the same content usually starts appearing in ChatGPT too. For the differences, see [How to Get ChatGPT to Cite Your Website](/en/blog/cited-by-chatgpt/).
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv/KDD 2024)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
 
 ## FAQ
 

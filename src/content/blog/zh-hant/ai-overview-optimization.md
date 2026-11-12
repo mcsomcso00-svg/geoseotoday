@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-04
-date_updated: 2026-07-04
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hans: ai-overview-optimization
   en: ai-overview-optimization
@@ -23,7 +24,7 @@ AI Overview 是 Google 在搜尋結果頂端用生成式 AI 產出的摘要答�
 
 ## 優化前先認清：排名仍是入場券
 
-多項業界研究一致觀察到：AI Overview 引用的來源，大多數來自該查詢排名前 10–20 名的頁面。這代表：
+依 [Google 官方說明](https://developers.google.com/search/docs/appearance/ai-features)，頁面只要已被 Google 索引、且能在搜尋中顯示摘要，就有資格成為 AI 概覽或 AI 模式的支援連結，且沒有額外的技術要求或「特殊優化」。官方並未公布排名門檻；業界觀察多半認為被引用的頁面常是排名較前者，這點僅供參考。因此：
 
 1. 完全沒排名的頁面，直接做 AI Overview 優化是空談——先把傳統 SEO 做到及格。
 2. 已有排名但被 AI Overview「蓋在下面」的頁面，才是優化的主力對象：目標從「被點擊」轉為「被引用」。
@@ -33,7 +34,7 @@ AI Overview 是 Google 在搜尋結果頂端用生成式 AI 產出的摘要答�
 
 ### 1. 確認 Google-Extended 沒被擋
 
-`Google-Extended` 是 Google 用於生成式 AI 的爬蟲控制項。在 robots.txt 擋掉它，等於退出 Gemini 相關的生成式體驗。檢查你的 robots.txt 與 CDN 設定，確認沒有誤擋。注意：AI Overview 的檢索主要仍靠一般 Googlebot，所以 Googlebot 的可抓取性同樣是底線。
+先釐清一個常見誤解：[Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) 只管內容是否用於 Gemini 模型訓練與 grounding，Google 明言它不影響網站在 Google 搜尋的收錄，也不是排名訊號；Google 的 [AI 功能文件](https://developers.google.com/search/docs/appearance/ai-features)也未把它列為 AI 概覽的條件。真正的底線是一般 Googlebot：頁面要可被抓取、已被索引、可顯示摘要。請檢查 robots.txt、CDN 與 `nosnippet` 設定沒有誤擋。
 
 ### 2. 每個查詢意圖給一個直接答案
 
@@ -57,7 +58,13 @@ AI Overview 對時效敏感的查詢偏好近期更新的來源。標明更新�
 
 ## 該擔心 AI Overview 吃掉點擊嗎？
 
-要，也不要。多家分析機構在 2025 年的研究顯示，出現 AI Overview 的查詢，自然結果的點閱率明顯下降（不同研究測得的降幅從兩成到五成不等）。但反過來看：**點擊在消失是既定事實，你能選的只有「在 AI 答案裡」或「不在」**。被引用至少保住品牌曝光與信任累積，這正是 GEO 的核心論點——完整論述見〈[GEO 是什麼？](/zh-hant/blog/what-is-geo/)〉。
+要，也不要。多家分析機構在 2025 年的研究顯示，出現 AI Overview 的查詢，自然結果的點閱率可能下降（各研究結果不一，本文不引用特定降幅）。但反過來看：**點擊在消失是既定事實，你能選的只有「在 AI 答案裡」或「不在」**。被引用至少保住品牌曝光與信任累積，這正是 GEO 的核心論點——完整論述見〈[GEO 是什麼？](/zh-hant/blog/what-is-geo/)〉。
+
+## 參考資料
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central）
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [Robots meta tag, data-nosnippet, and X-Robots-Tag](https://developers.google.com/search/docs/appearance/snippet)（Google Search Central）
 
 ## 常見問題（FAQ）
 
@@ -65,7 +72,7 @@ AI Overview 對時效敏感的查詢偏好近期更新的來源。標明更新�
 直接搜尋看結果最準。一般規律：資訊型、問句型查詢觸發率高；交易型、品牌型、在地型查詢觸發率低。把你的目標關鍵字逐一查一遍並記錄。
 
 **Q2：我可以退出 AI Overview 但保留一般排名嗎？**
-沒有專屬的退出開關。`nosnippet` 等指令可以限制內容被摘錄，但通常連帶影響一般搜尋的摘要呈現，實務上弊大於利。
+沒有專屬的退出開關。`nosnippet` 等指令可以限制內容被摘錄（見 [Google 摘要文件](https://developers.google.com/search/docs/appearance/snippet)），但通常連帶影響一般搜尋的摘要呈現，實務上弊大於利。
 
 **Q3：AI Overview 優化和 GEO 是同一件事嗎？**
 AI Overview 優化是 GEO 的子集。同一套內容寫法（答案優先、數據、結構化）同時作用於 ChatGPT、Perplexity 與 AI Overview，差別在 AI Overview 額外吃重傳統排名訊號。

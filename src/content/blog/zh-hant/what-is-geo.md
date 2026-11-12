@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-03
-date_updated: 2026-07-03
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hans: what-is-geo
   en: what-is-geo
@@ -17,13 +18,13 @@ translations:
 
 ## 為什麼 2026 年 GEO 突然變重要？
 
-因為搜尋行為變了。根據多家流量分析機構在 2025–2026 的統計，**超過 40% 的資訊型查詢在 AI 答案頁就結束**，使用者根本不再點進十個藍色連結。Gartner 更早在 2024 年就預估，到 2026 年傳統搜尋量會下降 25%。
+因為搜尋行為變了：Google 已在搜尋結果中提供 [AI 概覽與 AI 模式](https://developers.google.com/search/docs/appearance/ai-features)，ChatGPT、Perplexity 也直接以生成的答案回應查詢，使用者不一定再點進十個藍色連結。（本文先前引用的「超過 40% 資訊型查詢止於 AI 答案」與 Gartner 的搜尋量預測，因無法查證原始來源，已移除。）
 
-這代表一件殘酷的事：**你可以排名第一，卻拿不到點擊**——因為 AI 已經替使用者讀完並總結了。唯一的機會，是成為 AI 總結時「引用的那幾個來源」。這就是 GEO 要解決的問題。
+這代表一件殘酷的事：**你可以排名第一，卻拿不到點擊**——因為 AI 已經替使用者讀完並總結了。唯一的機會，是成為 AI 總結時「引用的那幾個來源」。學術上，[GEO 論文](https://arxiv.org/abs/2311.09735)（Aggarwal 等人，KDD 2024）提出此一框架，並指出特定優化手法可使內容在生成式引擎回應中的可見度最多提升 40%。這就是 GEO 要解決的問題。
 
 ## GEO 的定義：三個層次
 
-1. **被讀懂**：AI 爬蟲（GPTBot、PerplexityBot、Google-Extended）能順利抓取並解析你的頁面結構。
+1. **被讀懂**：AI 搜尋爬蟲（如 [OAI-SearchBot](https://developers.openai.com/api/docs/bots)、[PerplexityBot](https://docs.perplexity.ai/guides/bots)）能順利抓取並解析你的頁面結構；注意 GPTBot 與 [Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) 管的是模型訓練／Gemini 用途，其中 Google-Extended 不影響 Google 搜尋收錄與排名。
 2. **被信任**：內容展現實體清晰度（作者、品牌、Schema 結構化資料）與 E-E-A-T（經驗、專業、權威、信任）。
 3. **被引用**：段落寫成「可直接摘錄」的形式——自包含、具體、有數據——讓 AI 在生成答案時直接抓你這一段。
 
@@ -48,6 +49,14 @@ translations:
 2. **放可引用的硬資訊**：數字、日期、價格、比較表。AI 引用具體事實，不引用形容詞。
 3. **加上 Schema**：至少 Article + FAQPage，讓引擎明確知道「誰、何時、講什麼」。
 4. **檢測再發布**：用我們的 [GEO 就緒度檢測器](/zh-hant/geo/) 對文章打分，75 分以上再發。
+
+## 參考資料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等人，arXiv／KDD 2024）
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central）
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [OpenAI crawlers overview](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
 
 ## 常見問題（FAQ）
 

@@ -86,3 +86,26 @@ Every scheduled run appends its section here (newest last), with the live links 
   - 繁中 https://geoseotoday.com/zh-hant/blog/geo-aeo-aio/
   - 简中 https://geoseotoday.com/zh-hans/blog/geo-aeo-aio/
   - EN https://geoseotoday.com/en/blog/geo-aeo-aio/
+
+## 2026-11-12 — Enhancement batch
+- GEO 是什麼？生成式引擎優化完整定義（2026） — 5 sources; removed unverifiable "40% of queries end on AI answer" and Gartner forecast; clarified GPTBot/Google-Extended are training controls
+  - 繁中 https://geoseotoday.com/zh-hant/blog/what-is-geo/
+  - 简中 https://geoseotoday.com/zh-hans/blog/what-is-geo/
+  - EN https://geoseotoday.com/en/blog/what-is-geo/
+- Google AI Overview 優化實戰指南 — 3 sources; corrected claim that Google-Extended affects AI Overviews (it does not); softened unsourced top-10–20 ranking and 20–50% CTR figures to Google's eligibility rule (indexed + snippet-eligible). Description frontmatter still mentions Google-Extended (left unchanged per brief)
+  - 繁中 https://geoseotoday.com/zh-hant/blog/ai-overview-optimization/
+  - 简中 https://geoseotoday.com/zh-hans/blog/ai-overview-optimization/
+  - EN https://geoseotoday.com/en/blog/ai-overview-optimization/
+- 如何讓 ChatGPT 引用你的網站內容 — 2 sources; corrected: GPTBot is training-only and not required for search citations, OAI-SearchBot is the one that matters; added ChatGPT-User
+  - 繁中 https://geoseotoday.com/zh-hant/blog/cited-by-chatgpt/
+  - 简中 https://geoseotoday.com/zh-hans/blog/cited-by-chatgpt/
+  - EN https://geoseotoday.com/en/blog/cited-by-chatgpt/
+- 如何被 Perplexity 當作來源引用 — 2 sources; added PerplexityBot vs Perplexity-User roles; no corrections
+  - 繁中 https://geoseotoday.com/zh-hant/blog/cited-by-perplexity/
+  - 简中 https://geoseotoday.com/zh-hans/blog/cited-by-perplexity/
+  - EN https://geoseotoday.com/en/blog/cited-by-perplexity/
+- 品牌在 AI 答案裡的聲量監測怎麼做 — 3 sources; crawler-role links only, no corrections
+  - 繁中 https://geoseotoday.com/zh-hant/blog/ai-brand-monitoring/
+  - 简中 https://geoseotoday.com/zh-hans/blog/ai-brand-monitoring/
+  - EN https://geoseotoday.com/en/blog/ai-brand-monitoring/
+- Priority queue: ai-mode-vs-ai-overview skipped (Gen AI report fact has no verified primary source; new AI Mode article not live). Other todo rows not yet due or lacking their new article.

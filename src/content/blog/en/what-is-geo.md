@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-12
+enhanced: true
 translations:
   zh-hant: what-is-geo
   zh-hans: what-is-geo
@@ -17,13 +18,13 @@ translations:
 
 ## Why GEO suddenly matters in 2026
 
-Search behavior changed. Across 2025–2026, multiple analytics firms report that **over 40% of informational queries now end on the AI answer itself** — users never click through to ten blue links. Gartner projected as early as 2024 that traditional search volume would fall 25% by 2026.
+Search behavior changed: Google now shows [AI Overviews and AI Mode](https://developers.google.com/search/docs/appearance/ai-features) in search, and ChatGPT and Perplexity answer queries directly, so users no longer always click through to ten blue links. (An earlier version of this article cited "over 40% of informational queries end on the AI answer" and a Gartner search-volume forecast; we could not verify either against an original source, so both were removed.)
 
-That creates a harsh new reality: **you can rank #1 and still get no click**, because the AI already read and summarized the page for the user. Your only shot at visibility is to become one of the few sources the AI cites. That is the problem GEO solves.
+That creates a harsh new reality: **you can rank #1 and still get no click**, because the AI already read and summarized the page for the user. Your only shot at visibility is to become one of the few sources the AI cites. The [GEO paper](https://arxiv.org/abs/2311.09735) (Aggarwal et al., KDD 2024) formalized this framework and reports that specific optimization methods can boost visibility in generative engine responses by up to 40%. That is the problem GEO solves.
 
 ## The definition, in three layers
 
-1. **Be readable** — AI crawlers (GPTBot, PerplexityBot, Google-Extended) can fetch and parse your page structure.
+1. **Be readable** — AI search crawlers (such as [OAI-SearchBot](https://developers.openai.com/api/docs/bots) and [PerplexityBot](https://docs.perplexity.ai/guides/bots)) can fetch and parse your page structure. Note that GPTBot and [Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) govern model-training/Gemini use, and Google-Extended does not affect Google Search inclusion or ranking.
 2. **Be trusted** — your content shows entity clarity (author, brand, schema structured data) and E-E-A-T.
 3. **Be quotable** — paragraphs are written to be lifted verbatim: self-contained, specific, backed by data — so the model grabs *your* sentence when it generates the answer.
 
@@ -48,6 +49,14 @@ In practice, an article optimized for GEO is almost always good SEO too — the 
 2. **Add quotable hard facts.** Numbers, dates, prices, comparison tables. AI cites specifics, not adjectives.
 3. **Add schema.** At minimum Article + FAQPage, so engines know who wrote what, and when.
 4. **Score before you publish.** Run each article through our [GEO Readiness Checker](/en/geo/) and aim for 75+.
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv/KDD 2024)
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central)
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
+- [OpenAI crawlers overview](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
 
 ## FAQ
 

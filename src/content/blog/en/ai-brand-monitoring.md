@@ -9,7 +9,8 @@ translations:
   zh-hant: ai-brand-monitoring
   zh-hans: ai-brand-monitoring
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-12
+enhanced: true
 ---
 # How to Monitor Your Brand's Presence in AI Answers
 
@@ -53,11 +54,17 @@ It doesn't need to be complicated. Five steps get it running:
 The value of monitoring is that it lets you act. For common situations:
 
 - **AI states incorrect information about you** → Check whether your website, About page, and third-party sources carry correct, clear, crawlable facts. AI mostly cites the public information it can read, so getting your authoritative sources right is the root-cause fix.
-- **The description skews negative or outdated** → Produce more positive, specific, timely content to dilute the old impression, and make sure AI crawlers can read it.
+- **The description skews negative or outdated** → Produce more positive, specific, timely content to dilute the old impression, and make sure AI crawlers can read it (see the official [OpenAI](https://developers.openai.com/api/docs/bots) and [Perplexity](https://docs.perplexity.ai/guides/bots) docs for what each bot does).
 - **A competitor keeps outranking you** → Analyze why the competitor gets cited — usually their content is more specific, their entity is clearer, and they have more sources citing them. Close those gaps directly.
 - **You're not mentioned at all** → This is a visibility problem, not a presence problem. Go back to the fundamentals of writing content that is "citable."
 
 Strengthening your brand entity and search authority also directly helps AI understand you correctly.
+
+## Sources
+
+- [OpenAI crawlers overview](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central)
 
 ## Frequently asked questions (FAQ)
 

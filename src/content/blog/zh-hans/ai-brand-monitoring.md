@@ -9,7 +9,8 @@ translations:
   zh-hant: ai-brand-monitoring
   en: ai-brand-monitoring
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-12
+enhanced: true
 ---
 # 品牌在 AI 答案里的声量监测怎么做
 
@@ -53,11 +54,17 @@ date_updated: 2026-07-05
 监测的价值在于能行动。针对常见状况：
 
 - **AI 讲错你的信息** → 检查官网、关于页、第三方资料是否有正确、清楚、可被抓取的事实；AI 多半引用它读得到的公开信息，把权威来源写对是根本解。
-- **描述偏负面或过时** → 产出更多正面、具体、时效性的内容，稀释旧印象；并确保这些内容 AI 爬虫读得到。
+- **描述偏负面或过时** → 产出更多正面、具体、时效性的内容，稀释旧印象；并确保这些内容 AI 爬虫读得到（各家机器人的角色见 [OpenAI](https://developers.openai.com/api/docs/bots) 与 [Perplexity](https://docs.perplexity.ai/guides/bots) 官方文档）。
 - **总被对手压过** → 分析对手为何被引用——通常是内容更具体、实体更清晰、被引用来源更多，对症补齐。
 - **完全没被提及** → 这是可见度问题而非声量问题，先回到把内容写成「可被引用」的基本功。
 
 强化品牌实体与被搜索的权威度，也直接帮助 AI 正确认识你。
+
+## 参考资料
+
+- [OpenAI crawlers overview](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central）
 
 ## 常见问题（FAQ）
 
