@@ -109,3 +109,13 @@ Every scheduled run appends its section here (newest last), with the live links 
   - 简中 https://geoseotoday.com/zh-hans/blog/ai-brand-monitoring/
   - EN https://geoseotoday.com/en/blog/ai-brand-monitoring/
 - Priority queue: ai-mode-vs-ai-overview skipped (Gen AI report fact has no verified primary source; new AI Mode article not live). Other todo rows not yet due or lacking their new article.
+
+## 2026-11-14 — New articles
+- Search Console「生成式 AI 成效報告」怎麼看：AI Overviews 與 AI Mode 第一次有官方曝光數據 — live 2026-11-20
+  - 繁中 https://geoseotoday.com/zh-hant/blog/search-console-generative-ai-report/
+  - 简中 https://geoseotoday.com/zh-hans/blog/search-console-generative-ai-report/
+  - EN https://geoseotoday.com/en/blog/search-console-generative-ai-report/
+- 2026 Google 演算法更新時間軸：核心更新、垃圾內容更新與你的流量曲線對照 — live 2026-11-24
+  - 繁中 https://geoseotoday.com/zh-hant/blog/google-2026-algorithm-updates-timeline/
+  - 简中 https://geoseotoday.com/zh-hans/blog/google-2026-algorithm-updates-timeline/
+  - EN https://geoseotoday.com/en/blog/google-2026-algorithm-updates-timeline/
