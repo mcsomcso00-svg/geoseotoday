@@ -6,7 +6,8 @@ intent: commercial
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hans: aio-complete-guide
   en: aio-complete-guide
@@ -17,7 +18,7 @@ translations:
 
 ## 為什麼 2026 年一定要懂 AIO？
 
-因為搜尋的「第一個版位」變了。過去使用者打開搜尋結果，看到的是十條藍色連結；現在越來越多查詢，第一眼是一段 AI 生成的摘要。根據多家流量分析機構在 2025–2026 的觀察，資訊型查詢有相當高的比例在 AI 答案頁就結束，使用者不再往下捲；Gartner 更早在 2024 年就預估，到 2026 年傳統搜尋量會下降約 25%。
+因為搜尋的「第一個版位」變了。過去使用者打開搜尋結果，看到的是十條藍色連結；現在越來越多查詢，第一眼是一段 AI 生成的摘要。[Pew Research Center 2025 年的研究](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)（美國使用者樣本）發現，出現 AI 摘要的搜尋中，使用者點擊傳統結果連結的比例為 8%，沒有 AI 摘要時為 15%。
 
 這代表兩件事同時發生：**傳統點擊在縮水，而「被 AI 引用」成了新的曝光形式。** 你可以排名第一卻拿不到點擊，因為 AI 已經替使用者讀完並總結；唯一的機會，是成為 AI 總結時「引用的那幾個來源」。AIO 就是為了解決這個新命題而生——它不是要你丟掉 SEO，而是在 SEO 之上，把內容優化到能被各種 AI 介面採用。
 
@@ -47,7 +48,7 @@ translations:
 | 介面 | 背後 | 最關鍵前提 | 專文 |
 |---|---|---|---|
 | **Google AI Overview** | Gemini ＋ Google 索引 | 先被 Google 索引好 | [被 Gemini 引用](/zh-hant/blog/cited-by-gemini/) |
-| **Copilot／Bing AI** | Bing 索引 ＋ GPT | 先被 Bing 索引好 | [被 Copilot 引用](/zh-hant/blog/cited-by-copilot/) |
+| **Copilot／Bing AI** | Bing 搜尋 ＋ 多種模型 | 先被 Bing 索引好 | [被 Copilot 引用](/zh-hant/blog/cited-by-copilot/) |
 | **ChatGPT** | OpenAI 自有爬蟲 | 先讓 GPTBot 抓得到 | [被 ChatGPT 引用](/zh-hant/blog/cited-by-chatgpt/) |
 | **Perplexity** | 自有爬蟲 ＋ 檢索 | 先讓 PerplexityBot 抓得到 | [被 Perplexity 引用](/zh-hant/blog/cited-by-perplexity/) |
 
@@ -60,11 +61,11 @@ translations:
 
 ## 第四步：確認 AI 爬蟲讀得到你（地基中的地基）
 
-前面講的內容再好，如果 AI 爬蟲讀不到，一切白費。這是最容易被忽略、卻最常出問題的一步：很多網站 AIO 做不起來，原因只是某任工程師把 AI 爬蟲全 Disallow 了。你至少要認得 2026 年這六隻真實的 user-agent：**GPTBot、OAI-SearchBot（OpenAI）、PerplexityBot、Google-Extended、ClaudeBot、Bingbot**，並在 robots.txt 裡逐一決定放行或封鎖。
+前面講的內容再好，如果 AI 爬蟲讀不到，一切白費。這是最容易被忽略、卻最常出問題的一步：很多網站 AIO 做不起來，原因只是某任工程師把 AI 爬蟲全 Disallow 了。你至少要認得 2026 年這六隻真實的 user-agent：**GPTBot、OAI-SearchBot（OpenAI）、PerplexityBot、Google-Extended、ClaudeBot、Bingbot**，並在 robots.txt 裡逐一決定放行或封鎖。角色要分清：依 [OpenAI 官方文件](https://developers.openai.com/api/docs/bots)，OAI-SearchBot 負責讓網站出現在 ChatGPT 搜尋答案中，GPTBot 則與模型訓練有關，擋 GPTBot 不影響 ChatGPT 搜尋可見度；依 [Perplexity 文件](https://docs.perplexity.ai/guides/bots)，PerplexityBot 負責 Perplexity 搜尋結果呈現。
 
-兩個關鍵認知：**Google-Extended 不是一般 Googlebot**——擋它不影響 Google 排名，只影響是否供 Gemini 使用；**封鎖爬蟲＝放棄被該引擎引用的曝光**。此外，多數 AI 爬蟲不執行 JavaScript，若重要內容要 JS 才渲染得出來，爬蟲即使放行也讀不到。完整清單、robots.txt 範例與決策建議，見〈[AI 爬蟲清單與管理](/zh-hant/blog/ai-crawler-management/)〉。
+兩個關鍵認知：**Google-Extended 不是一般 Googlebot**——依 [Google 官方文件](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)，它不影響網站在 Google 搜尋的收錄與排名，控制的是內容能否用於 Gemini 的訓練與 grounding；**封鎖爬蟲＝放棄被該引擎引用的曝光**。此外，部分 AI 爬蟲可能不執行 JavaScript（各家未全面公開說明，建議自行驗證），若重要內容要 JS 才渲染得出來，爬蟲即使放行也讀不到。完整清單、robots.txt 範例與決策建議，見〈[AI 爬蟲清單與管理](/zh-hant/blog/ai-crawler-management/)〉。
 
-順帶一提，你可能聽過 **llms.txt**——一個放在網站根目錄、用 Markdown 幫 AI 快速理解網站的檔案。它是 2024 年 Jeremy Howard／Answer.AI 提出的社群提案標準，成本極低、值得當前瞻性佈局加上，但要誠實認知：**截至 2026 年它尚未被主流 AI 引擎正式採用，不會直接提升可見度。** 真正的地基仍是「內容可被引用」與「爬蟲讀得到」。完整說明與範例見〈[llms.txt 是什麼？要不要幫網站加](/zh-hant/blog/what-is-llms-txt/)〉。
+順帶一提，你可能聽過 **llms.txt**——一個放在網站根目錄、用 Markdown 幫 AI 快速理解網站的檔案。它是 2024 年由 Jeremy Howard 提出的[社群提案](https://llmstxt.org/)，成本極低、值得當前瞻性佈局加上，但要誠實認知：**截至 2026 年它尚未被主流 AI 引擎正式採用，不會直接提升可見度。** 真正的地基仍是「內容可被引用」與「爬蟲讀得到」。完整說明與範例見〈[llms.txt 是什麼？要不要幫網站加](/zh-hant/blog/what-is-llms-txt/)〉。
 
 ## 第五步：追蹤可見度與監測品牌聲量
 
@@ -93,6 +94,14 @@ translations:
 5. **追蹤**：建 20 題手動查詢表，每月實測四大引擎，記錄被引用率與對手佔比。
 6. **監測**：每月檢視品牌在 AI 答案裡的語氣、定位與排序，發現錯誤或負面即修正。
 7. **工具**：先免費組合跑通，瓶頸出現再付費。
+
+## 參考資料
+
+- [Google users are less likely to click on links when an AI summary appears in the results](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)（Pew Research Center，2025）
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [The /llms.txt file](https://llmstxt.org/)（Jeremy Howard，2024）
 
 ## 常見問題（FAQ）
 

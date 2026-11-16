@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hans: ai-overview-traffic-drop
   en: ai-overview-traffic-drop
@@ -17,7 +18,7 @@ translations:
 
 ## 為什麼點擊會掉？先看清機制
 
-零點擊搜尋不是新現象——精選摘要時代就有了，AI Overview 只是把它放大。機制很單純：**當 AI 一段話就把答案講完，使用者沒有理由再點連結。** 根據多家分析機構在 2025–2026 的觀察，含 AI Overview 的查詢，其自然點擊率普遍出現下滑，尤其集中在「X 是什麼」「X 怎麼算」這類一句話就能回答的查詢。
+零點擊搜尋不是新現象——精選摘要時代就有了，AI Overview 只是把它放大。機制很單純：**當 AI 一段話就把答案講完，使用者沒有理由再點連結。** [Pew Research Center 2025 年 7 月的研究](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)追蹤 900 位美國成人在 2025 年 3 月的瀏覽行為，發現出現 AI 摘要的搜尋，使用者點擊傳統結果連結的比例為 8%，沒有 AI 摘要時為 15%。這是美國使用者的樣本，不代表所有市場；而我們的判斷是，衝擊最集中在「X 是什麼」「X 怎麼算」這類一句話就能回答的查詢。另外，依 [Google 官方文件](https://developers.google.com/search/docs/appearance/ai-features)，頁面要成為 AI Overview 或 AI Mode 的支持連結，必須已被索引且可顯示摘要，沒有其他額外要求或特殊優化。
 
 但要看清一個關鍵：**掉的是「本來就容易被答案取代」的那類點擊**。如果你的頁面價值只是「把定義講一遍」，AI 本來就會取代你；如果你的頁面有 AI 給不了的東西，衝擊就小得多。
 
@@ -50,6 +51,11 @@ translations:
 過去「被看見」＝點進你的網站；現在「被看見」多了一種形式＝出現在 AI 答案的來源裡。後者帶來的點擊較少，但它是**高信任的品牌背書**——AI 願意引用你，等於替你做了一次公信力背書。與其為掉的點擊焦慮，不如問：**我有沒有出現在該領域 AI 答案的來源清單裡？** 沒有的話，那才是真正的問題。
 
 AI Overview 本身的運作原理，另見〈[Google AI Overview 是什麼？](/zh-hant/blog/what-is-ai-overview/)〉；零點擊頁面的內容設計，可參考本站的〈[零點擊搜尋頁面怎麼寫](/zh-hant/blog/zero-click-pages/)〉。
+
+## 參考資料
+
+- [Google users are less likely to click on links when an AI summary appears in the results](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)（Pew Research Center，2025）
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central）
 
 ## 常見問題（FAQ）
 

@@ -6,7 +6,8 @@ intent: commercial
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: ai-search-tools-2026
   zh-hans: ai-search-tools-2026
@@ -32,16 +33,16 @@ The full AIO workflow is "write content worth citing → make sure AI crawlers c
 ## Category 3: schema and structured data
 
 5. **A schema markup generator (Merkle's and other free generators)** — quickly produce Article, FAQPage, and HowTo JSON-LD to copy and paste in.
-6. **Google Rich Results Test (free)** — validates whether your schema is valid. It's checking Google rich-result eligibility, but the same JSON-LD is an entity signal to other AI engines just the same.
+6. **[Google Rich Results Test](https://support.google.com/webmasters/answer/7445569) (free)** — validates whether your schema is valid. It's checking Google rich-result eligibility, but the same JSON-LD is an entity signal to other AI engines just the same.
 
 ## Category 4: AI-crawler checks
 
-7. **robots.txt check + server logs (free)** — confirm that GPTBot, OAI-SearchBot, PerplexityBot, Google-Extended, and Bingbot aren't being blocked by mistake. Plenty of sites can't get AIO off the ground for one reason only: the crawlers were Disallowed. How to set this up is covered in [AI Crawler List and Management](/en/blog/ai-crawler-management/).
-8. **Screaming Frog (free version crawls 500 URLs)** — use a custom User-Agent to mimic an AI crawler and check whether your important pages need JavaScript to render — most AI crawlers don't execute JS, and that's fatal.
+7. **robots.txt check + server logs (free)** — confirm that GPTBot, OAI-SearchBot, PerplexityBot, Google-Extended, and Bingbot aren't being blocked by mistake. Keep their roles straight: per [OpenAI's documentation](https://developers.openai.com/api/docs/bots), OAI-SearchBot surfaces sites in ChatGPT search answers while GPTBot relates to model training, so blocking GPTBot does not affect ChatGPT search visibility; per [Perplexity's documentation](https://docs.perplexity.ai/guides/bots), PerplexityBot surfaces sites in Perplexity search results; per [Google's documentation](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers), Google-Extended does not affect inclusion or ranking in Google Search. Plenty of sites can't get AIO off the ground for one reason only: the crawlers were Disallowed. How to set this up is covered in [AI Crawler List and Management](/en/blog/ai-crawler-management/).
+8. **Screaming Frog (free version has a URL limit)** — use a custom User-Agent to mimic an AI crawler and check whether your important pages need JavaScript to render — some AI crawlers may not execute JS (vendors don't all document this, so verify with logs and simulated fetches), and content that only appears via JS is at risk.
 
 ## Category 5: Bing / indexing tools (the ones most people miss)
 
-9. **Bing Webmaster Tools (free)** — registering and submitting your sitemap is the precondition for being indexed by Bing and, in turn, cited by Copilot. Everyone watches Google's Search Console and routinely forgets this Bing line. How to do it is covered in getting cited by Copilot.
+9. **Bing Webmaster Tools (free)** — registering and submitting your sitemap is the precondition for being indexed by Bing and, in turn, cited by Copilot. Bing has also launched [AI Performance](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview) (public preview) in Webmaster Tools, which shows how often and on which pages your content is cited in Copilot and Bing AI summaries — effectively a free Bing-side monitoring tool. Everyone watches Google's Search Console and routinely forgets this Bing line. How to do it is covered in getting cited by Copilot.
 
 ## Free vs paid: one table to decide
 
@@ -52,6 +53,14 @@ The full AIO workflow is "write content worth citing → make sure AI crawlers c
 | Brand-scale site, reporting to a boss | The above + tool 4 paid monitoring | Mid–high |
 
 For most individuals and small sites, the free stack is enough to run the whole AIO workflow. Get it working first, then talk about paying.
+
+## Sources
+
+- [Rich Results Test](https://support.google.com/webmasters/answer/7445569) (Google Search Console Help, Google)
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
+- [Introducing AI Performance in Bing Webmaster Tools (Public Preview)](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview) (Microsoft Bing, 2026)
 
 ## FAQ
 

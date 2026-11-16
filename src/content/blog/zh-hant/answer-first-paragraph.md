@@ -6,18 +6,19 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hans: answer-first-paragraph
   en: answer-first-paragraph
 ---
 # 「答案優先」開頭段落怎麼寫（附範例）
 
-**答案優先段落是指：文章第一段就用 40–80 字，把標題那個問題的完整答案講完——自包含、具體、可以單獨被摘錄。** 它是 GEO 九項訊號中權重最高的一項，因為 AI 引擎生成答案時最常直接抓取的，就是這一段。
+**答案優先段落是指：文章第一段就用 40–80 字，把標題那個問題的完整答案講完——自包含、具體、可以單獨被摘錄。** 它是本站 GEO 就緒度檢測器九項訊號中權重最高的一項（這是本站的評分設計，並非 Google 或任何 AI 引擎公布的權重），因為依我們的經驗，AI 引擎生成答案時常直接抓取開頭那段自包含的內容。要注意，[Google 官方文件](https://developers.google.com/search/docs/appearance/ai-features)明確表示，出現在 AI Overview 或 AI Mode 沒有額外或特殊的優化要求，所以答案優先是「對讀者與各種引擎都好讀」的寫法，而不是保證被引用的技巧。
 
 ## 為什麼開頭 80 字決定成敗？
 
-兩個原因。對 AI：引擎抽取段落回答問題時，位置最前、密度最高的自包含段落有天然優勢；2023 年《GEO: Generative Engine Optimization》論文實測「清晰直接的陳述」是提升可見度的有效手法之一，最多可提升 40% 可見度。對人：使用者在搜尋結果與 AI 答案間快速掃描，前 3 秒沒看到答案就離開——答案優先同時救了跳出率。
+兩個原因。對 AI：引擎抽取段落回答問題時，位置最前、密度最高的自包含段落有天然優勢；2023 年《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》論文（KDD 2024 收錄）報告，GEO 手法最多可讓內容在生成式引擎回應中的可見度提升約 40%；該論文測試的是多種內容調整手法，並未單獨驗證「答案優先段」，因此開頭段的位置優勢屬於我們的推論。對人：使用者在搜尋結果與 AI 答案間快速掃描，前 3 秒沒看到答案就離開——答案優先同時救了跳出率。
 
 傳統寫作教「起承轉合」，把結論留到最後；GEO 寫作剛好相反：**結論放最前，後面才是論證與展開**。這不是偷懶，是新聞學的倒金字塔在 AI 時代的復活。
 
@@ -56,6 +57,11 @@ translations:
 - **把摘要當答案**：「本文將介紹答案優先的寫法與範例」是目錄，不是答案。答案要有內容本身。
 - **塞關鍵字不塞資訊**：開頭堆滿關鍵字但講不出任何具體主張，AI 抽了也用不了。
 - **每段都想搶第一**：答案優先段一篇只有一個；主體的 H2 段落各自回答「子問題」，層次要分清。整體佈局見〈[GEO 內容結構範本](/zh-hant/blog/geo-content-structure/)〉。
+
+## 參考資料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等，arXiv／KDD 2024）
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central）
 
 ## 常見問題（FAQ）
 

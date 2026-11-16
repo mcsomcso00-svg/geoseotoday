@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: cited-by-copilot
   zh-hans: cited-by-copilot
@@ -17,7 +18,7 @@ translations:
 
 ## Copilot's citation logic: propped up by Bing's index
 
-As of 2026, Copilot (formerly Bing Chat) combines Bing Search with OpenAI's GPT models: it first retrieves relevant pages through Bing, then has the model synthesize an answer with citation links attached. The mechanics resemble Gemini, but the engine underneath is different:
+As of 2026, Copilot (formerly Bing Chat) does web search by turning the user's prompt into a search query sent to the Bing Search service (see [Microsoft 365 Copilot's privacy documentation](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy)), then has a model synthesize an answer with citations. That documentation also notes Copilot offers third-party models such as Anthropic's alongside OpenAI's, so "Copilot = GPT" is no longer accurate; what stays constant is that its web sources come from Bing. The mechanics resemble Gemini, but the engine underneath is different:
 
 1. **Bing SEO directly affects Copilot citations**: if a page is not well indexed by Bing, its chance of being picked as a Copilot source is low.
 2. **Bingbot is the crawler that matters**: make sure robots.txt does not block Bingbot — otherwise Bing never receives your pages, and Copilot has nothing to cite.
@@ -39,7 +40,7 @@ The three major AI interfaces rest on different source foundations, and that det
 
 | Interface | Powered by | The one prerequisite that matters most |
 |---|---|---|
-| **Copilot / Bing AI** | Bing index + GPT | Get well indexed by Bing first |
+| **Copilot / Bing AI** | Bing search + multiple models | Get well indexed by Bing first |
 | **Gemini / Google AI** | Google index | Get well indexed by Google first |
 | **ChatGPT** | OpenAI's own crawler | Let GPTBot reach you first |
 
@@ -48,6 +49,11 @@ What all three share is still "your passages must be extractable." Once you have
 ## Why not ignore Copilot?
 
 Copilot is deeply integrated across the Microsoft ecosystem — the Windows taskbar, the Edge browser, and Microsoft 365 all have it built in. That skews its usage toward **work and productivity scenarios**: when professionals look things up or draft reports, Copilot is often the first stop. If your content is B2B, professional, or tool-oriented, Copilot's exposure value can rival Google's.
+
+## Sources
+
+- [Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy) (Microsoft Learn, updated 2026)
+- [Introducing AI Performance in Bing Webmaster Tools (Public Preview)](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview) (Microsoft Bing, 2026)
 
 ## Frequently asked questions (FAQ)
 
@@ -61,7 +67,7 @@ The model is similar, but the sources differ. Copilot relies on Bing's index; Ch
 If your topics lean toward the workplace, B2B, or professional tools, yes — Copilot is built into Windows and Office, reaching a large base of users in work contexts. For purely lifestyle or consumer topics, you can rank it behind Google in priority.
 
 **Q4: How do I confirm I've been cited by Copilot?**
-Type your core question straight into Copilot or Bing and check whether your site appears in the source citations below the answer; log the changes over time. For systematic tracking, see [How to Track AI Visibility](/en/blog/track-ai-visibility/).
+Type your core question straight into Copilot or Bing and check whether your site appears in the source citations below the answer; log the changes over time. Bing Webmaster Tools has also launched [AI Performance](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview) (public preview), which shows citation counts, cited pages and grounding queries across Microsoft Copilot and Bing AI summaries (it reports how often pages are cited, not their ranking or importance). For systematic tracking, see [How to Track AI Visibility](/en/blog/track-ai-visibility/).
 
 ---
 

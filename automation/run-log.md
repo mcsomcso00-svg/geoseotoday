@@ -119,3 +119,26 @@ Every scheduled run appends its section here (newest last), with the live links 
   - 繁中 https://geoseotoday.com/zh-hant/blog/google-2026-algorithm-updates-timeline/
   - 简中 https://geoseotoday.com/zh-hans/blog/google-2026-algorithm-updates-timeline/
   - EN https://geoseotoday.com/en/blog/google-2026-algorithm-updates-timeline/
+
+## 2026-11-16 — Enhancement batch
+- AI Overview 讓點擊掉了？零點擊搜尋的應對策略 — 2 sources; replaced unsourced "multiple analytics firms" claim with Pew 8% vs 15% click data and Google's no-special-optimization statement
+  - 繁中 https://geoseotoday.com/zh-hant/blog/ai-overview-traffic-drop/
+  - 简中 https://geoseotoday.com/zh-hans/blog/ai-overview-traffic-drop/
+  - EN https://geoseotoday.com/en/blog/ai-overview-traffic-drop/
+- AI 搜尋優化工具推薦（2026） — 5 sources; clarified OAI-SearchBot vs GPTBot roles, softened unverified JS-crawler and Screaming Frog limit claims, added Bing AI Performance
+  - 繁中 https://geoseotoday.com/zh-hant/blog/ai-search-tools-2026/
+  - 简中 https://geoseotoday.com/zh-hans/blog/ai-search-tools-2026/
+  - EN https://geoseotoday.com/en/blog/ai-search-tools-2026/
+- AIO 完整指南：AI 搜尋優化總整理（2026） — 5 sources; removed unverifiable Gartner 25% claim (source returned 403), corrected Google-Extended scope and crawler roles, llms.txt attribution
+  - 繁中 https://geoseotoday.com/zh-hant/blog/aio-complete-guide/
+  - 简中 https://geoseotoday.com/zh-hans/blog/aio-complete-guide/
+  - EN https://geoseotoday.com/en/blog/aio-complete-guide/
+- 「答案優先」開頭段落怎麼寫（附範例） — 2 sources; corrected GEO paper 40% attribution and labelled the top-weight claim as the site's own scoring design
+  - 繁中 https://geoseotoday.com/zh-hant/blog/answer-first-paragraph/
+  - 简中 https://geoseotoday.com/zh-hans/blog/answer-first-paragraph/
+  - EN https://geoseotoday.com/en/blog/answer-first-paragraph/
+- 如何被 Microsoft Copilot／Bing AI 引用？ — 2 sources; Copilot is no longer GPT-only (Anthropic models too), added Bing AI Performance
+  - 繁中 https://geoseotoday.com/zh-hant/blog/cited-by-copilot/
+  - 简中 https://geoseotoday.com/zh-hans/blog/cited-by-copilot/
+  - EN https://geoseotoday.com/en/blog/cited-by-copilot/
+- Priority queue: nothing applied (schema rows wait for faq-rich-result-deprecated going live 11-17; other rows not yet due).

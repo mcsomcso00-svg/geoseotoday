@@ -6,7 +6,8 @@ intent: commercial
 cluster: AIO / AI 搜索优化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: ai-search-tools-2026
   en: ai-search-tools-2026
@@ -32,16 +33,16 @@ AIO 的完整流程是「写出可被引用的内容 → 让 AI 爬虫读得到 
 ## 第三类：Schema 与结构化数据
 
 5. **Schema Markup Generator（Merkle 等免费生成器）**——快速产出 Article、FAQPage、HowTo 的 JSON-LD，复制粘贴即可。
-6. **Google Rich Results Test（免费）**——验证 Schema 是否有效。它验的是 Google 复合式结果资格，但同一份 JSON-LD 对其他 AI 引擎同样是实体信号。
+6. **[Google Rich Results Test](https://support.google.com/webmasters/answer/7445569)（免费）**——验证 Schema 是否有效。它验的是 Google 复合式结果资格，但同一份 JSON-LD 对其他 AI 引擎同样是实体信号。
 
 ## 第四类：AI 爬虫检查
 
-7. **robots.txt 检查 ＋ 服务器日志（免费）**——确认 GPTBot、OAI-SearchBot、PerplexityBot、Google-Extended、Bingbot 没被误挡。很多网站 AIO 做不起来，就只是爬虫被 Disallow 了。设定方法见本站〈AI 爬虫清单与管理〉一文。
-8. **Screaming Frog（免费版可爬 500 个网址）**——用自定义 User-Agent 模拟 AI 爬虫抓取，检查重要页面是否需要 JavaScript 才渲染——多数 AI 爬虫不执行 JS，这是致命伤。
+7. **robots.txt 检查 ＋ 服务器日志（免费）**——确认 GPTBot、OAI-SearchBot、PerplexityBot、Google-Extended、Bingbot 没被误挡。角色要分清：依 [OpenAI 官方文档](https://developers.openai.com/api/docs/bots)，OAI-SearchBot 负责让网站出现在 ChatGPT 搜索答案中，GPTBot 则与模型训练有关，挡 GPTBot 不影响 ChatGPT 搜索可见度；依 [Perplexity 文档](https://docs.perplexity.ai/guides/bots)，PerplexityBot 负责 Perplexity 搜索结果呈现；依 [Google 文档](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)，Google-Extended 不影响 Google 搜索收录与排名。很多网站 AIO 做不起来，就只是爬虫被 Disallow 了。设定方法见本站〈AI 爬虫清单与管理〉一文。
+8. **Screaming Frog（免费版有网址数量上限）**——用自定义 User-Agent 模拟 AI 爬虫抓取，检查重要页面是否需要 JavaScript 才渲染——部分 AI 爬虫可能不执行 JS（各家未全面公开说明，建议自行用日志与模拟抓取验证），若内容靠 JS 才出现就有风险。
 
 ## 第五类：Bing／索引工具（多数人漏掉）
 
-9. **Bing Webmaster Tools（免费）**——注册并提交 sitemap，是被 Bing 收录、进而被 Copilot 引用的前提。大家都盯 Google 的 Search Console，却常忘了 Bing 这条线。做法见本站〈如何被 Copilot 引用〉一文。
+9. **Bing Webmaster Tools（免费）**——注册并提交 sitemap，是被 Bing 收录、进而被 Copilot 引用的前提。Bing 也在 Webmaster Tools 推出 [AI Performance](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview)（公开预览），可看内容在 Copilot 与 Bing AI 摘要中被引用的次数与页面，等于一个免费的 Bing 端监测工具。大家都盯 Google 的 Search Console，却常忘了 Bing 这条线。做法见本站〈如何被 Copilot 引用〉一文。
 
 ## 免费 vs 付费：一张表决策
 
@@ -52,6 +53,14 @@ AIO 的完整流程是「写出可被引用的内容 → 让 AI 爬虫读得到 
 | 品牌型网站、要向老板汇报 | 上述 ＋ 工具 4 付费监测 | 中高 |
 
 多数个人与小站，用免费组合就能把整套 AIO 流程跑起来，先跑通再谈付费。
+
+## 参考资料
+
+- [Rich Results Test](https://support.google.com/webmasters/answer/7445569)（Google Search Console 帮助，Google）
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [Introducing AI Performance in Bing Webmaster Tools (Public Preview)](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview)（Microsoft Bing，2026）
 
 ## 常见问题（FAQ）
 

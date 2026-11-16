@@ -6,7 +6,8 @@ intent: commercial
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: aio-complete-guide
   zh-hans: aio-complete-guide
@@ -17,7 +18,7 @@ translations:
 
 ## Why you have to understand AIO in 2026
 
-Because search's "first slot" changed. Users used to open the results and see ten blue links; now, for more and more queries, the first thing they see is an AI-generated summary. Multiple analytics firms observing 2025–2026 report that a substantial share of informational queries end right on the AI answer page — users no longer scroll. Gartner projected back in 2024 that traditional search volume would fall roughly 25% by 2026.
+Because search's "first slot" changed. Users used to open the results and see ten blue links; now, for more and more queries, the first thing they see is an AI-generated summary. A [2025 Pew Research Center study](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/) (U.S. sample) found users clicked a traditional result link in 8% of visits when an AI summary appeared, versus 15% when it did not.
 
 Two things happen at once: **classic clicks are shrinking, and "being cited by AI" has become the new form of exposure.** You can rank first and still get no click, because the AI has already read and summarized for the user; your only opening is to become one of the few sources the AI cites in that summary. AIO exists to answer exactly this new problem — it doesn't ask you to drop SEO, it optimizes content on top of SEO so every AI interface can adopt it.
 
@@ -47,7 +48,7 @@ Being cited is the endpoint of AIO. Different engines draw on different source b
 | Interface | Powered by | Key prerequisite | Deep dive |
 |---|---|---|---|
 | **Google AI Overview** | Gemini + Google index | Be indexed by Google first | Getting cited by Gemini |
-| **Copilot / Bing AI** | Bing index + GPT | Be indexed by Bing first | Getting cited by Copilot |
+| **Copilot / Bing AI** | Bing search + multiple models | Be indexed by Bing first | Getting cited by Copilot |
 | **ChatGPT** | OpenAI's own crawler | Let GPTBot reach you first | [Getting cited by ChatGPT](/en/blog/cited-by-chatgpt/) |
 | **Perplexity** | Own crawler + retrieval | Let PerplexityBot reach you first | [Getting cited by Perplexity](/en/blog/cited-by-perplexity/) |
 
@@ -60,11 +61,11 @@ All four engines share a single content standard: an answer-first paragraph, quo
 
 ## Step 4: Make sure AI crawlers can actually read you (the foundation under the foundation)
 
-However good the content above is, if AI crawlers can't read it, it's all wasted. This is the most overlooked step and the one that most often breaks: plenty of sites can't get AIO off the ground for one reason — some engineer Disallow'd every AI crawler. At a minimum you need to recognize these six real user-agents in 2026: **GPTBot, OAI-SearchBot (OpenAI), PerplexityBot, Google-Extended, ClaudeBot, Bingbot** — and decide allow-or-block for each one in robots.txt.
+However good the content above is, if AI crawlers can't read it, it's all wasted. This is the most overlooked step and the one that most often breaks: plenty of sites can't get AIO off the ground for one reason — some engineer Disallow'd every AI crawler. At a minimum you need to recognize these six real user-agents in 2026: **GPTBot, OAI-SearchBot (OpenAI), PerplexityBot, Google-Extended, ClaudeBot, Bingbot** — and decide allow-or-block for each one in robots.txt. Keep their roles straight: per [OpenAI's documentation](https://developers.openai.com/api/docs/bots), OAI-SearchBot surfaces sites in ChatGPT search answers while GPTBot relates to model training, so blocking GPTBot does not affect ChatGPT search visibility; per [Perplexity's documentation](https://docs.perplexity.ai/guides/bots), PerplexityBot surfaces sites in Perplexity search results.
 
-Two things to internalize: **Google-Extended is not regular Googlebot** — blocking it doesn't affect Google ranking, it only affects whether you're available to Gemini; and **blocking a crawler = giving up any exposure from that engine's citations**. On top of that, most AI crawlers don't execute JavaScript, so if important content only renders via JS, they can't read it even when allowed.
+Two things to internalize: **Google-Extended is not regular Googlebot** — per [Google's documentation](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) it doesn't affect inclusion or ranking in Google Search; it controls whether your content can be used for Gemini training and grounding; and **blocking a crawler = giving up any exposure from that engine's citations**. On top of that, some AI crawlers may not execute JavaScript (vendors don't all document this, so verify yourself), so if important content only renders via JS, they can't read it even when allowed.
 
-By the way, you may have heard of **llms.txt** — a Markdown file placed at your site root to help AI quickly understand the site. It's a community proposal standard put forward in 2024 by Jeremy Howard / Answer.AI; the cost is tiny and it's worth adding as a forward-looking bet, but be honest about it: **as of 2026 it has not been officially adopted by mainstream AI engines and won't directly lift visibility.** The real foundation is still "content that can be cited" and "crawlers that can read you."
+By the way, you may have heard of **llms.txt** — a Markdown file placed at your site root to help AI quickly understand the site. It's a [community proposal](https://llmstxt.org/) put forward in 2024 by Jeremy Howard; the cost is tiny and it's worth adding as a forward-looking bet, but be honest about it: **as of 2026 it has not been officially adopted by mainstream AI engines and won't directly lift visibility.** The real foundation is still "content that can be cited" and "crawlers that can read you."
 
 ## Step 5: Track visibility and monitor brand mentions
 
@@ -93,6 +94,14 @@ The six steps condensed into one checkable list — follow it and you won't miss
 5. **Tracking**: build a 20-question manual query table, test all four engines monthly, log citation rate and competitors' share.
 6. **Monitoring**: review monthly how the brand is toned, positioned, and ranked in AI answers; correct errors or negatives when found.
 7. **Tools**: run the free stack first; pay only when a bottleneck appears.
+
+## Sources
+
+- [Google users are less likely to click on links when an AI summary appears in the results](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/) (Pew Research Center, 2025)
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
+- [The /llms.txt file](https://llmstxt.org/) (Jeremy Howard, 2024)
 
 ## FAQ
 

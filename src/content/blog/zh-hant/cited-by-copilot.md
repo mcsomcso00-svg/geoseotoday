@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hans: cited-by-copilot
   en: cited-by-copilot
@@ -17,7 +18,7 @@ translations:
 
 ## Copilot 的引用邏輯：靠 Bing 索引撐腰
 
-截至 2026 年，Copilot（前身 Bing Chat）結合 Bing 搜尋與 OpenAI 的 GPT 模型：它先用 Bing 檢索相關網頁，再由模型綜合、附上引用連結。含義和 Gemini 類似但引擎不同：
+截至 2026 年，Copilot（前身 Bing Chat）做網頁搜尋時，會把使用者提示轉成搜尋查詢，送往 Bing Search 服務（見 [Microsoft 365 Copilot 官方隱私文件](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy)），再由模型綜合、附上引用。該文件也指出，Copilot 提供的模型不只 OpenAI，還包括 Anthropic 等第三方模型，所以「Copilot＝GPT」已不精確；不變的是它的網頁來源取自 Bing。含義和 Gemini 類似但引擎不同：
 
 1. **Bing SEO 直接影響 Copilot 引用**：頁面若沒被 Bing 好好索引，被 Copilot 選為來源的機會就低。
 2. **Bingbot 是關鍵爬蟲**：確保 robots.txt 沒擋 Bingbot，否則 Bing 根本收不到你，Copilot 也就引用不到。
@@ -39,7 +40,7 @@ translations:
 
 | 介面 | 背後 | 最關鍵前提 |
 |---|---|---|
-| **Copilot／Bing AI** | Bing 索引 ＋ GPT | 先被 Bing 索引好 |
+| **Copilot／Bing AI** | Bing 搜尋 ＋ 多種模型 | 先被 Bing 索引好 |
 | **Gemini／Google AI** | Google 索引 | 先被 Google 索引好 |
 | **ChatGPT** | OpenAI 自有爬蟲 | 先讓 GPTBot 抓得到 |
 
@@ -48,6 +49,11 @@ translations:
 ## 為什麼別忽略 Copilot？
 
 Copilot 深度整合在 Microsoft 生態裡——Windows 工作列、Edge 瀏覽器、Microsoft 365 都內建。這代表它的使用情境偏向**工作與生產力場景**：職場使用者查資料、寫報告時，Copilot 常是第一站。如果你的內容是 B2B、專業、工具型主題，Copilot 的曝光價值可能不輸 Google。Bing 與 Google 對 AI 內容的處理差異，本站另有〈[Google 與 Bing 對 AI 內容的差異](/zh-hant/blog/google-vs-bing-ai-content/)〉。
+
+## 參考資料
+
+- [Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy)（Microsoft Learn，2026 年更新）
+- [Introducing AI Performance in Bing Webmaster Tools (Public Preview)](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview)（Microsoft Bing，2026）
 
 ## 常見問題（FAQ）
 
@@ -61,7 +67,7 @@ Copilot 深度整合在 Microsoft 生態裡——Windows 工作列、Edge 瀏覽
 若你的主題偏職場、B2B、專業工具，值得——Copilot 內建在 Windows 與 Office，觸及大量工作場景使用者。純生活消費類主題，優先序可排在 Google 之後。
 
 **Q4：怎麼確認被 Copilot 引用了？**
-直接在 Copilot 或 Bing 搜尋輸入你的核心問題，看回答下方的來源引註有沒有你的網站；定期記錄變化。系統化追蹤見〈[AI 搜尋可見度怎麼追蹤](/zh-hant/blog/track-ai-visibility/)〉。
+直接在 Copilot 或 Bing 搜尋輸入你的核心問題，看回答下方的來源引註有沒有你的網站；定期記錄變化。此外，Bing Webmaster Tools 已推出 [AI Performance](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview)（公開預覽），可看內容在 Microsoft Copilot 與 Bing AI 摘要中的被引用次數、被引用頁面與 grounding queries（注意它顯示的是被引用次數，不代表排名或重要性）。系統化追蹤見〈[AI 搜尋可見度怎麼追蹤](/zh-hant/blog/track-ai-visibility/)〉。
 
 ---
 

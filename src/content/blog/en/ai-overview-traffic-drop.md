@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: ai-overview-traffic-drop
   zh-hans: ai-overview-traffic-drop
@@ -17,7 +18,7 @@ translations:
 
 ## Why are clicks dropping? Understand the mechanism first
 
-Zero-click search isn't new — it existed in the featured-snippet era, and AI Overview just amplifies it. The mechanism is simple: **when AI delivers the full answer in one paragraph, the user has no reason to click a link.** Across 2025–2026, multiple analytics firms have observed that queries containing an AI Overview show broadly lower organic click-through rates, concentrated on "what is X" and "how do you calculate X" queries that can be answered in a single sentence.
+Zero-click search isn't new — it existed in the featured-snippet era, and AI Overview just amplifies it. The mechanism is simple: **when AI delivers the full answer in one paragraph, the user has no reason to click a link.** A [July 2025 Pew Research Center study](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/) tracked 900 U.S. adults' browsing in March 2025 and found users clicked a traditional result link in 8% of visits when an AI summary appeared, versus 15% when it did not. That is a U.S. sample, not every market; our judgment is that the impact concentrates on "what is X" and "how do you calculate X" queries that a single sentence can answer. Also, per [Google's documentation](https://developers.google.com/search/docs/appearance/ai-features), a page must be indexed and eligible to be shown with a snippet to appear as a supporting link in AI Overviews or AI Mode, with no additional requirements or special optimizations.
 
 But here's the key thing to see: **what's dropping is the class of clicks that was always easy to replace with an answer.** If your page's only value is restating a definition, AI was always going to replace you. If your page has something AI can't provide, the impact is far smaller.
 
@@ -50,6 +51,11 @@ Bottom line: **audit your high-risk pages first — they're the main driver of t
 "Being seen" used to mean a click into your site; now there's a second form — appearing among the sources of an AI answer. The latter drives fewer clicks, but it's a **high-trust brand endorsement** — AI choosing to cite you is a vote of credibility on your behalf. Rather than agonizing over lost clicks, ask: **do I show up in the source list of AI answers in my field?** If not, that's the real problem.
 
 For how AI Overview itself works, see [What Is Google AI Overview?](/en/blog/what-is-ai-overview/); for designing the content of zero-click pages, see this site's guide on writing zero-click pages.
+
+## Sources
+
+- [Google users are less likely to click on links when an AI summary appears in the results](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/) (Pew Research Center, 2025)
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central)
 
 ## FAQ
 

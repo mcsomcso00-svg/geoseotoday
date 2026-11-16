@@ -6,18 +6,19 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: answer-first-paragraph
   zh-hans: answer-first-paragraph
 ---
 # How to Write an Answer-First Opening Paragraph (With Examples)
 
-**An answer-first paragraph means this: your article's very first paragraph uses 40–80 words to fully answer the question in the title — self-contained, specific, and quotable on its own.** It's the highest-weighted of the nine GEO signals, because when an AI engine generates an answer, this is the paragraph it lifts most often.
+**An answer-first paragraph means this: your article's very first paragraph uses 40–80 words to fully answer the question in the title — self-contained, specific, and quotable on its own.** It's the highest-weighted of the nine signals in this site's GEO readiness checker (that weighting is our own scoring design, not a weight published by Google or any AI engine), because in our experience AI engines often lift the self-contained opening passage when generating an answer. Note that [Google's documentation](https://developers.google.com/search/docs/appearance/ai-features) states there are no additional requirements or special optimizations for appearing in AI Overviews or AI Mode, so answer-first is a way of writing that reads well for people and engines alike — not a guaranteed citation trick.
 
 ## Why the first 80 words decide everything
 
-Two reasons. For the AI: when an engine extracts a passage to answer a question, the self-contained paragraph that sits earliest and packs the highest information density has a natural edge. The 2023 paper *GEO: Generative Engine Optimization* found empirically that "clear, direct statements" are one of the most effective ways to raise visibility — up to a 40% lift. For the human: users skim between search results and AI answers, and if they don't see the answer in the first 3 seconds they leave. Answer-first rescues your bounce rate at the same time.
+Two reasons. For the AI: when an engine extracts a passage to answer a question, the self-contained paragraph that sits earliest and packs the highest information density has a natural edge. The 2023 paper [*GEO: Generative Engine Optimization*](https://arxiv.org/abs/2311.09735) (KDD 2024) reports that GEO methods can boost visibility in generative-engine responses by up to about 40%; it tested a range of content adjustments and did not isolate the answer-first paragraph, so the positional advantage of an opening passage is our own inference. For the human: users skim between search results and AI answers, and if they don't see the answer in the first 3 seconds they leave. Answer-first rescues your bounce rate at the same time.
 
 Traditional writing teaches you to build up and save the conclusion for the end. GEO writing does the opposite: **put the conclusion first, and make everything after it the argument and the detail.** This isn't laziness — it's journalism's inverted pyramid, revived for the AI era.
 
@@ -56,6 +57,11 @@ Follow this flow and reworking the openings of 50 old articles on a site takes r
 - **Treating a summary as the answer.** "This article will introduce answer-first writing with examples" is a table of contents, not an answer. An answer must contain the substance itself.
 - **Stuffing keywords instead of information.** An opening crammed with keywords but making no concrete claim gives the AI nothing to lift.
 - **Making every paragraph fight to be first.** There's only one answer-first paragraph per article; the body's H2 sections each answer a *sub-question*, and the hierarchy has to stay clear. For the full layout, see [GEO Content Structure Template](/en/blog/geo-content-structure/).
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv / KDD 2024)
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central)
 
 ## FAQ
 

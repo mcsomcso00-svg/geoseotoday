@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜索优化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: cited-by-copilot
   en: cited-by-copilot
@@ -17,7 +18,7 @@ translations:
 
 ## Copilot 的引用逻辑：靠 Bing 索引撑腰
 
-截至 2026 年，Copilot（前身 Bing Chat）结合 Bing 搜索与 OpenAI 的 GPT 模型：它先用 Bing 检索相关网页，再由模型综合、附上引用链接。含义和 Gemini 类似但引擎不同：
+截至 2026 年，Copilot（前身 Bing Chat）做网页搜索时，会把用户提示转成搜索查询，送往 Bing Search 服务（见 [Microsoft 365 Copilot 官方隐私文档](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy)），再由模型综合、附上引用。该文档也指出，Copilot 提供的模型不只 OpenAI，还包括 Anthropic 等第三方模型，所以「Copilot＝GPT」已不精确；不变的是它的网页来源取自 Bing。含义和 Gemini 类似但引擎不同：
 
 1. **Bing SEO 直接影响 Copilot 引用**：页面若没被 Bing 好好索引，被 Copilot 选为来源的机会就低。
 2. **Bingbot 是关键爬虫**：确保 robots.txt 没挡 Bingbot，否则 Bing 根本收不到你，Copilot 也就引用不到。
@@ -39,7 +40,7 @@ translations:
 
 | 界面 | 背后 | 最关键前提 |
 |---|---|---|
-| **Copilot／Bing AI** | Bing 索引 ＋ GPT | 先被 Bing 索引好 |
+| **Copilot／Bing AI** | Bing 搜索 ＋ 多种模型 | 先被 Bing 索引好 |
 | **Gemini／Google AI** | Google 索引 | 先被 Google 索引好 |
 | **ChatGPT** | OpenAI 自有爬虫 | 先让 GPTBot 抓得到 |
 
@@ -48,6 +49,11 @@ translations:
 ## 为什么别忽略 Copilot？
 
 Copilot 深度整合在 Microsoft 生态里——Windows 任务栏、Edge 浏览器、Microsoft 365 都内建。这代表它的使用情境偏向**工作与生产力场景**：职场用户查资料、写报告时，Copilot 常是第一站。如果你的内容是 B2B、专业、工具型主题，Copilot 的曝光价值可能不输 Google。
+
+## 参考资料
+
+- [Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy)（Microsoft Learn，2026 年更新）
+- [Introducing AI Performance in Bing Webmaster Tools (Public Preview)](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview)（Microsoft Bing，2026）
 
 ## 常见问题（FAQ）
 
@@ -61,7 +67,7 @@ Copilot 深度整合在 Microsoft 生态里——Windows 任务栏、Edge 浏览
 若你的主题偏职场、B2B、专业工具，值得——Copilot 内建在 Windows 与 Office，触及大量工作场景用户。纯生活消费类主题，优先级可排在 Google 之后。
 
 **Q4：怎么确认被 Copilot 引用了？**
-直接在 Copilot 或 Bing 搜索输入你的核心问题，看回答下方的来源引注有没有你的网站；定期记录变化。系统化追踪见〈[AI 搜索可见度怎么追踪](/zh-hans/blog/track-ai-visibility/)〉。
+直接在 Copilot 或 Bing 搜索输入你的核心问题，看回答下方的来源引注有没有你的网站；定期记录变化。此外，Bing Webmaster Tools 已推出 [AI Performance](https://blogs.bing.com/webmaster/february-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview)（公开预览），可看内容在 Microsoft Copilot 与 Bing AI 摘要中的被引用次数、被引用页面与 grounding queries（注意它显示的是被引用次数，不代表排名或重要性）。系统化追踪见〈[AI 搜索可见度怎么追踪](/zh-hans/blog/track-ai-visibility/)〉。
 
 ---
 

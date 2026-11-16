@@ -6,7 +6,8 @@ intent: commercial
 cluster: AIO / AI 搜索优化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: aio-complete-guide
   en: aio-complete-guide
@@ -17,7 +18,7 @@ translations:
 
 ## 为什么 2026 年一定要懂 AIO？
 
-因为搜索的「第一个版位」变了。过去用户打开搜索结果，看到的是十条蓝色链接；现在越来越多查询，第一眼是一段 AI 生成的摘要。根据多家流量分析机构在 2025–2026 的观察，信息型查询有相当高的比例在 AI 答案页就结束，用户不再往下滚；Gartner 更早在 2024 年就预估，到 2026 年传统搜索量会下降约 25%。
+因为搜索的「第一个版位」变了。过去用户打开搜索结果，看到的是十条蓝色链接；现在越来越多查询，第一眼是一段 AI 生成的摘要。[Pew Research Center 2025 年的研究](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)（美国用户样本）发现，出现 AI 摘要的搜索中，用户点击传统结果链接的比例为 8%，没有 AI 摘要时为 15%。
 
 这代表两件事同时发生：**传统点击在缩水，而「被 AI 引用」成了新的曝光形式。** 你可以排名第一却拿不到点击，因为 AI 已经替用户读完并总结；唯一的机会，是成为 AI 总结时「引用的那几个来源」。AIO 就是为了解决这个新命题而生——它不是要你丢掉 SEO，而是在 SEO 之上，把内容优化到能被各种 AI 界面采用。
 
@@ -47,7 +48,7 @@ translations:
 | 界面 | 背后 | 最关键前提 | 专文 |
 |---|---|---|---|
 | **Google AI Overview** | Gemini ＋ Google 索引 | 先被 Google 索引好 | 被 Gemini 引用 |
-| **Copilot／Bing AI** | Bing 索引 ＋ GPT | 先被 Bing 索引好 | 被 Copilot 引用 |
+| **Copilot／Bing AI** | Bing 搜索 ＋ 多种模型 | 先被 Bing 索引好 | 被 Copilot 引用 |
 | **ChatGPT** | OpenAI 自有爬虫 | 先让 GPTBot 抓得到 | [被 ChatGPT 引用](/zh-hans/blog/cited-by-chatgpt/) |
 | **Perplexity** | 自有爬虫 ＋ 检索 | 先让 PerplexityBot 抓得到 | [被 Perplexity 引用](/zh-hans/blog/cited-by-perplexity/) |
 
@@ -60,11 +61,11 @@ translations:
 
 ## 第四步：确认 AI 爬虫读得到你（地基中的地基）
 
-前面讲的内容再好，如果 AI 爬虫读不到，一切白费。这是最容易被忽略、却最常出问题的一步：很多网站 AIO 做不起来，原因只是某任工程师把 AI 爬虫全 Disallow 了。你至少要认得 2026 年这六只真实的 user-agent：**GPTBot、OAI-SearchBot（OpenAI）、PerplexityBot、Google-Extended、ClaudeBot、Bingbot**，并在 robots.txt 里逐一决定放行或封锁。
+前面讲的内容再好，如果 AI 爬虫读不到，一切白费。这是最容易被忽略、却最常出问题的一步：很多网站 AIO 做不起来，原因只是某任工程师把 AI 爬虫全 Disallow 了。你至少要认得 2026 年这六只真实的 user-agent：**GPTBot、OAI-SearchBot（OpenAI）、PerplexityBot、Google-Extended、ClaudeBot、Bingbot**，并在 robots.txt 里逐一决定放行或封锁。角色要分清：依 [OpenAI 官方文档](https://developers.openai.com/api/docs/bots)，OAI-SearchBot 负责让网站出现在 ChatGPT 搜索答案中，GPTBot 则与模型训练有关，挡 GPTBot 不影响 ChatGPT 搜索可见度；依 [Perplexity 文档](https://docs.perplexity.ai/guides/bots)，PerplexityBot 负责 Perplexity 搜索结果呈现。
 
-两个关键认知：**Google-Extended 不是一般 Googlebot**——挡它不影响 Google 排名，只影响是否供 Gemini 使用；**封锁爬虫＝放弃被该引擎引用的曝光**。此外，多数 AI 爬虫不执行 JavaScript，若重要内容要 JS 才渲染得出来，爬虫即使放行也读不到。
+两个关键认知：**Google-Extended 不是一般 Googlebot**——依 [Google 官方文档](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)，它不影响网站在 Google 搜索的收录与排名，控制的是内容能否用于 Gemini 的训练与 grounding；**封锁爬虫＝放弃被该引擎引用的曝光**。此外，部分 AI 爬虫可能不执行 JavaScript（各家未全面公开说明，建议自行验证），若重要内容要 JS 才渲染得出来，爬虫即使放行也读不到。
 
-顺带一提，你可能听过 **llms.txt**——一个放在网站根目录、用 Markdown 帮 AI 快速理解网站的文件。它是 2024 年 Jeremy Howard／Answer.AI 提出的社群提案标准，成本极低、值得当前瞻性布局加上，但要诚实认知：**截至 2026 年它尚未被主流 AI 引擎正式采用，不会直接提升可见度。** 真正的地基仍是「内容可被引用」与「爬虫读得到」。
+顺带一提，你可能听过 **llms.txt**——一个放在网站根目录、用 Markdown 帮 AI 快速理解网站的文件。它是 2024 年由 Jeremy Howard 提出的[社群提案](https://llmstxt.org/)，成本极低、值得当前瞻性布局加上，但要诚实认知：**截至 2026 年它尚未被主流 AI 引擎正式采用，不会直接提升可见度。** 真正的地基仍是「内容可被引用」与「爬虫读得到」。
 
 ## 第五步：追踪可见度与监测品牌声量
 
@@ -93,6 +94,14 @@ translations:
 5. **追踪**：建 20 题手动查询表，每月实测四大引擎，记录被引用率与对手占比。
 6. **监测**：每月检视品牌在 AI 答案里的语气、定位与排序，发现错误或负面即修正。
 7. **工具**：先免费组合跑通，瓶颈出现再付费。
+
+## 参考资料
+
+- [Google users are less likely to click on links when an AI summary appears in the results](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)（Pew Research Center，2025）
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [Google's common crawlers](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
+- [The /llms.txt file](https://llmstxt.org/)（Jeremy Howard，2024）
 
 ## 常见问题（FAQ）
 

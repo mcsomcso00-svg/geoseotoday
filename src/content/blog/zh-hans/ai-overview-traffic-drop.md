@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜索优化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-16
+enhanced: true
 translations:
   zh-hant: ai-overview-traffic-drop
   en: ai-overview-traffic-drop
@@ -17,7 +18,7 @@ translations:
 
 ## 为什么点击会掉？先看清机制
 
-零点击搜索不是新现象——精选摘要时代就有了，AI Overview 只是把它放大。机制很单纯：**当 AI 一段话就把答案讲完，用户没有理由再点链接。** 根据多家分析机构在 2025–2026 的观察，含 AI Overview 的查询，其自然点击率普遍出现下滑，尤其集中在「X 是什么」「X 怎么算」这类一句话就能回答的查询。
+零点击搜索不是新现象——精选摘要时代就有了，AI Overview 只是把它放大。机制很单纯：**当 AI 一段话就把答案讲完，用户没有理由再点链接。** [Pew Research Center 2025 年 7 月的研究](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)追踪 900 位美国成年人在 2025 年 3 月的浏览行为，发现出现 AI 摘要的搜索，用户点击传统结果链接的比例为 8%，没有 AI 摘要时为 15%。这是美国用户的样本，不代表所有市场；而我们的判断是，冲击最集中在「X 是什么」「X 怎么算」这类一句话就能回答的查询。另外，依 [Google 官方文档](https://developers.google.com/search/docs/appearance/ai-features)，页面要成为 AI Overview 或 AI Mode 的支持链接，必须已被索引且可显示摘要，没有其他额外要求或特殊优化。
 
 但要看清一个关键：**掉的是「本来就容易被答案取代」的那类点击**。如果你的页面价值只是「把定义讲一遍」，AI 本来就会取代你；如果你的页面有 AI 给不了的东西，冲击就小得多。
 
@@ -50,6 +51,11 @@ translations:
 过去「被看见」＝点进你的网站；现在「被看见」多了一种形式＝出现在 AI 答案的来源里。后者带来的点击较少，但它是**高信任的品牌背书**——AI 愿意引用你，等于替你做了一次公信力背书。与其为掉的点击焦虑，不如问：**我有没有出现在该领域 AI 答案的来源清单里？** 没有的话，那才是真正的问题。
 
 AI Overview 本身的运作原理，另见〈[Google AI Overview 是什么？](/zh-hans/blog/what-is-ai-overview/)〉；零点击页面的内容设计，可参考本站关于零点击搜索页面写法的说明。
+
+## 参考资料
+
+- [Google users are less likely to click on links when an AI summary appears in the results](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)（Pew Research Center，2025）
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central）
 
 ## 常见问题（FAQ）
 
