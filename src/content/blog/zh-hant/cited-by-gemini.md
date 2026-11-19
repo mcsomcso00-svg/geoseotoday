@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-19
+enhanced: true
 translations:
   zh-hans: cited-by-gemini
   en: cited-by-gemini
@@ -17,7 +18,7 @@ translations:
 
 ## Gemini 的引用邏輯：站在 Google 索引之上
 
-Gemini 是 Google 的生成式模型，也是 AI Overview 背後的引擎。它產生答案的來源，主要來自 **Google 早已索引的網頁**，再由 Gemini 綜合、重寫、標注來源。這帶來兩個實務含義：
+Gemini 是 Google 的生成式模型；AI Overview 與 AI 模式則是建立在 Google 既有搜尋系統上的 AI 功能（Google 說明這兩者[可能使用不同的模型與技術](https://developers.google.com/search/docs/appearance/ai-features)，並未逐一指明模型）。依 Google 官方指南，檢索時是「仰賴核心搜尋排名系統，從搜尋索引取得相關且最新的網頁」（[AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)）。換言之，來源主要來自 **Google 早已索引的網頁**。官方列出的資格只有一條：頁面必須已被索引，且[能以摘要（snippet）顯示在 Google 搜尋中](https://developers.google.com/search/docs/appearance/ai-features)；官方並說明沒有額外技術要求，也不需要特殊優化。這帶來兩個實務含義：
 
 1. **傳統 SEO 訊號直接影響 Gemini 引用**：頁面若連 Google 都索引不好、排名很差，被 Gemini 選為來源的機會自然低。
 2. **被引用的門檻是「相關 ＋ 可摘錄」**：你不必排名第一，但你那一段要在該查詢夠相關、夠乾淨、夠具體，Gemini 才會挑你。截至 2026 年，這個「相關又好摘錄」的門檻，比純粹的網域權重更能決定誰被選中。
@@ -29,7 +30,7 @@ Gemini 是 Google 的生成式模型，也是 AI Overview 背後的引擎。它�
 1. **先確保被 Google 索引**：檢查 Search Console，重要頁面必須已被收錄且有一定排名；索引不到，一切免談。
 2. **答案優先段**：開頭 40–80 字給出自包含結論，這是 Gemini 最容易直接摘錄的區塊。
 3. **提供可引用的硬資訊**：具體數字、日期、比較表。Gemini 綜合答案時偏好「有事實可標注來源」的段落。
-4. **強化實體與 Schema**：Article、FAQPage 等結構化資料，讓 Google 清楚知道「這段內容出自哪個可信品牌、由誰撰寫」。
+4. **強化實體與 Schema**：Article 等結構化資料可幫 Google 釐清「這段內容出自哪個品牌、由誰撰寫」。但請注意，Google 明確表示[生成式 AI 搜尋不需要結構化資料，也沒有要另外加的特殊標記](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)，所以它是輔助而非必要條件。
 5. **H2 段落自包含**：每個小標下的段落能單獨被理解，Gemini 常只抓其中一段，不會讀完全文。
 6. **維持內容新鮮度**：標注日期、定期更新。時效性查詢中，Gemini 傾向引用較新的來源。
 
@@ -48,9 +49,15 @@ Gemini 是 Google 的生成式模型，也是 AI Overview 背後的引擎。它�
 
 ## 注意事項：別做的三件事
 
-- **別擋掉 Google-Extended**：若你希望被 Gemini／AI Overview 使用，robots.txt 就不該把 Google-Extended 全面 Disallow（爬蟲設定見〈[AI 爬蟲清單與管理](/zh-hant/blog/ai-crawler-management/)〉）。
+- **分清 Google-Extended 管什麼**：它是控制內容能否用於訓練未來的 Gemini 模型、以及 Gemini 的 grounding 的 robots.txt 標記；Google 明說[它不影響網站是否被收錄於 Google 搜尋，也不是排名訊號](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)。因此封鎖 Google-Extended 不會讓你退出 Google 搜尋的 AI 功能。爬蟲設定見〈[AI 爬蟲清單與管理](/zh-hant/blog/ai-crawler-management/)〉。
 - **別堆砌關鍵字**：Gemini 綜合的是語意，不是關鍵字密度；堆砌反而降低可讀性與可摘錄性。
 - **別只寫給機器**：一面倒的行銷文、缺乏實質資訊的內容，生成式引擎會主動避開。
+
+## 參考資料
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central，2026）
+- [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central，2026）
+- [Google's common crawlers: Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central，2026）
 
 ## 常見問題（FAQ）
 

@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-19
+enhanced: true
 translations:
   zh-hans: geo-common-mistakes
   en: geo-common-mistakes
@@ -17,13 +18,13 @@ translations:
 
 ## 為什麼「內容不錯」還是沒被引用？
 
-因為 AI 引用是一條漏斗：抓得到 → 讀得懂 → 抽得動 → 信得過。任何一關卡住，前面做得再好都歸零。2023 年《GEO: Generative Engine Optimization》論文證實，同樣的內容換個呈現方式，可見度差距最多達 40%——多數網站不是輸在知識，是輸在漏斗上的某一個洞。以下七個錯誤，按漏斗順序排列。
+因為 AI 引用是一條漏斗：抓得到 → 讀得懂 → 抽得動 → 信得過。任何一關卡住，前面做得再好都歸零。2023 年《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》論文（KDD 2024 收錄）報告，GEO 手法最多可讓內容在生成式引擎回應中的可見度提升約 40%——多數網站不是輸在知識，是輸在漏斗上的某一個洞。以下七個錯誤，按漏斗順序排列。
 
 ## 錯誤 1：robots.txt 把 AI 爬蟲全擋了
 
-最冤枉的死法。很多網站用了 CDN 或外掛的「封鎖 AI 爬蟲」一鍵功能，把 GPTBot、PerplexityBot、Google-Extended 全擋在門外——然後納悶為什麼從沒被引用。
+最冤枉的死法。很多網站用了 CDN 或外掛的「封鎖 AI 爬蟲」一鍵功能，把 GPTBot、OAI-SearchBot、PerplexityBot 全擋在門外——然後納悶為什麼從沒被引用。要分清楚各爬蟲的角色：依 [OpenAI 文件](https://developers.openai.com/api/docs/bots)，OAI-SearchBot 決定網站能否出現在 ChatGPT 搜尋結果，GPTBot 只管內容能否用於訓練、不影響搜尋資格；依 [Perplexity 文件](https://docs.perplexity.ai/guides/bots)，要出現在 Perplexity 結果就應允許 PerplexityBot。至於 Google-Extended，Google 說明它只控制內容能否用於 Gemini 訓練與 grounding，[不影響網站在 Google 搜尋的收錄，也不是排名訊號](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)，封鎖它不是 AI Overview 的問題來源。
 
-**修法**：打開 robots.txt 逐行檢查，確認這三支爬蟲沒被 Disallow；再檢查 Cloudflare 等 CDN 的 bot 管理設定。這是 5 分鐘能完成的檢查，卻是最多網站中招的一條。
+**修法**：打開 robots.txt 逐行檢查，確認 OAI-SearchBot 與 PerplexityBot 沒被 Disallow（是否放行 GPTBot 屬於「要不要被用於訓練」的取捨，與能否被引用無關）；再檢查 Cloudflare 等 CDN 的 bot 管理設定。這是 5 分鐘能完成的檢查，卻是最多網站中招的一條。
 
 ## 錯誤 2：結論藏在最後一段
 
@@ -45,7 +46,7 @@ translations:
 
 ## 錯誤 5：沒有清單、表格、Schema
 
-純文字牆對 AI 是高成本內容：語意邊界模糊、抽取容易出錯。同樣資訊，清單與表格的引用率明顯較高；缺 Article/FAQPage schema 則讓引擎少了「誰、何時、講什麼」的明確訊號。
+純文字牆對 AI 是高成本內容：語意邊界模糊、抽取容易出錯。同樣資訊，清單與表格的語意邊界較清楚，對讀者與引擎都較好抽取（這是我們的實務判斷，並非官方數據）；Article/FAQPage schema 則補上「誰、何時、講什麼」的明確訊號——不過 Google 表示[生成式 AI 搜尋不需要結構化資料或特殊標記](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)，所以把它當輔助，別當成被引用的開關。
 
 **修法**：流程改有序清單、比較改表格、文末補 3–5 題 FAQ 並輸出 FAQPage schema。做法見〈[Schema 結構化資料如何幫助被 AI 引用](/zh-hant/blog/schema-for-geo/)〉。
 
@@ -72,6 +73,14 @@ translations:
 | 5 | 無結構化 | 有清單/表格/Schema？ | 每篇 30 分鐘 |
 | 6 | 單篇孤軍 | 同主題有幾篇互鏈？ | 數週（成批補文） |
 | 7 | 不追蹤 | 有沒有引用紀錄表 | 每月 1 小時 |
+
+## 參考資料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等，arXiv／KDD 2024）
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI，2026）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity，2026）
+- [Google's common crawlers: Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central，2026）
+- [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central，2026）
 
 ## 常見問題（FAQ）
 

@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-19
+enhanced: true
 translations:
   zh-hant: geo-content-structure
   zh-hans: geo-content-structure
@@ -17,7 +18,9 @@ translations:
 
 ## Why structure decides your citation rate
 
-When a generative engine builds an answer, it doesn't "read the whole page and grade it." It lifts the passage that answers the question. The 2023 paper *GEO: Generative Engine Optimization* found empirically that changing how content is presented — adding statistics, source citations, and clear statements — can raise a source's visibility by up to 40%. **Same knowledge, different structure and phrasing, and the citation rate moves.** So the first lesson of GEO isn't "write more" — it's packing the same knowledge into a container the AI can actually pull from.
+When a generative engine builds an answer, it doesn't "read the whole page and grade it." It lifts the passage that answers the question. The 2023 paper [*GEO: Generative Engine Optimization*](https://arxiv.org/abs/2311.09735) (accepted to KDD 2024) reports that GEO methods can boost a source's visibility in generative engine responses by up to 40%. The paper tested a range of content-adjustment methods and did not validate this six-part template on its own, so "structure and phrasing affect your odds of being cited" is a well-grounded direction, but actual effects vary by engine and topic. Our starting point: the first lesson of GEO isn't "write more" — it's packing the same knowledge into a container that readers and AI can both pull from.
+
+One honest caveat: Google's guide says there's [no requirement to break content into tiny pieces for AI, no ideal page length, and that you should write for your audience](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). So this template's value is readability for people and passages that any engine can quote — not catering to a particular engine's "chunking" mechanism.
 
 ## The full template: the six parts of a GEO article
 
@@ -52,15 +55,21 @@ Why does this matter so much? Because AI extracts by passage. An article with fi
 
 ## Part 3: When to use lists and tables
 
-The principle is simple: **ordered lists for processes, unordered lists for points, tables for comparisons.** Generative engines — AI Overview especially — cite these three forms at a noticeably higher rate than plain prose, because structured content has crisp semantic boundaries and is harder to extract wrongly. Every article should carry at least three list items or table rows — one of GeoSeoToday's nine scoring signals.
+The principle is simple: **ordered lists for processes, unordered lists for points, tables for comparisons.** These three forms have crisp semantic boundaries, so readers scan them faster and engines are less likely to extract them wrongly (our working judgment, not official data). Every article should carry at least three list items or table rows — one of GeoSeoToday's nine scoring signals.
 
 ## Part 4: The fixed FAQ format
 
-Use the "**Q1: question?**" format with the answer on the next line, three to five entries. Sources for the questions: Google's People Also Ask, Perplexity's follow-up suggestions, and the questions clients have actually asked you. Keep each answer 50–120 words and, again, self-contained. Paired with FAQPage schema, this block is the main entry path for question-style queries.
+Use the "**Q1: question?**" format with the answer on the next line, three to five entries. Sources for the questions: Google's People Also Ask, Perplexity's follow-up suggestions, and the questions clients have actually asked you. Keep each answer 50–120 words and, again, self-contained. This block lines up with question-style queries. As for FAQPage schema, Google has [stopped showing FAQ rich results](https://developers.google.com/search/updates) and says [structured data isn't required for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), so it is only a machine-readable helper — the visible Q&A text on the page is what does the work.
 
 ## Part 5: The micro-context close
 
 Let the ending bring the brand and one to three internal links out naturally, recirculating the weight this article accumulates back to the cluster's core pages. Mind the word "naturally": give the reader a reason to go there first (a tool, a more complete guide), then place the link — don't force in anchor text.
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv / KDD 2024)
+- [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central, 2026)
+- [Google Search updates: FAQ rich result deprecation](https://developers.google.com/search/updates) (Google Search Central, 2026)
 
 ## FAQ
 

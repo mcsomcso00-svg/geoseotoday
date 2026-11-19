@@ -6,7 +6,7 @@ intent: informational
 cluster: On-page & 技术 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-15
-date_updated: 2026-11-09
+date_updated: 2026-11-19
 enhanced: true
 translations:
   zh-hant: schema-tutorial
@@ -24,7 +24,7 @@ translations:
 
 也要讲清楚它**不能**做什么：Schema 本身不是排名加分项——Google 的[说明文档](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)把结构化数据的好处放在富媒体结果与理解页面，并未说它会提升排名。内容差，标记再完整也没用。
 
-另外注意 2026 年的现实：Google 已[停止显示 FAQ 富结果](https://developers.google.com/search/updates)——更新记录写明该功能“自 2026 年 5 月 7 日起不再出现在 Google 搜索”，文档并于 6 月 15 日移除。所以 FAQPage 标记换不到搜索版面上的展开问答；Google 的 [AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也说，生成式 AI 搜索不需要结构化数据或特殊的 schema.org 标记。是否保留 FAQPage 的判断，见〈FAQ 富结果 2026 年 5 月退场〉（11 月 17 日上线）。
+另外注意 2026 年的现实：Google 已[停止显示 FAQ 富结果](https://developers.google.com/search/updates)——更新记录写明该功能“自 2026 年 5 月 7 日起不再出现在 Google 搜索”，文档并于 6 月 15 日移除。所以 FAQPage 标记换不到搜索版面上的展开问答；Google 的 [AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也说，生成式 AI 搜索不需要结构化数据或特殊的 schema.org 标记。是否保留 FAQPage 的判断，见〈[FAQ 富结果 2026 年 5 月退场：FAQPage schema 还要留吗？](/zh-hans/blog/faq-rich-result-deprecated/)〉。
 
 ## 三种格式，只学 JSON-LD
 

@@ -6,7 +6,7 @@ intent: informational
 cluster: On-page SEO
 author: GeoSeoToday
 date_published: 2026-07-15
-date_updated: 2026-11-09
+date_updated: 2026-11-19
 enhanced: true
 translations:
   zh-hant: schema-tutorial
@@ -24,7 +24,7 @@ translations:
 
 Be just as clear about what it **cannot** do: schema is not a ranking boost in itself — Google's [documentation](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) frames the benefit as rich results and page understanding, and never claims a ranking boost. If the content is bad, no amount of perfect markup will save it.
 
-Also reckon with the 2026 reality: Google has [retired the FAQ rich result](https://developers.google.com/search/updates) — its changelog says the feature "will no longer appear in Google Search starting May 7, 2026," and the documentation was removed on June 15. FAQPage markup no longer earns an expandable Q&A in search results, and Google's [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) says structured data isn't required for generative AI search and no special schema.org markup is needed. For whether to keep FAQPage, see our FAQ rich result retirement article (live 17 November).
+Also reckon with the 2026 reality: Google has [retired the FAQ rich result](https://developers.google.com/search/updates) — its changelog says the feature "will no longer appear in Google Search starting May 7, 2026," and the documentation was removed on June 15. FAQPage markup no longer earns an expandable Q&A in search results, and Google's [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) says structured data isn't required for generative AI search and no special schema.org markup is needed. For whether to keep FAQPage, see [FAQ Rich Results Retired in May 2026: Should You Keep FAQPage Schema?](/en/blog/faq-rich-result-deprecated/).
 
 ## Three formats — only learn JSON-LD
 

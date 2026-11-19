@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-19
+enhanced: true
 translations:
   zh-hant: cited-by-gemini
   zh-hans: cited-by-gemini
@@ -17,7 +18,7 @@ translations:
 
 ## Gemini's citation logic: built on top of Google's index
 
-Gemini is Google's generative model and the engine behind AI Overview. The sources it draws answers from come primarily from **web pages Google has already indexed**, which Gemini then synthesizes, rewrites, and attributes. That carries two practical implications:
+Gemini is Google's generative model; AI Overviews and AI Mode are AI features built on Google's existing Search systems (Google says the two [may use different models and techniques](https://developers.google.com/search/docs/appearance/ai-features) without naming them one by one). Per Google's own guide, retrieval relies "on our core Search ranking systems to retrieve relevant, up-to-date web pages from our Search index" ([AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)). In other words, sources come primarily from **web pages Google has already indexed**. The only eligibility requirement Google lists is that a page be indexed and [eligible to be shown in Google Search with a snippet](https://developers.google.com/search/docs/appearance/ai-features); it adds that there are no additional technical requirements or special optimizations. That carries two practical implications:
 
 1. **Classic SEO signals directly influence Gemini citations.** If a page is poorly indexed by Google and ranks badly, its odds of being chosen as a Gemini source are naturally low.
 2. **The bar for citation is "relevant + extractable."** You don't have to rank first, but your passage has to be relevant enough, clean enough, and specific enough for that query for Gemini to pick you. As of 2026, this "relevant and easy to extract" bar decides who gets chosen more than raw domain authority does.
@@ -29,7 +30,7 @@ So step one is always: confirm the page is indexed normally by Google. If it isn
 1. **Get indexed by Google first.** Check Search Console; important pages must already be indexed and hold some ranking. No index, no conversation.
 2. **Answer-first paragraph.** Open with a self-contained conclusion in 40–80 words — this is the block Gemini finds easiest to quote directly.
 3. **Supply citable hard facts.** Concrete numbers, dates, comparison tables. When Gemini synthesizes an answer, it favors passages that give it "facts it can attribute to a source."
-4. **Strengthen entities and schema.** Structured data like Article and FAQPage tells Google clearly "this content comes from which trusted brand, written by whom."
+4. **Strengthen entities and schema.** Structured data like Article helps Google see which brand a piece comes from and who wrote it. But Google states that [structured data isn't required for generative AI search and there's no special schema.org markup to add](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), so treat it as a helper, not a prerequisite.
 5. **Make each H2 self-contained.** The paragraph under every subheading should stand on its own — Gemini often grabs just one section and won't read the whole article.
 6. **Keep content fresh.** Stamp dates and update regularly. On time-sensitive queries, Gemini tends to cite more recent sources.
 
@@ -48,9 +49,15 @@ The point: **for Gemini, take care of Google SEO; for ChatGPT, take care of craw
 
 ## Watch-outs: three things not to do
 
-- **Don't block Google-Extended.** If you want to be used by Gemini / AI Overview, your robots.txt shouldn't Disallow Google-Extended across the board (for crawler settings, see [AI Crawler List and Management](/en/blog/ai-crawler-management/)).
+- **Know what Google-Extended controls.** It is a robots.txt token governing whether your content may be used to train future Gemini models and for Gemini grounding; Google states that [it does not impact a site's inclusion in Google Search and is not a ranking signal](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers). So blocking it does not take you out of Google Search's AI features. For crawler settings, see [AI Crawler List and Management](/en/blog/ai-crawler-management/).
 - **Don't stuff keywords.** Gemini synthesizes meaning, not keyword density; stuffing actually lowers readability and extractability.
 - **Don't write only for machines.** One-sided marketing copy and content thin on real information is something generative engines actively avoid.
+
+## Sources
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central, 2026)
+- [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central, 2026)
+- [Google's common crawlers: Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central, 2026)
 
 ## FAQ
 

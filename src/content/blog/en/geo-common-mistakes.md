@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-19
+enhanced: true
 translations:
   zh-hant: geo-common-mistakes
   zh-hans: geo-common-mistakes
@@ -17,13 +18,13 @@ translations:
 
 ## Why does "pretty good content" still not get cited?
 
-Because AI citation is a funnel: crawlable → readable → extractable → trustworthy. Miss any one gate and everything upstream counts for nothing. The 2023 paper *GEO: Generative Engine Optimization* found that the same content, presented differently, can swing visibility by up to 40%. Most sites aren't losing on knowledge — they're losing to a single hole in the funnel. The seven mistakes below are ordered by where they sit in that funnel.
+Because AI citation is a funnel: crawlable → readable → extractable → trustworthy. Miss any one gate and everything upstream counts for nothing. The 2023 paper [*GEO: Generative Engine Optimization*](https://arxiv.org/abs/2311.09735) (accepted to KDD 2024) reports that GEO methods can boost a source's visibility in generative engine responses by up to 40%. Most sites aren't losing on knowledge — they're losing to a single hole in the funnel. The seven mistakes below are ordered by where they sit in that funnel.
 
 ## Mistake 1: robots.txt blocks the AI crawlers entirely
 
-The most avoidable way to lose. Plenty of sites flip on a one-click "block AI crawlers" feature in their CDN or a plugin, slam the door on GPTBot, PerplexityBot, and Google-Extended — then wonder why they've never once been cited.
+The most avoidable way to lose. Plenty of sites flip on a one-click "block AI crawlers" feature in their CDN or a plugin, slam the door on GPTBot, OAI-SearchBot, and PerplexityBot — then wonder why they've never once been cited. Know each bot's role: per [OpenAI's documentation](https://developers.openai.com/api/docs/bots), OAI-SearchBot decides whether a site can appear in ChatGPT search results, while GPTBot only governs use for training and has no effect on search eligibility; per [Perplexity's documentation](https://docs.perplexity.ai/guides/bots), you should allow PerplexityBot to appear in its results. As for Google-Extended, Google says it only controls use for Gemini training and grounding and [does not impact a site's inclusion in Google Search or act as a ranking signal](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers), so blocking it is not why you're missing from AI Overviews.
 
-**The fix:** open robots.txt and check line by line that none of those three bots is disallowed, then check the bot-management settings in Cloudflare or whatever CDN you run. It's a five-minute audit, and it's the single mistake the most sites fall for.
+**The fix:** open robots.txt and check line by line that OAI-SearchBot and PerplexityBot are not disallowed (whether to allow GPTBot is a training opt-out decision, separate from being cited), then check the bot-management settings in Cloudflare or whatever CDN you run. It's a five-minute audit, and it's the single mistake the most sites fall for.
 
 ## Mistake 2: the conclusion is buried in the last paragraph
 
@@ -45,7 +46,7 @@ The classic slow build saves the answer for the end. When an AI goes to lift a p
 
 ## Mistake 5: no lists, tables, or schema
 
-A wall of plain text is expensive content for an AI: fuzzy semantic boundaries, error-prone extraction. The same information gets cited noticeably more often as a list or table, and missing Article/FAQPage schema robs the engine of clear "who, when, what" signals.
+A wall of plain text is expensive content for an AI: fuzzy semantic boundaries, error-prone extraction. The same information has clearer semantic boundaries as a list or table, which makes it easier for readers and engines to extract (our working judgment, not official data). Article/FAQPage schema adds explicit "who, when, what" signals — though Google says [structured data isn't required for generative AI search and no special markup is needed](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), so treat it as a helper, not a citation switch.
 
 **The fix:** turn processes into ordered lists, comparisons into tables, and add 3–5 FAQ items at the end that emit FAQPage schema. Structured markup gives engines the explicit entity signals that plain paragraphs leave out.
 
@@ -72,6 +73,14 @@ If you don't track, you don't know which techniques work, and GEO turns into gue
 | 5 | No structure | Any lists / tables / schema? | 30 min/article |
 | 6 | Lone article | How many interlinked pieces on the topic? | Weeks (batch writing) |
 | 7 | No tracking | Is there a citation log? | 1 hour/month |
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv / KDD 2024)
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) (OpenAI, 2026)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity, 2026)
+- [Google's common crawlers: Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central, 2026)
+- [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central, 2026)
 
 ## FAQ
 

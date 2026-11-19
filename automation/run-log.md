@@ -142,3 +142,25 @@ Every scheduled run appends its section here (newest last), with the live links 
   - 简中 https://geoseotoday.com/zh-hans/blog/cited-by-copilot/
   - EN https://geoseotoday.com/en/blog/cited-by-copilot/
 - Priority queue: nothing applied (schema rows wait for faq-rich-result-deprecated going live 11-17; other rows not yet due).
+
+## 2026-11-19 — Enhancement batch
+- Schema 結構化資料新手實作教學 — priority row; linked the new FAQ rich result article, no new corrections
+  - 繁中 https://geoseotoday.com/zh-hant/blog/schema-tutorial/
+  - 简中 https://geoseotoday.com/zh-hans/blog/schema-tutorial/
+  - EN https://geoseotoday.com/en/blog/schema-tutorial/
+- Schema 結構化資料如何幫助被 AI 引用 — priority row; linked the new FAQ rich result article, no new corrections
+  - 繁中 https://geoseotoday.com/zh-hant/blog/schema-for-geo/
+  - 简中 https://geoseotoday.com/zh-hans/blog/schema-for-geo/
+  - EN https://geoseotoday.com/en/blog/schema-for-geo/
+- 如何被 Gemini／Google AI 引用？做法與注意事項 — 3 sources; Google-Extended does not affect Search/AI Overviews, schema not required, AI Overview eligibility = indexed + snippet-eligible
+  - 繁中 https://geoseotoday.com/zh-hant/blog/cited-by-gemini/
+  - 简中 https://geoseotoday.com/zh-hans/blog/cited-by-gemini/
+  - EN https://geoseotoday.com/en/blog/cited-by-gemini/
+- GEO 常見錯誤 7 個，讓 AI 永遠不引用你 — 5 sources; corrected GEO paper 40% wording, split OAI-SearchBot/GPTBot/PerplexityBot roles, Google-Extended does not affect Search, softened uncited list/table citation-rate claim
+  - 繁中 https://geoseotoday.com/zh-hant/blog/geo-common-mistakes/
+  - 简中 https://geoseotoday.com/zh-hans/blog/geo-common-mistakes/
+  - EN https://geoseotoday.com/en/blog/geo-common-mistakes/
+- GEO 內容結構範本：可被 AI 引用的段落怎麼寫 — 3 sources; corrected GEO paper 40% wording, added Google no-chunking caveat, softened list/table and FAQPage claims
+  - 繁中 https://geoseotoday.com/zh-hant/blog/geo-content-structure/
+  - 简中 https://geoseotoday.com/zh-hans/blog/geo-content-structure/
+  - EN https://geoseotoday.com/en/blog/geo-content-structure/

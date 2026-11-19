@@ -6,7 +6,7 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-11-09
+date_updated: 2026-11-19
 enhanced: true
 translations:
   zh-hant: schema-for-geo
@@ -81,7 +81,7 @@ Two free tools: Google's Rich Results Test verifies Google readability, and the 
 No. Well-written content can still get cited. Schema's value is in the tiebreaker: when several sources are comparable in content quality, the one with clearer entities and explicit dates wins more often.
 
 **Q2: Does FAQPage schema still earn a Google rich result?**
-No. Google's changelog says the FAQ rich result "will no longer appear in Google Search starting May 7, 2026" ([Google Search updates](https://developers.google.com/search/updates)), so FAQPage markup no longer earns an expandable Q&A in results. Google's [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) also says structured data isn't required for generative AI search. FAQPage is therefore only machine-readable Q&A alignment; we have no data showing it raises AI citation odds, and the visible Q&A text on the page is what matters.
+No. Google's changelog says the FAQ rich result "will no longer appear in Google Search starting May 7, 2026" ([Google Search updates](https://developers.google.com/search/updates)), so FAQPage markup no longer earns an expandable Q&A in results. Google's [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) also says structured data isn't required for generative AI search. FAQPage is therefore only machine-readable Q&A alignment; we have no data showing it raises AI citation odds, and the visible Q&A text on the page is what matters. For the full keep-or-remove decision table, see [FAQ Rich Results Retired in May 2026: Should You Keep FAQPage Schema?](/en/blog/faq-rich-result-deprecated/).
 
 **Q3: JSON-LD, Microdata, or RDFa — which should I use?**
 Use JSON-LD. It's Google's officially recommended format, decoupled from your layout and the easiest to maintain. In 2026 there's no reason to use the other two.

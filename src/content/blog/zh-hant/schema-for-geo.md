@@ -6,7 +6,7 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-11-09
+date_updated: 2026-11-19
 enhanced: true
 translations:
   zh-hans: schema-for-geo
@@ -81,7 +81,7 @@ Google 官方[建議用 JSON-LD](https://developers.google.com/search/docs/appea
 不是。內容寫得好照樣可能被引用。Schema 的價值在「同分加賽」：當多個來源內容品質相近時，實體清楚、日期明確的一方更常勝出。
 
 **Q2：FAQPage schema 現在還有 Google 複合式搜尋結果可拿嗎？**
-沒有了。Google 更新紀錄寫明 FAQ 富結果「自 2026 年 5 月 7 日起不再出現在 Google 搜尋」（[Google Search 更新紀錄](https://developers.google.com/search/updates)），所以 FAQPage 標記已換不到搜尋版面上的展開問答。同時，Google 的 [AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也說生成式 AI 搜尋不需要結構化資料或特殊標記。因此 FAQPage 只能算「機器可讀的問答對齊」，我們沒有數據證明它提高被 AI 引用的機率；頁面上看得見的問答文字才是核心。
+沒有了。Google 更新紀錄寫明 FAQ 富結果「自 2026 年 5 月 7 日起不再出現在 Google 搜尋」（[Google Search 更新紀錄](https://developers.google.com/search/updates)），所以 FAQPage 標記已換不到搜尋版面上的展開問答。同時，Google 的 [AI 搜尋優化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也說生成式 AI 搜尋不需要結構化資料或特殊標記。因此 FAQPage 只能算「機器可讀的問答對齊」，我們沒有數據證明它提高被 AI 引用的機率；頁面上看得見的問答文字才是核心。完整的保留／移除判斷表，見〈[FAQ 富結果 2026 年 5 月退場：FAQPage schema 還要留嗎？](/zh-hant/blog/faq-rich-result-deprecated/)〉。
 
 **Q3：JSON-LD、Microdata、RDFa 該用哪個？**
 用 JSON-LD。它是 Google 官方推薦格式，與版面解耦、最好維護，2026 年沒有理由用另外兩種。

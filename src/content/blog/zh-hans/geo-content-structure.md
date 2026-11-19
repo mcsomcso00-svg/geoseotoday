@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-19
+enhanced: true
 translations:
   zh-hant: geo-content-structure
   en: geo-content-structure
@@ -17,7 +18,9 @@ translations:
 
 ## 为什么结构决定引用率？
 
-AI 引擎生成答案时，不是「读完整篇打分」，而是「从页面中抽出能回答问题的段落」。2023 年《GEO: Generative Engine Optimization》论文的实测结论指出，调整内容呈现方式（加入统计数据、来源引用、清晰陈述）可让来源可见度最多提升 40%——**内容不变，只改结构与写法，引用率就会变**。所以 GEO 的第一课不是写更多，而是把同样的知识装进 AI 抽得动的容器。
+AI 引擎生成答案时，不是「读完整篇打分」，而是「从页面中抽出能回答问题的段落」。2023 年《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》论文（KDD 2024 收录）报告，GEO 手法最多可让来源在生成式引擎回应中的可见度提升约 40%。该论文测的是多种内容调整手法，并非单独验证本文的六部位范本，所以「结构与写法会影响被引用的机会」是有依据的方向，但具体效果仍因引擎与主题而异。我们的出发点是：GEO 的第一课不是写更多，而是把同样的知识装进读者与 AI 都抽得动的容器。
+
+另一个要老实说的前提：Google 官方指南表示，[不需要把内容切成很小的片段让 AI 更容易理解，也没有理想的页面长度，应为读者而写](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)。因此本范本的价值在于让读者好读、段落好被任何引擎摘录，而不是迎合某个引擎的「切块」机制。
 
 ## 完整范本：一篇 GEO 文章的六个部位
 
@@ -52,15 +55,21 @@ AI 引擎生成答案时，不是「读完整篇打分」，而是「从页面�
 
 ## 部位三：清单与表格的使用时机
 
-原则很简单：**流程用有序清单、要点用无序清单、比较用表格**。AI 引擎（尤其 AI Overview）对这三种形式的引用率明显高于纯文字段落，因为结构化内容的语义边界清楚，抽取时不易出错。每篇文章至少要有 3 个以上清单项目或表格列——这也是 GeoSeoToday 九项评分信号之一。
+原则很简单：**流程用有序清单、要点用无序清单、比较用表格**。这三种形式的语义边界清楚，读者扫读快、引擎抽取时也较不易出错（这是我们的实务判断，并非官方数据）。每篇文章至少要有 3 个以上清单项目或表格列——这也是 GeoSeoToday 九项评分信号之一。
 
 ## 部位四：FAQ 区块的固定格式
 
-FAQ 用「**Q1：问题？**」下一行接答案的格式，3–5 题。问题来源：Google 的 People Also Ask、Perplexity 的追问建议、客户真的问过你的问题。每题答案 50–120 字，同样自包含。这个区块搭配 FAQPage schema，是问句型查询的主要入选路径。
+FAQ 用「**Q1：问题？**」下一行接答案的格式，3–5 题。问题来源：Google 的 People Also Ask、Perplexity 的追问建议、客户真的问过你的问题。每题答案 50–120 字，同样自包含。这个区块对齐问句型查询；至于 FAQPage schema，Google 已[不再显示 FAQ 富结果](https://developers.google.com/search/updates)，且表示[生成式 AI 搜索不需要结构化数据](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)，所以它只是机器可读的辅助，真正起作用的是页面上看得到的问答文字。
 
 ## 部位五：微上下文结尾
 
 文章结尾自然地带出品牌与 1–3 条内部链接，把这篇农文累积的权重灌回集群的核心页面。注意「自然」二字：先给读者一个去那里的理由（工具、更完整的指南），再放链接，不要硬塞锚文本。
+
+## 参考资料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等，arXiv／KDD 2024）
+- [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central，2026）
+- [Google Search 更新记录：FAQ 富结果停用](https://developers.google.com/search/updates)（Google Search Central，2026）
 
 ## 常见问题（FAQ）
 

@@ -6,7 +6,7 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-11-09
+date_updated: 2026-11-19
 enhanced: true
 translations:
   zh-hant: schema-for-geo
@@ -81,7 +81,7 @@ Google 官方[建议用 JSON-LD](https://developers.google.com/search/docs/appea
 不是。内容写得好照样可能被引用。Schema 的价值在「同分加赛」：当多个来源内容质量相近时，实体清楚、日期明确的一方更常胜出。
 
 **Q2：FAQPage schema 现在还有 Google 富媒体搜索结果可拿吗？**
-没有了。Google 更新记录写明 FAQ 富结果“自 2026 年 5 月 7 日起不再出现在 Google 搜索”（[Google Search 更新记录](https://developers.google.com/search/updates)），所以 FAQPage 标记已换不到搜索版面上的展开问答。同时，Google 的 [AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也说生成式 AI 搜索不需要结构化数据或特殊标记。因此 FAQPage 只能算“机器可读的问答对齐”，我们没有数据证明它提高被 AI 引用的概率；页面上看得见的问答文字才是核心。
+没有了。Google 更新记录写明 FAQ 富结果“自 2026 年 5 月 7 日起不再出现在 Google 搜索”（[Google Search 更新记录](https://developers.google.com/search/updates)），所以 FAQPage 标记已换不到搜索版面上的展开问答。同时，Google 的 [AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也说生成式 AI 搜索不需要结构化数据或特殊标记。因此 FAQPage 只能算“机器可读的问答对齐”，我们没有数据证明它提高被 AI 引用的概率；页面上看得见的问答文字才是核心。完整的保留／移除判断表，见〈[FAQ 富结果 2026 年 5 月退场：FAQPage schema 还要留吗？](/zh-hans/blog/faq-rich-result-deprecated/)〉。
 
 **Q3：JSON-LD、Microdata、RDFa 该用哪个？**
 用 JSON-LD。它是 Google 官方推荐格式，与版面解耦、最好维护，2026 年没有理由用另外两种。

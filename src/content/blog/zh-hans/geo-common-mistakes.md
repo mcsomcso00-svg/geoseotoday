@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-19
+enhanced: true
 translations:
   zh-hant: geo-common-mistakes
   en: geo-common-mistakes
@@ -17,13 +18,13 @@ translations:
 
 ## 为什么「内容不错」还是没被引用？
 
-因为 AI 引用是一条漏斗：抓得到 → 读得懂 → 抽得动 → 信得过。任何一关卡住，前面做得再好都归零。2023 年《GEO: Generative Engine Optimization》论文证实，同样的内容换个呈现方式，可见度差距最多达 40%——多数网站不是输在知识，是输在漏斗上的某一个洞。以下七个错误，按漏斗顺序排列。
+因为 AI 引用是一条漏斗：抓得到 → 读得懂 → 抽得动 → 信得过。任何一关卡住，前面做得再好都归零。2023 年《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》论文（KDD 2024 收录）报告，GEO 手法最多可让内容在生成式引擎回应中的可见度提升约 40%——多数网站不是输在知识，是输在漏斗上的某一个洞。以下七个错误，按漏斗顺序排列。
 
 ## 错误 1：robots.txt 把 AI 爬虫全挡了
 
-最冤枉的死法。很多网站用了 CDN 或插件的「封锁 AI 爬虫」一键功能，把 GPTBot、PerplexityBot、Google-Extended 全挡在门外——然后纳闷为什么从没被引用。
+最冤枉的死法。很多网站用了 CDN 或插件的「封锁 AI 爬虫」一键功能，把 GPTBot、OAI-SearchBot、PerplexityBot 全挡在门外——然后纳闷为什么从没被引用。要分清楚各爬虫的角色：依 [OpenAI 文档](https://developers.openai.com/api/docs/bots)，OAI-SearchBot 决定网站能否出现在 ChatGPT 搜索结果，GPTBot 只管内容能否用于训练、不影响搜索资格；依 [Perplexity 文档](https://docs.perplexity.ai/guides/bots)，要出现在 Perplexity 结果就应允许 PerplexityBot。至于 Google-Extended，Google 说明它只控制内容能否用于 Gemini 训练与 grounding，[不影响网站在 Google 搜索的收录，也不是排名信号](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)，封锁它不是 AI Overview 的问题来源。
 
-**修法**：打开 robots.txt 逐行检查，确认这三支爬虫没被 Disallow；再检查 Cloudflare 等 CDN 的 bot 管理设置。这是 5 分钟能完成的检查，却是最多网站中招的一条。
+**修法**：打开 robots.txt 逐行检查，确认 OAI-SearchBot 与 PerplexityBot 没被 Disallow（是否放行 GPTBot 属于「要不要被用于训练」的取舍，与能否被引用无关）；再检查 Cloudflare 等 CDN 的 bot 管理设置。这是 5 分钟能完成的检查，却是最多网站中招的一条。
 
 ## 错误 2：结论藏在最后一段
 
@@ -45,7 +46,7 @@ translations:
 
 ## 错误 5：没有清单、表格、Schema
 
-纯文字墙对 AI 是高成本内容：语义边界模糊、抽取容易出错。同样信息，清单与表格的引用率明显较高；缺 Article/FAQPage schema 则让引擎少了「谁、何时、讲什么」的明确信号。
+纯文字墙对 AI 是高成本内容：语义边界模糊、抽取容易出错。同样信息，清单与表格的语义边界较清楚，对读者与引擎都较好抽取（这是我们的实务判断，并非官方数据）；Article/FAQPage schema 则补上「谁、何时、讲什么」的明确信号——不过 Google 表示[生成式 AI 搜索不需要结构化数据或特殊标记](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)，所以把它当辅助，别当成被引用的开关。
 
 **修法**：流程改有序清单、比较改表格、文末补 3–5 题 FAQ 并输出 FAQPage schema。结构化标记能补上纯文字段落缺的实体信号，让引擎明确知道「谁、何时、讲什么」。
 
@@ -72,6 +73,14 @@ translations:
 | 5 | 无结构化 | 有清单/表格/Schema？ | 每篇 30 分钟 |
 | 6 | 单篇孤军 | 同主题有几篇互链？ | 数周（成批补文） |
 | 7 | 不追踪 | 有没有引用记录表 | 每月 1 小时 |
+
+## 参考资料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等，arXiv／KDD 2024）
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI，2026）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity，2026）
+- [Google's common crawlers: Google-Extended](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central，2026）
+- [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central，2026）
 
 ## 常见问题（FAQ）
 
