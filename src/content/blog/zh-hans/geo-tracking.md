@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-07-06
+date_updated: 2026-11-23
+enhanced: true
 translations:
   zh-hant: geo-tracking
   en: geo-tracking
@@ -51,7 +52,11 @@ AI 引擎带来的点击会以推荐（referral）形式出现在 GA4。做法�
 两个外围信号：
 
 - **GSC 品牌查询曝光**：在 Google Search Console 筛出含品牌名的查询，看曝光趋势。被 AI 反复提及的品牌，品牌搜索量会延迟数月后上升——这是 GEO 的复利信号。
-- **服务器 log 中的 AI 爬虫**：统计 GPTBot、PerplexityBot、Google-Extended 的造访频率。爬虫活动增加通常先于引用出现，是最早期的领先指标。
+- **服务器 log 中的 AI 爬虫**：统计 [OAI-SearchBot、GPTBot](https://developers.openai.com/api/docs/bots)（OpenAI 的搜索与训练爬虫）与 [PerplexityBot](https://docs.perplexity.ai/guides/bots) 的造访频率。注意 [Google-Extended 只是 robots.txt 控制用的令牌，没有独立的 user agent，不会在 log 中以自己的名称出现](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)，无法用它统计。爬虫活动增加通常先于引用出现，是最早期的领先指标。
+
+## 新增：Search Console 生成式 AI 成效报告
+
+Google 在 2026 年 6 月推出[生成式 AI 成效报告](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)，以“曝光次数”显示你的网址在 AI Overviews 与 AI Mode 出现的频率，可按页面、国家、设备与日期查看，截至 2026 年 8 月 31 日已对所有网站开放。它只有曝光、没有点击，也不涵盖 ChatGPT、Perplexity，所以是 Google 引擎那一栏的官方基准，不能取代引用率题库。Google 的 [AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也建议用这份报告衡量成效，并提醒没有第三方工具能访问 Google 内部的排名或 AI 系统。逐栏教程见〈[Search Console 生成式 AI 成效报告怎么看](/zh-hans/blog/search-console-generative-ai-report/)〉。
 
 ## 要不要买 GEO 监测工具？
 
@@ -63,6 +68,14 @@ AI 引擎带来的点击会以推荐（referral）形式出现在 GA4。做法�
 2. **某题一直输给同一个对手**：把对手被引用的那段和你的对照，通常输在具体度或自包含性。
 3. **爬虫有来但从不引用**：内容问题，跑一次九项信号检测，优先修开头段与数据密度。
 4. **引用了旧版内容**：更新文章并改 `date_updated`，AI 对新鲜度敏感。
+
+## 参考资料
+
+- [Search Console 新增生成式 AI 成效报告](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)（Google Search Central, 2026）
+- [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central, 2026）
+- [Google's common crawlers](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)（Google Search Central）
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
 
 ## 常见问题（FAQ）
 

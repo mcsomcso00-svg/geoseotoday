@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜索优化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-23
+enhanced: true
 translations:
   zh-hant: seo-aeo-geo-aio-evolution
   en: seo-aeo-geo-aio-evolution
@@ -34,7 +35,7 @@ SEO 至今仍是一切的地基——后面三代全都建立在它之上。
 语音助手（Siri、Alexa、Google Assistant）与精选摘要兴起，带来「答案引擎优化」。命题变成：**怎么让引擎直接把我的内容当成「那个答案」念出来或框在顶端。**
 
 - **关注点**：问答格式、精选摘要、Schema 结构化数据。
-- **代表版位**：精选摘要（Featured Snippet）、语音回答、答案盒。
+- **代表版位**：[精选摘要（Featured Snippet）](https://developers.google.com/search/docs/appearance/featured-snippets)（Google 说明为「把常规搜索结果的版面颠倒」、先显示摘要内容的特殊方框）、语音回答、答案盒。
 - **关键转变**：用户开始「不点击也拿到答案」，零点击搜索的雏形出现。
 
 AEO 练的问答格式功夫，后来被 GEO 完整继承——它是子集，不是废弃物。
@@ -45,7 +46,7 @@ ChatGPT 引爆生成式搜索，「生成式引擎优化」登场。答案不再
 
 - **关注点**：可引用段落、硬数据、实体清晰、E-E-A-T。
 - **代表引擎**：ChatGPT、Perplexity、Gemini。
-- **实证起点**：2023 年普林斯顿等机构的论文《GEO: Generative Engine Optimization》，实测发现加入统计数据、引用来源、专家语气能显著提升内容在 AI 答案中的可见度。
+- **实证起点**：2023 年 11 月发表的论文[《GEO: Generative Engine Optimization》](https://arxiv.org/abs/2311.09735)（后获 KDD 2024 收录）提出生成式引擎优化的框架，并报告这类策略最多可将内容在生成式引擎回答中的可见度提升 40%，且效果会因领域而异。
 
 想被 ChatGPT 或 Perplexity 引用的实战做法，本站 GEO 群集已有专文：〈[如何被 ChatGPT 引用](/zh-hans/blog/cited-by-chatgpt/)〉与〈[如何被 Perplexity 引用](/zh-hans/blog/cited-by-perplexity/)〉。
 
@@ -54,7 +55,7 @@ ChatGPT 引爆生成式搜索，「生成式引擎优化」登场。答案不再
 Google 把 AI Overview 塞进主搜索页，加上 Copilot、Gemini 全面 AI 化，营销圈需要一个伞词涵盖以上全部——AIO（AI Optimization）因此流行。命题最广：**怎么让内容在所有 AI 界面都被读懂、被信任、被引用。**
 
 - **关注点**：前三代的总和，再加上跨引擎的一致性与可见度追踪。
-- **定位**：不是新技术，是把 SEO/AEO/GEO 收拢起来的统称。
+- **定位**：不是新技术，是把 SEO/AEO/GEO 收拢起来的统称。Google 自己的立场也相近：[官方指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)写明「针对生成式 AI 搜索优化，就是针对搜索体验优化，因此仍是 SEO」，并建议用 Search Console 的生成式 AI 成效报告衡量成效。
 - **注意**：AIO 定义最混乱，有人拿它专指 Google AI Overview 优化。细节见〈[AIO 是什么？](/zh-hans/blog/what-is-aio/)〉。
 
 ## 四代对照：一张表看懂主线
@@ -66,7 +67,15 @@ Google 把 AI Overview 塞进主搜索页，加上 Copilot、Gemini 全面 AI �
 | **GEO** | 2023 | AI 综合答案 | 成为被引用的来源 |
 | **AIO** | 2024 | 所有 AI 界面 | 统整前三代的伞 |
 
+表中的起点年份是业界惯用的概略说法，并非各词的官方定义日期。
+
 看懂了吗？**技术要求一路往上叠，但地基从未更换。** 做好「可被引用的内容」，四代成效一起长。
+
+## 参考资料
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)（Aggarwal 等, arXiv, 2023；KDD 2024）
+- [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central, 2026）
+- [Featured snippets and your website](https://developers.google.com/search/docs/appearance/featured-snippets)（Google Search Central）
 
 ## 常见问题（FAQ）
 

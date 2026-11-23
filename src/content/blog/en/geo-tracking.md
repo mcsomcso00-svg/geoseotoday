@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-07-06
+date_updated: 2026-11-23
+enhanced: true
 translations:
   zh-hant: geo-tracking
   zh-hans: geo-tracking
@@ -51,7 +52,11 @@ A word on reading it: this number is usually small (a low single-digit percentag
 Two peripheral signals:
 
 - **Branded-query impressions in GSC.** In Google Search Console, filter for queries containing your brand name and watch the impression trend. Brands that AI mentions repeatedly see branded-search volume rise a few months later — this is the compounding signal of GEO.
-- **AI crawlers in your server logs.** Count how often GPTBot, PerplexityBot, and Google-Extended visit. Rising crawler activity usually precedes citations, making it the earliest leading indicator you have.
+- **AI crawlers in your server logs.** Count how often [OAI-SearchBot and GPTBot](https://developers.openai.com/api/docs/bots) (OpenAI's search and training crawlers) and [PerplexityBot](https://docs.perplexity.ai/guides/bots) visit. Note that [Google-Extended is only a robots.txt control token with no user agent string of its own, so it never appears in logs under that name](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers) and can't be counted. Rising crawler activity usually precedes citations, making it the earliest leading indicator you have.
+
+## New: the Search Console Generative AI performance report
+
+In June 2026 Google launched the [Generative AI performance report](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports), which shows impressions of your URLs in AI Overviews and AI Mode, by page, country, device and date; as of August 31, 2026 it is available to all websites. It reports impressions only — no clicks — and does not cover ChatGPT or Perplexity, so treat it as the official baseline for the Google column, not a replacement for the citation-rate question bank. Google's [guide to optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) also points to this report for measurement and warns that no third-party tool has access to Google's internal ranking or AI systems. For a field-by-field walkthrough, see [How to read the Search Console Generative AI report](/en/blog/search-console-generative-ai-report/).
 
 ## Should you buy a GEO monitoring tool?
 
@@ -63,6 +68,14 @@ The AI-visibility monitoring tools on the market (automated query tracking, cros
 2. **One question keeps losing to the same competitor.** Put their cited passage next to yours — you're usually losing on specificity or self-containment.
 3. **Crawlers visit but never cite.** That's a content problem: run the nine-signal check and fix the opening paragraph and data density first.
 4. **An outdated version got cited.** Update the article and change its `date_updated` — AI is sensitive to freshness.
+
+## Sources
+
+- [Search Console adds Generative AI performance reports](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports) (Google Search Central, 2026)
+- [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central, 2026)
+- [Google's common crawlers](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers) (Google Search Central)
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
 
 ## FAQ
 

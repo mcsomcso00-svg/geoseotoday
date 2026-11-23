@@ -6,18 +6,19 @@ intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-23
+enhanced: true
 translations:
   zh-hans: track-ai-visibility
   en: track-ai-visibility
 ---
 # AI 搜尋可見度怎麼追蹤？工具與方法
 
-**AI 搜尋可見度，指的是你的品牌或內容在 ChatGPT、Gemini、Copilot、Perplexity、Google AI Overview 等 AI 答案中被提及與引用的頻率。追蹤它最務實的起點不是買工具，而是建一張「核心問題 × 各引擎」的手動查詢表，每月固定實測一次。** 傳統的排名、點擊工具看不到這一層，因為 AI 答案不進 Search Console 的排名報表——你得換一套衡量方式。
+**AI 搜尋可見度，指的是你的品牌或內容在 ChatGPT、Gemini、Copilot、Perplexity、Google AI Overview 等 AI 答案中被提及與引用的頻率。追蹤它最務實的起點不是買工具，而是建一張「核心問題 × 各引擎」的手動查詢表，每月固定實測一次。** 傳統的排名、點擊工具看不到這一層，因為 AI 答案不進一般的排名與點擊報表——你得換一套衡量方式。
 
 ## 為什麼傳統工具追蹤不到 AI 可見度？
 
-因為衡量的東西變了。傳統 SEO 工具追蹤「你的網址在第幾名、拿多少點擊」；但 AI 答案是一段生成文字，使用者可能根本沒點擊，你的品牌卻出現在答案裡。這種「被提及、被引用但未必被點擊」的曝光，Search Console 與排名工具都捕捉不到。所以 AI 可見度需要**另建一套追蹤方法**，核心是「拿問題去問 AI，看答案裡有沒有你」。
+因為衡量的東西變了。傳統 SEO 工具追蹤「你的網址在第幾名、拿多少點擊」；但 AI 答案是一段生成文字，使用者可能根本沒點擊，你的品牌卻出現在答案裡。這種「被提及、被引用但未必被點擊」的曝光，排名工具與 Search Console 的一般成效報告都捕捉不到。Google 在 2026 年 6 月新增的[生成式 AI 成效報告](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)是例外，但它只提供網址在 Google AI Overviews、AI Mode 的曝光次數，不含點擊，也不涵蓋 ChatGPT、Perplexity、Copilot（逐欄說明見〈[Search Console 生成式 AI 成效報告怎麼看](/zh-hant/blog/search-console-generative-ai-report/)〉）。Google 的[官方指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也提醒，沒有第三方工具能存取 Google 內部的排名或 AI 系統，選工具時要留意相關宣稱。所以 AI 可見度需要**另建一套追蹤方法**，核心是「拿問題去問 AI，看答案裡有沒有你」。
 
 ## 該追蹤哪些指標？
 
@@ -64,6 +65,12 @@ translations:
 4. **下月回測**：看同一批問題有沒有改善。
 
 品牌層級的聲量監測，是可見度追蹤的延伸，另見〈[品牌在 AI 答案裡的聲量監測](/zh-hant/blog/ai-brand-monitoring/)〉。
+
+## 參考資料
+
+- [Search Console 新增生成式 AI 成效報告](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)（Google Search Central, 2026）
+- [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central, 2026）
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central, 2026）
 
 ## 常見問題（FAQ）
 

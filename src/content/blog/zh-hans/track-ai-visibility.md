@@ -6,18 +6,19 @@ intent: informational
 cluster: AIO / AI 搜索优化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-23
+enhanced: true
 translations:
   zh-hant: track-ai-visibility
   en: track-ai-visibility
 ---
 # AI 搜索可见度怎么追踪？工具与方法
 
-**AI 搜索可见度，指的是你的品牌或内容在 ChatGPT、Gemini、Copilot、Perplexity、Google AI Overview 等 AI 答案中被提及与引用的频率。追踪它最务实的起点不是买工具，而是建一张「核心问题 × 各引擎」的手动查询表，每月固定实测一次。** 传统的排名、点击工具看不到这一层，因为 AI 答案不进 Search Console 的排名报表——你得换一套衡量方式。
+**AI 搜索可见度，指的是你的品牌或内容在 ChatGPT、Gemini、Copilot、Perplexity、Google AI Overview 等 AI 答案中被提及与引用的频率。追踪它最务实的起点不是买工具，而是建一张「核心问题 × 各引擎」的手动查询表，每月固定实测一次。** 传统的排名、点击工具看不到这一层，因为 AI 答案不进一般的排名与点击报表——你得换一套衡量方式。
 
 ## 为什么传统工具追踪不到 AI 可见度？
 
-因为衡量的东西变了。传统 SEO 工具追踪「你的网址在第几名、拿多少点击」；但 AI 答案是一段生成文字，用户可能根本没点击，你的品牌却出现在答案里。这种「被提及、被引用但未必被点击」的曝光，Search Console 与排名工具都捕捉不到。所以 AI 可见度需要**另建一套追踪方法**，核心是「拿问题去问 AI，看答案里有没有你」。
+因为衡量的东西变了。传统 SEO 工具追踪「你的网址在第几名、拿多少点击」；但 AI 答案是一段生成文字，用户可能根本没点击，你的品牌却出现在答案里。这种「被提及、被引用但未必被点击」的曝光，排名工具与 Search Console 的一般成效报告都捕捉不到。Google 在 2026 年 6 月新增的[生成式 AI 成效报告](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)是例外，但它只提供网址在 Google AI Overviews、AI Mode 的展示次数，不含点击，也不涵盖 ChatGPT、Perplexity、Copilot（逐栏说明见〈[Search Console 生成式 AI 成效报告怎么看](/zh-hans/blog/search-console-generative-ai-report/)〉）。Google 的[官方指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)也提醒，没有第三方工具能访问 Google 内部的排名或 AI 系统，选工具时要留意相关宣称。所以 AI 可见度需要**另建一套追踪方法**，核心是「拿问题去问 AI，看答案里有没有你」。
 
 ## 该追踪哪些指标？
 
@@ -64,6 +65,12 @@ translations:
 4. **下月回测**：看同一批问题有没有改善。
 
 品牌层级的声量监测，是可见度追踪的延伸。
+
+## 参考资料
+
+- [Search Console 新增生成式 AI 成效报告](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)（Google Search Central, 2026）
+- [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)（Google Search Central, 2026）
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central, 2026）
 
 ## 常见问题（FAQ）
 

@@ -6,7 +6,7 @@ intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-28
-date_updated: 2026-11-05
+date_updated: 2026-11-23
 enhanced: true
 translations:
   zh-hans: ai-mode-vs-ai-overview
@@ -21,6 +21,8 @@ translations:
 Google AI Mode（AI 模式）是 Google 搜尋裡的對話式 AI 搜尋介面：它把複雜問題拆成多個子主題，同時發出多組相關搜尋再合成一則帶連結的回答，[Google 官方形容它特別適合需要深入探索、推理或複雜比較的查詢](https://developers.google.com/search/docs/appearance/ai-features)。這種「同時對多個子主題、多個資料來源發出相關搜尋」的做法，Google 稱為[查詢扇出（query fan-out）](https://blog.google/products/search/ai-mode-search/)。
 
 在 Search Console 裡，出現在 AI Overview 與 AI Mode 的網站流量，[都計入整體搜尋流量，並出現在成效報表的「網頁」搜尋類型下](https://developers.google.com/search/docs/appearance/ai-features)。
+
+想單獨看 AI 功能的能見度，Search Console 在 2026 年 6 月新增了[生成式 AI 成效報告](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)，以曝光次數顯示網址在 AI Overviews 與 AI Mode 出現的頻率，可依頁面、國家、裝置與日期檢視，截至 2026 年 8 月 31 日已對所有網站開放；目前沒有點擊指標。逐欄說明見〈[Search Console 生成式 AI 成效報告怎麼看](/zh-hant/blog/search-console-generative-ai-report/)〉。
 
 ## AI Mode 與 AI Overview 到底是不是同一個東西？
 
@@ -67,6 +69,7 @@ AI Mode 的使用者不會問完一個問題就走，他會追問。所以你要
 
 ## 參考資料
 
+- [Search Console 新增生成式 AI 成效報告](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)（Google Search Central, 2026）
 - [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central, 2026）
 - [Expanding AI Overviews and introducing AI Mode](https://blog.google/products/search/ai-mode-search/)（Google, 2025）
 - [AI Mode vs. AI Overviews: citation overlap study](https://ahrefs.com/blog/ai-overviews-vs-ai-mode)（Ahrefs, 2025）

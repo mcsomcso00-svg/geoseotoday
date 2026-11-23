@@ -6,7 +6,7 @@ intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-28
-date_updated: 2026-11-05
+date_updated: 2026-11-23
 enhanced: true
 translations:
   zh-hant: ai-mode-vs-ai-overview
@@ -21,6 +21,8 @@ translations:
 Google AI Mode is the conversational AI search interface inside Google Search: it breaks a complex question into subtopics, runs several related searches at once and synthesizes one answer with links. [Google describes it as particularly helpful for queries where further exploration, reasoning or complex comparisons are needed](https://developers.google.com/search/docs/appearance/ai-features). Google calls the technique of [issuing multiple related searches concurrently across subtopics and data sources "query fan-out"](https://blog.google/products/search/ai-mode-search/).
 
 In Search Console, traffic from sites shown in AI Overviews and AI Mode is [included in overall search traffic and reported in the Performance report under the "Web" search type](https://developers.google.com/search/docs/appearance/ai-features).
+
+To see AI-feature visibility on its own, Search Console added a [Generative AI performance report](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports) in June 2026. It shows impressions of your URLs in AI Overviews and AI Mode by page, country, device and date, and as of August 31, 2026 it is available to all websites; it has no click metric yet. See [How to read the Search Console Generative AI report](/en/blog/search-console-generative-ai-report/).
 
 ## Are AI Mode and AI Overview actually the same thing?
 
@@ -67,6 +69,7 @@ Yes — and it should. The two share the Gemini layer, so the optimizations don'
 
 ## Sources
 
+- [Search Console adds Generative AI performance reports](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports) (Google Search Central, 2026)
 - [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central, 2026)
 - [Expanding AI Overviews and introducing AI Mode](https://blog.google/products/search/ai-mode-search/) (Google, 2025)
 - [AI Mode vs. AI Overviews: citation overlap study](https://ahrefs.com/blog/ai-overviews-vs-ai-mode) (Ahrefs, 2025)

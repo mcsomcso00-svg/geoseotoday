@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-23
+enhanced: true
 translations:
   zh-hant: seo-aeo-geo-aio-evolution
   zh-hans: seo-aeo-geo-aio-evolution
@@ -34,7 +35,7 @@ SEO is still the foundation of everything — the next three generations are all
 Voice assistants (Siri, Alexa, Google Assistant) and featured snippets gave rise to Answer Engine Optimization. The question shifted to: **how do I get the engine to treat my content as *the* answer — to read it aloud or box it at the very top?**
 
 - **Focus**: question-and-answer formatting, featured snippets, Schema structured data.
-- **Signature placements**: the Featured Snippet, voice replies, the answer box.
+- **Signature placements**: the [Featured Snippet](https://developers.google.com/search/docs/appearance/featured-snippets) (Google describes it as a special box where the format of a regular search result is reversed, with the snippet first), voice replies, the answer box.
 - **Key shift**: users started "getting the answer without clicking." The first shape of zero-click search appeared.
 
 The Q&A formatting skills AEO trained were later inherited wholesale by GEO — it's a subset, not a discard.
@@ -45,7 +46,7 @@ ChatGPT set off generative search, and Generative Engine Optimization arrived. T
 
 - **Focus**: citable passages, hard data, entity clarity, E-E-A-T.
 - **Signature engines**: ChatGPT, Perplexity, Gemini.
-- **Empirical origin**: the 2023 paper *GEO: Generative Engine Optimization* from Princeton and others, which found experimentally that adding statistics, cited sources, and an expert tone measurably raised a piece's visibility inside AI answers.
+- **Empirical origin**: the November 2023 paper [*GEO: Generative Engine Optimization*](https://arxiv.org/abs/2311.09735) (later accepted to KDD 2024), which proposed the framework and reported that such strategies can raise a piece's visibility in generative-engine responses by up to 40%, with efficacy varying by domain.
 
 For hands-on tactics to get cited by ChatGPT or Perplexity, our GEO cluster already has dedicated pieces: [How to get cited by ChatGPT](/en/blog/cited-by-chatgpt/) and [How to get cited by Perplexity](/en/blog/cited-by-perplexity/).
 
@@ -54,7 +55,7 @@ For hands-on tactics to get cited by ChatGPT or Perplexity, our GEO cluster alre
 Google pushed AI Overviews into the main search page, and with Copilot and Gemini going fully AI, the marketing world needed one umbrella word to cover it all — so AIO (AI Optimization) caught on. Its question is the broadest: **how do I get content to be understood, trusted, and cited across every AI interface?**
 
 - **Focus**: the sum of the first three generations, plus cross-engine consistency and visibility tracking.
-- **Positioning**: not a new technique — a catch-all that gathers SEO, AEO, and GEO together.
+- **Positioning**: not a new technique — a catch-all that gathers SEO, AEO, and GEO together. Google's own stance is similar: its [official guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) says optimizing for generative AI search is optimizing for the search experience, "and thus still SEO," and recommends the Search Console Generative AI performance report for measurement.
 - **Note**: AIO has the messiest definition; some use it to mean Google AI Overview optimization specifically. For the details, see [What is AIO?](/en/blog/what-is-aio/).
 
 ## The four generations side by side: one table, one storyline
@@ -66,7 +67,15 @@ Google pushed AI Overviews into the main search page, and with Copilot and Gemin
 | **GEO** | 2023 | AI synthesized answers | Become a cited source |
 | **AIO** | 2024 | Every AI interface | The umbrella over the first three |
 
+The start years in the table are loose industry shorthand, not official dates for the terms.
+
 See it? **The technical demands keep stacking upward, but the foundation was never swapped out.** Nail "content that can be cited," and all four generations grow together.
+
+## Sources
+
+- [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735) (Aggarwal et al., arXiv, 2023; KDD 2024)
+- [Optimizing for generative AI search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (Google Search Central, 2026)
+- [Featured snippets and your website](https://developers.google.com/search/docs/appearance/featured-snippets) (Google Search Central)
 
 ## Frequently asked questions (FAQ)
 

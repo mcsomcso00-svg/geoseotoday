@@ -164,3 +164,25 @@ Every scheduled run appends its section here (newest last), with the live links 
   - 繁中 https://geoseotoday.com/zh-hant/blog/geo-content-structure/
   - 简中 https://geoseotoday.com/zh-hans/blog/geo-content-structure/
   - EN https://geoseotoday.com/en/blog/geo-content-structure/
+
+## 2026-11-23 — Enhancement batch
+- GEO 成效怎麼追蹤？AI 引用監測方法 — 5 sources; corrected Google-Extended (no log user agent, robots.txt token only), added Search Console Gen AI report section
+  - 繁中 https://geoseotoday.com/zh-hant/blog/geo-tracking/
+  - 简中 https://geoseotoday.com/zh-hans/blog/geo-tracking/
+  - EN https://geoseotoday.com/en/blog/geo-tracking/
+- 沒有 Search Console 也能量 GEO：三種可行的追蹤法 — 4 sources; corrected "GSC never shows AI citations" (Gen AI report now gives impressions only)
+  - 繁中 https://geoseotoday.com/zh-hant/blog/measure-geo-without-gsc/
+  - 简中 https://geoseotoday.com/zh-hans/blog/measure-geo-without-gsc/
+  - EN https://geoseotoday.com/en/blog/measure-geo-without-gsc/
+- AI 搜尋可見度怎麼追蹤？工具與方法 — 3 sources; corrected "Search Console can't see AI" with Gen AI report caveat
+  - 繁中 https://geoseotoday.com/zh-hant/blog/track-ai-visibility/
+  - 简中 https://geoseotoday.com/zh-hans/blog/track-ai-visibility/
+  - EN https://geoseotoday.com/en/blog/track-ai-visibility/
+- Google AI Mode 與 AI Overview 差在哪：兩種介面的優化重點不同 — 4 sources; added Gen AI report fact and link
+  - 繁中 https://geoseotoday.com/zh-hant/blog/ai-mode-vs-ai-overview/
+  - 简中 https://geoseotoday.com/zh-hans/blog/ai-mode-vs-ai-overview/
+  - EN https://geoseotoday.com/en/blog/ai-mode-vs-ai-overview/
+- SEO → AEO → GEO → AIO 演進史一次看懂 — 3 sources; corrected GEO paper claim (up to 40%, varies by domain; dropped unsupported "expert tone"/Princeton wording), added Google's "still SEO" position, flagged era years as approximate
+  - 繁中 https://geoseotoday.com/zh-hant/blog/seo-aeo-geo-aio-evolution/
+  - 简中 https://geoseotoday.com/zh-hans/blog/seo-aeo-geo-aio-evolution/
+  - EN https://geoseotoday.com/en/blog/seo-aeo-geo-aio-evolution/
