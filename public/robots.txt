@@ -44,6 +44,10 @@ User-agent: DuckAssistBot
 Allow: /
 User-agent: MistralAI-User
 Allow: /
+User-agent: MistralAI-Index
+Allow: /
+User-agent: MistralAI-Training
+Allow: /
 User-agent: CCBot
 Allow: /
 
