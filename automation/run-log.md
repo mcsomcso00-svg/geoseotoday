@@ -186,3 +186,25 @@ Every scheduled run appends its section here (newest last), with the live links 
   - 繁中 https://geoseotoday.com/zh-hant/blog/seo-aeo-geo-aio-evolution/
   - 简中 https://geoseotoday.com/zh-hans/blog/seo-aeo-geo-aio-evolution/
   - EN https://geoseotoday.com/en/blog/seo-aeo-geo-aio-evolution/
+
+## 2026-11-26 — Enhancement batch
+- GSC 三個地方揪出內容負債（附操作） — 3 sources; corrected "16 months retention" (unverified, softened) and "quality verdict"/"crawl priority too low" wording for index statuses; added pointer to crawled-currently-not-indexed-fix
+  - 繁中 https://geoseotoday.com/zh-hant/blog/gsc-content-debt/
+  - 简中 https://geoseotoday.com/zh-hans/blog/gsc-content-debt/
+  - EN https://geoseotoday.com/en/blog/gsc-content-debt/
+- 稀薄內容修剪：哪些頁該刪、該合併、該補料的決策樹 — 5 sources; corrected "410 is more explicit than 404" (Google treats all 4xx the same), softened "Google explicitly said not worth indexing", added pointer to crawled-currently-not-indexed-fix
+  - 繁中 https://geoseotoday.com/zh-hant/blog/thin-content-pruning/
+  - 简中 https://geoseotoday.com/zh-hans/blog/thin-content-pruning/
+  - EN https://geoseotoday.com/en/blog/thin-content-pruning/
+- Google AI Overview 是什麼？運作原理與對流量的影響 — 3 sources; corrected opt-out answer (nosnippet/max-snippet controls; Google-Extended does not affect Search), softened unsourced CTR claim and schema advice
+  - 繁中 https://geoseotoday.com/zh-hant/blog/what-is-ai-overview/
+  - 简中 https://geoseotoday.com/zh-hans/blog/what-is-ai-overview/
+  - EN https://geoseotoday.com/en/blog/what-is-ai-overview/
+- AIO 是什麼？AI 優化完整定義（與 SEO／GEO／AEO 的關係） — 5 sources; removed Gartner 25% claim (source returned 403, unverifiable), separated search crawlers from training controls (Google-Extended is a token, not a crawler)
+  - 繁中 https://geoseotoday.com/zh-hant/blog/what-is-aio/
+  - 简中 https://geoseotoday.com/zh-hans/blog/what-is-aio/
+  - EN https://geoseotoday.com/en/blog/what-is-aio/
+- 新手如何 30 天做出第一個 GEO 就緒頁面 — 3 sources; fixed crawler list (OAI-SearchBot/PerplexityBot/Googlebot vs training controls), removed unsupported "Perplexity 4–8 weeks"
+  - 繁中 https://geoseotoday.com/zh-hant/blog/geo-in-30-days/
+  - 简中 https://geoseotoday.com/zh-hans/blog/geo-in-30-days/
+  - EN https://geoseotoday.com/en/blog/geo-in-30-days/

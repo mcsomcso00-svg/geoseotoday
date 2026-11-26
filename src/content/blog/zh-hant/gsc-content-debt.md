@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-13
-date_updated: 2026-07-13
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hans: gsc-content-debt
   en: gsc-content-debt
@@ -17,7 +18,7 @@ translations:
 
 ## 開始前：你需要什麼
 
-只需要一個已驗證的 GSC 資源（property），且網站上線超過 90 天——因為我們的核心判定標準就是「90 天 0 點擊」。2026 年的 GSC 介面成效資料保留 16 個月，足夠做季度稽核與年度回顧。
+只需要一個已驗證的 GSC 資源（property），且網站上線超過 90 天——因為我們的核心判定標準就是「90 天 0 點擊」。GSC 成效資料的保留期間有限，所以建議每季匯出存檔，才能做季度稽核與年度回顧。
 
 ## 第一站：成效報表——揪出 90 天 0 點擊頁
 
@@ -34,7 +35,7 @@ translations:
 - **點擊 = 0、曝光 < 50**：重度負債。Google 幾乎不給這頁任何機會，走合併或移除。
 - **點擊 = 0、曝光 ≥ 50**：輕度負債。Google 有讓它出現在搜尋結果，但沒人想點——通常是標題與描述的問題，優先改寫〈[標題標籤與 meta description](/zh-hant/blog/title-meta-writing/)〉再觀察。
 
-注意一個陷阱：GSC 的網頁分頁預設最多顯示 1,000 列。大站要用「網頁」篩選器分目錄（例如 `/blog/`）分批匯出，才不會漏掉長尾。
+注意一個陷阱：GSC 的表格[最多只顯示 1,000 列](https://support.google.com/webmasters/answer/96568)。大站要用「網頁」篩選器分目錄（例如 `/blog/`）分批匯出，才不會漏掉長尾。
 
 ## 第二站：網頁索引報表——Google 已經投票的頁面
 
@@ -42,12 +43,14 @@ translations:
 
 | 報表狀態 | Google 的意思 | 對你的意義 |
 |---|---|---|
-| **Crawled - currently not indexed**（已檢索，目前未編入索引） | 我爬了，讀完了，決定不收錄 | 品質判決：內容不值得進索引，是最明確的負債訊號 |
-| **Discovered - currently not indexed**（已找到，目前尚未編入索引） | 我知道這頁存在，但不急著爬 | 爬取優先度太低——整站品質或內部連結出了問題 |
+| **Crawled - currently not indexed**（已檢索，目前未編入索引） | 我爬了，讀完了，決定不收錄 | Google 爬過但沒收錄（[官方說明](https://support.google.com/webmasters/answer/7440203)指這很常見、不一定是問題）；搭配 0 點擊，是最明確的負債訊號之一 |
+| **Discovered - currently not indexed**（已找到，目前尚未編入索引） | 我知道這頁存在，但不急著爬 | 爬取被延後（官方說明是 Google 預期爬取會造成網站負荷過大）；若數量龐大，也值得檢查整站品質與內部連結 |
 
 操作：點進每個狀態可以看到 URL 範例清單（同樣可匯出）。把這兩份清單和第一站的 0 點擊清單交叉比對——**同時出現在「0 點擊」和「Crawled - currently not indexed」的頁面，就是最該優先處理的核心負債**。
 
 如果「Discovered - currently not indexed」的數量佔比很高（例如超過已索引頁的 30%），問題通常不在單頁而在整站：crawl budget 被浪費、或內部連結結構讓 Google 覺得這些頁不重要。這時要回頭看〈[crawl budget 是什麼](/zh-hant/blog/what-is-crawl-budget/)〉。
+
+想知道這些「已檢索，目前未編入索引」的頁面為什麼卡住、怎麼逐一處理，完整診斷決策樹見〈[「已檢索，目前尚未建立索引」怎麼辦](/zh-hant/blog/crawled-currently-not-indexed-fix/)〉。
 
 ## 第三站：網址檢查工具——逐頁確診
 
@@ -70,6 +73,12 @@ translations:
 ## 多久跑一次？
 
 **每季一次**。把上述流程做成固定的季度儀式：匯出 → 分類 → 處理 30 頁 → 記錄。連續跑 3–4 季後，多數網站的「Crawled - currently not indexed」數量會明顯下降，新文章的索引速度也會變快。
+
+## 參考資料
+
+- [Page indexing report（網頁索引報表）](https://support.google.com/webmasters/answer/7440203)（Google Search Console 說明）
+- [Performance report（成效報表）](https://support.google.com/webmasters/answer/96568)（Google Search Console 說明）
+- [URL Inspection tool（網址檢查工具）](https://support.google.com/webmasters/answer/9012289)（Google Search Console 說明）
 
 ## 常見問題（FAQ）
 

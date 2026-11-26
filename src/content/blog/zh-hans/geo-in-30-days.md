@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO（群集 1）
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-07-06
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: geo-in-30-days
   en: geo-in-30-days
@@ -17,11 +18,11 @@ translations:
 
 ## 开始前：什么叫「GEO 就绪」？
 
-GEO 就绪指页面同时满足三个条件：AI 爬虫（GPTBot、PerplexityBot、Google-Extended）抓得到、内容结构让引擎抽得动、信息具体到值得引用。GeoSeoToday 用九项信号量化这件事，75 分是发布门槛。新手常犯的错是先追进阶技巧；其实第一个页面的目标很单纯——**把基本功一次做对，之后每篇复制流程**。
+GEO 就绪指页面同时满足三个条件：AI 搜索爬虫（如 [OAI-SearchBot](https://developers.openai.com/api/docs/bots)、[PerplexityBot](https://docs.perplexity.ai/guides/bots)）与 Googlebot 抓得到、内容结构让引擎抽得动、信息具体到值得引用。GeoSeoToday 用九项信号量化这件事，75 分是发布门槛。新手常犯的错是先追进阶技巧；其实第一个页面的目标很单纯——**把基本功一次做对，之后每篇复制流程**。
 
 ## 第 1 周（Day 1–7）：地基与选题
 
-- **Day 1–2：爬虫检查。** 打开你网站的 `/robots.txt`，确认没有挡 GPTBot、PerplexityBot、Google-Extended；检查 CDN（如 Cloudflare）有没有开「封锁 AI 爬虫」。没有网站的人，这两天拿来搭一个（任何能发布文章的平台都行，自有域名较佳）。
+- **Day 1–2：爬虫检查。** 打开你网站的 `/robots.txt`，确认没有挡 OAI-SearchBot、PerplexityBot 与 Googlebot（GPTBot、Google-Extended 属训练用途控制项，[Google-Extended 不影响搜索收录](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)，要不要挡是另一个决定）；检查 CDN（如 Cloudflare）有没有开「封锁 AI 爬虫」。没有网站的人，这两天拿来搭一个（任何能发布文章的平台都行，自有域名较佳）。
 - **Day 3–4：选题。** 选一个「你答得比多数网页好」的具体问题。判断标准：够窄（「电商产品页怎么做 GEO」优于「GEO 教程」）、你有第一手经验、拿去问 Perplexity 时现有答案不够好。
 - **Day 5–7：研究。** 把这个问题丢给 ChatGPT、Perplexity、Google 各问一次，记下：现有答案引用了谁、缺了什么、People Also Ask 列出哪些子问题。这份清单就是你的文章大纲素材。
 
@@ -52,7 +53,13 @@ GEO 就绪指页面同时满足三个条件：AI 爬虫（GPTBot、PerplexityBot
 
 ## 30 天后的合理期待
 
-诚实地说：一个月内被 AI 引用是可能但不保证的，Perplexity 最快、常见 4–8 周，ChatGPT 与 AI Overview 更慢。30 天的真正产出是：一个 75 分以上的页面、一套可复制的流程、一条基准线。接下来每月 2–4 篇沿着同主题扩张，3–6 个月后群集效应才会浮现。
+诚实地说：一个月内被 AI 引用是可能但不保证的，各引擎的速度不一，没有官方时间表可依，请用自己的追踪表观察。30 天的真正产出是：一个 75 分以上的页面、一套可复制的流程、一条基准线。接下来每月 2–4 篇沿着同主题扩张，3–6 个月后群集效应才会浮现。
+
+## 参考资料
+
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [Google common crawlers（含 Google-Extended）](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
 
 ## 常见问题（FAQ）
 

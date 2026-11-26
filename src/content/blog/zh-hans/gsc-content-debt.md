@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page & 技术 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-07-13
-date_updated: 2026-07-13
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: gsc-content-debt
   en: gsc-content-debt
@@ -17,7 +18,7 @@ translations:
 
 ## 开始前：你需要什么
 
-只需要一个已验证的 GSC 资源（property），且网站上线超过 90 天——因为我们的核心判定标准就是「90 天 0 点击」。2026 年的 GSC 界面效果数据保留 16 个月，足够做季度审计与年度回顾。
+只需要一个已验证的 GSC 资源（property），且网站上线超过 90 天——因为我们的核心判定标准就是「90 天 0 点击」。GSC 效果数据的保留期间有限，所以建议每季导出存档，才能做季度审计与年度回顾。
 
 ## 第一站：效果报表——揪出 90 天 0 点击页
 
@@ -34,7 +35,7 @@ translations:
 - **点击 = 0、展示 < 50**：重度负债。Google 几乎不给这页任何机会，走合并或移除。
 - **点击 = 0、展示 ≥ 50**：轻度负债。Google 有让它出现在搜索结果，但没人想点——通常是标题与描述的问题，优先改写标题标签与 meta description 再观察。
 
-注意一个陷阱：GSC 的网页标签页默认最多显示 1,000 行。大站要用「网页」筛选器分目录（例如 `/blog/`）分批导出，才不会漏掉长尾。
+注意一个陷阱：GSC 的表格[最多只显示 1,000 行](https://support.google.com/webmasters/answer/96568)。大站要用「网页」筛选器分目录（例如 `/blog/`）分批导出，才不会漏掉长尾。
 
 ## 第二站：网页收录报表——Google 已经投票的页面
 
@@ -42,12 +43,14 @@ translations:
 
 | 报表状态 | Google 的意思 | 对你的意义 |
 |---|---|---|
-| **Crawled - currently not indexed**（已抓取，目前未编入索引） | 我爬了，读完了，决定不收录 | 质量判决：内容不值得进索引，是最明确的负债信号 |
-| **Discovered - currently not indexed**（已发现，目前尚未编入索引） | 我知道这页存在，但不急着爬 | 抓取优先度太低——整站质量或内部链接出了问题 |
+| **Crawled - currently not indexed**（已抓取，目前未编入索引） | 我爬了，读完了，决定不收录 | Google 爬过但没收录（[官方说明](https://support.google.com/webmasters/answer/7440203)指这很常见、不一定是问题）；搭配 0 点击，是最明确的负债信号之一 |
+| **Discovered - currently not indexed**（已发现，目前尚未编入索引） | 我知道这页存在，但不急着爬 | 抓取被延后（官方说明是 Google 预期抓取会造成网站负荷过大）；若数量庞大，也值得检查整站质量与内部链接 |
 
 操作：点进每个状态可以看到 URL 示例清单（同样可导出）。把这两份清单和第一站的 0 点击清单交叉比对——**同时出现在「0 点击」和「Crawled - currently not indexed」的页面，就是最该优先处理的核心负债**。
 
 如果「Discovered - currently not indexed」的数量占比很高（例如超过已收录页的 30%），问题通常不在单页而在整站：crawl budget 被浪费、或内部链接结构让 Google 觉得这些页不重要。这时要回头看整站的抓取预算怎么分配。
+
+想知道这些「已抓取，目前未编入索引」的页面为什么卡住、怎么逐一处理，完整诊断决策树见〈[「已抓取，目前尚未编入索引」怎么办](/zh-hans/blog/crawled-currently-not-indexed-fix/)〉。
 
 ## 第三站：网址检查工具——逐页确诊
 
@@ -70,6 +73,12 @@ translations:
 ## 多久跑一次？
 
 **每季一次**。把上述流程做成固定的季度仪式：导出 → 分类 → 处理 30 页 → 记录。连续跑 3–4 季后，多数网站的「Crawled - currently not indexed」数量会明显下降，新文章的收录速度也会变快。
+
+## 参考资料
+
+- [Page indexing report（网页索引报表）](https://support.google.com/webmasters/answer/7440203)（Google Search Console 帮助）
+- [Performance report（效果报表）](https://support.google.com/webmasters/answer/96568)（Google Search Console 帮助）
+- [URL Inspection tool（网址检查工具）](https://support.google.com/webmasters/answer/9012289)（Google Search Console 帮助）
 
 ## 常见问题（FAQ）
 

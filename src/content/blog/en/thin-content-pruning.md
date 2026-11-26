@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page SEO
 author: GeoSeoToday
 date_published: 2026-08-12
-date_updated: 2026-08-12
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: thin-content-pruning
   zh-hans: thin-content-pruning
@@ -17,7 +18,7 @@ translations:
 
 ## Why "thin" isn't a word-count problem
 
-Most people assume thin content means "under 300 words," so they pad pages with filler to hit a count — and end up with something worse: word count met, information density still zero. Google's Helpful Content guidance is explicit: the test is whether a page gives a unique, useful answer to a real query, not whether it clears a length threshold. A 1,500-word article that's mostly synonym-swapping is just as thin as a 200-word page with no concrete specifics.
+Most people assume thin content means "under 300 words," so they pad pages with filler to hit a count — and end up with something worse: word count met, information density still zero. [Google's helpful content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) is explicit (it even says Google has no preferred word count): the test is whether a page gives a unique, useful answer to a real query, not whether it clears a length threshold. A 1,500-word article that's mostly synonym-swapping is just as thin as a 200-word page with no concrete specifics.
 
 In practice, thin content usually looks like:
 
@@ -34,7 +35,7 @@ The most common mistake in thin-content pruning is judging on a single metric. T
 Pull the "Pages" view in GSC Performance, sorted by clicks. Zero clicks with low impressions (e.g., under 30) is your first suspect list. Impressions with zero clicks means Google recognizes the topic but the page itself isn't earning the click — a lighter-weight problem.
 
 **Axis 2: Index status**
-Cross-check the Indexing → Pages report. Pages showing "Crawled - currently not indexed" or "Discovered - currently not indexed" mean Google has already told you, explicitly, that it doesn't consider the page worth keeping. These should be prioritized even if they still have some traffic.
+Cross-check the Indexing → Pages report. Pages showing "Crawled - currently not indexed" or "Discovered - currently not indexed" mean Google has not indexed the page ([Google's documentation](https://support.google.com/webmasters/answer/7440203) says these statuses are common and not necessarily a problem, but important pages deserve a check in URL Inspection). Combined with zero clicks, it usually signals a quality or intent mismatch, so prioritize those pages; the diagnosis flow is in [Crawled - currently not indexed: how to fix it](/en/blog/crawled-currently-not-indexed-fix/).
 
 **Axis 3: Intent overlap**
 Use a site: search plus your keyword map to check whether another article already covers the same intent — and ranks better. High overlap means keeping both pages just causes keyword cannibalization; it doesn't make the site stronger overall.
@@ -52,7 +53,7 @@ Cross-referencing the three axes into a routing table:
 ## The three paths in practice
 
 **Path 1: Delete**
-Pages with no real search demand and no internal links pointing to them should come down. Return a 410 (more explicit than 404 — it tells Google "permanently gone") and clean up every internal link and sitemap entry pointing to it, so you don't leave dead links behind.
+Pages with no real search demand and no internal links pointing to them should come down. Return a 404 or 410 (either works: [Google treats 4xx errors the same](https://developers.google.com/search/docs/crawling-indexing/http-network-errors), and indexed URLs are gradually dropped from the index) and clean up every internal link and sitemap entry pointing to it, so you don't leave dead links behind.
 
 **Path 2: Merge**
 When a topic has value but overlaps with another article, or is too thin to stand alone, fold the useful parts into the better-ranking, more complete page. 301-redirect the old URL and repoint every internal link to the merged target. Consolidating ranking signals onto one URL usually outperforms two pages cannibalizing each other.
@@ -68,6 +69,14 @@ The right topic and the right intent, just hollow execution — this is the only
 4. Handle merges next, confirming every 301 redirect and internal link is repointed.
 5. Handle expansions last, since they take the most time; prioritize pages with high impressions but zero clicks.
 6. After each batch, watch indexing and ranking for 2-4 weeks before starting the next.
+
+## Sources
+
+- [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) (Google Search Central)
+- [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies) (Google Search Central; defines scaled content abuse and thin affiliation)
+- [Page indexing report](https://support.google.com/webmasters/answer/7440203) (Google Search Console Help)
+- [How HTTP status codes affect Google Search](https://developers.google.com/search/docs/crawling-indexing/http-network-errors) (Google Search Central)
+- [Redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects) (Google Search Central)
 
 ## FAQ
 

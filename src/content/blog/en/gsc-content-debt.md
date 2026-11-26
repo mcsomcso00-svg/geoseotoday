@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page SEO
 author: GeoSeoToday
 date_published: 2026-07-13
-date_updated: 2026-07-13
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: gsc-content-debt
   zh-hans: gsc-content-debt
@@ -17,7 +18,7 @@ translations:
 
 ## Before you start: what you need
 
-All you need is one verified GSC property, on a site that has been live for more than 90 days — because our core test is literally "zero clicks over 90 days." As of 2026 the GSC interface retains 16 months of Performance data, which is plenty for a quarterly audit plus an annual review.
+All you need is one verified GSC property, on a site that has been live for more than 90 days — because our core test is literally "zero clicks over 90 days." Search Console only keeps Performance data for a limited period, so export it every quarter to keep a record for quarterly audits and an annual review.
 
 ## Stop 1: the Performance report — surface your 90-day zero-click pages
 
@@ -34,7 +35,7 @@ In the sheet, add a "Verdict" column and classify each row with two conditions:
 - **Clicks = 0, impressions < 50**: heavy debt. Google barely gives this page any chance at all — merge it or remove it.
 - **Clicks = 0, impressions ≥ 50**: light debt. Google is surfacing it in results, but nobody wants to click — usually a title-and-description problem. Rewrite the title tag and meta description first, then watch it.
 
-Watch out for one trap: the Pages tab in GSC shows at most 1,000 rows by default. On a large site, use the Page filter to split by directory (e.g. `/blog/`) and export in batches, so you don't miss the long tail.
+Watch out for one trap: [Search Console tables show at most 1,000 rows](https://support.google.com/webmasters/answer/96568). On a large site, use the Page filter to split by directory (e.g. `/blog/`) and export in batches, so you don't miss the long tail.
 
 ## Stop 2: the Page Indexing report — the pages Google has already voted on
 
@@ -42,12 +43,14 @@ In the left-hand menu click **Indexing → Pages** (the Page indexing report) an
 
 | Report status | What Google means | What it means for you |
 |---|---|---|
-| **Crawled - currently not indexed** | I crawled it, read it, and decided not to index it | A quality verdict: the content isn't worth indexing — the clearest debt signal there is |
-| **Discovered - currently not indexed** | I know this page exists, but I'm in no hurry to crawl it | Crawl priority too low — a site-wide quality or internal-linking problem |
+| **Crawled - currently not indexed** | I crawled it, read it, and decided not to index it | Crawled but not indexed ([Google says](https://support.google.com/webmasters/answer/7440203) this is common and not necessarily a problem); combined with zero clicks, it's one of the clearest debt signals |
+| **Discovered - currently not indexed** | I know this page exists, but I'm in no hurry to crawl it | Crawl postponed (Google's documentation says this happens when it expects crawling to overload the site); if the count is large, also check site-wide quality and internal linking |
 
 How to work it: click into each status to see a sample list of URLs (also exportable). Cross-reference these two lists against the zero-click list from Stop 1 — **the pages that appear in both "zero clicks" and "Crawled - currently not indexed" are the core debt to fix first.**
 
 If "Discovered - currently not indexed" makes up a large share (say, more than 30% of your indexed pages), the problem usually isn't any single page but the whole site: crawl budget is being wasted, or your internal-linking structure is telling Google these pages don't matter. That's when you go back and look at how crawl budget works.
+
+To work out why those "Crawled - currently not indexed" pages are stuck and how to handle each one, see the full diagnosis tree in [Crawled - currently not indexed: how to fix it](/en/blog/crawled-currently-not-indexed-fix/).
 
 ## Stop 3: the URL Inspection tool — diagnose page by page
 
@@ -70,6 +73,12 @@ The point of the three-way choice is to stop treating every page the same: merge
 ## How often should you run it?
 
 **Once a quarter.** Turn the flow above into a fixed quarterly ritual: export → classify → handle 30 pages → log it. After 3–4 quarters in a row, most sites see their "Crawled - currently not indexed" count drop noticeably, and new articles get indexed faster too.
+
+## Sources
+
+- [Page indexing report](https://support.google.com/webmasters/answer/7440203) (Google Search Console Help)
+- [Performance report](https://support.google.com/webmasters/answer/96568) (Google Search Console Help)
+- [URL Inspection tool](https://support.google.com/webmasters/answer/9012289) (Google Search Console Help)
 
 ## Frequently asked questions (FAQ)
 

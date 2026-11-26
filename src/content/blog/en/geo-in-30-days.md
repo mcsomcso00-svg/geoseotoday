@@ -6,7 +6,8 @@ intent: informational
 cluster: GEO
 author: GeoSeoToday
 date_published: 2026-07-06
-date_updated: 2026-07-06
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: geo-in-30-days
   zh-hans: geo-in-30-days
@@ -17,11 +18,11 @@ translations:
 
 ## Before you start: what does "GEO-ready" mean?
 
-A GEO-ready page clears three bars at once: AI crawlers (GPTBot, PerplexityBot, Google-Extended) can reach it, the structure lets engines extract from it, and the information is specific enough to be worth citing. GeoSeoToday quantifies this with nine signals, and 75 is the publish threshold. The beginner's classic mistake is chasing advanced tactics first; in reality the goal of a first page is simple — **get the fundamentals right once, then copy the process on every article after.**
+A GEO-ready page clears three bars at once: AI search crawlers (such as [OAI-SearchBot](https://developers.openai.com/api/docs/bots) and [PerplexityBot](https://docs.perplexity.ai/guides/bots)) and Googlebot can reach it, the structure lets engines extract from it, and the information is specific enough to be worth citing. GeoSeoToday quantifies this with nine signals, and 75 is the publish threshold. The beginner's classic mistake is chasing advanced tactics first; in reality the goal of a first page is simple — **get the fundamentals right once, then copy the process on every article after.**
 
 ## Week 1 (Day 1–7): foundations and topic
 
-- **Day 1–2: crawler check.** Open your site's `/robots.txt` and confirm it isn't blocking GPTBot, PerplexityBot, or Google-Extended; check whether your CDN (e.g. Cloudflare) has "block AI crawlers" switched on. No site yet? Spend these two days standing one up (any platform that publishes articles works; your own domain is better).
+- **Day 1–2: crawler check.** Open your site's `/robots.txt` and confirm it isn't blocking OAI-SearchBot, PerplexityBot, or Googlebot (GPTBot and Google-Extended are training controls, and [Google-Extended does not affect inclusion in Google Search](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers), so whether to block them is a separate decision); check whether your CDN (e.g. Cloudflare) has "block AI crawlers" switched on. No site yet? Spend these two days standing one up (any platform that publishes articles works; your own domain is better).
 - **Day 3–4: pick the topic.** Choose one specific question you can answer better than most pages out there. Test it against three criteria: narrow enough ("how to do GEO for e-commerce product pages" beats "GEO tutorial"), you have first-hand experience, and when you ask Perplexity the existing answers fall short.
 - **Day 5–7: research.** Put the question to ChatGPT, Perplexity, and Google once each, and note: who the current answers cite, what's missing, and which sub-questions People Also Ask surfaces. That list is the raw material for your outline.
 
@@ -52,7 +53,13 @@ For the writing template in detail, see [The GEO Content Structure Template](/en
 
 ## What to reasonably expect after 30 days
 
-Honestly: getting cited by an AI engine within a month is possible but not guaranteed. Perplexity is fastest — commonly 4–8 weeks — while ChatGPT and AI Overview are slower. The real output of 30 days is a page scoring above 75, a repeatable process, and a baseline. From there, expand along the same topic at 2–4 articles a month, and the cluster effect surfaces after 3–6 months.
+Honestly: getting cited by an AI engine within a month is possible but not guaranteed. Speed varies by engine and there is no official timetable, so watch your own tracking sheet. The real output of 30 days is a page scoring above 75, a repeatable process, and a baseline. From there, expand along the same topic at 2–4 articles a month, and the cluster effect surfaces after 3–6 months.
+
+## Sources
+
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
+- [Google common crawlers (including Google-Extended)](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
 
 ## Frequently asked questions (FAQ)
 

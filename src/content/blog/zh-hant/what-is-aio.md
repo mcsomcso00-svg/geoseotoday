@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜尋優化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hans: what-is-aio
   en: what-is-aio
@@ -17,13 +18,13 @@ translations:
 
 ## 為什麼 2026 年開始談 AIO？
 
-因為搜尋的介面變了。過去使用者看到的是「十條藍色連結」，現在越來越多查詢，第一眼看到的是一段 AI 生成的摘要。根據多家流量分析機構在 2025–2026 的觀察，**資訊型查詢有相當高的比例在 AI 答案頁就結束**，使用者不再往下捲。Gartner 早在 2024 年就預估，到 2026 年傳統搜尋量會下降約 25%。當入口從「連結列表」變成「一段答案」，優化的對象自然從「排名」變成「被那段答案採用」——這就是 AIO 要處理的整體命題。
+因為搜尋的介面變了。過去使用者看到的是「十條藍色連結」，現在越來越多查詢，第一眼看到的是一段 AI 生成的摘要。第三方研究多半觀察到，AI 答案會讓部分資訊型查詢不再產生點擊，但幅度因研究與查詢類型而異，本文不引用單一數字。Google 自己的說明則是：AI 摘要「只有在系統判斷對傳統搜尋有加分時才會顯示」（[Google Search Central](https://developers.google.com/search/docs/appearance/ai-features)）。當入口從「連結列表」變成「一段答案」，優化的對象自然從「排名」變成「被那段答案採用」——這就是 AIO 要處理的整體命題。
 
 ## AIO 的三個層次：被讀懂、被信任、被引用
 
 AIO 和 GEO 共用同一組底層邏輯，可以拆成三層：
 
-1. **被讀懂**：AI 爬蟲（GPTBot、Google-Extended、PerplexityBot、ClaudeBot）能抓取並解析你的頁面，內容不被 JavaScript 卡住、不被 robots.txt 誤擋。
+1. **被讀懂**：AI 搜尋相關爬蟲（[OAI-SearchBot](https://developers.openai.com/api/docs/bots)、[PerplexityBot](https://docs.perplexity.ai/guides/bots)、[Claude-SearchBot](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)，以及 Google 的 Googlebot）能抓取並解析你的頁面；GPTBot、ClaudeBot、Google-Extended 則是訓練用途的控制項，封鎖它們不等於退出搜尋引用（[Google-Extended 不影響 Google 搜尋收錄](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)），內容不被 JavaScript 卡住、不被 robots.txt 誤擋。
 2. **被信任**：實體清晰（作者、品牌、Schema）＋ E-E-A-T（經驗、專業、權威、信任），讓引擎有理由採用你而不是別人。
 3. **被引用**：段落寫成「可直接摘錄」的形式——自包含、具體、有數據——讓 AI 生成答案時直接抓你這一段。
 
@@ -60,6 +61,14 @@ AIO 和 GEO 共用同一組底層邏輯，可以拆成三層：
 2. **重寫開頭與補數據**：把既有文章改成答案優先，並補上具體數字與比較表。
 3. **加 Schema、寫清楚作者**：建立可被引擎辨識的品牌實體。
 4. **檢測再發布**：用評分工具對文章打分，達標再發。完整落地步驟見〈[AIO 完整指南](/zh-hant/blog/aio-complete-guide/)〉。
+
+## 參考資料
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central，2026）
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots)（OpenAI）
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots)（Perplexity）
+- [Does Anthropic crawl data from the web?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)（Anthropic）
+- [Google common crawlers（含 Google-Extended）](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
 
 ## 常見問題（FAQ）
 

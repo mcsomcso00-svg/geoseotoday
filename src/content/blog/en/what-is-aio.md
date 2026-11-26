@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: what-is-aio
   zh-hans: what-is-aio
@@ -17,12 +18,12 @@ translations:
 
 ## Why we started talking about AIO in 2026
 
-Because the interface changed. Users used to see ten blue links; now, for more and more queries, the first thing they see is an AI-generated summary. Multiple analytics firms observing 2025–2026 report that **a substantial share of informational queries end on the AI answer** — users don't scroll down. Gartner projected back in 2024 that traditional search volume would fall ~25% by 2026. When the entrance shifts from "a list of links" to "one answer," the target of optimization shifts from "ranking" to "being used in that answer" — which is exactly what AIO addresses.
+Because the interface changed. Users used to see ten blue links; now, for more and more queries, the first thing they see is an AI-generated summary. Third-party studies generally observe that AI answers cause some informational queries to stop producing clicks, but the size varies by study and query type, so this article doesn't quote a single figure. Google's own documentation says AI Overviews are shown only when its systems determine they are additive to classic Search ([Google Search Central](https://developers.google.com/search/docs/appearance/ai-features)). When the entrance shifts from "a list of links" to "one answer," the target of optimization shifts from "ranking" to "being used in that answer" — which is exactly what AIO addresses.
 
 ## AIO's three layers: readable, trusted, cited
 
 AIO shares GEO's underlying logic, in three layers:
-1. **Readable** — AI crawlers (GPTBot, Google-Extended, PerplexityBot, ClaudeBot) can fetch and parse your page; content isn't stuck behind JavaScript or wrongly blocked by robots.txt.
+1. **Readable** — AI search crawlers ([OAI-SearchBot](https://developers.openai.com/api/docs/bots), [PerplexityBot](https://docs.perplexity.ai/guides/bots), [Claude-SearchBot](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler), plus Google's Googlebot) can fetch and parse your page; GPTBot, ClaudeBot and Google-Extended are training controls, and blocking them is not the same as opting out of search citations ([Google-Extended does not affect inclusion in Google Search](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)); content isn't stuck behind JavaScript or wrongly blocked by robots.txt.
 2. **Trusted** — entity clarity (author, brand, schema) + E-E-A-T give the engine a reason to use you over someone else.
 3. **Cited** — passages are written to be lifted verbatim: self-contained, specific, data-backed.
 
@@ -58,6 +59,14 @@ Do this and SEO, AEO, and GEO results grow together — it's the fixed shape of 
 2. **Rewrite openings and add data** — turn existing articles answer-first, and add concrete numbers and comparison tables.
 3. **Add schema, name your author** — build a brand entity engines can recognize.
 4. **Score, then publish** — run articles through a readiness checker and hit the bar first.
+
+## Sources
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central, 2026)
+- [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots) (OpenAI)
+- [Perplexity crawlers](https://docs.perplexity.ai/guides/bots) (Perplexity)
+- [Does Anthropic crawl data from the web?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) (Anthropic)
+- [Google common crawlers (including Google-Extended)](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
 
 ## FAQ
 

@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page & 技术 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-08-12
-date_updated: 2026-08-12
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: thin-content-pruning
   en: thin-content-pruning
@@ -17,7 +18,7 @@ translations:
 
 ## 为什么「稀薄」不是字数问题
 
-很多人以为稀薄内容就是「少于 300 字」，于是把力气花在灌水凑字数，结果做出更糟的东西——字数够了、信息量还是零。Google 的 Helpful Content 指南讲得很清楚：判断标准是「这页是否对某个真实查询提供了独特、有用的答案」，不是字数门槛。一篇 1500 字但通篇同义词替换的文章，稀薄程度不亚于一篇 200 字但讲清楚具体规格的页面。
+很多人以为稀薄内容就是「少于 300 字」，于是把力气花在灌水凑字数，结果做出更糟的东西——字数够了、信息量还是零。[Google 的 Helpful Content 指南](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)讲得很清楚（它甚至直接说 Google 并没有偏好的字数）：判断标准是「这页是否对某个真实查询提供了独特、有用的答案」，不是字数门槛。一篇 1500 字但通篇同义词替换的文章，稀薄程度不亚于一篇 200 字但讲清楚具体规格的页面。
 
 实务上稀薄内容通常长这样：
 
@@ -34,7 +35,7 @@ translations:
 用 GSC「效果」报表抓「网页」维度，按点击数排序。0 点击、且展现量也低（例如 < 30）的页面是第一批嫌疑犯；有展现但 0 点击，代表 Google 认得主题但页面本身没有吸引力，属于较轻的问题。
 
 **轴二：被索引状态**
-对照「索引 → 网页」报表：出现在「已抓取，尚未编入索引」或「已发现，尚未编入索引」的页面，等于 Google 已经明确表态「不值得收录」。这类页面即使有一点流量，也代表算法对它评价偏低，应优先处理。
+对照「索引 → 网页」报表：出现在「已抓取，尚未编入索引」或「已发现，尚未编入索引」的页面，代表 Google 没有收录它（[官方说明](https://support.google.com/webmasters/answer/7440203)指这类状态很常见，不一定是问题，但重要页面值得用网址检查工具逐一确认）。若同时出现 0 点击，通常是质量或意图不合的信号，应优先处理；诊断流程见〈[「已抓取，目前尚未编入索引」怎么办](/zh-hans/blog/crawled-currently-not-indexed-fix/)〉。
 
 **轴三：意图重叠**
 用 site: 加关键词搜索、或内部关键词地图，检查同一意图是否已有另一篇文章覆盖、且那篇排名更好。若重叠度高，保留两篇只会让两篇互相蚕食排名（keyword cannibalization），不会让网站整体变强。
@@ -52,7 +53,7 @@ translations:
 ## 三条处置路径的具体做法
 
 **路径一：删除**
-主题本身没有搜索需求、也没有内部链接指向的孤儿页，直接下架。响应码设为 410（比 404 更明确告诉 Google「永久不再存在」），并清掉所有指向它的内部链接与网站地图条目，避免留下死链接。
+主题本身没有搜索需求、也没有内部链接指向的孤儿页，直接下架。响应码用 404 或 410 都可以（[Google 对 4xx 错误一视同仁](https://developers.google.com/search/docs/crawling-indexing/http-network-errors)，已收录的网址会被逐步移出索引），并清掉所有指向它的内部链接与网站地图条目，避免留下死链接。
 
 **路径二：合并**
 主题有价值，但和另一篇文章重叠、或内容太薄撑不起独立页面——把有用的段落并入排名较好、覆盖较完整的那一篇，原网址做 301 跳转，内部链接全部改指向合并后的目标页。合并后两篇的排名信号会集中到同一个网址，通常比两篇互相蚕食排名更好。
@@ -68,6 +69,14 @@ translations:
 4. 再处理合并，确认 301 跳转与内部链接都已改向。
 5. 补料排在最后，因为最耗时；优先处理展现量高但点击挂零的页面。
 6. 每一批完成后观察 2-4 周的索引与排名变化，再启动下一批。
+
+## 参考资料
+
+- [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)（Google Search Central）
+- [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies)（Google Search Central，含 scaled content abuse 与 thin affiliation 定义）
+- [Page indexing report](https://support.google.com/webmasters/answer/7440203)（Google Search Console 帮助）
+- [How HTTP status codes affect Google Search](https://developers.google.com/search/docs/crawling-indexing/http-network-errors)（Google Search Central）
+- [Redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects)（Google Search Central）
 
 ## 常见问题（FAQ）
 

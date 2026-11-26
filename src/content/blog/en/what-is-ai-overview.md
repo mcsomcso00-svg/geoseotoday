@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: what-is-ai-overview
   zh-hans: what-is-ai-overview
@@ -17,7 +18,7 @@ translations:
 
 ## How does AI Overview actually work?
 
-AI Overview isn't generated out of thin air — it's **built on top of Google's existing search index**. The rough flow is: understand the query intent → retrieve relevant pages from the index → use the Gemini model to synthesize the key points from those pages → generate a summary and attribute the sources. That implies two things:
+AI Overview isn't generated out of thin air — it's **built on top of Google's existing search index** ([Google's documentation](https://developers.google.com/search/docs/appearance/ai-features) says a page can appear as a supporting link if it is indexed and eligible to be shown in Search with a snippet, with no additional technical requirements; it runs on [a Gemini model customized for Google Search](https://blog.google/products/search/generative-ai-google-search-may-2024/)). The rough flow is: understand the query intent → retrieve relevant pages from the index → use the Gemini model to synthesize the key points from those pages → generate a summary and attribute the sources. That implies two things:
 
 - **Traditional ranking signals still matter**: a page that gets cited by AI Overview usually already had solid relevance and authority for that query.
 - **But the logic of the top slot has changed**: even if you rank third or fifth, as long as your passage answers cleanly and specifically enough, it can still be picked as a source for the summary and surface above every link.
@@ -26,7 +27,7 @@ In other words, AI Overview is an extension of SEO, not a teardown-and-rebuild �
 
 ## Its impact on traffic: zero-click search expands
 
-The most direct hit from AI Overview is that it accelerates "zero-click search": users get their answer right on the results page and never click through to any website. Multiple analytics firms observed across 2025–2026 that queries containing an AI Overview generally saw their organic click-through rate decline, with informational and definitional queries hit especially hard.
+The most direct hit from AI Overview is that it accelerates "zero-click search": users get their answer right on the results page and never click through to any website. Third-party analytics firms generally observe lower organic click-through on queries that contain an AI Overview, especially informational and definitional ones; the size varies by study, so this article doesn't quote a single figure — check your own Search Console data.
 
 But the impact isn't uniform:
 
@@ -52,10 +53,16 @@ The key point: AI Overview relies on Google's index, while ChatGPT relies on its
 
 - **Put the answer up front**: give a self-contained conclusion in the first 40–80 words so the AI can lift it easily.
 - **Offer value the AI can't excerpt away**: interactive tools, proprietary data, deep step-by-step how-tos — these force users to click in.
-- **Strengthen entities and schema**: make it clear to Google which trustworthy brand a passage comes from.
+- **Strengthen entities and schema**: make it clear to Google which trustworthy brand a passage comes from. Google says no AI-specific markup is needed, but structured data should match the visible page.
 - **Monitor your citation status**: regularly test your core questions to see whether you're landing as a source in AI Overview.
 
 To work on content-level optimization specifically for AI Overview, read this site's GEO cluster piece, "[How to Optimize for Google AI Overview](/en/blog/ai-overview-optimization/)."
+
+## Sources
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (Google Search Central, 2026)
+- [Generative AI in Search: Let Google do the searching for you](https://blog.google/products/search/generative-ai-google-search-may-2024/) (Google, 2024-05-14)
+- [Google common crawlers (including Google-Extended)](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers) (Google Search Central)
 
 ## Frequently asked questions (FAQ)
 
@@ -69,7 +76,7 @@ No. Google decides whether to display one based on the query type. Informational
 Yes, but usually less than the old number-one spot did. What it brings is "high-trust exposure" plus some clicks — the value lies in brand awareness and being trusted, not in raw click volume.
 
 **Q4: Can I request not to be used by AI Overview?**
-Control over Google's index and AI Overview usage is fairly limited; to manage how AI crawlers train on and fetch your content, start with settings like Google-Extended in robots.txt.
+You can limit it, but the levers are search-level preview controls: per [Google's documentation](https://developers.google.com/search/docs/appearance/ai-features), use nosnippet, data-nosnippet, max-snippet or noindex to limit what is shown from your pages in Search (at the cost of affecting regular snippets too). Google-Extended in robots.txt governs Gemini training and grounding and [does not affect inclusion in Google Search](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers). For managing other AI crawlers, see the AI crawler guide.
 
 ---
 

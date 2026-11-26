@@ -6,7 +6,8 @@ intent: informational
 cluster: AIO / AI 搜索优化（群集 6）
 author: GeoSeoToday
 date_published: 2026-07-05
-date_updated: 2026-07-05
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hant: what-is-ai-overview
   en: what-is-ai-overview
@@ -17,7 +18,7 @@ translations:
 
 ## AI Overview 是怎么运作的？
 
-AI Overview 不是凭空生成，而是**建立在 Google 既有的搜索索引之上**。它的流程大致是：理解查询意图 → 从索引中检索相关网页 → 用 Gemini 模型综合这些网页的重点 → 生成一段摘要并标注来源。这代表两件事：
+AI Overview 不是凭空生成，而是**建立在 Google 既有的搜索索引之上**（Google 在[官方说明](https://developers.google.com/search/docs/appearance/ai-features)中表示，页面只要已被索引、且有资格带摘要显示在搜索中，就可能成为支持链接，没有额外的技术要求；背后是 [Google 为搜索定制的 Gemini 模型](https://blog.google/products/search/generative-ai-google-search-may-2024/)）。它的流程大致是：理解查询意图 → 从索引中检索相关网页 → 用 Gemini 模型综合这些网页的重点 → 生成一段摘要并标注来源。这代表两件事：
 
 - **传统排名信号仍然重要**：能被 AI Overview 引用的网页，通常本来就在该查询有不错的相关性与权威度。
 - **但版位逻辑变了**：即使你排名第三、第五，只要你那一段答得够干净、够具体，仍可能被摘要选为来源，出现在所有链接之上。
@@ -26,7 +27,7 @@ AI Overview 不是凭空生成，而是**建立在 Google 既有的搜索索引�
 
 ## 它对流量的影响：零点击搜索扩大
 
-AI Overview 最直接的冲击，是加速了「零点击搜索」（zero-click search）：用户在答案页就得到解答，不再点进任何网站。多家分析机构在 2025–2026 观察到，含 AI Overview 的查询，其自然点击率普遍下滑，信息型、定义型的查询尤其明显。
+AI Overview 最直接的冲击，是加速了「零点击搜索」（zero-click search）：用户在答案页就得到解答，不再点进任何网站。第三方分析机构多半观察到，含 AI Overview 的查询自然点击率偏低，信息型、定义型的查询尤其明显；幅度因研究而异，本文不引用单一数字，请以自己网站的 Search Console 数据为准。
 
 但冲击不是均匀的：
 
@@ -52,10 +53,16 @@ AI Overview 最直接的冲击，是加速了「零点击搜索」（zero-click 
 
 - **把答案写在最前面**：开头 40–80 字给出自包含结论，让 AI 容易摘录。
 - **提供 AI 摘不走的价值**：可互动的工具、独家数据、深度操作步骤——这些逼用户点进来。
-- **强化实体与 Schema**：让 Google 清楚知道「这段内容出自哪个可信品牌」。
+- **强化实体与 Schema**：让 Google 清楚知道「这段内容出自哪个可信品牌」。Google 表示不需要 AI 专用的标记，但结构化数据要与页面可见内容一致。
 - **监测被引用情况**：定期拿核心问题实测，看你有没有进 AI Overview 的来源。
 
 想针对 AI Overview 做内容层面的实战优化，可延伸读本站 GEO 群集的〈[AI Overview 优化实战](/zh-hans/blog/ai-overview-optimization/)〉。
+
+## 参考资料
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)（Google Search Central，2026）
+- [Generative AI in Search: Let Google do the searching for you](https://blog.google/products/search/generative-ai-google-search-may-2024/)（Google，2024-05-14）
+- [Google common crawlers（含 Google-Extended）](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)（Google Search Central）
 
 ## 常见问题（FAQ）
 
@@ -69,7 +76,7 @@ AI Overview 最直接的冲击，是加速了「零点击搜索」（zero-click 
 能，但量通常不如过去的第一名。它带来的是「高信任的曝光」与部分点击，价值在品牌认知与被信任，而非纯粹的点击数。
 
 **Q4：我可以要求不被 AI Overview 使用吗？**
-Google 索引与 AI Overview 使用的控制较为有限；若要管理 AI 爬虫对内容的训练与抓取，可从 robots.txt 的 Google-Extended 等设置着手。
+可以限制，但手段是搜索层级的预览控制：依 [Google 官方说明](https://developers.google.com/search/docs/appearance/ai-features)，用 nosnippet、data-nosnippet、max-snippet 或 noindex 限制页面在搜索中显示的内容（代价是传统摘要也会受影响）。robots.txt 的 Google-Extended 管的是 Gemini 的训练与 grounding，[不影响 Google 搜索收录](https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)。
 
 ---
 

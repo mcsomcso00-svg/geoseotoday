@@ -6,7 +6,8 @@ intent: informational
 cluster: On-page & 技術 SEO（群集 3）
 author: GeoSeoToday
 date_published: 2026-08-12
-date_updated: 2026-08-12
+date_updated: 2026-11-26
+enhanced: true
 translations:
   zh-hans: thin-content-pruning
   en: thin-content-pruning
@@ -17,7 +18,7 @@ translations:
 
 ## 為什麼「稀薄」不是字數問題
 
-很多人以為稀薄內容就是「少於 300 字」，於是把力氣花在灌水湊字數，結果做出更糟的東西——字數夠了、資訊量還是零。Google 的 Helpful Content 指引講得很清楚：判斷標準是「這頁是否對某個真實查詢提供了獨特、有用的答案」，不是字數門檻。一篇 1500 字但通篇同義詞替換的文章，稀薄程度不亞於一篇 200 字但講清楚具體規格的頁面。
+很多人以為稀薄內容就是「少於 300 字」，於是把力氣花在灌水湊字數，結果做出更糟的東西——字數夠了、資訊量還是零。[Google 的 Helpful Content 指引](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)講得很清楚（它甚至直接說 Google 並沒有偏好的字數）：判斷標準是「這頁是否對某個真實查詢提供了獨特、有用的答案」，不是字數門檻。一篇 1500 字但通篇同義詞替換的文章，稀薄程度不亞於一篇 200 字但講清楚具體規格的頁面。
 
 實務上稀薄內容通常長這樣：
 
@@ -34,7 +35,7 @@ translations:
 用 GSC「成效」報表抓「網頁」維度，依點擊數排序。0 點擊、且曝光量也低（例如 < 30）的頁面是第一批嫌疑犯；有曝光但 0 點擊，代表 Google 認得主題但頁面本身沒吸引力，屬於較輕的問題。
 
 **軸二：被索引狀態**
-對照「索引 → 網頁」報表：出現在「Crawled - currently not indexed」或「Discovered - currently not indexed」的頁面，等於 Google 已經明確表態「不值得收錄」。這類頁面即使有一點流量，也代表演算法對它評價偏低，應優先處理。
+對照「索引 → 網頁」報表：出現在「Crawled - currently not indexed」或「Discovered - currently not indexed」的頁面，代表 Google 沒有收錄它（[官方說明](https://support.google.com/webmasters/answer/7440203)指這類狀態很常見，不一定是問題，但重要頁面值得用網址檢查工具逐一確認）。若同時出現 0 點擊，通常是品質或意圖不合的訊號，應優先處理；診斷流程見〈[「已檢索，目前尚未建立索引」怎麼辦](/zh-hant/blog/crawled-currently-not-indexed-fix/)〉。
 
 **軸三：意圖重疊**
 用 site: 加關鍵字搜尋、或內部關鍵字地圖，檢查同一意圖是否已有另一篇文章覆蓋、且那篇排名更好。若重疊度高，保留兩篇只會讓兩篇互相蠶食排名（keyword cannibalization），不會讓網站整體變強。
@@ -52,7 +53,7 @@ translations:
 ## 三條處置路徑的具體做法
 
 **路徑一：刪除**
-主題本身沒有搜尋需求、也沒有內部連結指向的孤兒頁，直接下架。回應碼設為 410（比 404 更明確告訴 Google「永久不再存在」），並清掉所有指向它的內部連結與 sitemap 條目，避免留下死連結。
+主題本身沒有搜尋需求、也沒有內部連結指向的孤兒頁，直接下架。回應碼用 404 或 410 都可以（[Google 對 4xx 錯誤一視同仁](https://developers.google.com/search/docs/crawling-indexing/http-network-errors)，已收錄的網址會被逐步移出索引），並清掉所有指向它的內部連結與 sitemap 條目，避免留下死連結。
 
 **路徑二：合併**
 主題有價值，但和另一篇文章重疊、或內容太薄撐不起獨立頁面——把有用的段落併入排名較好、覆蓋較完整的那一篇，原網址做 301 轉址，內部連結全部改指向合併後的目標頁。合併後兩篇的排名訊號會集中到同一個 URL，通常比兩篇互相蠶食排名更好。
@@ -68,6 +69,14 @@ translations:
 4. 再處理合併，確認 301 轉址與內部連結都已改向。
 5. 補料排在最後，因為最耗時；優先處理曝光量高但點擊掛零的頁面。
 6. 每一批完成後觀察 2–4 週的索引與排名變化，再啟動下一批。
+
+## 參考資料
+
+- [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)（Google Search Central）
+- [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies)（Google Search Central，含 scaled content abuse 與 thin affiliation 定義）
+- [Page indexing report](https://support.google.com/webmasters/answer/7440203)（Google Search Console 說明）
+- [How HTTP status codes affect Google Search](https://developers.google.com/search/docs/crawling-indexing/http-network-errors)（Google Search Central）
+- [Redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects)（Google Search Central）
 
 ## 常見問題（FAQ）
 
